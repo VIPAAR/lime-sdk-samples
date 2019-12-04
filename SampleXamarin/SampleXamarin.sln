@@ -31,6 +31,6 @@ Global
 		{9549F74A-B1E9-4E73-B052-054A637FBB03}.Release|iPhone.Build.0 = Release|iPhone
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		version = 0.9.5
+		version = 0.9.6
 	EndGlobalSection
 EndGlobal
