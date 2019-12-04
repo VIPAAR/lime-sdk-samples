@@ -1,0 +1,22 @@
+platform :ios, '10.0'
+
+# ignore all warnings from all pods
+inhibit_all_warnings!
+
+source 'https://github.com/VIPAAR/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'SampleSwift' do
+  pod 'HLSDK', :git  => 'https://github.com/VIPAAR/lime-ios-sdk.git', :tag => '0.9.5'
+  pod 'PromisesObjC', '1.2.8', :modular_headers => true
+  pod 'PromisesSwift', '1.2.8'
+  #Override the deployment targets of all pods
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+      end
+    end
+  end
+end
+

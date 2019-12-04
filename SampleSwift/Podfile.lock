@@ -1,0 +1,143 @@
+PODS:
+  - CocoaLumberjack (3.5.3):
+    - CocoaLumberjack/Core (= 3.5.3)
+  - CocoaLumberjack/Core (3.5.3)
+  - CocoaZ (1.4.2)
+  - FirebaseAnalytics (5.4.0):
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.3)
+    - GoogleAppMeasurement (= 5.4.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (5.4.1):
+    - GoogleUtilities/Environment (~> 5.2)
+    - GoogleUtilities/Logger (~> 5.2)
+  - FirebaseInstanceID (3.8.1):
+    - FirebaseCore (~> 5.2)
+    - GoogleUtilities/Environment (~> 5.2)
+    - GoogleUtilities/UserDefaults (~> 5.2)
+  - FXKeychain (1.5.1)
+  - GoogleAppMeasurement (5.4.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - GoogleUtilities/AppDelegateSwizzler (5.8.0):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.8.0)
+  - GoogleUtilities/Logger (5.8.0):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.8.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.8.0):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.8.0)"
+  - GoogleUtilities/Reachability (5.8.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (5.8.0):
+    - GoogleUtilities/Logger
+  - HLSDK (1.0.0):
+    - CocoaLumberjack (= 3.5.3)
+    - CocoaZ (= 1.4.2)
+    - FirebaseAnalytics (= 5.4.0)
+    - FXKeychain (= 1.5.1)
+    - OpenTok (= 2.16.1)
+    - PromisesObjC (= 1.2.8)
+    - SDWebImage (= 3.7.1)
+    - SVProgressHUD (= 2.2.2)
+    - UIActivityIndicator-for-SDWebImage (= 1.2)
+    - vipaar-j2objc (= 1.2)
+    - vipaar-libyuv (= 1.0.3)
+    - vipaar-reachability (= 3.2.1)
+    - vipaar-tinyspline (= 1.0.0)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
+  - OpenTok (2.16.1)
+  - PromisesObjC (1.2.8)
+  - PromisesSwift (1.2.8):
+    - PromisesObjC (= 1.2.8)
+  - SDWebImage (3.7.1):
+    - SDWebImage/Core (= 3.7.1)
+  - SDWebImage/Core (3.7.1)
+  - SVProgressHUD (2.2.2)
+  - UIActivityIndicator-for-SDWebImage (1.2):
+    - SDWebImage (~> 3.7)
+  - vipaar-j2objc (1.2)
+  - vipaar-libyuv (1.0.3)
+  - vipaar-reachability (3.2.1)
+  - vipaar-tinyspline (1.0.0)
+
+DEPENDENCIES:
+  - HLSDK (from `https://github.com/VIPAAR/lime-ios-sdk.git`, tag `0.9.5`)
+  - PromisesObjC (= 1.2.8)
+  - PromisesSwift (= 1.2.8)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - CocoaLumberjack
+    - CocoaZ
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FXKeychain
+    - GoogleAppMeasurement
+    - GoogleUtilities
+    - nanopb
+    - OpenTok
+    - PromisesObjC
+    - PromisesSwift
+    - SDWebImage
+    - SVProgressHUD
+    - UIActivityIndicator-for-SDWebImage
+  https://github.com/VIPAAR/Specs.git:
+    - vipaar-j2objc
+    - vipaar-libyuv
+    - vipaar-reachability
+    - vipaar-tinyspline
+
+EXTERNAL SOURCES:
+  HLSDK:
+    :git: https://github.com/VIPAAR/lime-ios-sdk.git
+    :tag: 0.9.5
+
+CHECKOUT OPTIONS:
+  HLSDK:
+    :git: https://github.com/VIPAAR/lime-ios-sdk.git
+    :tag: 0.9.5
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
+  CocoaZ: a296b1fbea2c648daf2ccabb5403ed354569e633
+  FirebaseAnalytics: c06f9d70577d79074214700a71fd5d39de5550fb
+  FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
+  FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
+  FXKeychain: a6c2efc46ba7167163c45469a0554233e9e6569e
+  GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
+  GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
+  HLSDK: e65f872ce3de789ef6ea483e4e781694f87f15ee
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  OpenTok: 556374577b66cbf791190c84612346c8f3997c9e
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  PromisesSwift: 37bad6f4daddb02f7c9c531efe91e8b21c13ee2f
+  SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
+  UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
+  vipaar-j2objc: 27d89ffc8688f81a6eb8459548f005470a68a5c6
+  vipaar-libyuv: 981690f205ae3f28f6382db10a9dca64ba3d03a3
+  vipaar-reachability: 05dea9613e5126628ae69b1f1ed50866a2a9ecad
+  vipaar-tinyspline: d8565207b0c1714bac044a488b4308ca690b52f9
+
+PODFILE CHECKSUM: b2cf4778b521d51b4eb51bb02da3baeffe3b161d
+
+COCOAPODS: 1.8.4

@@ -1,0 +1,12 @@
+.DS_Store
+.vs
+Pods
+build
+lib
+obj
+bin
+*.nupkg
+*.aar
+*.jar
+*.xcuserdatad
+*.xcworkspace
