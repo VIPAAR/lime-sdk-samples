@@ -44,7 +44,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.8.0):
     - GoogleUtilities/Logger
-  - HLSDK (0.9.5):
+  - HLSDK (0.9.7):
     - CocoaLumberjack (= 3.5.3)
     - CocoaZ (= 1.4.2)
     - FirebaseAnalytics (= 5.4.0)
@@ -77,7 +77,7 @@ PODS:
   - vipaar-tinyspline (1.0.0)
 
 DEPENDENCIES:
-  - HLSDK (from `https://github.com/VIPAAR/lime-ios-sdk.git`, tag `0.9.6`)
+  - HLSDK (from `https://github.com/VIPAAR/lime-ios-sdk.git`, tag `0.9.7`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -104,12 +104,12 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   HLSDK:
     :git: https://github.com/VIPAAR/lime-ios-sdk.git
-    :tag: 0.9.6
+    :tag: 0.9.7
 
 CHECKOUT OPTIONS:
   HLSDK:
     :git: https://github.com/VIPAAR/lime-ios-sdk.git
-    :tag: 0.9.6
+    :tag: 0.9.7
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
@@ -120,7 +120,7 @@ SPEC CHECKSUMS:
   FXKeychain: a6c2efc46ba7167163c45469a0554233e9e6569e
   GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
   GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
-  HLSDK: 1d579141c0fcd5f3f026c9182cd14415e9b42d16
+  HLSDK: f7bd0693c30596d3a3d313b140bb1bc844d5d741
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   OpenTok: 556374577b66cbf791190c84612346c8f3997c9e
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
@@ -132,6 +132,6 @@ SPEC CHECKSUMS:
   vipaar-reachability: 05dea9613e5126628ae69b1f1ed50866a2a9ecad
   vipaar-tinyspline: d8565207b0c1714bac044a488b4308ca690b52f9
 
-PODFILE CHECKSUM: 4e250709df23c9cad64e6874d076ba5f13b1f8e3
+PODFILE CHECKSUM: e29dcd61261e330322b4c3456e72097428a99cbd
 
 COCOAPODS: 1.8.4

@@ -7,7 +7,7 @@ source 'https://github.com/VIPAAR/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'SampleSwift' do
-  pod 'HLSDK', :git  => 'https://github.com/VIPAAR/lime-ios-sdk.git', :tag => '0.9.6'
+  pod 'HLSDK', :git  => 'https://github.com/VIPAAR/lime-ios-sdk.git', :tag => '0.9.7'
   pod 'PromisesObjC', '1.2.8', :modular_headers => true
   pod 'PromisesSwift', '1.2.8'
   #Override the deployment targets of all pods
