@@ -180,6 +180,13 @@
       <HintPath>..\packages\Xamarin.Google.ARCore.1.9.0\lib\MonoAndroid70\Xamarin.Google.ARCore.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android.Export" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Xamarin.AndroidX.ConstraintLayout.Solver">
+      <HintPath>..\packages\Xamarin.AndroidX.ConstraintLayout.Solver.1.1.3-preview06\lib\monoandroid90\Xamarin.AndroidX.ConstraintLayout.Solver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="HLSDK.Android.Binding.Ballyhoo">
       <HintPath>..\packages\HelpLightning.SDK.0.9.7\lib\monoandroid10.0\HLSDK.Android.Binding.Ballyhoo.dll</HintPath>
     </Reference>
@@ -222,15 +229,12 @@
     <Reference Include="HLSDK.Android">
       <HintPath>..\packages\HelpLightning.SDK.0.9.7\lib\monoandroid10.0\HLSDK.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Xamarin.AndroidX.ConstraintLayout.Solver">
-      <HintPath>..\packages\Xamarin.AndroidX.ConstraintLayout.Solver.1.1.3-preview06\lib\monoandroid90\Xamarin.AndroidX.ConstraintLayout.Solver.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FakeSample.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -263,6 +267,10 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
+    <AndroidResource Include="Resources\layout\activity_join_session.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

@@ -14,7 +14,7 @@ using Android.Views;
 
 namespace SampleAndroid
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = false)]
     public class MainActivity : AppCompatActivity
     {
         const string HL_SESSION_ID = ("c6d553ed-1feb-4e1c-b1a7-e85a5de04c31");
@@ -63,6 +63,7 @@ namespace SampleAndroid
             SetUserInfo(0);
 
         }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             //Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
