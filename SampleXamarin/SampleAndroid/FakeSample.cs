@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Android;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
@@ -18,7 +19,7 @@ using Newtonsoft.Json.Linq;
 namespace SampleAndroid
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class FakeSample : AppCompatActivity
+    public class FakeSample : AppCompatActivity, ICallClientDelegate
     {
         private static String FAKE_CREATE_URL = "http://192.168.2.110:8777/session";
         private static String FAKE_JOIN_URL = "http://192.168.2.110:8777/session?sid={0}";
@@ -40,6 +41,16 @@ namespace SampleAndroid
                     JoinCall(GetCallData(sessionIdTxt.Text));
                 }
             };
+
+            FindViewById(Resource.Id.test_btn).Click += (sender, e) => {
+                if (permissionGranted)
+                {
+                    Intent intent = new Intent(this, typeof(MainActivity));
+                    this.StartActivity(intent);
+                }
+            };
+            Timber.Log.Timber.Plant(new Timber.Log.Timber.DebugTree());
+            Timber.Log.Timber.Tag("HLSDK");
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -74,6 +85,7 @@ namespace SampleAndroid
 
         private void JoinCall(Call call)
         {
+            CallClientFactory.Instance.CallClient.Delegate = this;
             Task<bool> task = CallClientFactory.Instance.CallClient.StartCall(call, this);
             task.ContinueWith(t => {
                 if (t.IsCompleted)
@@ -117,6 +129,11 @@ namespace SampleAndroid
                 var responseText = streamReader.ReadToEnd();
                 return JObject.Parse(responseText);
             }
+        }
+
+        public void OnCallEnded(Call call, string reason)
+        {
+            Console.WriteLine("The call ended: " + reason);
         }
     }
 }
