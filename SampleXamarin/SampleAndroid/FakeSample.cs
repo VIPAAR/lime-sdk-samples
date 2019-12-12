@@ -31,26 +31,16 @@ namespace SampleAndroid
             SetContentView(Resource.Layout.activity_join_session);
             TextView sessionIdTxt = (TextView)FindViewById(Resource.Id.session_id_edit_text);
             FindViewById(Resource.Id.create_session).Click += (sender, e) => {
-                string s = GetSessionId();
-                Toast.MakeText(this, s, 0);
-                sessionIdTxt.Text = s;
+                sessionIdTxt.Text = GetSessionId();
             };
-            FindViewById(Resource.Id.join_session).Click += (sender, e) => {
+            CallClientFactory.Instance.CallClient.Delegate = this;
+            FindViewById(Resource.Id.join_session).Click += (sender, e) =>
+            {
                 if (permissionGranted)
                 {
                     JoinCall(GetCallData(sessionIdTxt.Text));
                 }
             };
-
-            FindViewById(Resource.Id.test_btn).Click += (sender, e) => {
-                if (permissionGranted)
-                {
-                    Intent intent = new Intent(this, typeof(MainActivity));
-                    this.StartActivity(intent);
-                }
-            };
-            Timber.Log.Timber.Plant(new Timber.Log.Timber.DebugTree());
-            Timber.Log.Timber.Tag("HLSDK");
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
