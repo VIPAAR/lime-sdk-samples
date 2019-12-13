@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Android;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
@@ -18,27 +19,33 @@ using Newtonsoft.Json.Linq;
 namespace SampleAndroid
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class FakeSample : AppCompatActivity
+    public class FakeSample : AppCompatActivity, ICallClientDelegate
     {
-        private static String FAKE_CREATE_URL = "http://192.168.2.110:8777/session";
-        private static String FAKE_JOIN_URL = "http://192.168.2.110:8777/session?sid={0}";
-        private bool permissionGranted = false;
-        
+        private static String FAKE_CREATE_URL = "http://10.3.10.110:8777/session";
+        private static String FAKE_JOIN_URL = "http://10.3.10.110:8777/session?sid={0}";
+        String[] mPerms = {
+                Manifest.Permission.Internet,
+                Manifest.Permission.WriteExternalStorage,
+                Manifest.Permission.Camera,
+                Manifest.Permission.RecordAudio,
+                Manifest.Permission.Bluetooth
+            };
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_join_session);
             TextView sessionIdTxt = (TextView)FindViewById(Resource.Id.session_id_edit_text);
             FindViewById(Resource.Id.create_session).Click += (sender, e) => {
-                string s = GetSessionId();
-                Toast.MakeText(this, s, 0);
-                sessionIdTxt.Text = s;
+                sessionIdTxt.Text = GetSessionId();
             };
-            FindViewById(Resource.Id.join_session).Click += (sender, e) => {
-                if (permissionGranted)
-                {
-                    JoinCall(GetCallData(sessionIdTxt.Text));
-                }
+            CallClientFactory.Instance.CallClient.Delegate = this;
+
+            RequestPermissions();
+
+            FindViewById(Resource.Id.join_session).Click += (sender, e) =>
+            {
+                JoinCall(GetCallData(sessionIdTxt.Text));
             };
         }
 
@@ -46,16 +53,6 @@ namespace SampleAndroid
         {
             //Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
-            foreach (Permission permission in grantResults)
-            {
-                permissionGranted = true;
-                if (permission != Permission.Granted)
-                {
-                    permissionGranted = false;
-                    break;
-                }
-            }
         }
 
         protected override void OnResume()
@@ -66,14 +63,29 @@ namespace SampleAndroid
 
         protected void RequestPermissions()
         {
-            if(!permissionGranted)
+            if (!PermissionGranted())
             {
-                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.Camera, Manifest.Permission.RecordAudio }, 1);
+                ActivityCompat.RequestPermissions(this, mPerms, 1);
             }
+        }
+
+        protected bool PermissionGranted()
+        {
+            bool bRet = true;
+            for (int i = 0; i < mPerms.Length; i++)
+            {
+                if (ContextCompat.CheckSelfPermission(this, mPerms[i]) != Permission.Granted)
+                {
+                    bRet = false;
+                    break;
+                }
+            }
+            return bRet;
         }
 
         private void JoinCall(Call call)
         {
+            CallClientFactory.Instance.CallClient.Delegate = this;
             Task<bool> task = CallClientFactory.Instance.CallClient.StartCall(call, this);
             task.ContinueWith(t => {
                 if (t.IsCompleted)
@@ -117,6 +129,11 @@ namespace SampleAndroid
                 var responseText = streamReader.ReadToEnd();
                 return JObject.Parse(responseText);
             }
+        }
+
+        public void OnCallEnded(Call call, string reason)
+        {
+            Console.WriteLine("The call ended: " + reason);
         }
     }
 }
