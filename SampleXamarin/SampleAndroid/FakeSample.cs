@@ -5,14 +5,13 @@ using System.Net;
 using System.Threading.Tasks;
 using Android;
 using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.App;
+using Android.Support.V4.Content;
+using Android.Support.V7.App;
 using Android.Widget;
-using AndroidX.AppCompat.App;
-using AndroidX.Core.App;
-using AndroidX.Core.Content;
 using HelpLightning.SDK;
 using Newtonsoft.Json.Linq;
 
@@ -21,8 +20,8 @@ namespace SampleAndroid
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class FakeSample : AppCompatActivity, ICallClientDelegate
     {
-        private static String FAKE_CREATE_URL = "http://10.3.10.110:8777/session";
-        private static String FAKE_JOIN_URL = "http://10.3.10.110:8777/session?sid={0}";
+        private static String FAKE_CREATE_URL = "http://192.168.2.110:8777/session";
+        private static String FAKE_JOIN_URL = "http://192.168.2.110:8777/session?sid={0}";
         String[] mPerms = {
                 Manifest.Permission.Internet,
                 Manifest.Permission.WriteExternalStorage,

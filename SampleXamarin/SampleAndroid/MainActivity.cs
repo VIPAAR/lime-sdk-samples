@@ -4,13 +4,13 @@ using Android.OS;
 using Android.Runtime;
 using HelpLightning.SDK;
 using System.Threading.Tasks;
-using AndroidX.AppCompat.App;
 using Android;
-using AndroidX.Core.Content;
-using AndroidX.Core.App;
 using Android.Content.PM;
 using Android.Widget;
 using Android.Views;
+using Android.Support.V7.App;
+using Android.Support.V4.App;
+using Android.Support.V4.Content;
 
 namespace SampleAndroid
 {
