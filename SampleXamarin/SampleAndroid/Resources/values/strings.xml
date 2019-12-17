@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Sample Xamarin</string>
     <string name="action_settings">Settings</string>
+<string name="galdr_host">http://containers-asia.helplightning.net:8777</string>
 </resources>

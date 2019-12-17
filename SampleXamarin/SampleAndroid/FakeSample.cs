@@ -20,8 +20,6 @@ namespace SampleAndroid
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class FakeSample : AppCompatActivity, ICallClientDelegate
     {
-        private static String FAKE_CREATE_URL = "http://192.168.2.110:8777/session";
-        private static String FAKE_JOIN_URL = "http://192.168.2.110:8777/session?sid={0}";
         String[] mPerms = {
                 Manifest.Permission.Internet,
                 Manifest.Permission.WriteExternalStorage,
@@ -45,6 +43,11 @@ namespace SampleAndroid
             FindViewById(Resource.Id.join_session).Click += (sender, e) =>
             {
                 JoinCall(GetCallData(sessionIdTxt.Text));
+            };
+
+            FindViewById(Resource.Id.leave_session).Click += (sender, e) =>
+            {
+                StopCall();
             };
         }
 
@@ -85,8 +88,10 @@ namespace SampleAndroid
         private void JoinCall(Call call)
         {
             CallClientFactory.Instance.CallClient.Delegate = this;
+            FindViewById(Resource.Id.progressBar_cyclic).Visibility = Android.Views.ViewStates.Visible;
             Task<bool> task = CallClientFactory.Instance.CallClient.StartCall(call, this);
             task.ContinueWith(t => {
+                FindViewById(Resource.Id.progressBar_cyclic).Visibility = Android.Views.ViewStates.Invisible;
                 if (t.IsCompleted)
                 {
                     Console.WriteLine("The call has started: " + t.Result);
@@ -98,15 +103,31 @@ namespace SampleAndroid
             });
         }
 
+        private void StopCall()
+        {
+            FindViewById(Resource.Id.progressBar_cyclic).Visibility = Android.Views.ViewStates.Invisible;
+            Task<bool> task = CallClientFactory.Instance.CallClient.StopCurrentCall();
+            task.ContinueWith(t => {
+                if (t.IsCompleted)
+                {
+                    Console.WriteLine("The call has stopped: " + t.Result);
+                }
+                else
+                {
+                    Console.Error.WriteLine("Cannot Stop the call: " + t.Exception);
+                }
+            });
+        }
+
         protected String GetSessionId()
         {
-            JObject json = RequestJsonData(FAKE_CREATE_URL, "POST");
+            JObject json = RequestJsonData(Resources.GetString(Resource.String.galdr_host) + "/session", "POST");
             return json["sid"].ToString();
         }
 
         protected Call GetCallData(string sessionId)
         {
-            string url = string.Format(FAKE_JOIN_URL, sessionId);
+            string url = string.Format(Resources.GetString(Resource.String.galdr_host) + "/session?sid={0}", sessionId);
             JObject json = RequestJsonData(url, "GET");
             return new Call(
                     json["sid"].ToString(),
