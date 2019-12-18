@@ -14,19 +14,19 @@ using Android.Support.V4.Content;
 
 namespace SampleAndroid
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = false)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        const string HL_SESSION_ID = ("c6d553ed-1feb-4e1c-b1a7-e85a5de04c31");
-        const string HL_SESSION_TOKEN = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdHRyaWJ1dGVzIjpbIm9yZ2FuaXplciJdLCJhdWQiOiJHaGF6YWwiLCJleHAiOjE2MDY4Nzc1MjUsImlhdCI6MTU3NTM0MTUyNSwiaXNzIjoiR2hhemFsIiwianRpIjoiNjhjOWMzN2UtNmNjNC00YTA5LTgyZjctOTQ1OTBhYWM4ZWQ4IiwibWV0YSI6e30sIm5iZiI6MTU3NTM0MTUyNCwib3JpZ2luYXRvciI6MTYsInBlbSI6eyJzZXNzaW9uIjoyNTU5fSwicmVjb3JkaW5nX3BvbGljeSI6ImFsd2F5c19vbiIsInN1YiI6IlNlc3Npb246YzZkNTUzZWQtMWZlYi00ZTFjLWIxYTctZTg1YTVkZTA0YzMxIiwidHlwIjoiYWNjZXNzIiwidmVyIjoiMTAwIn0.JOsIvRD0zHjChsikzQPbh52HDjXlnUq-BwVjl8nBjYA");
+        const string HL_SESSION_ID = ("c7baa9fc-3a68-415b-a287-1d37741441dd");
+        const string HL_SESSION_TOKEN = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdHRyaWJ1dGVzIjpbIm9yZ2FuaXplciJdLCJhdWQiOiJHaGF6YWwiLCJleHAiOjE2MDczMjExMzIsImlhdCI6MTU3NjU2MjczMiwiaXNzIjoiR2hhemFsIiwianRpIjoiNTkwM2U0OTUtNDBkMC00ZjMyLTg3YjUtMGUzMTU1MTM5YWJkIiwibWV0YSI6e30sIm5iZiI6MTU3NjU2MjczMSwib3JpZ2luYXRvciI6NCwicGVtIjp7InNlc3Npb24iOjI1NTl9LCJyZWNvcmRpbmdfcG9saWN5Ijoib3B0X2luIiwic3ViIjoiU2Vzc2lvbjpjN2JhYTlmYy0zYTY4LTQxNWItYTI4Ny0xZDM3NzQxNDQxZGQiLCJ0eXAiOiJhY2Nlc3MiLCJ2ZXIiOiIxMDAifQ.yDzlI0zpikZu4WpoJF8P57n9D0CSK1TfxlVShAydad8");
         const string HL_GSS_URL = ("gss+ssl://containers-asia.helplightning.net:32773");
 
-        const string HL_USER1_TOKEN = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJHaGF6YWwiLCJleHAiOjE2MDY4Nzc0NTIsImlhdCI6MTU3NTM0MTQ1MiwiaXNzIjoiR2hhemFsIiwianRpIjoiZmI2YTIzZWEtYjM0Yy00NjFiLWEyYmEtNmE0ZTE3OGMyZDgzIiwibWV0YSI6e30sIm5iZiI6MTU3NTM0MTQ1MSwicGVtIjp7InVzZXIiOjEyMzU3NjUxNzY4OTExODJ9LCJzdWIiOiJVc2VyOjE1IiwidHlwIjoiYWNjZXNzIiwidmVyIjoiMTAwIn0.74szAWHDyUc_JCsYeeyeDlwabG21rCDVDv5luSG1DFM");
-        const string HL_USER1_NAME = ("Small User12");
+        const string HL_USER1_TOKEN = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJHaGF6YWwiLCJleHAiOjE2MDczMjcwNjUsImlhdCI6MTU3NjU2ODY2NSwiaXNzIjoiR2hhemFsIiwianRpIjoiYWQxOWFmMTUtMjgzZC00N2NlLThmYTEtMjVhNDM1NTEzOThlIiwibWV0YSI6e30sIm5iZiI6MTU3NjU2ODY2NCwicGVtIjp7InVzZXIiOjQ0NzI3OTYxMjg1NDA0NjJ9LCJzdWIiOiJVc2VyOjQiLCJ0eXAiOiJhY2Nlc3MiLCJ2ZXIiOiIxMDAifQ.eAS1IsnV1n-kj0VS-Dk1Ifjpp_580MibHZsf8sJQuBw");
+        const string HL_USER1_NAME = ("Small User1");
         const string HL_USER1_AVATAR = ("");
 
-        const string HL_USER2_TOKEN = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJHaGF6YWwiLCJleHAiOjE2MDY4Nzc0NzgsImlhdCI6MTU3NTM0MTQ3OCwiaXNzIjoiR2hhemFsIiwianRpIjoiZmYwMjc3YTUtNTY5Zi00NDYxLTg5NzAtODZmODFiNjY2MTIyIiwibWV0YSI6e30sIm5iZiI6MTU3NTM0MTQ3NywicGVtIjp7InVzZXIiOjEyMzU3NjUxNzY4OTExODJ9LCJzdWIiOiJVc2VyOjE2IiwidHlwIjoiYWNjZXNzIiwidmVyIjoiMTAwIn0.NPgjGjUzi6Nit2vg5TY1llpTgu1WHtlfsjsTVmtw5rI");
-        const string HL_USER2_NAME = ("Small User13");
+        const string HL_USER2_TOKEN = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJHaGF6YWwiLCJleHAiOjE2MDczOTg0NjYsImlhdCI6MTU3NjY0MDA2NiwiaXNzIjoiR2hhemFsIiwianRpIjoiMzkxNjUyMzUtMDc2MS00ZThiLWI2NzQtMmUwODA3MDY0ZjVhIiwibWV0YSI6e30sIm5iZiI6MTU3NjY0MDA2NSwicGVtIjp7InVzZXIiOjQ0NzI3OTYxMjg1NDA0NjJ9LCJzdWIiOiJVc2VyOjUiLCJ0eXAiOiJhY2Nlc3MiLCJ2ZXIiOiIxMDAifQ.wMJNnbK5vQGCZdS5KStzxThabyXtyuzeU5k-08ZaGwM");
+        const string HL_USER2_NAME = ("Small User2");
 
         const string HL_USER2_AVATAR = ("");
 

@@ -135,7 +135,7 @@
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="HelpLightning.SDK">
-        <Version>0.9.7</Version>
+        <Version>0.9.8</Version>
       </PackageReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -17,7 +17,7 @@ using Newtonsoft.Json.Linq;
 
 namespace SampleAndroid
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = false)]
     public class FakeSample : AppCompatActivity, ICallClientDelegate
     {
         String[] mPerms = {
