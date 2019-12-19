@@ -120,7 +120,7 @@ namespace HelpLightning.SDK.Sample.iOS
         public void OnCallEnded(Call call, string reason)
         {
             joinIndicator.StopAnimating();
-            Console.WriteLine("The call has ended: {0}", call.SessionId);
+            Console.WriteLine("The call has ended: {0}", reason);
         }
 
     }

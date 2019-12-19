@@ -15,7 +15,7 @@ using Android.Support.V4.Content;
 namespace SampleAndroid
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class MainActivity : AppCompatActivity
+    public class MainActivity : AppCompatActivity, ICallClientDelegate
     {
         const string HL_SESSION_ID = ("c7baa9fc-3a68-415b-a287-1d37741441dd");
         const string HL_SESSION_TOKEN = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdHRyaWJ1dGVzIjpbIm9yZ2FuaXplciJdLCJhdWQiOiJHaGF6YWwiLCJleHAiOjE2MDczMjExMzIsImlhdCI6MTU3NjU2MjczMiwiaXNzIjoiR2hhemFsIiwianRpIjoiNTkwM2U0OTUtNDBkMC00ZjMyLTg3YjUtMGUzMTU1MTM5YWJkIiwibWV0YSI6e30sIm5iZiI6MTU3NjU2MjczMSwib3JpZ2luYXRvciI6NCwicGVtIjp7InNlc3Npb24iOjI1NTl9LCJyZWNvcmRpbmdfcG9saWN5Ijoib3B0X2luIiwic3ViIjoiU2Vzc2lvbjpjN2JhYTlmYy0zYTY4LTQxNWItYTI4Ny0xZDM3NzQxNDQxZGQiLCJ0eXAiOiJhY2Nlc3MiLCJ2ZXIiOiIxMDAifQ.yDzlI0zpikZu4WpoJF8P57n9D0CSK1TfxlVShAydad8");
@@ -62,6 +62,7 @@ namespace SampleAndroid
             GssUrl.Text = HL_GSS_URL;
             SetUserInfo(0);
 
+            CallClientFactory.Instance.CallClient.Delegate = this;
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -157,6 +158,11 @@ namespace SampleAndroid
         public void SelectUser2(View view)
         {
             SetUserInfo(1);
+        }
+
+        public void OnCallEnded(Call call, string reason)
+        {
+            Console.WriteLine("The call ended: " + reason);
         }
     }
 }
