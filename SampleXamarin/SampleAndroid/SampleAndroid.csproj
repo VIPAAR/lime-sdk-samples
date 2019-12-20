@@ -17,7 +17,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
@@ -216,9 +216,6 @@
     </Reference>
     <Reference Include="HLSDK.Android.Binding.Picasso">
       <HintPath>..\packages\HelpLightning.SDK.0.9.8\lib\monoandroid90\HLSDK.Android.Binding.Picasso.dll</HintPath>
-    </Reference>
-    <Reference Include="HLSDK.Android.Binding.StickyHeaders">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.7\lib\monoandroid10.0\HLSDK.Android.Binding.StickyHeaders.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android.Binding.Timber">
       <HintPath>..\packages\HelpLightning.SDK.0.9.8\lib\monoandroid90\HLSDK.Android.Binding.Timber.dll</HintPath>
