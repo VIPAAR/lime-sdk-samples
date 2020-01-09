@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -17,7 +19,7 @@ using Newtonsoft.Json.Linq;
 
 namespace SampleAndroid
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = false)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class FakeSample : AppCompatActivity, ICallClientDelegate
     {
         String[] mPerms = {
@@ -37,6 +39,15 @@ namespace SampleAndroid
                 sessionIdTxt.Text = GetSessionId();
             };
             CallClientFactory.Instance.CallClient.Delegate = this;
+            
+            IDictionary<string, object> images = new JavaDictionary<string, object>();
+            images.Add("FACE_TO_FACE_ICON", Resource.Drawable.ic_f2f_on_test_48dp);
+
+            IDictionary<string, IDictionary<string, object>> themes =
+                new JavaDictionary<string, IDictionary<string, object>>();
+            themes.Add("images", images);
+
+            CallClientFactory.Instance.CallClient.Theme = themes;
 
             RequestPermissions();
 

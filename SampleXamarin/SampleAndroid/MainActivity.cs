@@ -14,7 +14,7 @@ using Android.Support.V4.Content;
 
 namespace SampleAndroid
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = false)]
     public class MainActivity : AppCompatActivity, ICallClientDelegate
     {
         const string HL_SESSION_ID = ("c7baa9fc-3a68-415b-a287-1d37741441dd");
