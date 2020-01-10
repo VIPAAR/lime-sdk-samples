@@ -30,13 +30,21 @@ namespace SampleAndroid
                 Manifest.Permission.Bluetooth
             };
 
+        string userToken = "";
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_join_session);
-            TextView sessionIdTxt = (TextView)FindViewById(Resource.Id.session_id_edit_text);
-            FindViewById(Resource.Id.create_session).Click += (sender, e) => {
-                sessionIdTxt.Text = GetSessionId();
+            TextView pinCode = (TextView)FindViewById(Resource.Id.txt_pin_code_edit);
+            TextView dialer = (TextView)FindViewById(Resource.Id.txt_pin_code_edit);
+            TextView receiver = (TextView)FindViewById(Resource.Id.txt_receiver_email_edit);
+
+            FindViewById(Resource.Id.btn_create_session).Click += (sender, e) => {
+                string dialerEmail = dialer.Text;
+                userToken = AuthUser(dialerEmail);
+                string contactEmail = receiver.Text;
+                pinCode.Text = CreateCall(userToken, contactEmail, dialerEmail);
             };
             CallClientFactory.Instance.CallClient.Delegate = this;
             
@@ -51,12 +59,12 @@ namespace SampleAndroid
 
             RequestPermissions();
 
-            FindViewById(Resource.Id.join_session).Click += (sender, e) =>
+            FindViewById(Resource.Id.btn_join_session).Click += (sender, e) =>
             {
-                JoinCall(GetCallData(sessionIdTxt.Text));
+                JoinCall(GetCall(pinCode.Text, ));
             };
 
-            FindViewById(Resource.Id.leave_session).Click += (sender, e) =>
+            FindViewById(Resource.Id.btn_leave_session).Click += (sender, e) =>
             {
                 StopCall();
             };
@@ -98,7 +106,6 @@ namespace SampleAndroid
 
         private void JoinCall(Call call)
         {
-            CallClientFactory.Instance.CallClient.Delegate = this;
             FindViewById(Resource.Id.progressBar_cyclic).Visibility = Android.Views.ViewStates.Visible;
             Task<bool> task = CallClientFactory.Instance.CallClient.StartCall(call, this);
             task.ContinueWith(t => {
@@ -130,30 +137,53 @@ namespace SampleAndroid
             });
         }
 
-        protected String GetSessionId()
+        protected string AuthUser(string email)
         {
-            JObject json = RequestJsonData(Resources.GetString(Resource.String.galdr_host) + "/session", "POST");
+            JObject json = RequestJsonData("/auth?email=" + email, "GET");
+            return json["token"].ToString();
+        }
+
+        protected String CreateCall(string userToken, string contactEmail, string userName = "user")
+        {
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("Authorization", userToken);
+            string args = String.Format(@"\{{'contact_email':'{0}'\}}", contactEmail);
+            JObject json = RequestJsonData("/session", "POST", headers, args);
             return json["sid"].ToString();
         }
 
-        protected Call GetCallData(string sessionId)
+        protected Call GetCall(string pinCode, string userToken, string userName = "user")
         {
-            string url = string.Format(Resources.GetString(Resource.String.galdr_host) + "/session?sid={0}", sessionId);
-            JObject json = RequestJsonData(url, "GET");
-            return new Call(
-                    json["sid"].ToString(),
-                    json["session"].ToString(),
-                    json["user"].ToString(),
-                    json["gss_info"]["url"].ToString(),
-                    "Jason",
-                    "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg");
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("Authorization", userToken);
+            JObject json = RequestJsonData("/session?sid=" + pinCode, "GET");
+            return new Call
+            (
+                json["session_id"].ToString(),
+                json["session_token"].ToString(),
+                json["user_token"].ToString(),
+                json["url"].ToString(),
+                userName,
+                "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg"
+            );
         }
 
-        public JObject RequestJsonData(String url, String method)
+        public JObject RequestJsonData(String path, String method, Dictionary<string, string> headers = null, string bodyArgs = "")
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-            httpWebRequest.ContentType = "text/json";
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(Resources.GetString(Resource.String.host) + path);
+            httpWebRequest.ContentType = "application/json; charset=utf-8";
             httpWebRequest.Method = method;
+            if(headers != null)
+            {
+                foreach (var item in headers)
+                {
+                    httpWebRequest.Headers.Add(item.Key, item.Value);
+                }
+            }
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                streamWriter.Write(bodyArgs);
+            }
             var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
