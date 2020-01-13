@@ -2,5 +2,5 @@
 <resources>
     <string name="app_name">Sample Xamarin</string>
     <string name="action_settings">Settings</string>
-    <string name="host">http://localhost:8777</string>
+    <string name="host">http://192.168.2.110:8777</string>
 </resources>
