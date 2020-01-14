@@ -1,14 +1,10 @@
 ﻿
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Android;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
-using Android.Support.V4.App;
-using Android.Support.V4.Content;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
@@ -19,22 +15,14 @@ namespace SampleAndroid
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = false)]
     public class JoinSession : AppCompatActivity, ICallClientDelegate
     {
-        String[] mPerms = {
-                Manifest.Permission.Internet,
-                Manifest.Permission.WriteExternalStorage,
-                Manifest.Permission.Camera,
-                Manifest.Permission.RecordAudio,
-                Manifest.Permission.Bluetooth
-            };
-
         string userToken = "";
         string mode = "";
+        string pin = "";
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_join_session);
 
-            RequestPermissions();
             CallClientFactory.Instance.CallClient.Delegate = this;
 
             userToken = Intent.GetStringExtra("user_token");
@@ -57,8 +45,8 @@ namespace SampleAndroid
             {
                 try
                 {
-                    string pin = "";
-                    if(mode.Equals("call_contact"))
+                    
+                    if(mode.Equals("call_contact") && pin.Equals(""))
                     {
                         string dialerEmail = contact.Text;
                         pin = HLServer.Instance.CreateCall(userToken, contact.Text);
@@ -88,38 +76,15 @@ namespace SampleAndroid
             };
         }
 
+        protected override void OnResume()
+        {
+            base.OnResume();
+        }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             //Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-
-        protected override void OnResume()
-        {
-            base.OnResume();
-            RequestPermissions();
-        }
-
-        protected void RequestPermissions()
-        {
-            if (!PermissionGranted())
-            {
-                ActivityCompat.RequestPermissions(this, mPerms, 1);
-            }
-        }
-
-        protected bool PermissionGranted()
-        {
-            bool bRet = true;
-            for (int i = 0; i < mPerms.Length; i++)
-            {
-                if (ContextCompat.CheckSelfPermission(this, mPerms[i]) != Permission.Granted)
-                {
-                    bRet = false;
-                    break;
-                }
-            }
-            return bRet;
         }
 
         private void JoinCall(Call call)
@@ -134,7 +99,7 @@ namespace SampleAndroid
                 }
                 else
                 {
-                    Console.Error.WriteLine("Cannot start the call: " + t.Exception);
+                    Console.WriteLine("Cannot start the call: " + t.Exception);
                 }
             });
         }
