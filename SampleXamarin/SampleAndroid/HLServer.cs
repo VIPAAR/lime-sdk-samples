@@ -40,29 +40,46 @@ namespace SampleAndroid
             return json["token"].ToString();
         }
 
-        public string CreateCall(string userToken, string contactEmail, string userName = "user")
+        public JObject CreateCall(string userToken, string contactEmail, string userName = "user")
         {
+            Console.WriteLine("JEDI CreateCall");
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("Authorization", userToken);
             string args = String.Format(@"{{""contact_email"":""{0}""}}", contactEmail);
             JObject json = RequestJsonData("/session", "POST", headers, args);
-            return json["sid"].ToString();
+            Console.WriteLine("JEDI session id: " + json["session_id"].ToString());
+            Console.WriteLine("JEDI session token: " + json["session_token"].ToString());
+            Console.WriteLine("JEDI user token: " + json["user_token"].ToString());
+            return json;
+            //(
+            //    json["session_id"].ToString(),
+            //    json["session_token"].ToString(),
+            //    json["user_token"].ToString(),
+            //    json["url"].ToString(),
+            //    userName,
+            //    "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg"
+            //);
         }
 
-        public Call GetCall(string pinCode, string userToken, string userName = "user")
+        public JObject GetCall(string pinCode, string userToken, string userName = "user")
         {
+            Console.WriteLine("JEDI GetCall");
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("Authorization", userToken);
             JObject json = RequestJsonData("/session?sid=" + pinCode, "GET", headers);
-            return new Call
-            (
-                json["session_id"].ToString(),
-                json["session_token"].ToString(),
-                json["user_token"].ToString(),
-                json["url"].ToString(),
-                userName,
-                "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg"
-            );
+            Console.WriteLine("JEDI session id: " + json["session_id"].ToString());
+            Console.WriteLine("JEDI session token: " + json["session_token"].ToString());
+            Console.WriteLine("JEDI user token: " + json["user_token"].ToString());
+            return json;
+            //return new Call
+            //(
+            //    json["session_id"].ToString(),
+            //    json["session_token"].ToString(),
+            //    json["user_token"].ToString(),
+            //    json["url"].ToString(),
+            //    userName,
+            //    "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg"
+            //);
         }
 
         protected JObject RequestJsonData(String path, String method, Dictionary<string, string> headers = null, string bodyArgs = "")

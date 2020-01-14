@@ -9,6 +9,7 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using HelpLightning.SDK;
+using Newtonsoft.Json.Linq;
 
 namespace SampleAndroid
 {
@@ -45,18 +46,27 @@ namespace SampleAndroid
             {
                 try
                 {
-                    
+                    JObject json = null;
                     if(mode.Equals("call_contact") && pin.Equals(""))
                     {
                         string dialerEmail = contact.Text;
-                        pin = HLServer.Instance.CreateCall(userToken, contact.Text);
-                        pinCodeView.Text = "You can share pin code with: " + pin;
+                        json = HLServer.Instance.CreateCall(userToken, contact.Text);
+                        pinCodeView.Text = "You can share pin code with: " + json["sid"].ToString();
                     } else if(mode.Equals("call_pin_code"))
                     {
                         pin = pinCode.Text;
+                        json = HLServer.Instance.GetCall(pin, userToken);
                     }
-                
-                    JoinCall(HLServer.Instance.GetCall(pin, userToken));
+                    Call call = new Call
+                        (
+                            json["session_id"].ToString(),
+                            json["session_token"].ToString(),
+                            json["user_token"].ToString(),
+                            json["url"].ToString(),
+                            "darrel",
+                            "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg"
+                        );
+                    JoinCall(call);
                 } catch(Exception ex)
                 {
                     if (mode.Equals("call_contact"))
