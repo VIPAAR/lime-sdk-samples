@@ -14,6 +14,8 @@
 		C7B67BAB237D06EB00B6314E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7B67BA9237D06EB00B6314E /* LaunchScreen.storyboard */; };
 		C7B67BAE237D06EB00B6314E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B67BAD237D06EB00B6314E /* main.m */; };
 		E83D514DEAF1F20B7A79654D /* libPods-SampleObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D12616F3BF727AC58D24CF7 /* libPods-SampleObjC.a */; };
+		F0E8E36923B0972D00D84412 /* HLSDKResources.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = F0E8E36823B0972D00D84412 /* HLSDKResources.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F0E8E36C23B0973200D84412 /* HLSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E8E36B23B0973200D84412 /* HLSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,12 +39,23 @@
 			name = "Embed PlugIns";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F0E8E36A23B0972D00D84412 /* Embed PlugIns */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				F0E8E36923B0972D00D84412 /* HLSDKResources.bundle in Embed PlugIns */,
+			);
+			name = "Embed PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2D12616F3BF727AC58D24CF7 /* libPods-SampleObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleObjC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		69ABDF4C958BB974A216C64B /* Pods-SampleObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleObjC.release.xcconfig"; path = "Target Support Files/Pods-SampleObjC/Pods-SampleObjC.release.xcconfig"; sourceTree = "<group>"; };
-		BF07B636BD9398F32FB308F7 /* Pods-SampleObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleObjC.debug.xcconfig"; path = "Target Support Files/Pods-SampleObjC/Pods-SampleObjC.debug.xcconfig"; sourceTree = "<group>"; };
+		69ABDF4C958BB974A216C64B /* Pods-SampleObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleObjC.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-SampleObjC/Pods-SampleObjC.release.xcconfig"; sourceTree = "<group>"; };
+		BF07B636BD9398F32FB308F7 /* Pods-SampleObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleObjC.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-SampleObjC/Pods-SampleObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		C7973AEC237EA06D0091CEF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7973AED237EA06E0091CEF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7973AEE237EA0A20091CEF5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
@@ -54,6 +67,8 @@
 		C7B67BA7237D06EB00B6314E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7B67BAC237D06EB00B6314E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7B67BAD237D06EB00B6314E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F0E8E36823B0972D00D84412 /* HLSDKResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = HLSDKResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0E8E36B23B0973200D84412 /* HLSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HLSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0E8E36C23B0973200D84412 /* HLSDK.framework in Frameworks */,
 				E83D514DEAF1F20B7A79654D /* libPods-SampleObjC.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +87,7 @@
 		C7B67B92237D06EA00B6314E = {
 			isa = PBXGroup;
 			children = (
+				F0E8E36823B0972D00D84412 /* HLSDKResources.bundle */,
 				C7B67B9D237D06EA00B6314E /* SampleObjC */,
 				C7B67B9C237D06EA00B6314E /* Products */,
 				C7B67BBC237D0B3600B6314E /* Frameworks */,
@@ -105,6 +122,7 @@
 		C7B67BBC237D0B3600B6314E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0E8E36B23B0973200D84412 /* HLSDK.framework */,
 				2D12616F3BF727AC58D24CF7 /* libPods-SampleObjC.a */,
 			);
 			name = Frameworks;
@@ -133,6 +151,7 @@
 				C7B67BC1237D0B4100B6314E /* Embed PlugIns */,
 				8C36D99F3452FD530CE6638F /* [CP] Copy Pods Resources */,
 				C74F5F11238266CD00A2BBBE /* Embed PlugIns */,
+				F0E8E36A23B0972D00D84412 /* Embed PlugIns */,
 			);
 			buildRules = (
 			);

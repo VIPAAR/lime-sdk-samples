@@ -12,7 +12,7 @@
 
 #define HL_SESSION_ID       (@"c6d553ed-1feb-4e1c-b1a7-e85a5de04c31")
 #define HL_SESSION_TOKEN    (@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdHRyaWJ1dGVzIjpbIm9yZ2FuaXplciJdLCJhdWQiOiJHaGF6YWwiLCJleHAiOjE2MDYxODY3NTgsImlhdCI6MTU3NDY1MDc1OCwiaXNzIjoiR2hhemFsIiwianRpIjoiYTYwMDlmODQtODg5NS00OWY2LWFlZjktNDJmNTRkNjMwZTVmIiwibWV0YSI6e30sIm5iZiI6MTU3NDY1MDc1Nywib3JpZ2luYXRvciI6MTYsInBlbSI6eyJzZXNzaW9uIjoyNTU5fSwicmVjb3JkaW5nX3BvbGljeSI6ImFsd2F5c19vbiIsInN1YiI6IlNlc3Npb246YzZkNTUzZWQtMWZlYi00ZTFjLWIxYTctZTg1YTVkZTA0YzMxIiwidHlwIjoiYWNjZXNzIiwidmVyIjoiMTAwIn0.u5ziXTqbTAMBCgx9MZ8JkMcgCvxhKDdN3wsSW4camPw")
-#define HL_GSS_URL          (@"gss+ssl://containers-asia.helplightning.net:32773")
+#define HL_GSS_URL          (@"gss+ssl://containers-asia.helplightning.net:32827")
 
 #define HL_USER1_TOKEN       (@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJHaGF6YWwiLCJleHAiOjE2MDYxODY2NDUsImlhdCI6MTU3NDY1MDY0NSwiaXNzIjoiR2hhemFsIiwianRpIjoiNDNhNzYzNTAtZjUxYi00ZDIwLTlmMDItMGQ1Yjc1OGIyMzNjIiwibWV0YSI6e30sIm5iZiI6MTU3NDY1MDY0NCwicGVtIjp7InVzZXIiOjEwOTg2NTI3MDA0ODU1OH0sInN1YiI6IlVzZXI6MTUiLCJ0eXAiOiJhY2Nlc3MiLCJ2ZXIiOiIxMDAifQ.PVskE0v8fYMYR62ixhJnkK93I5piP1WCtk2I3ZpkwQM")
 #define HL_USER1_NAME       (@"Small User12")
@@ -49,6 +49,24 @@
     self.gssURL.text = HL_GSS_URL;
     [self.userTab setSelectedItem:self.userTab.items.firstObject];
     HLClient.sharedInstance.delegate = self;
+    
+    NSDictionary *themeColor = @{
+                                  kHLMainColor:[UIColor systemPurpleColor],
+                                  };
+    NSDictionary *themeImage = @{
+                                    kHLImageMainMenuDocumentOff:[UIImage imageNamed:@"pen-15_mask"],
+                                    kHLImageMainMenu:[UIImage imageNamed:@"pen-15_mask"],
+                                    kHLImageModeMenuFaceToFaceOn:[UIImage imageNamed:@"pie-chart-11_mask"],
+                                    kHLImageTelestrationMenuArrowOn:[UIImage imageNamed:@"rocket_mask"],
+                                    kHLImageTelestrationMenuArrowOff:[UIImage imageNamed:@"dashboard_mask"],
+                                    kHLImageTelestrationMenuPenOn:[UIImage imageNamed:@"pie-chart-11_mask"],
+                                    kHLImageTelestrationMenuPenOff:[UIImage imageNamed:@"pie-chart-11_mask"],
+                                    kHLImageTelestrationMenuColorUnselected:[UIImage imageNamed:@"pie-chart-11_mask"],
+                                    kHLImageTelestrationMenuColorSelected:[UIImage imageNamed:@"pie-chart-11_mask"],
+                                    
+                                    
+                                };
+    [HLClient.sharedInstance setTheme:@{@"colors":themeColor, @"images":themeImage}];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
