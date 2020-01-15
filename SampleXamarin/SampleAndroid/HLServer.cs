@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using Android.Content.Res;
 using HelpLightning.SDK;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace SampleAndroid
@@ -36,7 +37,7 @@ namespace SampleAndroid
 
         public string AuthUser(string email)
         {
-            JObject json = RequestJsonData("/auth?email=" + email, "GET");
+            JObject json = RequestJsonData("/auth?email=" + email + "@helplightning.com", "GET");
             return json["token"].ToString();
         }
 
@@ -45,8 +46,9 @@ namespace SampleAndroid
             Console.WriteLine("JEDI CreateCall");
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("Authorization", userToken);
-            string args = String.Format(@"{{""contact_email"":""{0}""}}", contactEmail);
+            string args = String.Format(@"{{""contact_email"":""{0}""}}", contactEmail + "@helplightning.com");
             JObject json = RequestJsonData("/session", "POST", headers, args);
+           
             Console.WriteLine("JEDI session id: " + json["session_id"].ToString());
             Console.WriteLine("JEDI session token: " + json["session_token"].ToString());
             Console.WriteLine("JEDI user token: " + json["user_token"].ToString());
@@ -87,6 +89,8 @@ namespace SampleAndroid
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(mBaseUlr + path);
             httpWebRequest.ContentType = "application/json; charset=utf-8";
             httpWebRequest.Method = method;
+            httpWebRequest.Timeout = 60000;
+            httpWebRequest.ReadWriteTimeout = 60000;
 
             if (headers != null)
             {

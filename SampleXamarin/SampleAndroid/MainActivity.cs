@@ -29,45 +29,12 @@ namespace SampleAndroid
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
+            SupportFragmentManager
+                .BeginTransaction()
+                .Replace(Resource.Id.fragment_container, new Authentication())
+                .Commit();
+
             RequestPermissions();
-
-            HLServer.Instance.BaseUrl = Resources.GetString(Resource.String.host);
-            string token = "";
-            Button autheButton = FindViewById<Button>(Resource.Id.authButton);
-            Button callContactButton = FindViewById<Button>(Resource.Id.callContactButton);
-            Button callPinButton = FindViewById<Button>(Resource.Id.callPinButton);
-
-            autheButton.Click += (sender, e) => {
-                try
-                {
-                    token = HLServer.Instance.AuthUser(FindViewById<EditText>(Resource.Id.emailText).Text);
-                    System.Console.WriteLine(token);
-
-                    Toast.MakeText(this, "Authentication successed!", ToastLength.Short).Show();
-
-                    callContactButton.Enabled = true;
-                    callPinButton.Enabled = true;
-                } catch(Exception ex)
-                {
-                    callContactButton.Enabled = false;
-                    callPinButton.Enabled = false;
-                    Toast.MakeText(this, "Authentication Failed!", ToastLength.Short).Show();
-                }
-             };
-
-            callContactButton.Click += (sender, e) => {
-                Intent join = new Intent(this, typeof(JoinSession));
-                join.PutExtra("user_token", token);
-                join.PutExtra("mode", "call_contact");
-                this.StartActivity(join);
-            };
-
-            callPinButton.Click += (sender, e) => {
-                Intent join = new Intent(this, typeof(JoinSession));
-                join.PutExtra("user_token", token);
-                join.PutExtra("mode", "call_pin_code");
-                this.StartActivity(join);
-            };
         }
 
         protected override void OnResume()
@@ -96,6 +63,20 @@ namespace SampleAndroid
                 }
             }
             return bRet;
+        }
+
+        public void JoinSessionClicked(string mode, string userToken)
+        {
+            Android.Support.V4.App.FragmentManager fm = base.SupportFragmentManager;
+            Android.Support.V4.App.FragmentTransaction ft = fm.BeginTransaction();
+            JoinSession fragment = new JoinSession();
+            Bundle args = new Bundle();
+            args.PutString("user_token", userToken);
+            args.PutString("mode", mode);
+            fragment.Arguments = args;
+            ft.Replace(Resource.Id.fragment_container, fragment);
+            ft.AddToBackStack(null);
+            ft.Commit();
         }
     }
 }
