@@ -1,13 +1,13 @@
 # Helplightning SDK Server Samples
 
-A python implementation to demonstrate how to make a call by using helplightning api.  
+A python implementation to demonstrate how to get sessions by using helplightning api. The sample application is meant to be used with the latest version of the Helplightning Xamarin SDK.
 
 ## Table of Contents
 -  [Environment](#environment)
 -  [Deploy](#deploy)
 -  [Authentication](#authentication)
 -  [Create-Session](#create-session)
-- [Get-Session-By-PinCode](#Get-Session-By-PinCode)
+-  [Get-Session-By-PinCode](#get-session-by-pincode)
 
 # Environment
 
@@ -35,7 +35,7 @@ The server will listen on port *:8777*.
 
 ## Authentication
 
-Both users should authenticate first before making the call.  
+Before making a call, both users should authenticate first to get the user tokens.  
 
 Request: `GET https://localhost:8777/auth?email=your-email@example.com`  
 
@@ -67,9 +67,9 @@ Response:
 }
 ```
 `sid` - A pin code to share with your contact user  
-`session-id` - Session id for the call  
-`session-token` - Session token for call  
-`user-token` - Your user token you want call with
+`session_id` - Session id for the call  
+`session_token` - Session token for call  
+`user_token` - Your user token
 
 Once you get session data, you can share the pin code(`sid`) to your contact. 
  
@@ -91,3 +91,7 @@ Response:
 "url": "gss+ssl://gss.helplightning.net"
 }
 ```
+`sid` - A pin code for the session  
+`session_id` - Session id for the call  
+`session_token` - Session token for call  
+`user_token` - Your user token
