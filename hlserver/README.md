@@ -1,6 +1,6 @@
 # Helplightning SDK Server Samples
 
-A python implementation to demonstrate how to make a call by using helplightning api. 
+A python implementation to demonstrate how to make a call by using helplightning api.  
 
 ## Table of Contents
 -  [Environment](#environment)
@@ -18,10 +18,10 @@ export HLSERVER_ENTERPRISE_ID=0000
 export HLSERVER_API_KEY=1234
 export HLSERVER_PARTNER_KEY=apikey
 ```
-`HLSERVER_URL` - Helplightning api server url
-`HLSERVER_ENTERPRISE_ID` - Your enterprise id in helplightning
-`HLSERVER_API_KEY` - Your apikey from helplightning
-`HLSERVER_PARTNER_KEY` - Path to a partner key file(*.pem* formart)
+`HLSERVER_URL` - Helplightning api server url  
+`HLSERVER_ENTERPRISE_ID` - Your enterprise id in helplightning  
+`HLSERVER_API_KEY` - Your apikey from helplightning  
+`HLSERVER_PARTNER_KEY` - Path to a partner key file(*.pem* formart)  
 
 ## Deploy
 You may need to installs follow python3 libs: `requests, json, jwt`.
@@ -34,9 +34,9 @@ The server will listen on port *:8777*.
 
 ## Authentication
 
-Both users should authenticate first before making the call.
-Request: `https://localhost:8777/auth?email=your-email@example.com`
-Response:  `{"token": "your-authorized-token"}`
+Both users should authenticate first before making the call.  
+Request: `https://localhost:8777/auth?email=your-email@example.com`  
+Response:  `{"token": "your-authorized-token"}`  
 
 ## Create-Session
 
@@ -61,9 +61,9 @@ Response:
 "url": "gss+ssl://gss.helplightning.net"
 }
 ```
-`sid` - A pin code to share with your contact user
-`session-id` - Session id for the call
-`session-token` - Session token for call
+`sid` - A pin code to share with your contact user  
+`session-id` - Session id for the call  
+`session-token` - Session token for call  
 `user-token` - Your user token you want call with
 
 Once you get session data, you can share the pin code(`sid`) to your contact. 
