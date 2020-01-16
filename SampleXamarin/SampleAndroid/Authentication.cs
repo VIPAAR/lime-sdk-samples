@@ -31,7 +31,7 @@ namespace SampleAndroid
                     token = HLServer.Instance.AuthUser(rootView.FindViewById<EditText>(Resource.Id.emailText).Text);
                     System.Console.WriteLine(token);
 
-                    Toast.MakeText(rootView.Context, "Authentication successed!", ToastLength.Short).Show();
+                    Toast.MakeText(rootView.Context, "Authentication succeed!", ToastLength.Short).Show();
 
                     callContactButton.Enabled = true;
                     callPinButton.Enabled = true;
