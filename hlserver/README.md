@@ -24,7 +24,7 @@ export HLSERVER_PARTNER_KEY=apikey
 `HLSERVER_PARTNER_KEY` - Path to a partner key file(*.pem* formart)  
 
 ## Deploy
-You may need to installs follow python3 libs: `requests, json, jwt`.
+You may need to installs follow python3 libs: `requests, json, jwt`.  
 Run:
 ```sh
 python3 ./HLServer.py
@@ -40,7 +40,7 @@ Response:  `{"token": "your-authorized-token"}`
 
 ## Create-Session
 
-You can create a session once you get your user token.
+You can create a session once you get your user token.  
 Request: 
 ```sh
 POST http://localhost:8777/session
@@ -72,9 +72,9 @@ Once you get session data, you can share the pin code(`sid`) to your contact.
 
 > Note: This is API will get session data for a contact user only.
 
-Once your contact gets the pin code, they can get the session.
+Once your contact gets the pin code, they can get the session.  
 
-Request: `GET 192.168.2.110:8777/session?sid=3271`
+Request: `GET 192.168.2.110:8777/session?sid=3271`  
 Response:
 ```sh
 {
