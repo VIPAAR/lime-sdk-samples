@@ -53,6 +53,7 @@
     HLTheme *theme = [[HLTheme alloc] init];
     [theme setColor:kHLMainColor color:[UIColor systemPurpleColor]];
     [theme setImage:kHLImageMainMenuDocumentOff image:[UIImage imageNamed:@"pen-15_mask"]];
+    [theme setImage:kHLImageMainMenuDocumentOff image:nil];
     [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"pie-chart-11_mask"]];
     [theme setImage:kHLImageMainMenu image:[UIImage imageNamed:@"pie-chart-11_mask"]];
     [theme setImage:kHLImageTelestrationMenuPenOn image:[UIImage imageNamed:@"pie-chart-11_mask"]];
