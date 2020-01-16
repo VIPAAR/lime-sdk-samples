@@ -35,7 +35,7 @@ The server will listen on port *:8777*.
 ## Authentication
 
 Both users should authenticate first before making the call.  
-Request: `https://localhost:8777/auth?email=your-email@example.com`  
+Request: `GET https://localhost:8777/auth?email=your-email@example.com`  
 Response:  `{"token": "your-authorized-token"}`  
 
 ## Create-Session
@@ -43,7 +43,7 @@ Response:  `{"token": "your-authorized-token"}`
 You can create a session once you get your user token.
 Request: 
 ```sh
-URL: http://localhost:8777/session
+POST http://localhost:8777/session
 Headers: 
 {
 'Authorization': 'your-user-token', 
@@ -74,7 +74,7 @@ Once you get session data, you can share the pin code(`sid`) to your contact.
 
 Once your contact gets the pin code, they can get the session.
 
-Request: `192.168.2.110:8777/session?sid=3271`
+Request: `GET 192.168.2.110:8777/session?sid=3271`
 Response:
 ```sh
 {
