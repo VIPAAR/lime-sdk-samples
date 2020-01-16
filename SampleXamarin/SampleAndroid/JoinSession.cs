@@ -18,11 +18,14 @@ namespace SampleAndroid
         string userToken = "";
         string mode = "";
         string pin = "";
+        Call currentCallData;
         View rootView;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            currentCallData = null;
+
             if (base.Arguments != null)
             {
                 userToken = base.Arguments.GetString(ARG_PARAM1);
@@ -54,33 +57,38 @@ namespace SampleAndroid
             {
                 try
                 {
-                    JObject json = null;
-                    if (mode.Equals("call_contact") && pin.Equals(""))
+                    if(currentCallData == null)
                     {
-                        string dialerEmail = contact.Text;
-                        json = HLServer.Instance.CreateCall(userToken, contact.Text);
-                        pinCodeView.Text = "You can share pin code with: " + json["sid"].ToString();
+                        JObject json = null;
+                        if (mode.Equals("call_contact") && pin.Equals(""))
+                        {
+                            string dialerEmail = contact.Text;
+                            json = HLServer.Instance.CreateCall(userToken, contact.Text);
+                            pinCodeView.Text = "You can share pin code with: " + json["sid"].ToString();
+                        }
+                        else if (mode.Equals("call_pin_code"))
+                        {
+                            pin = pinCode.Text;
+                            json = HLServer.Instance.GetCall(pin, userToken);
+                        }
+
+                        currentCallData = new Call
+                            (
+                                json["session_id"][0].ToString(),
+                                json["session_token"].ToString(),
+                                json["user_token"].ToString(),
+                                json["url"].ToString(),
+                                "darrel",
+                                "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg"
+                            );
                     }
-                    else if (mode.Equals("call_pin_code"))
-                    {
-                        pin = pinCode.Text;
-                        json = HLServer.Instance.GetCall(pin, userToken);
-                    }
-                    System.Console.WriteLine(json["session_id"][0].ToString());
-                    Call call = new Call
-                        (
-                            json["session_id"][0].ToString(),
-                            json["session_token"].ToString(),
-                            json["user_token"].ToString(),
-                            json["url"].ToString(),
-                            "darrel",
-                            "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg"
-                        );
-                    JoinCall(call);
+                   
+                    JoinCall(currentCallData);
                 }
                 catch (Exception ex)
                 {
                     System.Console.WriteLine(ex.ToString());
+
                     if (mode.Equals("call_contact"))
                     {                        
                         Toast.MakeText(rootView.Context, "Invalid email address.", ToastLength.Short).Show();

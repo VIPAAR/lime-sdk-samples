@@ -53,14 +53,6 @@ namespace SampleAndroid
             Console.WriteLine("JEDI session token: " + json["session_token"].ToString());
             Console.WriteLine("JEDI user token: " + json["user_token"].ToString());
             return json;
-            //(
-            //    json["session_id"].ToString(),
-            //    json["session_token"].ToString(),
-            //    json["user_token"].ToString(),
-            //    json["url"].ToString(),
-            //    userName,
-            //    "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg"
-            //);
         }
 
         public JObject GetCall(string pinCode, string userToken, string userName = "user")
@@ -73,15 +65,6 @@ namespace SampleAndroid
             Console.WriteLine("JEDI session token: " + json["session_token"].ToString());
             Console.WriteLine("JEDI user token: " + json["user_token"].ToString());
             return json;
-            //return new Call
-            //(
-            //    json["session_id"].ToString(),
-            //    json["session_token"].ToString(),
-            //    json["user_token"].ToString(),
-            //    json["url"].ToString(),
-            //    userName,
-            //    "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg"
-            //);
         }
 
         protected JObject RequestJsonData(String path, String method, Dictionary<string, string> headers = null, string bodyArgs = "")
