@@ -37,7 +37,7 @@ namespace SampleAndroid
 
         public string AuthUser(string email)
         {
-            JObject json = RequestJsonData("/auth?email=" + email + "@helplightning.com", "GET");
+            JObject json = RequestJsonData("/auth?email=" + email, "GET");
             return json["token"].ToString();
         }
 
@@ -46,7 +46,7 @@ namespace SampleAndroid
             Console.WriteLine("JEDI CreateCall");
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("Authorization", userToken);
-            string args = String.Format(@"{{""contact_email"":""{0}""}}", contactEmail + "@helplightning.com");
+            string args = String.Format(@"{{""contact_email"":""{0}""}}", contactEmail);
             JObject json = RequestJsonData("/session", "POST", headers, args);
            
             Console.WriteLine("JEDI session id: " + json["session_id"].ToString());
