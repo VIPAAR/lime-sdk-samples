@@ -25,6 +25,7 @@ export HLSERVER_PARTNER_KEY=apikey
 
 ## Deploy
 You may need to installs follow python3 libs: `requests, json, jwt`.  
+
 Run:
 ```sh
 python3 ./HLServer.py
@@ -35,12 +36,15 @@ The server will listen on port *:8777*.
 ## Authentication
 
 Both users should authenticate first before making the call.  
+
 Request: `GET https://localhost:8777/auth?email=your-email@example.com`  
+
 Response:  `{"token": "your-authorized-token"}`  
 
 ## Create-Session
 
 You can create a session once you get your user token.  
+
 Request: 
 ```sh
 POST http://localhost:8777/session
@@ -51,6 +55,7 @@ Headers:
 }
 Body: {'contact_email: "contact-user-email@example.com'}
 ```
+
 Response:
 ```sh
 {
@@ -75,6 +80,7 @@ Once you get session data, you can share the pin code(`sid`) to your contact.
 Once your contact gets the pin code, they can get the session.  
 
 Request: `GET 192.168.2.110:8777/session?sid=3271`  
+
 Response:
 ```sh
 {
