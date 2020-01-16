@@ -50,23 +50,13 @@
     [self.userTab setSelectedItem:self.userTab.items.firstObject];
     HLClient.sharedInstance.delegate = self;
     
-    NSDictionary *themeColor = @{
-                                  kHLMainColor:[UIColor systemPurpleColor],
-                                  };
-    NSDictionary *themeImage = @{
-                                    kHLImageMainMenuDocumentOff:[UIImage imageNamed:@"pen-15_mask"],
-                                    kHLImageMainMenu:[UIImage imageNamed:@"pen-15_mask"],
-                                    kHLImageModeMenuFaceToFaceOn:[UIImage imageNamed:@"pie-chart-11_mask"],
-                                    kHLImageTelestrationMenuArrowOn:[UIImage imageNamed:@"rocket_mask"],
-                                    kHLImageTelestrationMenuArrowOff:[UIImage imageNamed:@"dashboard_mask"],
-                                    kHLImageTelestrationMenuPenOn:[UIImage imageNamed:@"pie-chart-11_mask"],
-                                    kHLImageTelestrationMenuPenOff:[UIImage imageNamed:@"pie-chart-11_mask"],
-                                    kHLImageTelestrationMenuColorUnselected:[UIImage imageNamed:@"pie-chart-11_mask"],
-                                    kHLImageTelestrationMenuColorSelected:[UIImage imageNamed:@"pie-chart-11_mask"],
-                                    
-                                    
-                                };
-    [HLClient.sharedInstance setTheme:@{@"colors":themeColor, @"images":themeImage}];
+    HLTheme *theme = [[HLTheme alloc] init];
+    [theme setColor:kHLMainColor color:[UIColor systemPurpleColor]];
+    [theme setImage:kHLImageMainMenuDocumentOff image:[UIImage imageNamed:@"pen-15_mask"]];
+    [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"pie-chart-11_mask"]];
+    [theme setImage:kHLImageMainMenu image:[UIImage imageNamed:@"pie-chart-11_mask"]];
+    [theme setImage:kHLImageTelestrationMenuPenOn image:[UIImage imageNamed:@"pie-chart-11_mask"]];
+    [HLClient.sharedInstance setTheme:theme];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
