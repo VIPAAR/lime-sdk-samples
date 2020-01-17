@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".JoinSession">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+        
+        <!-- Email Label -->
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/contact_email_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/contact_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="Contact Email" />
+        </android.support.design.widget.TextInputLayout>
+        <TextView
+        android:id="@+id/text_pin_code"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content" />
+
+        <!-- Pin Code Label -->
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/pin_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/pin_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Pin Code" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_start_call"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:text="Star Call"/>
+            
+        <Button
+            android:id="@+id/btn_stop_call"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:text="Stop Call"/>
+            <ProgressBar
+                android:id="@+id/progressBar_cyclic"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:visibility="invisible"
+                tools:layout_editor_absoluteX="190dp"
+                tools:layout_editor_absoluteY="465dp" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
