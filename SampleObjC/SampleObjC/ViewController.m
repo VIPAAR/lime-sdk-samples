@@ -58,6 +58,8 @@
     [theme setImage:kHLImageMainMenu image:[UIImage imageNamed:@"pie-chart-11_mask"]];
     [theme setImage:kHLImageTelestrationMenuPenOn image:[UIImage imageNamed:@"pie-chart-11_mask"]];
     [HLClient.sharedInstance setTheme:theme];
+    
+//    [HLClient.sharedInstance clearTheme];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
