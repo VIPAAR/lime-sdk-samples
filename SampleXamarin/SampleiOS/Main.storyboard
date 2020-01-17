@@ -2,12 +2,11 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vso-og-3gy">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Auth View Controller-->
+        <!--Authenticate-->
         <scene sceneID="1VU-OB-bw3">
             <objects>
                 <viewController id="0ej-ze-bn0" customClass="AuthViewController" sceneMemberID="viewController">
@@ -19,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zwi-qZ-XGW" userLabel="Container">
-                                <rect key="frame" x="2" y="88" width="414" height="774"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwi-qZ-XGW" userLabel="Container">
+                                <rect key="frame" x="0.0" y="70" width="414" height="826"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6I5-Bt-0v4" userLabel="ServerLabel">
                                         <rect key="frame" x="10" y="10" width="100" height="35"/>
@@ -103,7 +102,7 @@
                             <constraint firstItem="zwi-qZ-XGW" firstAttribute="top" secondItem="eUL-Pc-E5R" secondAttribute="bottom" id="WoQ-7e-EOw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="53I-Nt-fUW"/>
+                    <navigationItem key="navigationItem" title="Authenticate" id="53I-Nt-fUW"/>
                     <connections>
                         <outlet property="AuthButton" destination="Xcg-xS-jpl" id="name-outlet-Xcg-xS-jpl"/>
                         <outlet property="ServerURLTextField" destination="aeF-pa-Hz4" id="name-outlet-aeF-pa-Hz4"/>
@@ -127,7 +126,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76T-9W-fCt" userLabel="AuthContainer">
-                                <rect key="frame" x="10" y="98" width="394" height="40"/>
+                                <rect key="frame" x="10" y="80" width="394" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auth Token:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3w-xT-T5n" userLabel="AuthTokenLabel">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
@@ -156,7 +155,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7Q-Eg-nhu" userLabel="CreateCallContainer">
-                                <rect key="frame" x="10" y="168" width="394" height="80"/>
+                                <rect key="frame" x="10" y="150" width="394" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Email:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hcv-46-mCd" userLabel="ContactEmailLabel">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
@@ -200,7 +199,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6P-ta-xGC" userLabel="GetCallContainer">
-                                <rect key="frame" x="10" y="278" width="394" height="70"/>
+                                <rect key="frame" x="10" y="260" width="394" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PIN:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXQ-kV-5Wa" userLabel="PINLabel">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
@@ -256,7 +255,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Setup Call" id="ff7-nE-jDG">
-                        <barButtonItem key="leftBarButtonItem" title="Back" image="chevron.left" catalog="system" id="Nls-s5-T5r"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" image="chevron.left" catalog="system" id="ahF-g9-int">
+                            <connections>
+                                <action selector="OnCancel:" destination="N4X-7P-fcY" id="2327"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="AuthTokenTextField" destination="RMq-5w-kve" id="name-outlet-RMq-5w-kve"/>
@@ -281,7 +284,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Sx-Lv-obZ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="70" width="414" height="776"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Y8-gx-DAv" userLabel="JoinContainer">
                                         <rect key="frame" x="10" y="10" width="394" height="900"/>
@@ -455,9 +458,15 @@
                             <constraint firstItem="7Sx-Lv-obZ" firstAttribute="leading" secondItem="1QL-W9-wRG" secondAttribute="leading" id="uTA-sZ-Oek"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Join Call" id="mvf-6Y-djJ">
-                        <barButtonItem key="leftBarButtonItem" title="Back" image="chevron.left" catalog="system" id="0E7-M8-KEr"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" image="chevron.left" catalog="system" id="gqy-9R-zqD">
+                            <connections>
+                                <action selector="OnCancel:" destination="y8E-e3-h5i" id="2915"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="GSSServerURLTextField" destination="za8-qI-BJg" id="name-outlet-za8-qI-BJg"/>
                         <outlet property="SessionIDTextField" destination="LOk-9g-mUe" id="name-outlet-LOk-9g-mUe"/>
@@ -469,7 +478,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSt-Ff-yLN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4866.6670000000004" y="37.5"/>
+            <point key="canvasLocation" x="4866.667" y="37.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MoS-pR-ftD">
@@ -477,7 +486,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vso-og-3gy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JeR-Ke-xS0">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -495,7 +504,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="irm-Ow-fEa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AiG-sF-8OI">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -513,7 +522,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CVX-Yl-ftL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h5r-La-tIR">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -526,10 +535,10 @@
             <point key="canvasLocation" x="3897" y="38"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="chevron.left" catalog="system"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="EzL-Lz-iD6"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="chevron.left" catalog="system"/>
+    </resources>
 </document>

@@ -38,6 +38,10 @@ namespace HelpLightning.SDK.Sample.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField UserNameTextField { get; set; }
 
+        [Action ("OnCancel:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void OnCancel (UIKit.UIBarButtonItem sender);
+
         [Action ("OnJoinCall:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void OnJoinCall (UIKit.UIButton sender);

@@ -56,6 +56,11 @@ namespace HelpLightning.SDK.Sample.iOS
                 }
             });
         }
+
+        partial void OnCancel(UIBarButtonItem sender)
+        {
+            this.PresentingViewController.DismissViewController(true, null);
+        }
     }
 }
 

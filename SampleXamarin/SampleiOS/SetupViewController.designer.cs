@@ -26,6 +26,10 @@ namespace HelpLightning.SDK.Sample.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField PINTextField { get; set; }
 
+        [Action ("OnCancel:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void OnCancel (UIKit.UIBarButtonItem sender);
+
         [Action ("OnCreateCall:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void OnCreateCall (UIKit.UIButton sender);
