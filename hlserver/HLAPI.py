@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
+
 import requests
 import json
 import jwt
 import datetime
+import urllib.parse
 import os
 
 URL=os.environ.get('HLSERVER_URL')
@@ -42,7 +44,7 @@ class HLAPI:
     them
     """
     def auth_user(self, email):
-        users = self.do_GET("/v1r1/enterprise/users", {'authorization': self.make_jwt()}, {'filter': f'email={email}'})
+        users = self.do_GET("/v1r1/enterprise/users", {'authorization': self.make_jwt()}, {'filter': 'email='+email})
         user1_details = self.do_GET(f"/v1r1/enterprise/users/{users['entries'][0]['id']}", {'authorization': self.make_jwt()})
 
         return HLAPI.User(user1_details['id'], user1_details['name'], email, user1_details['token'])
@@ -78,12 +80,12 @@ class HLAPI:
         token = jwt.encode(payload = payload, key = self.partner_key, algorithm = 'RS256')
         return token
 
-    def do_GET(self, path, extra_headers, query_params = None):
+    def do_GET(self, path, extra_headers, query_params = {}):
         headers = {'x-helplightning-api-key': self.apikey,
                    'content-type': 'application/json'}
         headers.update(extra_headers)
-        
-        r = requests.get(f'{URL}{path}', params = query_params, headers = headers)
+
+        r = requests.get(f'{URL}{path}', params = urllib.parse.urlencode(query_params), headers = headers)
         r.raise_for_status()
         return r.json()
     
