@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zFh-MG-pEC">
-    <device id="ipad9_7" orientation="landscape">
-        <adaptation id="fullscreen"/>
-    </device>
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zFh-MG-pEC">
+    <device id="ipad9_7" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,13 +11,13 @@
         <!--Main View-->
         <scene sceneID="3W8-09-q2q">
             <objects>
-                <viewController id="zFh-MG-pEC" userLabel="Main View" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="zFh-MG-pEC" userLabel="Main View" customClass="SessionViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DwW-H3-8le">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwC-Mw-VCj">
-                                <rect key="frame" x="0.0" y="20" width="1024" height="698"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="718"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dg-5I-hZr">
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="600"/>
@@ -191,7 +190,7 @@
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="OnJoinCall:" destination="zFh-MG-pEC" id="359" eventType="touchUpInside"/>
+                                                    <action selector="OnJoinCall:" destination="zFh-MG-pEC" eventType="touchUpInside" id="359"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xpo-kB-U8H" userLabel="Button - Cancel">
@@ -204,7 +203,7 @@
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="OnCancelCall:" destination="zFh-MG-pEC" id="360" eventType="touchUpInside"/>
+                                                    <action selector="OnCancelCall:" destination="zFh-MG-pEC" eventType="touchUpInside" id="360"/>
                                                 </connections>
                                             </button>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zdX-GO-H7D">
@@ -298,10 +297,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BHJ-jR-umM" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8359" y="78.90625"/>
+            <point key="canvasLocation" x="131.83590000000001" y="78.90625"/>
         </scene>
     </scenes>
     <resources>
+        <image name="03_contacts" width="16" height="16"/>
         <image name="03_contacts_active" width="16" height="16"/>
     </resources>
 </document>

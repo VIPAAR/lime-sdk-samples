@@ -118,7 +118,8 @@
     </ItemGroup>
     <ItemGroup>
         <InterfaceDefinition Include="LaunchScreen.storyboard" />
-        <InterfaceDefinition Include="Main.storyboard" />
+        <InterfaceDefinition Include="Session.storyboard" />
+        <InterfaceDefinition Include="DemoServer.storyboard" />
     </ItemGroup>
     <ItemGroup>
         <None Include="Info.plist" />
@@ -128,14 +129,31 @@
         <Compile Include="Main.cs" />
         <Compile Include="AppDelegate.cs" />
         <Compile Include="SceneDelegate.cs" />
-        <Compile Include="ViewController.cs" />
-        <Compile Include="ViewController.designer.cs">
-            <DependentUpon>ViewController.cs</DependentUpon>
+        <Compile Include="SessionViewController.cs" />
+        <Compile Include="SessionViewController.designer.cs">
+            <DependentUpon>SessionViewController.cs</DependentUpon>
+        </Compile>
+        <Compile Include="HLServerClient.cs" />
+        <Compile Include="AuthViewController.cs" />
+        <Compile Include="AuthViewController.designer.cs">
+          <DependentUpon>AuthViewController.cs</DependentUpon>
+        </Compile>
+        <Compile Include="CallManager.cs" />
+        <Compile Include="SetupViewController.cs" />
+        <Compile Include="SetupViewController.designer.cs">
+          <DependentUpon>SetupViewController.cs</DependentUpon>
+        </Compile>
+        <Compile Include="JoinViewController.cs" />
+        <Compile Include="JoinViewController.designer.cs">
+          <DependentUpon>JoinViewController.cs</DependentUpon>
         </Compile>
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="HelpLightning.SDK">
-        <Version>0.9.8</Version>
+        <Version>0.9.10</Version>
+      </PackageReference>
+      <PackageReference Include="Newtonsoft.Json">
+        <Version>12.0.3</Version>
       </PackageReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
