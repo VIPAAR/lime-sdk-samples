@@ -24,6 +24,10 @@ namespace HelpLightning.SDK.Sample.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField SessionPINTextField { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextView SessionTokenTextView { get; set; }
 
         [Outlet]
@@ -48,6 +52,11 @@ namespace HelpLightning.SDK.Sample.iOS
             if (SessionIDTextField != null) {
                 SessionIDTextField.Dispose ();
                 SessionIDTextField = null;
+            }
+
+            if (SessionPINTextField != null) {
+                SessionPINTextField.Dispose ();
+                SessionPINTextField = null;
             }
 
             if (SessionTokenTextView != null) {

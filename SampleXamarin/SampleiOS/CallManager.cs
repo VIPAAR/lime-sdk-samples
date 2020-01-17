@@ -30,6 +30,6 @@ namespace HelpLightning.SDK.Sample.iOS
         public string SessionToken = "";
         public string SessionID = "";
         public string GssServerURL = "";
-        public string CallPIN = "";
+        public string SessionPIN = "";
     }
 }

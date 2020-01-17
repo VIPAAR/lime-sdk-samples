@@ -7,20 +7,22 @@ namespace HelpLightning.SDK.Sample.iOS
 {
     public partial class JoinViewController : UIViewController
     {
-        public JoinViewController() : base("JoinViewController", null)
+        private static readonly string DefaultUserName = "small_u13";
+
+        public JoinViewController(IntPtr handle) : base(handle)
         {
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            // Perform any additional setup after loading the view, typically from a nib.
+            SessionPINTextField.Text = CallManager.Instance.SessionPIN;
             SessionIDTextField.Text = CallManager.Instance.SessionID;
             SessionTokenTextView.Text = CallManager.Instance.SessionToken;
             UserNameTextField.Text = CallManager.Instance.UserName;
             UserAvatarTextField.Text = CallManager.Instance.UserAvatar;
             GSSServerURLTextField.Text = CallManager.Instance.GssServerURL;
-
+            UserNameTextField.Text = DefaultUserName;
         }
 
         public override void DidReceiveMemoryWarning()

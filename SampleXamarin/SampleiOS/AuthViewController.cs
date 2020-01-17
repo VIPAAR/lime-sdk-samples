@@ -7,9 +7,10 @@ namespace HelpLightning.SDK.Sample.iOS
 
     public partial class AuthViewController : UIViewController
     {
-        private static readonly string DefaultServerURL = "http://localhost:8777";
+        private static readonly string DefaultServerURL = "http://192.168.0.30:8777";
+        private static readonly string DefaultUserEmail = "small_u13@helplightning.com";
 
-        public AuthViewController() : base("AuthViewController", null)
+        public AuthViewController(IntPtr handle) : base(handle)
         {
         }
 
@@ -18,6 +19,7 @@ namespace HelpLightning.SDK.Sample.iOS
             base.ViewDidLoad();
             // Perform any additional setup after loading the view, typically from a nib.
             ServerURLTextField.Text = DefaultServerURL;
+            UserEmailTextField.Text = DefaultUserEmail;
         }
 
         public override void DidReceiveMemoryWarning()
@@ -43,24 +45,6 @@ namespace HelpLightning.SDK.Sample.iOS
                 Console.Error.WriteLine(e);
             }
         }
-
-        //partial void OnCreateCall(UIButton sender)
-        //{
-        //    string email = ContactEmailTextField.Text.Trim();
-        //    if (email.Length == 0)
-        //    {
-        //        Console.WriteLine("Empty Contact Email");
-        //        return;
-        //    }
-
-        //    var json = HLServerClient.Instance.CreateCall(authToken, email);
-        //    var call = new Call(json["session_id"][0].ToString(),
-        //                        json["session_token"].ToString(),
-        //                        json["user_token"].ToString(),
-        //                        json["url"].ToString(),
-        //                        email,
-        //                        "");
-        //}
     }
 }
 

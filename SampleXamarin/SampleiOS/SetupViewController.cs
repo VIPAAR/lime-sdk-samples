@@ -6,7 +6,9 @@ namespace HelpLightning.SDK.Sample.iOS
 {
     public partial class SetupViewController : UIViewController
     {
-        public SetupViewController() : base("SetupViewController", null)
+        private static readonly string DefaultContactEmail = "small_u12@helplightning.com";
+
+        public SetupViewController(IntPtr handle) : base(handle)
         {
         }
 
@@ -15,6 +17,7 @@ namespace HelpLightning.SDK.Sample.iOS
             base.ViewDidLoad();
             // Perform any additional setup after loading the view, typically from a nib.
             AuthTokenTextField.Text = CallManager.Instance.AuthToken;
+            ContactEmailTextField.Text = DefaultContactEmail;
         }
 
         public override void DidReceiveMemoryWarning()
@@ -42,7 +45,7 @@ namespace HelpLightning.SDK.Sample.iOS
                 CallManager.Instance.SessionToken = json["session_token"].ToString();
                 CallManager.Instance.UserToken = json["user_token"].ToString();
                 CallManager.Instance.GssServerURL = json["url"].ToString();
-                CallManager.Instance.CallPIN = json["sid"].ToString();
+                CallManager.Instance.SessionPIN = json["sid"].ToString();
             }
             catch (Exception e)
             {
@@ -58,7 +61,7 @@ namespace HelpLightning.SDK.Sample.iOS
                 Console.WriteLine("Empty PIN");
                 return;
             }
-            CallManager.Instance.CallPIN = pin;
+            CallManager.Instance.SessionPIN = pin;
             try
             {
                 var json = HLServerClient.Instance.GetCall(pin, CallManager.Instance.AuthToken);
