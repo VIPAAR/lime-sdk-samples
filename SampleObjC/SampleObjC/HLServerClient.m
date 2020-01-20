@@ -175,12 +175,16 @@ NSTimeInterval const kHTTRequestTimeout = 30.0;
         if (error) {
             [promise reject:error];
         } else {
-            NSError* jsonError = nil;
-            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-            if (jsonError) {
-                [promise reject:error];
+            if ([self _isSuccessfulResponse:response]) {
+                NSError* jsonError = nil;
+                NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                if (jsonError) {
+                    [promise reject:jsonError];
+                } else {
+                    [promise fulfill:json];
+                }
             } else {
-                [promise fulfill:json];
+                [promise reject:[NSError errorWithDomain:kSampleErrorDomain code:-3 userInfo:nil]];
             }
         }
     }];
@@ -189,4 +193,12 @@ NSTimeInterval const kHTTRequestTimeout = 30.0;
     return promise;
 }
 
+- (BOOL) _isSuccessfulResponse:(NSURLResponse*)response {
+    //See https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#Successful_responses
+    if ([response isKindOfClass:NSHTTPURLResponse.class]) {
+        NSHTTPURLResponse* r = (NSHTTPURLResponse*)response;
+        return (r.statusCode >= 200 && r.statusCode < 300);
+    }
+    return YES;
+}
 @end

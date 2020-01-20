@@ -51,6 +51,10 @@ NSString* const kDefaultContactEmail = @"small_u12@helplightning.com";
     
     CallManager.sharedInstance.contactEmail = contactEmail;
     
+    CallManager.sharedInstance.sessionID = nil;
+    CallManager.sharedInstance.sessionToken = nil;
+    CallManager.sharedInstance.userToken = nil;
+    
     [HLServerClient.sharedInstance createCallWithAuthToken:CallManager.sharedInstance.authToken contactEmail:contactEmail].then(^id(id result) {
         NSDictionary* json = (NSDictionary*)result;
         CallManager.sharedInstance.sessionID = json[@"session_id"][0];
@@ -82,6 +86,10 @@ NSString* const kDefaultContactEmail = @"small_u12@helplightning.com";
     self.getCallButton.enabled = NO;
     
     CallManager.sharedInstance.sessionPIN = pin;
+    
+    CallManager.sharedInstance.sessionID = nil;
+    CallManager.sharedInstance.sessionToken = nil;
+    CallManager.sharedInstance.userToken = nil;
     
     [HLServerClient.sharedInstance retreiveCallWithAuthToken:CallManager.sharedInstance.authToken
                                                          pin:pin]

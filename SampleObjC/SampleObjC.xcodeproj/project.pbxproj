@@ -22,29 +22,6 @@
 		E83D514DEAF1F20B7A79654D /* libPods-SampleObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D12616F3BF727AC58D24CF7 /* libPods-SampleObjC.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		C74F5F11238266CD00A2BBBE /* Embed PlugIns */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			name = "Embed PlugIns";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C7B67BC1237D0B4100B6314E /* Embed PlugIns */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			name = "Embed PlugIns";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		2D12616F3BF727AC58D24CF7 /* libPods-SampleObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleObjC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69ABDF4C958BB974A216C64B /* Pods-SampleObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleObjC.release.xcconfig"; path = "Target Support Files/Pods-SampleObjC/Pods-SampleObjC.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,9 +135,7 @@
 				C7B67B97237D06EA00B6314E /* Sources */,
 				C7B67B98237D06EA00B6314E /* Frameworks */,
 				C7B67B99237D06EA00B6314E /* Resources */,
-				C7B67BC1237D0B4100B6314E /* Embed PlugIns */,
 				8C36D99F3452FD530CE6638F /* [CP] Copy Pods Resources */,
-				C74F5F11238266CD00A2BBBE /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
