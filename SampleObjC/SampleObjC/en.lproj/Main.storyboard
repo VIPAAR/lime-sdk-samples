@@ -19,11 +19,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0U-aQ-5ga">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0U-aQ-5ga">
                                 <rect key="frame" x="20" y="96" width="374" height="766"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwi-qZ-XGW" userLabel="Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="500"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="350"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6I5-Bt-0v4" userLabel="ServerLabel">
                                                 <rect key="frame" x="10" y="10" width="100" height="35"/>
@@ -38,7 +38,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="http://localhost:8777" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aeF-pa-Hz4" userLabel="ServerField">
                                                 <rect key="frame" x="120" y="10" width="244" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="url"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="URL" textContentType="url"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4TR-na-dgb" userLabel="AuthContainer">
                                                 <rect key="frame" x="10" y="55" width="354" height="120"/>
@@ -56,7 +56,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="someone@company.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lai-bG-0O9" userLabel="UserEmailField">
                                                         <rect key="frame" x="110" y="0.0" width="244" height="35"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" textContentType="url"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xcg-xS-jpl">
                                                         <rect key="frame" x="81" y="45" width="192" height="30"/>
@@ -92,7 +92,7 @@
                                         <constraints>
                                             <constraint firstItem="aeF-pa-Hz4" firstAttribute="trailing" secondItem="zwi-qZ-XGW" secondAttribute="trailing" constant="-10" id="4pw-72-OKQ"/>
                                             <constraint firstItem="4TR-na-dgb" firstAttribute="trailing" secondItem="zwi-qZ-XGW" secondAttribute="trailing" constant="-10" id="5gu-Mf-BVo"/>
-                                            <constraint firstAttribute="height" constant="500" id="AwU-Ch-jd4"/>
+                                            <constraint firstAttribute="height" constant="350" id="AwU-Ch-jd4"/>
                                             <constraint firstItem="6I5-Bt-0v4" firstAttribute="top" secondItem="zwi-qZ-XGW" secondAttribute="top" constant="10" id="CvW-IH-buJ"/>
                                             <constraint firstItem="4TR-na-dgb" firstAttribute="top" secondItem="6I5-Bt-0v4" secondAttribute="bottom" constant="10" id="GYU-8V-ihe"/>
                                             <constraint firstItem="aeF-pa-Hz4" firstAttribute="leading" secondItem="6I5-Bt-0v4" secondAttribute="trailing" constant="10" id="Qx3-Sg-Oqw"/>
@@ -146,11 +146,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5B8-7U-RNV">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5B8-7U-RNV">
                                 <rect key="frame" x="20" y="88" width="374" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8t0-Pu-529" userLabel="Container">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="450"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76T-9W-fCt" userLabel="AuthContainer">
                                                 <rect key="frame" x="10" y="10" width="354" height="40"/>
@@ -197,7 +197,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="someone@company.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2rb-cZ-hTc" userLabel="ContactEmailField">
                                                         <rect key="frame" x="110" y="0.0" width="244" height="35"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" textContentType="url"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m21-1s-ed3" userLabel="CreateCallButton">
                                                         <rect key="frame" x="81" y="45" width="192" height="30"/>
@@ -241,7 +241,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1234" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lmc-xJ-Cx7" userLabel="PINField">
                                                         <rect key="frame" x="110" y="1" width="244" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" textContentType="tel"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZo-p4-57r" userLabel="JoinCallButton">
                                                         <rect key="frame" x="143.5" y="45" width="67" height="30"/>
@@ -271,7 +271,7 @@
                                             </activityIndicatorView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="600" id="50V-sV-Xzk"/>
+                                            <constraint firstAttribute="height" constant="450" id="50V-sV-Xzk"/>
                                             <constraint firstItem="z6P-ta-xGC" firstAttribute="trailing" secondItem="76T-9W-fCt" secondAttribute="trailing" id="HPm-xQ-XZz"/>
                                             <constraint firstItem="76T-9W-fCt" firstAttribute="leading" secondItem="8t0-Pu-529" secondAttribute="leading" constant="10" id="HeA-gg-HdI"/>
                                             <constraint firstItem="tCD-yc-pfE" firstAttribute="centerX" secondItem="z6P-ta-xGC" secondAttribute="centerX" id="RfL-VL-7h0"/>
@@ -289,7 +289,7 @@
                                 <constraints>
                                     <constraint firstItem="8t0-Pu-529" firstAttribute="top" secondItem="5B8-7U-RNV" secondAttribute="top" id="EU3-ds-IBK"/>
                                     <constraint firstItem="8t0-Pu-529" firstAttribute="centerX" secondItem="5B8-7U-RNV" secondAttribute="centerX" id="Kp5-qC-mR3"/>
-                                    <constraint firstItem="8t0-Pu-529" firstAttribute="trailing" secondItem="5B8-7U-RNV" secondAttribute="trailingMargin" id="bA4-Uz-Rfd"/>
+                                    <constraint firstAttribute="trailing" secondItem="8t0-Pu-529" secondAttribute="trailing" id="bA4-Uz-Rfd"/>
                                     <constraint firstAttribute="bottom" secondItem="8t0-Pu-529" secondAttribute="bottom" id="cGH-Kz-p6w"/>
                                     <constraint firstItem="8t0-Pu-529" firstAttribute="leading" secondItem="5B8-7U-RNV" secondAttribute="leading" id="uMp-YG-vPc"/>
                                 </constraints>
@@ -337,11 +337,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Sx-Lv-obZ">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sx-Lv-obZ">
                                 <rect key="frame" x="20" y="88" width="374" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Y8-gx-DAv" userLabel="JoinContainer">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="900"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session PIN:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Tb-cP-obw" userLabel="SessionPINLabel">
                                                 <rect key="frame" x="0.0" y="10" width="100" height="35"/>
@@ -356,7 +356,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1234" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uwv-ua-Rc1" userLabel="SessionPINTextField">
                                                 <rect key="frame" x="110" y="10" width="264" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="tel"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Session ID:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4V-wB-2VG" userLabel="SessionIDLabel">
                                                 <rect key="frame" x="0.0" y="55" width="100" height="35"/>
@@ -418,10 +418,10 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YLa-vv-AcI" userLabel="UserNameTextField">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YLa-vv-AcI" userLabel="UserAvatarTextField">
                                                 <rect key="frame" x="110" y="255" width="264" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="url"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="URL" textContentType="url"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GSS Server:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baO-h2-ZO9" userLabel="GSSURLLabel">
                                                 <rect key="frame" x="0.0" y="300" width="100" height="35"/>
@@ -436,7 +436,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="za8-qI-BJg" userLabel="GSSURLTextField">
                                                 <rect key="frame" x="110" y="300" width="264" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="url"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="URL" textContentType="url"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9A-SC-Rwe" userLabel="JoinCallButton">
                                                 <rect key="frame" x="91" y="355" width="192" height="30"/>
@@ -467,7 +467,7 @@
                                             <constraint firstItem="YLa-vv-AcI" firstAttribute="leading" secondItem="qMD-Z2-NHS" secondAttribute="trailing" constant="10" id="8RV-Wa-Z4a"/>
                                             <constraint firstItem="LOk-9g-mUe" firstAttribute="trailing" secondItem="9Y8-gx-DAv" secondAttribute="trailing" id="A70-d3-4ai"/>
                                             <constraint firstItem="q9A-SC-Rwe" firstAttribute="top" secondItem="za8-qI-BJg" secondAttribute="bottom" constant="20" id="ASN-8L-fal"/>
-                                            <constraint firstAttribute="height" constant="900" id="BJb-qn-dpf"/>
+                                            <constraint firstAttribute="height" constant="600" id="BJb-qn-dpf"/>
                                             <constraint firstItem="BZ9-S8-StI" firstAttribute="leading" secondItem="uO8-cy-QIL" secondAttribute="trailing" constant="10" id="Dlw-RH-GJh"/>
                                             <constraint firstItem="uO8-cy-QIL" firstAttribute="leading" secondItem="9Y8-gx-DAv" secondAttribute="leading" id="FU2-qF-UTH"/>
                                             <constraint firstItem="YLa-vv-AcI" firstAttribute="bottom" secondItem="qMD-Z2-NHS" secondAttribute="bottom" id="HJ0-9F-Vqd"/>
