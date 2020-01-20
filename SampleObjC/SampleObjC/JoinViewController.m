@@ -43,7 +43,9 @@ NSString* const kDefaultUserName = @"small_u13";
 }
 
 - (IBAction)OnCancel:(UIBarButtonItem *)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [HLClient.sharedInstance stopCurrentCall].always(^() {
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    });
 }
 
 - (IBAction)OnJoinCall:(UIButton *)sender {
