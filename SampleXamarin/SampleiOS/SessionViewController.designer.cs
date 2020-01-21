@@ -10,8 +10,8 @@ using System.CodeDom.Compiler;
 
 namespace HelpLightning.SDK.Sample.iOS
 {
-    [Register ("ViewController")]
-    partial class ViewController
+    [Register ("SessionViewController")]
+    partial class SessionViewController
     {
         [Outlet]
         UIKit.UITextView gssURL { get; set; }

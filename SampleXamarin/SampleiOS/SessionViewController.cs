@@ -8,8 +8,8 @@ namespace HelpLightning.SDK.Sample.iOS
 {
     class TabBarDelegateImipl : UITabBarDelegate
     {
-        ViewController viewController;
-        public TabBarDelegateImipl(ViewController viewController)
+        SessionViewController viewController;
+        public TabBarDelegateImipl(SessionViewController viewController)
         {
             this.viewController = viewController;
         }
@@ -28,7 +28,7 @@ namespace HelpLightning.SDK.Sample.iOS
      
     }
 
-    public partial class ViewController : UIViewController, ICallClientDelegate
+    public partial class SessionViewController : UIViewController, ICallClientDelegate
     {
         const string HL_SESSION_ID = ("c7baa9fc-3a68-415b-a287-1d37741441dd");
         const string HL_SESSION_TOKEN = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdHRyaWJ1dGVzIjpbIm9yZ2FuaXplciJdLCJhdWQiOiJHaGF6YWwiLCJleHAiOjE2MDczMjExMzIsImlhdCI6MTU3NjU2MjczMiwiaXNzIjoiR2hhemFsIiwianRpIjoiNTkwM2U0OTUtNDBkMC00ZjMyLTg3YjUtMGUzMTU1MTM5YWJkIiwibWV0YSI6e30sIm5iZiI6MTU3NjU2MjczMSwib3JpZ2luYXRvciI6NCwicGVtIjp7InNlc3Npb24iOjI1NTl9LCJyZWNvcmRpbmdfcG9saWN5Ijoib3B0X2luIiwic3ViIjoiU2Vzc2lvbjpjN2JhYTlmYy0zYTY4LTQxNWItYTI4Ny0xZDM3NzQxNDQxZGQiLCJ0eXAiOiJhY2Nlc3MiLCJ2ZXIiOiIxMDAifQ.yDzlI0zpikZu4WpoJF8P57n9D0CSK1TfxlVShAydad8");
@@ -43,7 +43,7 @@ namespace HelpLightning.SDK.Sample.iOS
 
         const string HL_USER2_AVATAR = ("");
 
-        public ViewController(IntPtr handle) : base(handle)
+        public SessionViewController(IntPtr handle) : base(handle)
         {
         }
 

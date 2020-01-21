@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C701672623D421D6000AFA38 /* Session.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C701672423D421D6000AFA38 /* Session.storyboard */; };
+		C701672F23D42230000AFA38 /* JoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C701672823D4222F000AFA38 /* JoinViewController.m */; };
+		C701673123D42230000AFA38 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C701672C23D42230000AFA38 /* AuthViewController.m */; };
+		C701673223D42230000AFA38 /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C701672D23D42230000AFA38 /* SetupViewController.m */; };
+		C701673523D42366000AFA38 /* CallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C701673423D42366000AFA38 /* CallManager.m */; };
+		C701673823D4246E000AFA38 /* HLServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C701673723D4246D000AFA38 /* HLServerClient.m */; };
 		C7B67BA0237D06EA00B6314E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B67B9F237D06EA00B6314E /* AppDelegate.m */; };
-		C7B67BA3237D06EA00B6314E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B67BA2237D06EA00B6314E /* ViewController.m */; };
+		C7B67BA3237D06EA00B6314E /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B67BA2237D06EA00B6314E /* SessionViewController.m */; };
 		C7B67BA6237D06EA00B6314E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7B67BA4237D06EA00B6314E /* Main.storyboard */; };
 		C7B67BA8237D06EB00B6314E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B67BA7237D06EB00B6314E /* Assets.xcassets */; };
 		C7B67BAB237D06EB00B6314E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7B67BA9237D06EB00B6314E /* LaunchScreen.storyboard */; };
@@ -16,41 +22,29 @@
 		E83D514DEAF1F20B7A79654D /* libPods-SampleObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D12616F3BF727AC58D24CF7 /* libPods-SampleObjC.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		C74F5F11238266CD00A2BBBE /* Embed PlugIns */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			name = "Embed PlugIns";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C7B67BC1237D0B4100B6314E /* Embed PlugIns */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			name = "Embed PlugIns";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		2D12616F3BF727AC58D24CF7 /* libPods-SampleObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleObjC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69ABDF4C958BB974A216C64B /* Pods-SampleObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleObjC.release.xcconfig"; path = "Target Support Files/Pods-SampleObjC/Pods-SampleObjC.release.xcconfig"; sourceTree = "<group>"; };
 		BF07B636BD9398F32FB308F7 /* Pods-SampleObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleObjC.debug.xcconfig"; path = "Target Support Files/Pods-SampleObjC/Pods-SampleObjC.debug.xcconfig"; sourceTree = "<group>"; };
+		C701672523D421D6000AFA38 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Session.storyboard; sourceTree = "<group>"; };
+		C701672723D4222F000AFA38 /* JoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinViewController.h; sourceTree = "<group>"; };
+		C701672823D4222F000AFA38 /* JoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinViewController.m; sourceTree = "<group>"; };
+		C701672923D4222F000AFA38 /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
+		C701672B23D42230000AFA38 /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
+		C701672C23D42230000AFA38 /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
+		C701672D23D42230000AFA38 /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
+		C701673323D42366000AFA38 /* CallManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallManager.h; sourceTree = "<group>"; };
+		C701673423D42366000AFA38 /* CallManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallManager.m; sourceTree = "<group>"; };
+		C701673623D4246D000AFA38 /* HLServerClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLServerClient.h; sourceTree = "<group>"; };
+		C701673723D4246D000AFA38 /* HLServerClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLServerClient.m; sourceTree = "<group>"; };
 		C7973AEC237EA06D0091CEF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7973AED237EA06E0091CEF5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7973AEE237EA0A20091CEF5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		C7B67B9B237D06EA00B6314E /* SampleObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7B67B9E237D06EA00B6314E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C7B67B9F237D06EA00B6314E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C7B67BA1237D06EA00B6314E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C7B67BA2237D06EA00B6314E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C7B67BA1237D06EA00B6314E /* SessionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
+		C7B67BA2237D06EA00B6314E /* SessionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
 		C7B67BA7237D06EB00B6314E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7B67BAC237D06EB00B6314E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7B67BAD237D06EB00B6314E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -89,10 +83,21 @@
 		C7B67B9D237D06EA00B6314E /* SampleObjC */ = {
 			isa = PBXGroup;
 			children = (
+				C701673623D4246D000AFA38 /* HLServerClient.h */,
+				C701673723D4246D000AFA38 /* HLServerClient.m */,
+				C701673323D42366000AFA38 /* CallManager.h */,
+				C701673423D42366000AFA38 /* CallManager.m */,
+				C701672923D4222F000AFA38 /* AuthViewController.h */,
+				C701672C23D42230000AFA38 /* AuthViewController.m */,
+				C701672723D4222F000AFA38 /* JoinViewController.h */,
+				C701672823D4222F000AFA38 /* JoinViewController.m */,
+				C701672B23D42230000AFA38 /* SetupViewController.h */,
+				C701672D23D42230000AFA38 /* SetupViewController.m */,
+				C701672423D421D6000AFA38 /* Session.storyboard */,
 				C7B67B9E237D06EA00B6314E /* AppDelegate.h */,
 				C7B67B9F237D06EA00B6314E /* AppDelegate.m */,
-				C7B67BA1237D06EA00B6314E /* ViewController.h */,
-				C7B67BA2237D06EA00B6314E /* ViewController.m */,
+				C7B67BA1237D06EA00B6314E /* SessionViewController.h */,
+				C7B67BA2237D06EA00B6314E /* SessionViewController.m */,
 				C7B67BA4237D06EA00B6314E /* Main.storyboard */,
 				C7B67BA7237D06EB00B6314E /* Assets.xcassets */,
 				C7B67BA9237D06EB00B6314E /* LaunchScreen.storyboard */,
@@ -130,9 +135,7 @@
 				C7B67B97237D06EA00B6314E /* Sources */,
 				C7B67B98237D06EA00B6314E /* Frameworks */,
 				C7B67B99237D06EA00B6314E /* Resources */,
-				C7B67BC1237D0B4100B6314E /* Embed PlugIns */,
 				8C36D99F3452FD530CE6638F /* [CP] Copy Pods Resources */,
-				C74F5F11238266CD00A2BBBE /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
@@ -181,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7B67BAB237D06EB00B6314E /* LaunchScreen.storyboard in Resources */,
+				C701672623D421D6000AFA38 /* Session.storyboard in Resources */,
 				C7B67BA8237D06EB00B6314E /* Assets.xcassets in Resources */,
 				C7B67BA6237D06EA00B6314E /* Main.storyboard in Resources */,
 			);
@@ -235,15 +239,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7B67BA3237D06EA00B6314E /* ViewController.m in Sources */,
+				C7B67BA3237D06EA00B6314E /* SessionViewController.m in Sources */,
 				C7B67BAE237D06EB00B6314E /* main.m in Sources */,
+				C701673223D42230000AFA38 /* SetupViewController.m in Sources */,
+				C701672F23D42230000AFA38 /* JoinViewController.m in Sources */,
+				C701673123D42230000AFA38 /* AuthViewController.m in Sources */,
+				C701673823D4246E000AFA38 /* HLServerClient.m in Sources */,
 				C7B67BA0237D06EA00B6314E /* AppDelegate.m in Sources */,
+				C701673523D42366000AFA38 /* CallManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		C701672423D421D6000AFA38 /* Session.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C701672523D421D6000AFA38 /* en */,
+			);
+			name = Session.storyboard;
+			sourceTree = "<group>";
+		};
 		C7B67BA4237D06EA00B6314E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

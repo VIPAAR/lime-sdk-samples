@@ -6,7 +6,7 @@
 //  Copyright © 2019 Helplightning. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SessionViewController.h"
 #import <HLSDK/HLSDK.h>
 #import "FBLPromises.h"
 
@@ -23,7 +23,7 @@
 
 #define HL_USER2_AVATAR     (@"")
 
-@interface ViewController () <HLClientDelegate, UITabBarDelegate>
+@interface SessionViewController () <HLClientDelegate, UITabBarDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *sessionId;
 @property (weak, nonatomic) IBOutlet UITextView *sessionToken;
 @property (weak, nonatomic) IBOutlet UITextView *userToken;
@@ -36,7 +36,7 @@
 
 @end
 
-@implementation ViewController
+@implementation SessionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
