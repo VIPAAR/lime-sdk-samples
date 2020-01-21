@@ -1,19 +1,12 @@
-﻿using Android.App;
-using Android.OS;
+﻿using Android.OS;
 using Android.Widget;
-using Android.Support.V7.App;
-using Android.Content;
 using System;
-using Android;
-using Android.Support.V4.App;
-using Android.Support.V4.Content;
-using Android.Content.PM;
 using Android.Views;
-using System.Threading.Tasks;
+using Fragment = Android.Support.V4.App.Fragment;
 
-namespace SampleAndroid
+namespace HelpLightning.SDK.Sample.Android
 {
-    public class Authentication : Android.Support.V4.App.Fragment
+    public class Authentication : Fragment
     {
         string token = "";
         View rootView;
@@ -25,7 +18,7 @@ namespace SampleAndroid
             base.OnCreate(savedInstanceState);
             rootView = inflater.Inflate(Resource.Layout.fragment_authentication, container, false);
 
-            HLServer.Instance.BaseUrl = Resources.GetString(Resource.String.host);
+            HLServerClient.Instance.BaseUrl = Resources.GetString(Resource.String.host);
             
             Button autheButton = rootView.FindViewById<Button>(Resource.Id.authButton);
             callContactButton = rootView.FindViewById<Button>(Resource.Id.callContactButton);
@@ -35,7 +28,7 @@ namespace SampleAndroid
             {
                 try
                 {
-                    token = await HLServer.Instance.AuthUser(rootView.FindViewById<EditText>(Resource.Id.emailText).Text);
+                    token = await HLServerClient.Instance.AuthUser(rootView.FindViewById<EditText>(Resource.Id.emailText).Text);
                     System.Console.WriteLine(token);
 
                     Toast.MakeText(rootView.Context, "Authentication succeed!", ToastLength.Short).Show();
