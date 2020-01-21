@@ -53,7 +53,7 @@ namespace SampleAndroid
                 contact.Visibility = Android.Views.ViewStates.Invisible;
             }
 
-            rootView.FindViewById(Resource.Id.btn_start_call).Click += (sender, e) =>
+            rootView.FindViewById(Resource.Id.btn_start_call).Click += async (sender, e) =>
             {
                 try
                 {
@@ -63,13 +63,13 @@ namespace SampleAndroid
                         if (mode.Equals("call_contact") && pin.Equals(""))
                         {
                             string dialerEmail = contact.Text;
-                            json = HLServer.Instance.CreateCall(userToken, contact.Text);
+                            json = await HLServer.Instance.CreateCall(userToken, contact.Text);
                             pinCodeView.Text = "You can share pin code with: " + json["sid"].ToString();
                         }
                         else if (mode.Equals("call_pin_code"))
                         {
                             pin = pinCode.Text;
-                            json = HLServer.Instance.GetCall(pin, userToken);
+                            json = await HLServer.Instance.GetCall(pin, userToken);
                         }
 
                         currentCallData = new Call
