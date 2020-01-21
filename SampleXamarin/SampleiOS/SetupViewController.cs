@@ -1,6 +1,7 @@
 ﻿using System;
-
+using Foundation;
 using UIKit;
+using CoreFoundation;
 
 namespace HelpLightning.SDK.Sample.iOS
 {
@@ -16,8 +17,8 @@ namespace HelpLightning.SDK.Sample.iOS
         {
             base.ViewDidLoad();
             // Perform any additional setup after loading the view, typically from a nib.
-            AuthTokenTextField.Text = CallManager.Instance.AuthToken;
-            ContactEmailTextField.Text = DefaultContactEmail;
+            authTokenTextField.Text = CallManager.Instance.AuthToken;
+            contactEmailTextField.Text = DefaultContactEmail;
         }
 
         public override void DidReceiveMemoryWarning()
@@ -26,26 +27,55 @@ namespace HelpLightning.SDK.Sample.iOS
             // Release any cached data, images, etc that aren't in use.
         }
 
+        public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender)
+        {
+            return CallManager.Instance.SessionID != null && CallManager.Instance.SessionToken != null && CallManager.Instance.UserToken != null; ;
+        }
+
         partial void OnCreateCall(UIButton sender)
         {
-            var email = ContactEmailTextField.Text.Trim();
+            var email = contactEmailTextField.Text.Trim();
             if (email.Length == 0)
             {
                 Console.WriteLine("Empty Contact Email");
                 return;
             }
 
+            indicator.Hidden = false;
+            createCallButton.Enabled = false;
+            getCallButton.Enabled = false;
+
             CallManager.Instance.ContactEmail = email;
+            CallManager.Instance.SessionID = null;
+            CallManager.Instance.SessionToken = null;
+            CallManager.Instance.UserToken = null;
 
             try
             {
-                var json = HLServerClient.Instance.CreateCall(CallManager.Instance.AuthToken, email);
+                var task = HLServerClient.Instance.CreateCall(CallManager.Instance.AuthToken, email);
+                task.ContinueWith(t => {
+                    DispatchQueue.MainQueue.DispatchAsync(() =>
+                    {
+                        if (t.IsCompleted)
+                        {
+                            var json = task.Result;
+                            CallManager.Instance.SessionID = json["session_id"][0].ToString();
+                            CallManager.Instance.SessionToken = json["session_token"].ToString();
+                            CallManager.Instance.UserToken = json["user_token"].ToString();
+                            CallManager.Instance.GssServerURL = json["url"].ToString();
+                            CallManager.Instance.SessionPIN = json["sid"].ToString();
 
-                CallManager.Instance.SessionID = json["session_id"][0].ToString();
-                CallManager.Instance.SessionToken = json["session_token"].ToString();
-                CallManager.Instance.UserToken = json["user_token"].ToString();
-                CallManager.Instance.GssServerURL = json["url"].ToString();
-                CallManager.Instance.SessionPIN = json["sid"].ToString();
+                            PerformSegue("segueOpenJoinScreen1", this);
+                        }
+                        else
+                        {
+                            Console.Error.WriteLine("Cannot Create a Call: " + t.Exception);
+                        }
+                        createCallButton.Enabled = true;
+                        getCallButton.Enabled = true;
+                        indicator.Hidden = true;
+                    });
+                });
             }
             catch (Exception e)
             {
@@ -62,13 +92,32 @@ namespace HelpLightning.SDK.Sample.iOS
                 return;
             }
             CallManager.Instance.SessionPIN = pin;
+            CallManager.Instance.SessionID = null;
+            CallManager.Instance.SessionToken = null;
+            CallManager.Instance.UserToken = null;
             try
             {
-                var json = HLServerClient.Instance.GetCall(pin, CallManager.Instance.AuthToken);
-                CallManager.Instance.SessionID = json["session_id"][0].ToString();
-                CallManager.Instance.SessionToken = json["session_token"].ToString();
-                CallManager.Instance.UserToken = json["user_token"].ToString();
-                CallManager.Instance.GssServerURL = json["url"].ToString();
+                var task = HLServerClient.Instance.GetCall(pin, CallManager.Instance.AuthToken);
+                task.ContinueWith(t =>
+                {
+                    if (t.IsCompleted)
+                    {
+                        var json = task.Result;
+                        CallManager.Instance.SessionID = json["session_id"][0].ToString();
+                        CallManager.Instance.SessionToken = json["session_token"].ToString();
+                        CallManager.Instance.UserToken = json["user_token"].ToString();
+                        CallManager.Instance.GssServerURL = json["url"].ToString();
+
+                        PerformSegue("segueOpenJoinScreen2", this);
+                    }
+                    else
+                    {
+                        Console.Error.WriteLine("Cannot Create a Call: " + t.Exception);
+                    }
+                    createCallButton.Enabled = true;
+                    getCallButton.Enabled = true;
+                    indicator.Hidden = true;
+                });
             }
             catch (Exception e)
             {

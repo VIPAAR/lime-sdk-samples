@@ -16,11 +16,23 @@ namespace HelpLightning.SDK.Sample.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField AuthTokenTextField { get; set; }
+        UIKit.UITextField authTokenTextField { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField ContactEmailTextField { get; set; }
+        UIKit.UITextField contactEmailTextField { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton createCallButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton getCallButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIActivityIndicatorView indicator { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -40,14 +52,29 @@ namespace HelpLightning.SDK.Sample.iOS
 
         void ReleaseDesignerOutlets ()
         {
-            if (AuthTokenTextField != null) {
-                AuthTokenTextField.Dispose ();
-                AuthTokenTextField = null;
+            if (authTokenTextField != null) {
+                authTokenTextField.Dispose ();
+                authTokenTextField = null;
             }
 
-            if (ContactEmailTextField != null) {
-                ContactEmailTextField.Dispose ();
-                ContactEmailTextField = null;
+            if (contactEmailTextField != null) {
+                contactEmailTextField.Dispose ();
+                contactEmailTextField = null;
+            }
+
+            if (createCallButton != null) {
+                createCallButton.Dispose ();
+                createCallButton = null;
+            }
+
+            if (getCallButton != null) {
+                getCallButton.Dispose ();
+                getCallButton = null;
+            }
+
+            if (indicator != null) {
+                indicator.Dispose ();
+                indicator = null;
             }
 
             if (PINTextField != null) {

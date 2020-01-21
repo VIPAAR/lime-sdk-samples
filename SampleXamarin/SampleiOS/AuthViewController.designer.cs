@@ -15,15 +15,19 @@ namespace HelpLightning.SDK.Sample.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton AuthButton { get; set; }
+        UIKit.UIButton authButton { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField ServerURLTextField { get; set; }
+        UIKit.UIActivityIndicatorView indicator { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField UserEmailTextField { get; set; }
+        UIKit.UITextField serverURLTextField { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField userEmailTextField { get; set; }
 
 
         [Action ("OnAuthenticate:")]
@@ -35,19 +39,24 @@ namespace HelpLightning.SDK.Sample.iOS
 
         void ReleaseDesignerOutlets ()
         {
-            if (AuthButton != null) {
-                AuthButton.Dispose ();
-                AuthButton = null;
+            if (authButton != null) {
+                authButton.Dispose ();
+                authButton = null;
             }
 
-            if (ServerURLTextField != null) {
-                ServerURLTextField.Dispose ();
-                ServerURLTextField = null;
+            if (indicator != null) {
+                indicator.Dispose ();
+                indicator = null;
             }
 
-            if (UserEmailTextField != null) {
-                UserEmailTextField.Dispose ();
-                UserEmailTextField = null;
+            if (serverURLTextField != null) {
+                serverURLTextField.Dispose ();
+                serverURLTextField = null;
+            }
+
+            if (userEmailTextField != null) {
+                userEmailTextField.Dispose ();
+                userEmailTextField = null;
             }
         }
     }

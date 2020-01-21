@@ -16,27 +16,35 @@ namespace HelpLightning.SDK.Sample.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField GSSServerURLTextField { get; set; }
+        UIKit.UITextField gssServerURLTextField { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField SessionIDTextField { get; set; }
+        UIKit.UIActivityIndicatorView indicator { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField SessionPINTextField { get; set; }
+        UIKit.UIButton joinButton { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextView SessionTokenTextView { get; set; }
+        UIKit.UITextField sessionIDTextField { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField UserAvatarTextField { get; set; }
+        UIKit.UITextField sessionPINTextField { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField UserNameTextField { get; set; }
+        UIKit.UITextView sessionTokenTextView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField userAvatarTextField { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField userNameTextField { get; set; }
 
         [Action ("OnCancel:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -48,34 +56,44 @@ namespace HelpLightning.SDK.Sample.iOS
 
         void ReleaseDesignerOutlets ()
         {
-            if (GSSServerURLTextField != null) {
-                GSSServerURLTextField.Dispose ();
-                GSSServerURLTextField = null;
+            if (gssServerURLTextField != null) {
+                gssServerURLTextField.Dispose ();
+                gssServerURLTextField = null;
             }
 
-            if (SessionIDTextField != null) {
-                SessionIDTextField.Dispose ();
-                SessionIDTextField = null;
+            if (indicator != null) {
+                indicator.Dispose ();
+                indicator = null;
             }
 
-            if (SessionPINTextField != null) {
-                SessionPINTextField.Dispose ();
-                SessionPINTextField = null;
+            if (joinButton != null) {
+                joinButton.Dispose ();
+                joinButton = null;
             }
 
-            if (SessionTokenTextView != null) {
-                SessionTokenTextView.Dispose ();
-                SessionTokenTextView = null;
+            if (sessionIDTextField != null) {
+                sessionIDTextField.Dispose ();
+                sessionIDTextField = null;
             }
 
-            if (UserAvatarTextField != null) {
-                UserAvatarTextField.Dispose ();
-                UserAvatarTextField = null;
+            if (sessionPINTextField != null) {
+                sessionPINTextField.Dispose ();
+                sessionPINTextField = null;
             }
 
-            if (UserNameTextField != null) {
-                UserNameTextField.Dispose ();
-                UserNameTextField = null;
+            if (sessionTokenTextView != null) {
+                sessionTokenTextView.Dispose ();
+                sessionTokenTextView = null;
+            }
+
+            if (userAvatarTextField != null) {
+                userAvatarTextField.Dispose ();
+                userAvatarTextField = null;
+            }
+
+            if (userNameTextField != null) {
+                userNameTextField.Dispose ();
+                userNameTextField = null;
             }
         }
     }
