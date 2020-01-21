@@ -34,6 +34,7 @@ namespace HelpLightning.SDK.Sample.iOS
 
         partial void OnJoinCall(UIButton sender)
         {
+            SetupTheme();
             CallManager.Instance.SessionID = sessionIDTextField.Text.Trim();
             CallManager.Instance.SessionToken = sessionTokenTextView.Text.Trim();
             CallManager.Instance.UserName = userNameTextField.Text.Trim();
@@ -72,6 +73,36 @@ namespace HelpLightning.SDK.Sample.iOS
         partial void OnCancel(UIBarButtonItem sender)
         {
             this.PresentingViewController.DismissViewController(true, null);
+        }
+
+        private void SetupTheme()
+        {
+            var index = themColorPicker.SelectedSegment;
+            Theme theme = null;
+            switch (index)
+            {
+                case 1:
+                    theme = new Theme();
+                    theme.SetColor(Theme.ColorMain, UIColor.DarkGray);
+                    theme.SetImage(Theme.ImageModeMenuFaceToFaceOn, UIImage.FromBundle("Lightning"));
+                    break;
+
+                case 2:
+                    theme = new Theme();
+                    theme.SetColor(Theme.ColorMain, UIColor.Orange);
+                    theme.SetImage(Theme.ImageModeMenuFaceToFaceOn, UIImage.FromBundle("03_contacts"));
+                    break;
+
+                case 3:
+                    theme = new Theme();
+                    theme.SetColor(Theme.ColorMain, UIColor.Purple);
+                    theme.SetImage(Theme.ImageModeMenuFaceToFaceOn, UIImage.FromBundle("03_contacts_active"));
+                    theme.SetImage(Theme.ImageModeMenuFaceToFaceOff, UIImage.FromBundle("Lightning"));
+                    break;
+                default:
+                    break;
+            }
+            CallClientFactory.Instance.CallClient.Theme = theme;
         }
     }
 }

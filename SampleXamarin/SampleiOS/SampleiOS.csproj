@@ -112,9 +112,21 @@
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
             <Visible>false</Visible>
         </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\03_contacts_active.imageset\03_contacts_active%403x.png" />
+        <ImageAsset Include="Assets.xcassets\03_contacts_active.imageset\03_contacts_active%402x.png" />
+        <ImageAsset Include="Assets.xcassets\03_contacts_active.imageset\03_contacts_active%401x.png" />
+        <ImageAsset Include="Assets.xcassets\03_contacts_active.imageset\Contents.json" />
+        <ImageAsset Include="Assets.xcassets\03_contacts.imageset\03_contacts%401x.png" />
+        <ImageAsset Include="Assets.xcassets\03_contacts.imageset\03_contacts%403x.png" />
+        <ImageAsset Include="Assets.xcassets\03_contacts.imageset\Contents.json" />
+        <ImageAsset Include="Assets.xcassets\03_contacts.imageset\03_contacts%402x.png" />
+        <ImageAsset Include="Assets.xcassets\Lightning.imageset\IconMask-40HL.png" />
+        <ImageAsset Include="Assets.xcassets\Lightning.imageset\IconMask-80HL.png" />
+        <ImageAsset Include="Assets.xcassets\Lightning.imageset\Contents.json" />
+        <ImageAsset Include="Assets.xcassets\Lightning.imageset\IconMask-120HL.png" />
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Resources\" />
+        <Folder Include="Assets.xcassets\Lightning.imageset\" />
     </ItemGroup>
     <ItemGroup>
         <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -149,12 +161,22 @@
         </Compile>
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="HelpLightning.SDK">
-        <Version>0.9.10</Version>
-      </PackageReference>
       <PackageReference Include="Newtonsoft.Json">
         <Version>12.0.3</Version>
       </PackageReference>
+      <PackageReference Include="HelpLightning.SDK">
+        <Version>0.9.10</Version>
+      </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\lime-sdk-xamarin\hxie-work\XamarinBindings\HLSDK.iOS\HLSDK.iOS.csproj">
+        <Project>{CF9E080A-629D-49D9-BC27-2B0002D81F63}</Project>
+        <Name>HLSDK.iOS</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\..\..\..\lime-sdk-xamarin\hxie-work\XamarinBindings\HLSDK.iOS.Binding\HLSDK.iOS.Binding.csproj">
+        <Project>{32704AC6-B435-4D88-A152-1A1B00882343}</Project>
+        <Name>HLSDK.iOS.Binding</Name>
+      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -24,8 +24,12 @@ NSString* const kDefaultUserName = @"small_u13";
 @property (nonatomic, retain) IBOutlet UITextField *userAvatarTextField;
 
 @property (nonatomic, retain) IBOutlet UITextField *userNameTextField;
+
 @property (weak, nonatomic) IBOutlet UIButton *joinButton;
+
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *themColorPicker;
 
 @end
 
@@ -49,6 +53,8 @@ NSString* const kDefaultUserName = @"small_u13";
 }
 
 - (IBAction)OnJoinCall:(UIButton *)sender {
+    [self _setupTheme];
+    
     CallManager.sharedInstance.sessionID = self.sessionIDTextField.text;
     CallManager.sharedInstance.sessionToken = self.sessionTokenTextView.text;
     CallManager.sharedInstance.userName = self.userNameTextField.text;
@@ -73,6 +79,32 @@ NSString* const kDefaultUserName = @"small_u13";
         self.indicator.hidden = TRUE;
         self.joinButton.enabled = TRUE;
     });
+}
+
+- (void) _setupTheme {
+    NSInteger index = self.themColorPicker.selectedSegmentIndex;
+    HLTheme* theme = nil;
+    switch (index) {
+        case 1:
+            theme = [HLTheme new];
+            [theme setColor:kHLMainColor color:UIColor.darkGrayColor];
+            [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"Lightning"]];
+            break;
+        case 2:
+            theme = [HLTheme new];
+            [theme setColor:kHLMainColor color:UIColor.orangeColor];
+            [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"03_contacts"]];
+            break;
+        case 3:
+            theme = [HLTheme new];
+            [theme setColor:kHLMainColor color:UIColor.purpleColor];
+            [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"03_contacts_active"]];
+            [theme setImage:kHLImageModeMenuFaceToFaceOff image:[UIImage imageNamed:@"Lightning"]];
+            break;
+        default:
+            break;
+    }
+    [HLClient.sharedInstance setTheme:theme];
 }
 
 @end
