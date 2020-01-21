@@ -11,22 +11,15 @@
 		C77C0C4E2382895500D20259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C0C4D2382895500D20259 /* AppDelegate.swift */; };
 		C77C0C552382895600D20259 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C77C0C542382895600D20259 /* Assets.xcassets */; };
 		C77C0C582382895600D20259 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C77C0C562382895600D20259 /* LaunchScreen.storyboard */; };
+		C7854D9E23D70C3A002A673C /* CallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7854D9423D70C39002A673C /* CallManager.m */; };
+		C7854D9F23D70C3A002A673C /* HLServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C7854D9523D70C39002A673C /* HLServerClient.m */; };
+		C7854DA023D70C3A002A673C /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7854D9823D70C3A002A673C /* AuthViewController.m */; };
+		C7854DA123D70C3A002A673C /* JoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7854D9A23D70C3A002A673C /* JoinViewController.m */; };
+		C7854DA223D70C3A002A673C /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7854D9D23D70C3A002A673C /* SetupViewController.m */; };
+		C7854DA423D71007002A673C /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7854DA323D71007002A673C /* JoinViewController.swift */; };
 		C7E904002382A2D400F2795C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7E903FE2382A2D400F2795C /* Main.storyboard */; };
 		C7E904142382A78700F2795C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E904122382A53E00F2795C /* ViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		C76AF2B223828A2F008CBC49 /* Embed PlugIns */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			name = "Embed PlugIns";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		307D980F12CEC5084850BF69 /* Pods-SampleSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleSwift.release.xcconfig"; path = "../SampleSwift/Pods/Target Support Files/Pods-SampleSwift/Pods-SampleSwift.release.xcconfig"; sourceTree = "<group>"; };
@@ -36,6 +29,21 @@
 		C77C0C542382895600D20259 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C77C0C572382895600D20259 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C77C0C592382895600D20259 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7854D8923D70AF2002A673C /* HLSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HLSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7854D8A23D70AF2002A673C /* HLSDKResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = HLSDKResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7854D8B23D70AF2002A673C /* HLSDKSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HLSDKSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7854D9323D70C39002A673C /* SampleSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SampleSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		C7854D9423D70C39002A673C /* CallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallManager.m; sourceTree = "<group>"; };
+		C7854D9523D70C39002A673C /* HLServerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLServerClient.m; sourceTree = "<group>"; };
+		C7854D9623D70C39002A673C /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
+		C7854D9723D70C3A002A673C /* HLServerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLServerClient.h; sourceTree = "<group>"; };
+		C7854D9823D70C3A002A673C /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
+		C7854D9923D70C3A002A673C /* JoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinViewController.h; sourceTree = "<group>"; };
+		C7854D9A23D70C3A002A673C /* JoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinViewController.m; sourceTree = "<group>"; };
+		C7854D9B23D70C3A002A673C /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
+		C7854D9C23D70C3A002A673C /* CallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallManager.h; sourceTree = "<group>"; };
+		C7854D9D23D70C3A002A673C /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
+		C7854DA323D71007002A673C /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		C7E903FF2382A2D400F2795C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7E904122382A53E00F2795C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FDE93A1534AAB29F46E8387C /* libPods-SampleSwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleSwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,12 +92,24 @@
 		C77C0C4C2382895500D20259 /* SampleSwift */ = {
 			isa = PBXGroup;
 			children = (
+				C7854D9623D70C39002A673C /* AuthViewController.h */,
+				C7854D9823D70C3A002A673C /* AuthViewController.m */,
+				C7854D9C23D70C3A002A673C /* CallManager.h */,
+				C7854D9423D70C39002A673C /* CallManager.m */,
+				C7854D9723D70C3A002A673C /* HLServerClient.h */,
+				C7854D9523D70C39002A673C /* HLServerClient.m */,
+				C7854D9923D70C3A002A673C /* JoinViewController.h */,
+				C7854D9A23D70C3A002A673C /* JoinViewController.m */,
+				C7854D9B23D70C3A002A673C /* SetupViewController.h */,
+				C7854D9D23D70C3A002A673C /* SetupViewController.m */,
+				C7854DA323D71007002A673C /* JoinViewController.swift */,
 				C7E904122382A53E00F2795C /* ViewController.swift */,
 				C77C0C4D2382895500D20259 /* AppDelegate.swift */,
 				C7E903FE2382A2D400F2795C /* Main.storyboard */,
 				C77C0C542382895600D20259 /* Assets.xcassets */,
 				C77C0C562382895600D20259 /* LaunchScreen.storyboard */,
 				C77C0C592382895600D20259 /* Info.plist */,
+				C7854D9323D70C39002A673C /* SampleSwift-Bridging-Header.h */,
 			);
 			path = SampleSwift;
 			sourceTree = "<group>";
@@ -97,6 +117,9 @@
 		F1BFC138A15E3AE81F505288 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7854D8923D70AF2002A673C /* HLSDK.framework */,
+				C7854D8A23D70AF2002A673C /* HLSDKResources.bundle */,
+				C7854D8B23D70AF2002A673C /* HLSDKSwift.framework */,
 				FDE93A1534AAB29F46E8387C /* libPods-SampleSwift.a */,
 			);
 			name = Frameworks;
@@ -114,7 +137,6 @@
 				C77C0C472382895500D20259 /* Frameworks */,
 				C77C0C482382895500D20259 /* Resources */,
 				DB55D4E119FDC2B7B4FCE901 /* [CP] Copy Pods Resources */,
-				C76AF2B223828A2F008CBC49 /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
@@ -137,6 +159,7 @@
 				TargetAttributes = {
 					C77C0C492382895500D20259 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -220,7 +243,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E904142382A78700F2795C /* ViewController.swift in Sources */,
+				C7854DA023D70C3A002A673C /* AuthViewController.m in Sources */,
+				C7854DA423D71007002A673C /* JoinViewController.swift in Sources */,
+				C7854DA223D70C3A002A673C /* SetupViewController.m in Sources */,
+				C7854D9F23D70C3A002A673C /* HLServerClient.m in Sources */,
 				C77C0C4E2382895500D20259 /* AppDelegate.swift in Sources */,
+				C7854DA123D70C3A002A673C /* JoinViewController.m in Sources */,
+				C7854D9E23D70C3A002A673C /* CallManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +396,7 @@
 			baseConfigurationReference = A857291B395899E856B258F9 /* Pods-SampleSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = VGG743YS65;
@@ -383,6 +413,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SampleSwift/SampleSwift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -393,6 +425,7 @@
 			baseConfigurationReference = 307D980F12CEC5084850BF69 /* Pods-SampleSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = VGG743YS65;
@@ -409,6 +442,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SampleSwift/SampleSwift-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
