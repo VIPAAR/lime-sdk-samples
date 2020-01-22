@@ -88,18 +88,59 @@ NSString* const kDefaultUserName = @"small_u13";
         case 1:
             theme = [HLTheme new];
             [theme setColor:kHLMainColor color:UIColor.darkGrayColor];
-            [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"Lightning"]];
             break;
         case 2:
             theme = [HLTheme new];
             [theme setColor:kHLMainColor color:UIColor.orangeColor];
-            [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"03_contacts"]];
             break;
         case 3:
             theme = [HLTheme new];
             [theme setColor:kHLMainColor color:UIColor.purpleColor];
-            [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"03_contacts_active"]];
+            
+            //main menu
+            [theme setImage:kHLImageMainMenuDocumentOff image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageMainMenuDocumentOn image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageMainMenuTorchOff image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageMainMenuTorchOn image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageMainMenu image:[UIImage imageNamed:@"Lightning"]];
+
+            //mode
+            [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageModeMenuFaceToFaceOff image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageModeMenuReceiverOn image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageModeMenuReceiverOff image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageModeMenuGiverOn image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageModeMenuGiverOff image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageCameraMenuPhotoOn image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageCameraMenuPhotoOff image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageCameraMenuFreezeOn image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageCameraMenuFreezeOff image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageCameraMenuCameraOff image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageCameraMenuSwitchCamera image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageCameraMenuFrontCameraOn image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageCameraMenuFrontCameraOff image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageCameraMenuBackCameraOn image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageCameraMenuBackCameraOff image:[UIImage imageNamed:@"Lightning"]];
+
+            //mic
+            [theme setImage:kHLImageMicOn image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageMicOff image:[UIImage imageNamed:@"Lightning"]];
+
+            //telestration
+            [theme setImage:kHLImageTelestrationMenuColorUnselected image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageTelestrationMenuColorSelected image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageTelestrationMenuArrowOn image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageTelestrationMenuArrowOff image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageTelestrationMenuPenOn image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageTelestrationMenuPenOff image:[UIImage imageNamed:@"Lightning"]];
+
+            //clear
+            [theme setImage:kHLImageTelestrationUndo image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageTelestrationClearAll image:[UIImage imageNamed:@"Lightning"]];
+
+            //end call
+            [theme setImage:kHLImageEndCall image:[UIImage imageNamed:@"Lightning"]];
+
             break;
         default:
             break;

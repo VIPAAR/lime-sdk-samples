@@ -72,16 +72,55 @@ class JoinViewController: UIViewController {
             case 1:
                 theme = HLTheme()
                 theme?.setColor(kHLMainColor, color: UIColor.darkGray)
-                theme?.setImage(kHLImageModeMenuFaceToFaceOn, image: UIImage(named: "Lightning"))
             case 2:
                 theme = HLTheme()
                 theme?.setColor(kHLMainColor, color: UIColor.orange)
-                theme?.setImage(kHLImageModeMenuFaceToFaceOn, image: UIImage(named: "03_contacts"))
             case 3:
                 theme = HLTheme()
                 theme?.setColor(kHLMainColor, color: UIColor.purple)
-                theme?.setImage(kHLImageModeMenuFaceToFaceOn, image: UIImage(named: "03_contacts_active"))
+                //main menu
+                theme?.setImage(kHLImageMainMenuDocumentOff, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageMainMenuDocumentOn, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageMainMenuTorchOff, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageMainMenuTorchOn, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageMainMenu, image: UIImage(named: "Lightning"))
+
+                //mode
+                theme?.setImage(kHLImageModeMenuFaceToFaceOn, image: UIImage(named: "Lightning"))
                 theme?.setImage(kHLImageModeMenuFaceToFaceOff, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageModeMenuReceiverOn, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageModeMenuReceiverOff, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageModeMenuGiverOn, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageModeMenuGiverOff, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageCameraMenuPhotoOn, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageCameraMenuPhotoOff, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageCameraMenuFreezeOn, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageCameraMenuFreezeOff, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageCameraMenuCameraOff, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageCameraMenuSwitchCamera, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageCameraMenuFrontCameraOn, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageCameraMenuFrontCameraOff, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageCameraMenuBackCameraOn, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageCameraMenuBackCameraOff, image: UIImage(named: "Lightning"))
+
+                //mic
+                theme?.setImage(kHLImageMicOn, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageMicOff, image: UIImage(named: "Lightning"))
+
+                //telestration
+                theme?.setImage(kHLImageTelestrationMenuColorUnselected, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageTelestrationMenuColorSelected, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageTelestrationMenuArrowOn, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageTelestrationMenuArrowOff, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageTelestrationMenuPenOn, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageTelestrationMenuPenOff, image: UIImage(named: "Lightning"))
+
+                //clear
+                theme?.setImage(kHLImageTelestrationUndo, image: UIImage(named: "Lightning"))
+                theme?.setImage(kHLImageTelestrationClearAll, image: UIImage(named: "Lightning"))
+
+                //end call
+                theme?.setImage(kHLImageEndCall, image: UIImage(named: "Lightning"))
             default:
                 break
         }
