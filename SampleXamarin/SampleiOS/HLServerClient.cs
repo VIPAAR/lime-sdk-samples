@@ -5,7 +5,6 @@ using System.Net;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 
-
 namespace HelpLightning.SDK.Sample
 {
     public class HLServerClient
@@ -94,12 +93,19 @@ namespace HelpLightning.SDK.Sample
                     }
                 }
             }
-            using (var response = await httpWebRequest.GetResponseAsync())
+            using (var response = (HttpWebResponse)await httpWebRequest.GetResponseAsync())
             {
-                using (var streamReader = new StreamReader(response.GetResponseStream()))
+                if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    var responseText = streamReader.ReadToEnd();
-                    return JObject.Parse(responseText);
+                    throw new Exception("Failed to perform the request. Failed code:" + response.StatusCode.ToString());
+                }
+                else
+                {
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        return JObject.Parse(responseText);
+                    }
                 }
             }
         }

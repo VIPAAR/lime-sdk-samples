@@ -112,9 +112,21 @@
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
             <Visible>false</Visible>
         </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\03_contacts_active.imageset\03_contacts_active%403x.png" />
+        <ImageAsset Include="Assets.xcassets\03_contacts_active.imageset\03_contacts_active%402x.png" />
+        <ImageAsset Include="Assets.xcassets\03_contacts_active.imageset\03_contacts_active%401x.png" />
+        <ImageAsset Include="Assets.xcassets\03_contacts_active.imageset\Contents.json" />
+        <ImageAsset Include="Assets.xcassets\03_contacts.imageset\03_contacts%401x.png" />
+        <ImageAsset Include="Assets.xcassets\03_contacts.imageset\03_contacts%403x.png" />
+        <ImageAsset Include="Assets.xcassets\03_contacts.imageset\Contents.json" />
+        <ImageAsset Include="Assets.xcassets\03_contacts.imageset\03_contacts%402x.png" />
+        <ImageAsset Include="Assets.xcassets\Lightning.imageset\IconMask-40HL.png" />
+        <ImageAsset Include="Assets.xcassets\Lightning.imageset\IconMask-80HL.png" />
+        <ImageAsset Include="Assets.xcassets\Lightning.imageset\Contents.json" />
+        <ImageAsset Include="Assets.xcassets\Lightning.imageset\IconMask-120HL.png" />
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Resources\" />
+        <Folder Include="Assets.xcassets\Lightning.imageset\" />
     </ItemGroup>
     <ItemGroup>
         <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -149,11 +161,11 @@
         </Compile>
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="HelpLightning.SDK">
-        <Version>0.9.10</Version>
-      </PackageReference>
       <PackageReference Include="Newtonsoft.Json">
         <Version>12.0.3</Version>
+      </PackageReference>
+      <PackageReference Include="HelpLightning.SDK">
+        <Version>0.9.11</Version>
       </PackageReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

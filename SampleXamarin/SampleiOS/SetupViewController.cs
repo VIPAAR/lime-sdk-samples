@@ -100,23 +100,26 @@ namespace HelpLightning.SDK.Sample.iOS
                 var task = HLServerClient.Instance.GetCall(pin, CallManager.Instance.AuthToken);
                 task.ContinueWith(t =>
                 {
-                    if (t.IsCompleted)
+                    DispatchQueue.MainQueue.DispatchAsync(() =>
                     {
-                        var json = task.Result;
-                        CallManager.Instance.SessionID = json["session_id"][0].ToString();
-                        CallManager.Instance.SessionToken = json["session_token"].ToString();
-                        CallManager.Instance.UserToken = json["user_token"].ToString();
-                        CallManager.Instance.GssServerURL = json["url"].ToString();
+                        if (t.IsCompleted)
+                        {
+                            var json = task.Result;
+                            CallManager.Instance.SessionID = json["session_id"][0].ToString();
+                            CallManager.Instance.SessionToken = json["session_token"].ToString();
+                            CallManager.Instance.UserToken = json["user_token"].ToString();
+                            CallManager.Instance.GssServerURL = json["url"].ToString();
 
-                        PerformSegue("segueOpenJoinScreen2", this);
-                    }
-                    else
-                    {
-                        Console.Error.WriteLine("Cannot Create a Call: " + t.Exception);
-                    }
-                    createCallButton.Enabled = true;
-                    getCallButton.Enabled = true;
-                    indicator.Hidden = true;
+                            PerformSegue("segueOpenJoinScreen2", this);
+                        }
+                        else
+                        {
+                            Console.Error.WriteLine("Cannot Create a Call: " + t.Exception);
+                        }
+                        createCallButton.Enabled = true;
+                        getCallButton.Enabled = true;
+                        indicator.Hidden = true;
+                    });
                 });
             }
             catch (Exception e)

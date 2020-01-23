@@ -40,6 +40,10 @@ namespace HelpLightning.SDK.Sample.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISegmentedControl themColorPicker { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField userAvatarTextField { get; set; }
 
         [Outlet]
@@ -84,6 +88,11 @@ namespace HelpLightning.SDK.Sample.iOS
             if (sessionTokenTextView != null) {
                 sessionTokenTextView.Dispose ();
                 sessionTokenTextView = null;
+            }
+
+            if (themColorPicker != null) {
+                themColorPicker.Dispose ();
+                themColorPicker = null;
             }
 
             if (userAvatarTextField != null) {

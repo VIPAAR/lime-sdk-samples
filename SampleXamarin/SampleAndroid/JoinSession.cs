@@ -1,16 +1,15 @@
 ﻿
 using System;
 using System.Threading.Tasks;
-using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using HelpLightning.SDK;
 using Newtonsoft.Json.Linq;
+using Fragment = Android.Support.V4.App.Fragment;
 
-namespace SampleAndroid
+namespace HelpLightning.SDK.Sample.Android
 {
-    public class JoinSession : Android.Support.V4.App.Fragment, ICallClientDelegate
+    public class JoinSession : Fragment, ICallClientDelegate
     {
         private static String ARG_PARAM1 = "user_token";
         private static String ARG_PARAM2 = "mode";
@@ -45,12 +44,12 @@ namespace SampleAndroid
             if (mode.Equals("call_contact"))
             {
                 rootView.FindViewById<View>(Resource.Id.pin_layout).Visibility = ViewStates.Gone;
-                pinCode.Visibility = Android.Views.ViewStates.Invisible;
+                pinCode.Visibility = ViewStates.Invisible;
             }
             else if (mode.Equals("call_pin_code"))
             {
                 rootView.FindViewById<View>(Resource.Id.contact_email_layout).Visibility = ViewStates.Gone;
-                contact.Visibility = Android.Views.ViewStates.Invisible;
+                contact.Visibility = ViewStates.Invisible;
             }
 
             rootView.FindViewById(Resource.Id.btn_start_call).Click += async (sender, e) =>
@@ -63,13 +62,13 @@ namespace SampleAndroid
                         if (mode.Equals("call_contact") && pin.Equals(""))
                         {
                             string dialerEmail = contact.Text;
-                            json = await HLServer.Instance.CreateCall(userToken, contact.Text);
+                            json = await HLServerClient.Instance.CreateCall(userToken, contact.Text);
                             pinCodeView.Text = "You can share pin code with: " + json["sid"].ToString();
                         }
                         else if (mode.Equals("call_pin_code"))
                         {
                             pin = pinCode.Text;
-                            json = await HLServer.Instance.GetCall(pin, userToken);
+                            json = await HLServerClient.Instance.GetCall(pin, userToken);
                         }
 
                         currentCallData = new Call
@@ -109,10 +108,10 @@ namespace SampleAndroid
 
         private void JoinCall(Call call)
         {
-            rootView.FindViewById(Resource.Id.progressBar_cyclic).Visibility = Android.Views.ViewStates.Visible;
+            rootView.FindViewById(Resource.Id.progressBar_cyclic).Visibility = ViewStates.Visible;
             Task<bool> task = CallClientFactory.Instance.CallClient.StartCall(call, rootView.Context);
             task.ContinueWith(t => {
-                rootView.FindViewById(Resource.Id.progressBar_cyclic).Visibility = Android.Views.ViewStates.Invisible;
+                rootView.FindViewById(Resource.Id.progressBar_cyclic).Visibility = ViewStates.Invisible;
                 if (t.IsCompleted)
                 {
                     Console.WriteLine("The call has started: " + t.Result);
@@ -126,7 +125,7 @@ namespace SampleAndroid
 
         private void StopCall()
         {
-            rootView.FindViewById(Resource.Id.progressBar_cyclic).Visibility = Android.Views.ViewStates.Invisible;
+            rootView.FindViewById(Resource.Id.progressBar_cyclic).Visibility = ViewStates.Invisible;
             Task<bool> task = CallClientFactory.Instance.CallClient.StopCurrentCall();
             task.ContinueWith(t => {
                 if (t.IsCompleted)

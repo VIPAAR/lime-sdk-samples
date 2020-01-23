@@ -79,7 +79,7 @@ PODS:
   - vipaar-tinyspline (1.0.0)
 
 DEPENDENCIES:
-  - HLSDK (from `https://github.com/VIPAAR/lime-ios-sdk.git`, tag `0.9.7`)
+  - HLSDK (from `https://github.com/VIPAAR/lime-ios-sdk.git`, branch `feature/IOSSDK-10`)
   - PromisesObjC (= 1.2.8)
   - PromisesSwift (= 1.2.8)
 
@@ -108,13 +108,13 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   HLSDK:
+    :branch: feature/IOSSDK-10
     :git: https://github.com/VIPAAR/lime-ios-sdk.git
-    :tag: 0.9.7
 
 CHECKOUT OPTIONS:
   HLSDK:
+    :commit: 967bae825385c6df6ef6ff133c9c2381dca009b6
     :git: https://github.com/VIPAAR/lime-ios-sdk.git
-    :tag: 0.9.7
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
@@ -138,6 +138,6 @@ SPEC CHECKSUMS:
   vipaar-reachability: 05dea9613e5126628ae69b1f1ed50866a2a9ecad
   vipaar-tinyspline: d8565207b0c1714bac044a488b4308ca690b52f9
 
-PODFILE CHECKSUM: 97c6cfa2e39d6b74436ab073ace45bbf81402748
+PODFILE CHECKSUM: 16bbd6c40858728829099b84abf53132625f756c
 
 COCOAPODS: 1.8.4

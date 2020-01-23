@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
-using Android.Content.Res;
-using HelpLightning.SDK;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace SampleAndroid
+namespace HelpLightning.SDK.Sample
 {
-    public class HLServer
+    public class HLServerClient
     {
-        private static HLServer instance;
+        private static HLServerClient instance;
 
-        public static HLServer Instance
+        public static HLServerClient Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new HLServer();
+                    instance = new HLServerClient();
                 }
                 return instance;
             }
@@ -96,11 +93,18 @@ namespace SampleAndroid
                     }
                 }
             }
-            using (var response = await httpWebRequest.GetResponseAsync()) {
-                using (var streamReader = new StreamReader(response.GetResponseStream()))
+            using (var response = (HttpWebResponse)await httpWebRequest.GetResponseAsync()) {
+                if(response.StatusCode != HttpStatusCode.OK)
                 {
-                    var responseText = streamReader.ReadToEnd();
-                    return JObject.Parse(responseText);
+                    throw new Exception("Failed to perform the request. Failed code:" + response.StatusCode.ToString());
+                }
+                else
+                {
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var responseText = streamReader.ReadToEnd();
+                        return JObject.Parse(responseText);
+                    }
                 }
             }
         }

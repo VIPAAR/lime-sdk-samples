@@ -1,9 +1,27 @@
-// WARNING
-// This file has been generated automatically by Visual Studio to
-// mirror C# types. Changes in this file made by drag-connecting
-// from the UI designer will be synchronized back to C#, but
-// more complex manual changes may not transfer correctly.
-
+/* -*- Mode:objc; c-basic-offset: 4; indent-tabs-mode: nil; -*- */
+/*
+ **
+ ** Copyright (c) 2020 VIPAAR, LLC all rights reserved.
+ **
+ ** Any commercial use of this software is subject to license
+ ** agreement. Disclosure of the information contained herein to any
+ ** third parties is prohibited without prior written consent. This
+ ** software is subject to US export control regulations.
+ **
+ ** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ ** ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ ** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ ** FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ ** AUTHORS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ ** INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ ** (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ ** SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ ** INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ ** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ ** NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ ** THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ **
+ */
 
 #import "JoinViewController.h"
 #import "HLServerClient.h"
@@ -12,7 +30,7 @@
 
 NSString* const kDefaultUserName = @"small_u13";
 
-@interface JoinViewController ()
+@interface JoinViewController1 ()
 @property (nonatomic, retain) IBOutlet UITextField *gssServerURLTextField;
 
 @property (nonatomic, retain) IBOutlet UITextField *sessionIDTextField;
@@ -33,7 +51,7 @@ NSString* const kDefaultUserName = @"small_u13";
 
 @end
 
-@implementation JoinViewController
+@implementation JoinViewController1
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -88,59 +106,18 @@ NSString* const kDefaultUserName = @"small_u13";
         case 1:
             theme = [HLTheme new];
             [theme setColor:kHLMainColor color:UIColor.darkGrayColor];
+            [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"Lightning"]];
             break;
         case 2:
             theme = [HLTheme new];
             [theme setColor:kHLMainColor color:UIColor.orangeColor];
+            [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"03_contacts"]];
             break;
         case 3:
             theme = [HLTheme new];
             [theme setColor:kHLMainColor color:UIColor.purpleColor];
-            
-            //main menu
-            [theme setImage:kHLImageMainMenuDocumentOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageMainMenuDocumentOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageMainMenuTorchOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageMainMenuTorchOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageMainMenu image:[UIImage imageNamed:@"Lightning"]];
-
-            //mode
-            [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"03_contacts_active"]];
             [theme setImage:kHLImageModeMenuFaceToFaceOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageModeMenuReceiverOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageModeMenuReceiverOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageModeMenuGiverOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageModeMenuGiverOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuPhotoOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuPhotoOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuFreezeOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuFreezeOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuCameraOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuSwitchCamera image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuFrontCameraOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuFrontCameraOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuBackCameraOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuBackCameraOff image:[UIImage imageNamed:@"Lightning"]];
-
-            //mic
-            [theme setImage:kHLImageMicOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageMicOff image:[UIImage imageNamed:@"Lightning"]];
-
-            //telestration
-            [theme setImage:kHLImageTelestrationMenuColorUnselected image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenuColorSelected image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenuArrowOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenuArrowOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenuPenOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenuPenOff image:[UIImage imageNamed:@"Lightning"]];
-
-            //clear
-            [theme setImage:kHLImageTelestrationUndo image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationClearAll image:[UIImage imageNamed:@"Lightning"]];
-
-            //end call
-            [theme setImage:kHLImageEndCall image:[UIImage imageNamed:@"Lightning"]];
-
             break;
         default:
             break;
