@@ -2256,16 +2256,22 @@ namespace HelpLightning.SDK.Sample.Android
 			public const int tooltip_background_light = 2131034262;
 			
 			// aapt resource value: 0x7F050097
-			public const int transparent = 2131034263;
+			public const int translucent_scrim_bottom = 2131034263;
 			
 			// aapt resource value: 0x7F050098
-			public const int white = 2131034264;
+			public const int translucent_scrim_bottom_center = 2131034264;
 			
 			// aapt resource value: 0x7F050099
-			public const int white_pressed = 2131034265;
+			public const int transparent = 2131034265;
 			
 			// aapt resource value: 0x7F05009A
-			public const int windowBackground = 2131034266;
+			public const int white = 2131034266;
+			
+			// aapt resource value: 0x7F05009B
+			public const int white_pressed = 2131034267;
+			
+			// aapt resource value: 0x7F05009C
+			public const int windowBackground = 2131034268;
 			
 			static Color()
 			{
