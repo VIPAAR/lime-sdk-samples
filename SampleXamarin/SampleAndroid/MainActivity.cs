@@ -1,15 +1,13 @@
 ﻿using Android.App;
 using Android.OS;
-using Android.Widget;
 using Android.Support.V7.App;
-using Android.Content;
 using System;
 using Android;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using Android.Content.PM;
 
-namespace SampleAndroid
+namespace HelpLightning.SDK.Sample.Android
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
@@ -28,6 +26,40 @@ namespace SampleAndroid
             //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
+
+            CallClientFactory.Instance.CallClient.Theme = new Theme()
+                    //.SetImage(HelpLightning.SDK.Theme.ImageCameraMenuBackCameraOff, Resource.Drawable.image_test)
+                    //.SetImage(HelpLightning.SDK.Theme.ImageCameraMenuBackCameraOn, Resource.Drawable.image_test)
+                   // .SetImage(HelpLightning.SDK.Theme.ImageCameraMenuCameraOff, Resource.Drawable.image_test)
+                   // .SetImage(HelpLightning.SDK.Theme.ImageCameraMenuFreezeOff, Resource.Drawable.image_test)
+                    //.SetImage(HelpLightning.SDK.Theme.ImageCameraMenuFreezeOn, Resource.Drawable.image_test)
+                   // .SetImage(HelpLightning.SDK.Theme.ImageCameraMenuFrontCameraOff, Resource.Drawable.image_test)
+                   // .SetImage(HelpLightning.SDK.Theme.ImageCameraMenuFrontCameraOn, Resource.Drawable.image_test)
+                   // .SetImage(HelpLightning.SDK.Theme.ImageCameraMenuPhotoOff, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageCameraMenuPhotoOn, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageCameraMenuSwitchCamera, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageMainMenuDocumentOff, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageMainMenuDocumentOn, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageMainMenuTorchOff, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageMainMenuTorchOn, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageMicOff, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageMicOn, Resource.Drawable.image_test)
+                   // .SetImage(HelpLightning.SDK.Theme.ImageModeMenuFaceToFaceOff, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageModeMenuFaceToFaceOn, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageModeMenuGiverOff, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageModeMenuGiverOn, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageModeMenuReceiverOff, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageModeMenuReceiverOn, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageTelestrationClearAll, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageTelestrationMenuArrowOff, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageTelestrationMenuArrowOn, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageTelestrationMenuColorSelected, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageTelestrationMenuColorUnselected, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageTelestrationMenuPenOff, Resource.Drawable.image_test)
+                  //  .SetImage(HelpLightning.SDK.Theme.ImageTelestrationMenuPenOn, Resource.Drawable.image_test)
+                 //   .SetImage(HelpLightning.SDK.Theme.ImageTelestrationUndo, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageEndCall, ContextCompat.GetDrawable(this.BaseContext, Resource.Drawable.image_test))
+                    .SetImage(HelpLightning.SDK.Theme.ImageMainMenu, Resource.Drawable.image_test);
 
             SupportFragmentManager
                 .BeginTransaction()
@@ -67,8 +99,7 @@ namespace SampleAndroid
 
         public void JoinSessionClicked(string mode, string userToken)
         {
-            Android.Support.V4.App.FragmentManager fm = base.SupportFragmentManager;
-            Android.Support.V4.App.FragmentTransaction ft = fm.BeginTransaction();
+            var ft = base.SupportFragmentManager.BeginTransaction();
             JoinSession fragment = new JoinSession();
             Bundle args = new Bundle();
             args.PutString("user_token", userToken);

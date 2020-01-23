@@ -96,12 +96,19 @@ namespace HelpLightning.SDK.Sample
             }
             using (var response = await httpWebRequest.GetResponseAsync())
             {
-                using (var streamReader = new StreamReader(response.GetResponseStream()))
-                {
-                    var responseText = streamReader.ReadToEnd();
-                    return JObject.Parse(responseText);
-                }
-            }
+				if (response.StatusCode != HttpStatusCode.OK)
+				{
+					throw new Exception("Failed to perform the request. Failed code:" + response.StatusCode.ToString());
+				}
+				else
+				{
+					using (var streamReader = new StreamReader(response.GetResponseStream()))
+					{
+						var responseText = streamReader.ReadToEnd();
+						return JObject.Parse(responseText);
+					}
+				}
+			}
         }
     }
 }
