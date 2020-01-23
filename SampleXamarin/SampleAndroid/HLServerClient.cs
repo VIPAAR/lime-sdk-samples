@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
-using Android.Content.Res;
-using HelpLightning.SDK;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace HelpLightning.SDK.Sample.Android
+namespace HelpLightning.SDK.Sample
 {
     public class HLServerClient
     {
