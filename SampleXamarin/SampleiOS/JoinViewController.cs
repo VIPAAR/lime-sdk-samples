@@ -6,12 +6,14 @@ using CoreFoundation;
 
 namespace HelpLightning.SDK.Sample.iOS
 {
-    public partial class JoinViewController : UIViewController
+    public partial class JoinViewController : UIViewController, ICallClientDelegate
     {
         private static readonly string DefaultUserName = "small_u13";
+        private static readonly string HLApiKey = "9BoKBM2MQ27nPdHW0XckRw";
 
         public JoinViewController(IntPtr handle) : base(handle)
         {
+            CallClientFactory.Instance.CallClient.Delegate = this;
         }
 
         public override void ViewDidLoad()
@@ -45,7 +47,9 @@ namespace HelpLightning.SDK.Sample.iOS
                 CallManager.Instance.SessionToken,
                 CallManager.Instance.UserToken,
                 CallManager.Instance.GssServerURL,
-                CallManager.Instance.UserName, CallManager.Instance.UserAvatar);
+                HLApiKey,
+                CallManager.Instance.UserName,
+                CallManager.Instance.UserAvatar);
 
             joinButton.Enabled = false;
             indicator.Hidden = false;
@@ -130,11 +134,26 @@ namespace HelpLightning.SDK.Sample.iOS
                     theme.SetImage(Theme.ImageTelestrationClearAll, UIImage.FromBundle("Lightning"));
 
                     theme.SetImage(Theme.ImageEndCall, UIImage.FromBundle("Lightning"));
+
+                    theme.SetImage(Theme.imageScreenCaptureButton1, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.imageScreenCaptureButton2, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.imageScreenCaptureButton3, UIImage.FromBundle("Lightning"));
                     break;
                 default:
                     break;
             }
             CallClientFactory.Instance.CallClient.Theme = theme;
+        }
+
+        public void OnCallEnded(Call call, string reason)
+        {
+            Console.WriteLine("Call Ended");
+        }
+
+        public void OnScreenCaptureCreated(Call call, object image)
+        {
+            Console.WriteLine("Screen Captured");
+            imagePreview.Image = (UIImage)image;
         }
     }
 }

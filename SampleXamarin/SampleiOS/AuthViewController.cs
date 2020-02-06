@@ -8,7 +8,7 @@ namespace HelpLightning.SDK.Sample.iOS
 
     public partial class AuthViewController : UIViewController
     {
-        private static readonly string DefaultServerURL = "http://10.3.2.28:8777";
+        private static readonly string DefaultServerURL = "http://192.168.0.31:8777";
         private static readonly string DefaultUserEmail = "small_u13@helplightning.com";
 
         public AuthViewController(IntPtr handle) : base(handle)

@@ -20,6 +20,10 @@ namespace HelpLightning.SDK.Sample.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView imagePreview { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIActivityIndicatorView indicator { get; set; }
 
         [Outlet]
@@ -63,6 +67,11 @@ namespace HelpLightning.SDK.Sample.iOS
             if (gssServerURLTextField != null) {
                 gssServerURLTextField.Dispose ();
                 gssServerURLTextField = null;
+            }
+
+            if (imagePreview != null) {
+                imagePreview.Dispose ();
+                imagePreview = null;
             }
 
             if (indicator != null) {
