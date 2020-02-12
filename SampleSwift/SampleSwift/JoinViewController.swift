@@ -11,8 +11,9 @@ import HLSDK
 import HLSDKSwift
 
 let kDefaultUserName = "small_u13";
+let kHLApiKey = "9BoKBM2MQ27nPdHW0XckRw";
 
-class JoinViewController: UIViewController {
+class JoinViewController: UIViewController, HLClientDelegate {
     @IBOutlet private var gssServerURLTextField: UITextField!
     @IBOutlet private var sessionIDTextField: UITextField!
     @IBOutlet private var sessionPINTextField: UITextField!
@@ -22,6 +23,9 @@ class JoinViewController: UIViewController {
     @IBOutlet private weak var joinButton: UIButton!
     @IBOutlet private weak var indicator: UIActivityIndicatorView!
     @IBOutlet private weak var themColorPicker: UISegmentedControl!
+    @IBOutlet private weak var imagePreview: UIImageView!
+    @IBOutlet private weak var camOnSwitch: UISwitch!
+    @IBOutlet private weak var micOnSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,10 @@ class JoinViewController: UIViewController {
         userAvatarTextField.text = CallManager.sharedInstance().userAvatar;
         gssServerURLTextField.text = CallManager.sharedInstance().gssServerURL;
         userNameTextField.text = kDefaultUserName;
+        camOnSwitch.isOn = CallManager.sharedInstance().camOn;
+        micOnSwitch.isOn = CallManager.sharedInstance().micOn;
+        
+        HLClient.sharedInstance.delegate = self;
     }
     
     @IBAction func OnCancel(_ sender: Any) {
@@ -48,8 +56,12 @@ class JoinViewController: UIViewController {
         CallManager.sharedInstance().userName = userNameTextField.text
         CallManager.sharedInstance().userAvatar = userAvatarTextField.text
         CallManager.sharedInstance().gssServerURL = gssServerURLTextField.text
+        CallManager.sharedInstance().camOn = camOnSwitch.isOn;
+        CallManager.sharedInstance().micOn = micOnSwitch.isOn;
 
-        guard let call = HLCall(sessionId: CallManager.sharedInstance().sessionID, sessionToken: CallManager.sharedInstance().sessionToken, userToken: CallManager.sharedInstance().userToken, gssUrl: CallManager.sharedInstance().gssServerURL, localUserDisplayName: CallManager.sharedInstance().userName, localUserAvatarUrl: CallManager.sharedInstance().userAvatar) else { return; }
+        CallManager.sharedInstance().gssServerURL = gssServerURLTextField.text
+        guard let call = HLCall(sessionId: CallManager.sharedInstance().sessionID, sessionToken: CallManager.sharedInstance().sessionToken, userToken: CallManager.sharedInstance().userToken, gssUrl: CallManager.sharedInstance().gssServerURL, helplightningAPIKey: kHLApiKey, localUserDisplayName: CallManager.sharedInstance().userName, localUserAvatarUrl: CallManager.sharedInstance().userAvatar, autoEnableCamera: CallManager.sharedInstance().camOn, autoEnableMicrophone: CallManager.sharedInstance().micOn) else { return; }
+        
         
         //  Converted to Swift 5.1 by Swiftify v5.1.33915 - https://objectivec2swift.com/
         joinButton.isEnabled = false
@@ -127,4 +139,12 @@ class JoinViewController: UIViewController {
         HLClientSwift.shared.setTheme(theme: theme);
     }
 
+    func call(_ call: HLCall!, didEndWithReason reason: String!) {
+        NSLog("The call has ended: %@", call.sessionId)
+    }
+    
+    func call(_ call: HLCall!, didCaptureScreen image: UIImage!) {
+        NSLog("screen captured.")
+        self.imagePreview.image = image
+    }
 }

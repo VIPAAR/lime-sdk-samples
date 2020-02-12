@@ -14,7 +14,6 @@
 		C7854D9E23D70C3A002A673C /* CallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7854D9423D70C39002A673C /* CallManager.m */; };
 		C7854D9F23D70C3A002A673C /* HLServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C7854D9523D70C39002A673C /* HLServerClient.m */; };
 		C7854DA023D70C3A002A673C /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7854D9823D70C3A002A673C /* AuthViewController.m */; };
-		C7854DA123D70C3A002A673C /* JoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7854D9A23D70C3A002A673C /* JoinViewController.m */; };
 		C7854DA223D70C3A002A673C /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7854D9D23D70C3A002A673C /* SetupViewController.m */; };
 		C7854DA423D71007002A673C /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7854DA323D71007002A673C /* JoinViewController.swift */; };
 		C7E904002382A2D400F2795C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7E903FE2382A2D400F2795C /* Main.storyboard */; };
@@ -38,8 +37,6 @@
 		C7854D9623D70C39002A673C /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
 		C7854D9723D70C3A002A673C /* HLServerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLServerClient.h; sourceTree = "<group>"; };
 		C7854D9823D70C3A002A673C /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
-		C7854D9923D70C3A002A673C /* JoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinViewController.h; sourceTree = "<group>"; };
-		C7854D9A23D70C3A002A673C /* JoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinViewController.m; sourceTree = "<group>"; };
 		C7854D9B23D70C3A002A673C /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
 		C7854D9C23D70C3A002A673C /* CallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallManager.h; sourceTree = "<group>"; };
 		C7854D9D23D70C3A002A673C /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
@@ -98,8 +95,6 @@
 				C7854D9423D70C39002A673C /* CallManager.m */,
 				C7854D9723D70C3A002A673C /* HLServerClient.h */,
 				C7854D9523D70C39002A673C /* HLServerClient.m */,
-				C7854D9923D70C3A002A673C /* JoinViewController.h */,
-				C7854D9A23D70C3A002A673C /* JoinViewController.m */,
 				C7854D9B23D70C3A002A673C /* SetupViewController.h */,
 				C7854D9D23D70C3A002A673C /* SetupViewController.m */,
 				C7854DA323D71007002A673C /* JoinViewController.swift */,
@@ -248,7 +243,6 @@
 				C7854DA223D70C3A002A673C /* SetupViewController.m in Sources */,
 				C7854D9F23D70C3A002A673C /* HLServerClient.m in Sources */,
 				C77C0C4E2382895500D20259 /* AppDelegate.swift in Sources */,
-				C7854DA123D70C3A002A673C /* JoinViewController.m in Sources */,
 				C7854D9E23D70C3A002A673C /* CallManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
