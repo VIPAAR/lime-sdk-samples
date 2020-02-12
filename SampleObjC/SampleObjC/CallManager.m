@@ -43,4 +43,13 @@
     return instance;
 }
 
+- (instancetype) init {
+    self = [super init];
+    if (self) {
+        _camOn = YES;
+        _micOn = YES;
+    }
+    return self;
+}
+
 @end

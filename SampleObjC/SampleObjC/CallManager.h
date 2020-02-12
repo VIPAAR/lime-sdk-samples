@@ -46,4 +46,8 @@
 @property (nonatomic) NSString* sessionID;
 @property (nonatomic) NSString* gssServerURL;
 @property (nonatomic) NSString* sessionPIN;
+
+@property (nonatomic) BOOL camOn;
+@property (nonatomic) BOOL micOn;
+
 @end

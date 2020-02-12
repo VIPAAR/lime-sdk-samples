@@ -33,6 +33,11 @@ NSString* const kHLApiKey = @"9BoKBM2MQ27nPdHW0XckRw";
 @property (weak, nonatomic) IBOutlet UISegmentedControl *themColorPicker;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imagePreview;
+
+@property (weak, nonatomic) IBOutlet UISwitch *camOnSwitch;
+
+@property (weak, nonatomic) IBOutlet UISwitch *micOnSwitch;
+
 @end
 
 @implementation JoinViewController
@@ -46,6 +51,8 @@ NSString* const kHLApiKey = @"9BoKBM2MQ27nPdHW0XckRw";
     self.userAvatarTextField.text = CallManager.sharedInstance.userAvatar;
     self.gssServerURLTextField.text = CallManager.sharedInstance.gssServerURL;
     self.userNameTextField.text = kDefaultUserName;
+    self.camOnSwitch.on = CallManager.sharedInstance.camOn;
+    self.micOnSwitch.on = CallManager.sharedInstance.micOn;
     HLClient.sharedInstance.delegate = self;
 }
 
@@ -63,6 +70,8 @@ NSString* const kHLApiKey = @"9BoKBM2MQ27nPdHW0XckRw";
     CallManager.sharedInstance.userName = self.userNameTextField.text;
     CallManager.sharedInstance.userAvatar = self.userAvatarTextField.text;
     CallManager.sharedInstance.gssServerURL = self.gssServerURLTextField.text;
+    CallManager.sharedInstance.camOn = self.camOnSwitch.on;
+    CallManager.sharedInstance.micOn = self.micOnSwitch.on;
     
     HLCall* call = [[HLCall alloc] initWithSessionId:CallManager.sharedInstance.sessionID
                                         sessionToken:CallManager.sharedInstance.sessionToken
@@ -70,7 +79,9 @@ NSString* const kHLApiKey = @"9BoKBM2MQ27nPdHW0XckRw";
                                               gssUrl:CallManager.sharedInstance.gssServerURL
                                  helplightningAPIKey:kHLApiKey
                                 localUserDisplayName:CallManager.sharedInstance.userName
-                                  localUserAvatarUrl:CallManager.sharedInstance.userAvatar];
+                                  localUserAvatarUrl:CallManager.sharedInstance.userAvatar
+                                    autoEnableCamera:CallManager.sharedInstance.camOn
+                                autoEnableMicrophone:CallManager.sharedInstance.micOn];
     
     self.joinButton.enabled = NO;
     self.indicator.hidden = NO;
