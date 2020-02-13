@@ -26,6 +26,9 @@ namespace HelpLightning.SDK.Sample.iOS
             userAvatarTextField.Text = CallManager.Instance.UserAvatar;
             gssServerURLTextField.Text = CallManager.Instance.GssServerURL;
             userNameTextField.Text = DefaultUserName;
+
+            camOnSwitch.On = CallManager.Instance.AutoEnableCamera;
+            micOnSwitch.On = CallManager.Instance.AutoEnableMicrophone;
         }
 
         public override void DidReceiveMemoryWarning()
@@ -42,14 +45,18 @@ namespace HelpLightning.SDK.Sample.iOS
             CallManager.Instance.UserName = userNameTextField.Text.Trim();
             CallManager.Instance.UserAvatar = userAvatarTextField.Text.Trim();
             CallManager.Instance.GssServerURL = gssServerURLTextField.Text.Trim();
-
+            CallManager.Instance.AutoEnableCamera = camOnSwitch.On;
+            CallManager.Instance.AutoEnableMicrophone = micOnSwitch.On;
             Call call = new Call(CallManager.Instance.SessionID,
                 CallManager.Instance.SessionToken,
                 CallManager.Instance.UserToken,
                 CallManager.Instance.GssServerURL,
                 HLApiKey,
                 CallManager.Instance.UserName,
-                CallManager.Instance.UserAvatar);
+                CallManager.Instance.UserAvatar,
+                CallManager.Instance.AutoEnableCamera,
+                CallManager.Instance.AutoEnableMicrophone
+                );
 
             joinButton.Enabled = false;
             indicator.Hidden = false;

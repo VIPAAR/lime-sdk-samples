@@ -31,5 +31,7 @@ namespace HelpLightning.SDK.Sample.iOS
         public string SessionID = "";
         public string GssServerURL = "";
         public string SessionPIN = "";
+        public bool AutoEnableCamera = true;
+        public bool AutoEnableMicrophone = true;
     }
 }

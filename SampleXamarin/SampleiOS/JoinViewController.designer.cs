@@ -16,6 +16,10 @@ namespace HelpLightning.SDK.Sample.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISwitch camOnSwitch { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField gssServerURLTextField { get; set; }
 
         [Outlet]
@@ -29,6 +33,10 @@ namespace HelpLightning.SDK.Sample.iOS
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton joinButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISwitch micOnSwitch { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -64,6 +72,11 @@ namespace HelpLightning.SDK.Sample.iOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (camOnSwitch != null) {
+                camOnSwitch.Dispose ();
+                camOnSwitch = null;
+            }
+
             if (gssServerURLTextField != null) {
                 gssServerURLTextField.Dispose ();
                 gssServerURLTextField = null;
@@ -82,6 +95,11 @@ namespace HelpLightning.SDK.Sample.iOS
             if (joinButton != null) {
                 joinButton.Dispose ();
                 joinButton = null;
+            }
+
+            if (micOnSwitch != null) {
+                micOnSwitch.Dispose ();
+                micOnSwitch = null;
             }
 
             if (sessionIDTextField != null) {
