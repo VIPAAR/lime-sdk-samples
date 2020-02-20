@@ -7,7 +7,7 @@ source 'https://github.com/VIPAAR/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'SampleObjC' do
-  pod 'HLSDK', :git  => 'https://github.com/VIPAAR/lime-ios-sdk.git', :branch => 'feature/IOSSDK-10'
+  pod 'HLSDK', :git  => 'https://github.com/VIPAAR/lime-ios-sdk.git', :tag => '0.9.9'
   #Override the deployment targets of all pods
   post_install do |installer|
     installer.pods_project.targets.each do |target|

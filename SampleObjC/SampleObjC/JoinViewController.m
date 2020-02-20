@@ -11,7 +11,7 @@
 #import <HLSDK/HLSDK.h>
 
 NSString* const kDefaultUserName = @"small_u13";
-NSString* const kHLApiKey = @"9BoKBM2MQ27nPdHW0XckRw";
+NSString* const kHLApiKey = @"[YOUR_HL_API_KEY]";
 
 @interface JoinViewController () <HLClientDelegate>
 @property (nonatomic, retain) IBOutlet UITextField *gssServerURLTextField;

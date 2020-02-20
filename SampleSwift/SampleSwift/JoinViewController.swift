@@ -11,7 +11,7 @@ import HLSDK
 import HLSDKSwift
 
 let kDefaultUserName = "small_u13";
-let kHLApiKey = "9BoKBM2MQ27nPdHW0XckRw";
+let kHLApiKey = "[YOUR_HL_API_KEY]";
 
 class JoinViewController: UIViewController, HLClientDelegate {
     @IBOutlet private var gssServerURLTextField: UITextField!
