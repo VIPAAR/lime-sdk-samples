@@ -59,10 +59,10 @@ namespace HelpLightning.SDK.Sample.Android
                     //  .SetImage(HelpLightning.SDK.Theme.ImageTelestrationMenuPenOn, Resource.Drawable.image_test)
                     //   .SetImage(HelpLightning.SDK.Theme.ImageTelestrationUndo, Resource.Drawable.image_test)
                     .SetImage(HelpLightning.SDK.Theme.ImageEndCall, ContextCompat.GetDrawable(this.BaseContext, Resource.Drawable.image_test))
-                    .SetImage(HelpLightning.SDK.Theme.ImageMainMenu, Resource.Drawable.image_test);
-                 //   .SetImage(HelpLightning.SDK.Theme.imageScreenCaptureButton1, Resource.Drawable.image_test)
-                //    .SetImage(HelpLightning.SDK.Theme.imageScreenCaptureButton2, Resource.Drawable.image_test2)
-                //    .SetImage(HelpLightning.SDK.Theme.imageScreenCaptureButton3, Resource.Drawable.image_test3);
+                    .SetImage(HelpLightning.SDK.Theme.ImageMainMenu, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.imageScreenCaptureButton1, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.imageScreenCaptureButton2, Resource.Drawable.image_test2)
+                    .SetImage(HelpLightning.SDK.Theme.imageScreenCaptureButton3, Resource.Drawable.image_test3);
 
             SupportFragmentManager
                 .BeginTransaction()
