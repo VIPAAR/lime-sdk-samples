@@ -7,7 +7,7 @@ namespace HelpLightning.SDK.Sample.iOS
 {
     public partial class SetupViewController : UIViewController
     {
-        private static readonly string DefaultContactEmail = "small_u12@helplightning.com";
+        private static readonly string DefaultContactEmail = "small_u13@helplightning.com";
 
         public SetupViewController(IntPtr handle) : base(handle)
         {

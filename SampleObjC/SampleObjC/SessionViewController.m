@@ -72,6 +72,7 @@
                                         sessionToken:self.sessionToken.text
                                            userToken:self.userToken.text
                                               gssUrl:self.gssURL.text
+                                 helplightningAPIKey:@""
                                 localUserDisplayName:self.userName.text
                                   localUserAvatarUrl:self.userAvatar.text];
     

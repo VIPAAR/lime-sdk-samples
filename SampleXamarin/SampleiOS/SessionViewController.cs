@@ -103,7 +103,7 @@ namespace HelpLightning.SDK.Sample.iOS
         {
             joinIndicator.StartAnimating();
 
-            Call call = new Call(this.sessionId.Text, this.sessionToken.Text, this.userToken.Text, this.gssURL.Text, this.userName.Text, this.userAvatar.Text);
+            Call call = new Call(this.sessionId.Text, this.sessionToken.Text, this.userToken.Text, this.gssURL.Text, "", this.userName.Text, this.userAvatar.Text);
             Task<bool> task = CallClientFactory.Instance.CallClient.StartCall(call, this);
             task.ContinueWith( t => {
                 if (t.IsCompleted)
@@ -123,5 +123,9 @@ namespace HelpLightning.SDK.Sample.iOS
             Console.WriteLine("The call has ended: {0}", reason);
         }
 
+        public void OnScreenCaptureCreated(Call call, object image)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

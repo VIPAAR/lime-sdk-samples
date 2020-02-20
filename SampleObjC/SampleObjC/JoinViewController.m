@@ -11,8 +11,9 @@
 #import <HLSDK/HLSDK.h>
 
 NSString* const kDefaultUserName = @"small_u13";
+NSString* const kHLApiKey = @"9BoKBM2MQ27nPdHW0XckRw";
 
-@interface JoinViewController ()
+@interface JoinViewController () <HLClientDelegate>
 @property (nonatomic, retain) IBOutlet UITextField *gssServerURLTextField;
 
 @property (nonatomic, retain) IBOutlet UITextField *sessionIDTextField;
@@ -31,6 +32,12 @@ NSString* const kDefaultUserName = @"small_u13";
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *themColorPicker;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imagePreview;
+
+@property (weak, nonatomic) IBOutlet UISwitch *camOnSwitch;
+
+@property (weak, nonatomic) IBOutlet UISwitch *micOnSwitch;
+
 @end
 
 @implementation JoinViewController
@@ -44,6 +51,9 @@ NSString* const kDefaultUserName = @"small_u13";
     self.userAvatarTextField.text = CallManager.sharedInstance.userAvatar;
     self.gssServerURLTextField.text = CallManager.sharedInstance.gssServerURL;
     self.userNameTextField.text = kDefaultUserName;
+    self.camOnSwitch.on = CallManager.sharedInstance.camOn;
+    self.micOnSwitch.on = CallManager.sharedInstance.micOn;
+    HLClient.sharedInstance.delegate = self;
 }
 
 - (IBAction)OnCancel:(UIBarButtonItem *)sender {
@@ -60,13 +70,18 @@ NSString* const kDefaultUserName = @"small_u13";
     CallManager.sharedInstance.userName = self.userNameTextField.text;
     CallManager.sharedInstance.userAvatar = self.userAvatarTextField.text;
     CallManager.sharedInstance.gssServerURL = self.gssServerURLTextField.text;
+    CallManager.sharedInstance.camOn = self.camOnSwitch.on;
+    CallManager.sharedInstance.micOn = self.micOnSwitch.on;
     
     HLCall* call = [[HLCall alloc] initWithSessionId:CallManager.sharedInstance.sessionID
                                         sessionToken:CallManager.sharedInstance.sessionToken
                                            userToken:CallManager.sharedInstance.userToken
                                               gssUrl:CallManager.sharedInstance.gssServerURL
+                                 helplightningAPIKey:kHLApiKey
                                 localUserDisplayName:CallManager.sharedInstance.userName
-                                  localUserAvatarUrl:CallManager.sharedInstance.userAvatar];
+                                  localUserAvatarUrl:CallManager.sharedInstance.userAvatar
+                                    autoEnableCamera:CallManager.sharedInstance.camOn
+                                autoEnableMicrophone:CallManager.sharedInstance.micOn];
     
     self.joinButton.enabled = NO;
     self.indicator.hidden = NO;
@@ -141,11 +156,24 @@ NSString* const kDefaultUserName = @"small_u13";
             //end call
             [theme setImage:kHLImageEndCall image:[UIImage imageNamed:@"Lightning"]];
 
+            [theme setImage:kHLImageScreenCaptureButton1 image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageScreenCaptureButton2 image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageScreenCaptureButton3 image:[UIImage imageNamed:@"Lightning"]];
             break;
         default:
             break;
     }
     [HLClient.sharedInstance setTheme:theme];
+}
+
+#pragma mark - HLClientDelegate
+- (void) call:(HLCall*)call didCaptureScreen:(UIImage *)image {
+    NSLog(@"Image Captured: %@", image);
+    self.imagePreview.image = image;
+}
+
+- (void) call:(HLCall*)call didEndWithReason:(NSString *)reason {
+    NSLog(@"Call Ended: %@", call.sessionId);
 }
 
 @end

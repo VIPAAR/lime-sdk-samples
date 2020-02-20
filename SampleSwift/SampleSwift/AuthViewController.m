@@ -28,7 +28,7 @@
 #import "HLServerClient.h"
 #import "CallManager.h"
 
-NSString* const kDefaultServerURL = @"http://10.3.2.28:8777";
+NSString* const kDefaultServerURL = @"http://192.168.0.31:8777";
 NSString* const kDefaultUserEmail = @"small_u13@helplightning.com";
 @interface AuthViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *authButton;

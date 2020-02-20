@@ -61,6 +61,7 @@ class ViewController: UIViewController, UITabBarDelegate, HLClientDelegate {
                                 sessionToken: self.sessionToken!.text,
                                 userToken: self.userToken!.text,
                                 gssUrl:  self.gssURL!.text,
+                                helplightningAPIKey: "",
                                 localUserDisplayName: self.userName?.text,
                                 localUserAvatarUrl: self.userAvatar?.text) else { return; }
         self.joinIndicator.startAnimating()
@@ -93,6 +94,10 @@ class ViewController: UIViewController, UITabBarDelegate, HLClientDelegate {
     func call(_ call: HLCall!, didEndWithReason reason: String!) {
         self.joinIndicator.stopAnimating()
         NSLog("The call has ended: %@", call.sessionId)
+    }
+    
+    func call(_ call: HLCall!, didCaptureScreen image: UIImage!) {
+        NSLog("screen captured")
     }
 }
 
