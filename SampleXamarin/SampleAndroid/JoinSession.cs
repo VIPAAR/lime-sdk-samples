@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Threading.Tasks;
+using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -70,18 +71,10 @@ namespace HelpLightning.SDK.Sample.Android
                             pin = pinCode.Text;
                             json = await HLServerClient.Instance.GetCall(pin, userToken);
                         }
-
-                        currentCallData = new Call
-                            (
-                                json["session_id"][0].ToString(),
-                                json["session_token"].ToString(),
-                                json["user_token"].ToString(),
-                                json["url"].ToString(),
-                                "darrel",
-                                "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg"
-                            );
+                        currentCallData = getSessionData(json);
                     }
-                   
+
+                    currentCallData = applySwitchStatus(currentCallData);
                     JoinCall(currentCallData);
                 }
                 catch (Exception ex)
@@ -142,6 +135,45 @@ namespace HelpLightning.SDK.Sample.Android
         public void OnCallEnded(Call call, string reason)
         {
             Console.WriteLine("The call ended: " + reason);
+        }
+
+        public void OnScreenCaptureCreated(Call call, object image)
+        {
+            ImageView iv = (ImageView)rootView.FindViewById(Resource.Id.img_screen_captured);
+            iv.SetImageBitmap((Bitmap)image);
+        }
+
+        private Call getSessionData(JObject json)
+        {
+            return new Call
+            (
+                json["session_id"][0].ToString(),
+                json["session_token"].ToString(),
+                json["user_token"].ToString(),
+                json["url"].ToString(),
+                GetString(Resource.String.helplightningApiKey),
+                "darrel",
+                "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg"
+            );
+        }
+
+        private Call applySwitchStatus(Call call)
+        {
+            Switch videoSwitch = rootView.FindViewById<Switch>(Resource.Id.cameraSwitch);
+            Switch audioSwitch = rootView.FindViewById<Switch>(Resource.Id.audioSwitch);
+
+            return new Call
+            (
+                call.SessionId,
+                call.SessionToken,
+                call.UserToken,
+                call.GssUrl,
+                call.HelpLightningApiKey,
+                "darrel",
+                "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg",
+                videoSwitch.Checked,
+                audioSwitch.Checked
+            );
         }
     }
 }
