@@ -9,7 +9,7 @@ namespace HelpLightning.SDK.Sample.iOS
     public partial class JoinViewController : UIViewController, ICallClientDelegate
     {
         private static readonly string DefaultUserName = "small_u13";
-        private static readonly string HLApiKey = "9BoKBM2MQ27nPdHW0XckRw";
+        private static readonly string HLApiKey = "[YOUR_HL_API_KEY]";
 
         public JoinViewController(IntPtr handle) : base(handle)
         {
