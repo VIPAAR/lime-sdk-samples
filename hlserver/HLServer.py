@@ -19,6 +19,16 @@ class Server(http.server.BaseHTTPRequestHandler):
     def do_HEAD(self):
         return
 
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header('access-control-allow-credentials', 'true')
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('access-control-allow-methods', 'POST, GET, OPTIONS, DELETE')
+        self.send_header('access-control-allow-headers', 'Accept, Authorization, Content-Type, DNT, Referer, Sec-Fetch-Dest, User-Agent')
+        self.send_header('content-length', '0')
+        self.send_header('allow', 'GET, HEAD, POST, PUT, DELETE, PATCH, OPTIONS')
+        self.end_headers()
+
     def do_GET(self):
         self.respond()
 
@@ -38,6 +48,7 @@ class Server(http.server.BaseHTTPRequestHandler):
         self.send_response(status)
         for k, v in headers.items():
             self.send_header(k, v)
+        self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
         self.wfile.write(bytes(content, 'UTF-8'))
 
