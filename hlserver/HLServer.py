@@ -147,7 +147,8 @@ class Server(http.server.BaseHTTPRequestHandler):
             'session_id': session.sid,
             'session_token': session.participant1.session_token,
             'user_token': session.participant1.user_token,
-            'url': session.url
+            'url': session.url,
+            'ws_url': session.ws_url
         }
         
         return (

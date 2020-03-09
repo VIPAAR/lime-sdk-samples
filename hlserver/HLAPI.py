@@ -25,9 +25,10 @@ class HLAPI:
             self.session_token = session_token
             
     class SessionInfo:
-        def __init__(self, sid, url, s1, s2, user1, user2):
+        def __init__(self, sid, url, ws_url, s1, s2, user1, user2):
             self.sid = sid,
-            self.url = url
+            self.url = url,
+            self.ws_url = ws_url,
             self.participant1 = HLAPI.Participant(user1.token, s1)
             self.participant2 = HLAPI.Participant(user2.token, s2)
             
@@ -63,6 +64,7 @@ class HLAPI:
         session_info = self.do_POST('/v1/session/video', {'authorization': session1['token']}, {'user_token': user1.token})
 
         return HLAPI.SessionInfo(session1['id'], session_info['gss_info']['server'],
+                                 session_info['gss_info']['wsserver'],
                                  session_info['gss_info']['token'], session2['token'],
                                  user1, user2)
         
