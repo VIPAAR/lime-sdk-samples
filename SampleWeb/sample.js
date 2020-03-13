@@ -1,6 +1,12 @@
-const helplightningApiKey = '9BoKBM2MQ27nPdHW0XckRw';
+const helplightningApiKey = 'xxx';
+const galdrUrl = 'http://xxx:xxx/';
+const user = {
+  email: 'xxx@xxx.xxx',
+  password: 'xxx'
+};
+
 const galdrWrapper = () => {
-  const url = 'http://localhost:8777/';
+  const url = galdrUrl;
   const instance = axios.create({
     baseURL: url,
     timeout: 60000
@@ -10,11 +16,6 @@ const galdrWrapper = () => {
 const galdrClient = galdrWrapper()
 
 const callClient = HL.CallClientFactory.CallClient;
-
-const user = {
-  email: 'small_admin@helplightning.com',
-  password: '123456'
-};
 
 const hlcall = document.getElementById('hlcall');
 const callContactButton = document.getElementById('callContact');
@@ -41,9 +42,9 @@ function login () {
 function callContact () {
   if (user.token) {
     console.log('Call contact...');
-
+    const contactEmail = document.getElementById('contactEmail').value;
     const contact = {
-      email: 'small_u1@helplightning.com'
+      email: contactEmail
     };
     createSession(user.token, contact).then(session => {
       const call = new HL.Call(session.session_id, session.session_token, user.token, session.ws_url, helplightningApiKey, 'Small Admin', '');
