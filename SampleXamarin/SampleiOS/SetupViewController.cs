@@ -7,7 +7,7 @@ namespace HelpLightning.SDK.Sample.iOS
 {
     public partial class SetupViewController : UIViewController
     {
-        private static readonly string DefaultContactEmail = "small_u13@helplightning.com";
+        private static readonly string DefaultContactEmail = "small_u11@helplightning.com";
 
         public SetupViewController(IntPtr handle) : base(handle)
         {
@@ -62,7 +62,7 @@ namespace HelpLightning.SDK.Sample.iOS
                             CallManager.Instance.SessionID = json["session_id"][0].ToString();
                             CallManager.Instance.SessionToken = json["session_token"].ToString();
                             CallManager.Instance.UserToken = json["user_token"].ToString();
-                            CallManager.Instance.GssServerURL = json["url"].ToString();
+                            CallManager.Instance.GssServerURL = json["url"][0].ToString();
                             CallManager.Instance.SessionPIN = json["sid"].ToString();
 
                             PerformSegue("segueOpenJoinScreen1", this);
@@ -108,7 +108,7 @@ namespace HelpLightning.SDK.Sample.iOS
                             CallManager.Instance.SessionID = json["session_id"][0].ToString();
                             CallManager.Instance.SessionToken = json["session_token"].ToString();
                             CallManager.Instance.UserToken = json["user_token"].ToString();
-                            CallManager.Instance.GssServerURL = json["url"].ToString();
+                            CallManager.Instance.GssServerURL = json["url"][0].ToString();
 
                             PerformSegue("segueOpenJoinScreen2", this);
                         }

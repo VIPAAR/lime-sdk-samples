@@ -1,6 +1,7 @@
 ﻿using Foundation;
 using System;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using UIKit;
 using HelpLightning.SDK;
 
@@ -104,11 +105,11 @@ namespace HelpLightning.SDK.Sample.iOS
             joinIndicator.StartAnimating();
 
             Call call = new Call(this.sessionId.Text, this.sessionToken.Text, this.userToken.Text, this.gssURL.Text, "", this.userName.Text, this.userAvatar.Text);
-            Task<bool> task = CallClientFactory.Instance.CallClient.StartCall(call, this);
+            Task<IDictionary<string, object>> task = CallClientFactory.Instance.CallClient.StartCall(call, this);
             task.ContinueWith( t => {
                 if (t.IsCompleted)
                 {
-                    Console.WriteLine("The call has started: " + t.Result);
+                    Console.WriteLine("The call has started: " + t.Result[Call.HLCallInfoCallIDKey]);
                 }
                 else
                 {

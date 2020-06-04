@@ -3,13 +3,14 @@
 using UIKit;
 using System.Threading.Tasks;
 using CoreFoundation;
+using System.Collections.Generic;
 
 namespace HelpLightning.SDK.Sample.iOS
 {
     public partial class JoinViewController : UIViewController, ICallClientDelegate
     {
         private static readonly string DefaultUserName = "small_u13";
-        private static readonly string HLApiKey = "[YOUR_HL_API_KEY]";
+        private static readonly string HLApiKey = "77ed5850e042cfab6a84b2f2d7541585";
 
         public JoinViewController(IntPtr handle) : base(handle)
         {
@@ -61,14 +62,14 @@ namespace HelpLightning.SDK.Sample.iOS
             joinButton.Enabled = false;
             indicator.Hidden = false;
 
-            Task<bool> task = CallClientFactory.Instance.CallClient.StartCall(call, this);
+            Task<IDictionary<string, object>> task = CallClientFactory.Instance.CallClient.StartCall(call, this);
             task.ContinueWith(t =>
             {
                 DispatchQueue.MainQueue.DispatchAsync(() =>
                 {
-                    if (t.IsCompleted)
+                    if (!t.IsFaulted)
                     {
-                        Console.WriteLine("The call has started: " + t.Result);
+                        Console.WriteLine("The call has started: " + t.Result[Call.HLCallInfoCallIDKey]);
                     }
                     else
                     {
