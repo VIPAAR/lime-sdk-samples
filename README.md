@@ -23,3 +23,6 @@ pod 'PromisesSwift', '1.2.8'
 
 ## SampleXamarin
 The samples for Xamarin Android and Xamarin iOS
+
+## SampleWeb
+The samples for Web
