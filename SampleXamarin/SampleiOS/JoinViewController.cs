@@ -3,6 +3,7 @@
 using UIKit;
 using System.Threading.Tasks;
 using CoreFoundation;
+using System.Collections.Generic;
 
 namespace HelpLightning.SDK.Sample.iOS
 {
@@ -61,14 +62,14 @@ namespace HelpLightning.SDK.Sample.iOS
             joinButton.Enabled = false;
             indicator.Hidden = false;
 
-            Task<bool> task = CallClientFactory.Instance.CallClient.StartCall(call, this);
+            Task<IDictionary<string, object>> task = CallClientFactory.Instance.CallClient.StartCall(call, this);
             task.ContinueWith(t =>
             {
                 DispatchQueue.MainQueue.DispatchAsync(() =>
                 {
-                    if (t.IsCompleted)
+                    if (!t.IsFaulted)
                     {
-                        Console.WriteLine("The call has started: " + t.Result);
+                        Console.WriteLine("The call has started: " + t.Result[Call.HLCallInfoCallIDKey]);
                     }
                     else
                     {

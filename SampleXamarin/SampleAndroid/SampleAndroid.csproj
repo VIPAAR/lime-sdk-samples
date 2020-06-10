@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -192,43 +192,43 @@
       <HintPath>..\packages\Xamarin.JakeWharton.Timber.4.7.1\lib\MonoAndroid10\Timber.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android.Binding.Ballyhoo">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.13\lib\monoandroid90\HLSDK.Android.Binding.Ballyhoo.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.0.9.15\lib\monoandroid90\HLSDK.Android.Binding.Ballyhoo.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android.Binding.Camera">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.13\lib\monoandroid90\HLSDK.Android.Binding.Camera.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.0.9.15\lib\monoandroid90\HLSDK.Android.Binding.Camera.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android.Binding.Core">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.13\lib\monoandroid90\HLSDK.Android.Binding.Core.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.0.9.15\lib\monoandroid90\HLSDK.Android.Binding.Core.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android.Binding.LeakCanary">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.13\lib\monoandroid90\HLSDK.Android.Binding.LeakCanary.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.0.9.15\lib\monoandroid90\HLSDK.Android.Binding.LeakCanary.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android.Binding.OpenTok">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.13\lib\monoandroid90\HLSDK.Android.Binding.OpenTok.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.0.9.15\lib\monoandroid90\HLSDK.Android.Binding.OpenTok.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android.Binding.OpenTokV3">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.13\lib\monoandroid90\HLSDK.Android.Binding.OpenTokV3.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.0.9.15\lib\monoandroid90\HLSDK.Android.Binding.OpenTokV3.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android.Binding.PDFium">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.13\lib\monoandroid90\HLSDK.Android.Binding.PDFium.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.0.9.15\lib\monoandroid90\HLSDK.Android.Binding.PDFium.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android.Binding.PDFViewer">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.13\lib\monoandroid90\HLSDK.Android.Binding.PDFViewer.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.0.9.15\lib\monoandroid90\HLSDK.Android.Binding.PDFViewer.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android.Binding.Picasso">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.13\lib\monoandroid90\HLSDK.Android.Binding.Picasso.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.0.9.15\lib\monoandroid90\HLSDK.Android.Binding.Picasso.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android.Binding.Timber">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.13\lib\monoandroid90\HLSDK.Android.Binding.Timber.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.0.9.15\lib\monoandroid90\HLSDK.Android.Binding.Timber.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android.Binding.TinySpline">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.13\lib\monoandroid90\HLSDK.Android.Binding.TinySpline.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.0.9.15\lib\monoandroid90\HLSDK.Android.Binding.TinySpline.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android.Binding.YUV">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.13\lib\monoandroid90\HLSDK.Android.Binding.YUV.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.0.9.15\lib\monoandroid90\HLSDK.Android.Binding.YUV.dll</HintPath>
     </Reference>
     <Reference Include="HLSDK.Android">
-      <HintPath>..\packages\HelpLightning.SDK.0.9.13\lib\monoandroid90\HLSDK.Android.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.0.9.15\lib\monoandroid90\HLSDK.Android.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -27,6 +27,7 @@
         <MtouchLink>SdkOnly</MtouchLink>
         <MtouchDebug>true</MtouchDebug>
 <CodesignKey>iPhone Developer</CodesignKey>
+<MtouchSdkVersion>13.4</MtouchSdkVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
         <DebugType>none</DebugType>
@@ -165,7 +166,7 @@
         <Version>12.0.3</Version>
       </PackageReference>
       <PackageReference Include="HelpLightning.SDK">
-        <Version>0.9.13</Version>
+        <Version>0.9.15</Version>
       </PackageReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

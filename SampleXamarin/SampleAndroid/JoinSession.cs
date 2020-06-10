@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.Graphics;
 using Android.OS;
@@ -102,12 +103,12 @@ namespace HelpLightning.SDK.Sample.Android
         private void JoinCall(Call call)
         {
             rootView.FindViewById(Resource.Id.progressBar_cyclic).Visibility = ViewStates.Visible;
-            Task<bool> task = CallClientFactory.Instance.CallClient.StartCall(call, rootView.Context);
+            Task<IDictionary<string, object>> task = CallClientFactory.Instance.CallClient.StartCall(call, rootView.Context);
             task.ContinueWith(t => {
                 rootView.FindViewById(Resource.Id.progressBar_cyclic).Visibility = ViewStates.Invisible;
-                if (t.IsCompleted)
+                if (!t.IsFaulted)
                 {
-                    Console.WriteLine("The call has started: " + t.Result);
+                    Console.WriteLine("The call has started: " + t.Result[Call.HLCallInfoCallIDKey]);
                 }
                 else
                 {
@@ -150,7 +151,7 @@ namespace HelpLightning.SDK.Sample.Android
                 json["session_id"][0].ToString(),
                 json["session_token"].ToString(),
                 json["user_token"].ToString(),
-                json["url"].ToString(),
+                json["url"][0].ToString(),
                 GetString(Resource.String.helplightningApiKey),
                 "darrel",
                 "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg"
