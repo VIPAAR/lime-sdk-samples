@@ -60,7 +60,7 @@ NSString* const kDefaultContactEmail = @"small_u13@helplightning.com";
         CallManager.sharedInstance.sessionID = json[@"session_id"][0];
         CallManager.sharedInstance.sessionToken = json[@"session_token"];
         CallManager.sharedInstance.userToken = json[@"user_token"];
-        CallManager.sharedInstance.gssServerURL = json[@"url"];
+        CallManager.sharedInstance.gssServerURL = json[@"url"][0];
         CallManager.sharedInstance.sessionPIN = json[@"sid"];
         
         [self performSegueWithIdentifier:@"segueOpenJoinScreen1" sender:self];
@@ -98,7 +98,7 @@ NSString* const kDefaultContactEmail = @"small_u13@helplightning.com";
         CallManager.sharedInstance.sessionID = json[@"session_id"][0];
         CallManager.sharedInstance.sessionToken = json[@"session_token"];
         CallManager.sharedInstance.userToken = json[@"user_token"];
-        CallManager.sharedInstance.gssServerURL = json[@"url"];
+        CallManager.sharedInstance.gssServerURL = json[@"url"][0];
         [self performSegueWithIdentifier:@"segueOpenJoinScreen2" sender:self];
         return result;
     }).catch(^(NSError* error) {
