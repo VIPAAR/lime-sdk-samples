@@ -6,8 +6,8 @@ using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using AndroidX.Fragment.App;
 using Newtonsoft.Json.Linq;
-using Fragment = Android.Support.V4.App.Fragment;
 
 namespace HelpLightning.SDK.Sample.Android
 {

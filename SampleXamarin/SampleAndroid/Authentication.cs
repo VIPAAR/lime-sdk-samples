@@ -2,7 +2,7 @@
 using Android.Widget;
 using System;
 using Android.Views;
-using Fragment = Android.Support.V4.App.Fragment;
+using AndroidX.Fragment.App;
 
 namespace HelpLightning.SDK.Sample.Android
 {
