@@ -4,11 +4,12 @@ PODS:
   - CocoaLumberjack/Core (3.5.3)
   - CocoaZ (1.4.2)
   - FXKeychain (1.5.1)
-  - HLSDK (0.9.10):
+  - HLSDK (13.6.1):
     - CocoaLumberjack (= 3.5.3)
     - CocoaZ (= 1.4.2)
     - FXKeychain (= 1.5.1)
-    - OpenTok (= 2.16.1)
+    - OpenCV2 (= 4.3.0)
+    - OpenTok (= 2.16.6)
     - PromisesObjC (= 1.2.8)
     - SDWebImage (= 3.7.1)
     - SVProgressHUD (= 2.2.2)
@@ -18,7 +19,8 @@ PODS:
     - vipaar-libyuv (= 1.0.3)
     - vipaar-reachability (= 3.2.1)
     - vipaar-tinyspline (= 1.0.0)
-  - OpenTok (2.16.1)
+  - OpenCV2 (4.3.0)
+  - OpenTok (2.16.6)
   - PromisesObjC (1.2.8)
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
@@ -33,13 +35,14 @@ PODS:
   - vipaar-tinyspline (1.0.0)
 
 DEPENDENCIES:
-  - HLSDK (from `https://github.com/VIPAAR/lime-ios-sdk.git`, tag `0.9.10`)
+  - HLSDK (from `https://github.com/VIPAAR/lime-ios-sdk.git`, tag `13.6.1`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - CocoaLumberjack
     - CocoaZ
     - FXKeychain
+    - OpenCV2
     - OpenTok
     - PromisesObjC
     - SDWebImage
@@ -55,19 +58,20 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   HLSDK:
     :git: https://github.com/VIPAAR/lime-ios-sdk.git
-    :tag: 0.9.10
+    :tag: 13.6.1
 
 CHECKOUT OPTIONS:
   HLSDK:
     :git: https://github.com/VIPAAR/lime-ios-sdk.git
-    :tag: 0.9.10
+    :tag: 13.6.1
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
   CocoaZ: a296b1fbea2c648daf2ccabb5403ed354569e633
   FXKeychain: a6c2efc46ba7167163c45469a0554233e9e6569e
-  HLSDK: 02bdc9ba4dd9a2c9e99790d9be0e442c41f2f0cf
-  OpenTok: 556374577b66cbf791190c84612346c8f3997c9e
+  HLSDK: 21e9cfa8d93532814f76cdc91875e9ddc4dcd016
+  OpenCV2: ffe82e5cb5d16dc3fc01a5f4127b9a5b3cfc7d1b
+  OpenTok: 85ce78080020035425aa1a317f2ff5a0fcc1e265
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
@@ -78,6 +82,6 @@ SPEC CHECKSUMS:
   vipaar-reachability: 05dea9613e5126628ae69b1f1ed50866a2a9ecad
   vipaar-tinyspline: d8565207b0c1714bac044a488b4308ca690b52f9
 
-PODFILE CHECKSUM: 3a9efb88b067ce24382a94a401c42690e9691b9f
+PODFILE CHECKSUM: f9ff61417c2255f1f5af7db7f745aa0873001d08
 
 COCOAPODS: 1.9.1

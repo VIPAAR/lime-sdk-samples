@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>SampleXamarin</string>
 	<key>CFBundleIdentifier</key>
-	<string>come.helplightning.sdk.sample.xamarin.ios</string>
+	<string>com.helplightning.sdk.sample.xamarin.ios</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>

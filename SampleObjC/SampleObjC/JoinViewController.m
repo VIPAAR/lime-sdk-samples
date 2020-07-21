@@ -130,12 +130,9 @@ NSString* const kHLApiKey = @"[YOUR_HL_API_KEY]";
             [theme setImage:kHLImageCameraMenuPhotoOff image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageCameraMenuFreezeOn image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageCameraMenuFreezeOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuCameraOff image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageCameraMenuSwitchCamera image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageCameraMenuFrontCameraOn image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageCameraMenuFrontCameraOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuBackCameraOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuBackCameraOff image:[UIImage imageNamed:@"Lightning"]];
 
             //mic
             [theme setImage:kHLImageMicOn image:[UIImage imageNamed:@"Lightning"]];
