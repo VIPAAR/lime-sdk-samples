@@ -153,9 +153,9 @@ NSString* const kHLApiKey = @"[YOUR_HL_API_KEY]";
             //end call
             [theme setImage:kHLImageEndCall image:[UIImage imageNamed:@"Lightning"]];
 
-            [theme setImage:kHLImageScreenCaptureButton1 image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageScreenCaptureButton2 image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageScreenCaptureButton3 image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageScreenCaptureUnpressed image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageScreenCaptureTransition image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageScreenCapturePressed image:[UIImage imageNamed:@"Lightning"]];
             break;
         default:
             break;
