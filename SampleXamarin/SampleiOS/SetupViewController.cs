@@ -59,10 +59,10 @@ namespace HelpLightning.SDK.Sample.iOS
                         if (t.IsCompleted)
                         {
                             var json = task.Result;
-                            CallManager.Instance.SessionID = json["session_id"][0].ToString();
+                            CallManager.Instance.SessionID = json["session_id"].ToString();
                             CallManager.Instance.SessionToken = json["session_token"].ToString();
                             CallManager.Instance.UserToken = json["user_token"].ToString();
-                            CallManager.Instance.GssServerURL = json["url"][0].ToString();
+                            CallManager.Instance.GssServerURL = json["url"].ToString();
                             CallManager.Instance.SessionPIN = json["sid"].ToString();
 
                             PerformSegue("segueOpenJoinScreen1", this);

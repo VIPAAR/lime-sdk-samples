@@ -26,9 +26,9 @@ class HLAPI:
             
     class SessionInfo:
         def __init__(self, sid, url, ws_url, s1, s2, user1, user2):
-            self.sid = sid,
-            self.url = url,
-            self.ws_url = ws_url,
+            self.sid = sid
+            self.url = url
+            self.ws_url = ws_url
             self.participant1 = HLAPI.Participant(user1.token, s1)
             self.participant2 = HLAPI.Participant(user2.token, s2)
             
