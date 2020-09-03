@@ -148,10 +148,10 @@ namespace HelpLightning.SDK.Sample.Android
         {
             return new Call
             (
-                json["session_id"][0].ToString(),
+                json["session_id"].ToString(),
                 json["session_token"].ToString(),
                 json["user_token"].ToString(),
-                json["url"][0].ToString(),
+                json["url"].ToString(),
                 GetString(Resource.String.helplightningApiKey),
                 "darrel",
                 "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg"
