@@ -55,7 +55,7 @@ namespace HelpLightning.SDK.Sample.iOS
                 {
                     DispatchQueue.MainQueue.DispatchAsync(() =>
                     {
-                        if (t.IsCompleted)
+                        if (t.IsCompletedSuccessfully)
                         {
                             CallManager.Instance.AuthToken = task.Result;
                             PerformSegue("segueOpenSetupScreen", this);                       

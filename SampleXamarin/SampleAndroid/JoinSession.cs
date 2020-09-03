@@ -122,7 +122,7 @@ namespace HelpLightning.SDK.Sample.Android
             rootView.FindViewById(Resource.Id.progressBar_cyclic).Visibility = ViewStates.Invisible;
             Task<bool> task = CallClientFactory.Instance.CallClient.StopCurrentCall();
             task.ContinueWith(t => {
-                if (t.IsCompleted)
+                if (t.IsCompletedSuccessfully)
                 {
                     Console.WriteLine("The call has stopped: " + t.Result);
                 }

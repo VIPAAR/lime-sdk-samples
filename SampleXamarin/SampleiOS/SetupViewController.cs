@@ -56,7 +56,7 @@ namespace HelpLightning.SDK.Sample.iOS
                 task.ContinueWith(t => {
                     DispatchQueue.MainQueue.DispatchAsync(() =>
                     {
-                        if (t.IsCompleted)
+                        if (t.IsCompletedSuccessfully)
                         {
                             var json = task.Result;
                             CallManager.Instance.SessionID = json["session_id"][0].ToString();
@@ -102,7 +102,7 @@ namespace HelpLightning.SDK.Sample.iOS
                 {
                     DispatchQueue.MainQueue.DispatchAsync(() =>
                     {
-                        if (t.IsCompleted)
+                        if (t.IsCompletedSuccessfully)
                         {
                             var json = task.Result;
                             CallManager.Instance.SessionID = json["session_id"][0].ToString();

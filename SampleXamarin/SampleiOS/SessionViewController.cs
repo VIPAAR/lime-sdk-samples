@@ -89,7 +89,7 @@ namespace HelpLightning.SDK.Sample.iOS
         {
             Task<bool> task = CallClientFactory.Instance.CallClient.StopCurrentCall();
             task.ContinueWith(t => {
-                if (t.IsCompleted)
+                if (t.IsCompletedSuccessfully)
                 {
                     Console.WriteLine("The call has stopped: " + t.Result);
                 }
@@ -107,7 +107,7 @@ namespace HelpLightning.SDK.Sample.iOS
             Call call = new Call(this.sessionId.Text, this.sessionToken.Text, this.userToken.Text, this.gssURL.Text, "", this.userName.Text, this.userAvatar.Text);
             Task<IDictionary<string, object>> task = CallClientFactory.Instance.CallClient.StartCall(call, this);
             task.ContinueWith( t => {
-                if (t.IsCompleted)
+                if (t.IsCompletedSuccessfully)
                 {
                     Console.WriteLine("The call has started: " + t.Result[Call.HLCallInfoCallIDKey]);
                 }
