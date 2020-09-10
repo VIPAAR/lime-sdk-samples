@@ -13,7 +13,7 @@ A python implementation to demonstrate how to get sessions by using helplightnin
 
 Make sure exports following environments before run the server:
 ```sh
-export HLSERVER_URL=https://api.helplightning.com/
+export HLSERVER_URL=https://api.helplightning.net/api
 export HLSERVER_ENTERPRISE_ID=0000
 export HLSERVER_API_KEY=1234
 export HLSERVER_PARTNER_KEY=apikey
