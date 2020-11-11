@@ -140,6 +140,7 @@ namespace HelpLightning.SDK.Sample.Android
 
         public void OnScreenCaptureCreated(Call call, object image)
         {
+            Console.WriteLine("OnScreenCaptured");
             ImageView iv = (ImageView)rootView.FindViewById(Resource.Id.img_screen_captured);
             iv.SetImageBitmap((Bitmap)image);
         }
