@@ -143,6 +143,13 @@ NSTimeInterval const kHTTRequestTimeout = 30.0;
         }];
         comps.queryItems = queryItems;
     }
+    // https://developer.apple.com/documentation/foundation/nsurlcomponents/1407752-queryitems?language=objc
+    // NSURLQueryItem will NOT encode '+'
+    // Let's encode '+' in the query parameters
+    NSCharacterSet* plusSet = [[NSCharacterSet characterSetWithCharactersInString:@"+"] invertedSet];
+    NSString* queryString = comps.percentEncodedQuery;
+    comps.percentEncodedQuery = [queryString stringByAddingPercentEncodingWithAllowedCharacters:plusSet];
+    
     NSURL* url = comps.URL;
     if (!url) {
         return [FBLPromise resolvedWith:[NSError errorWithDomain:kSampleErrorDomain code:-3 userInfo:nil]];
