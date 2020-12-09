@@ -1,6 +1,6 @@
 ﻿using Foundation;
 using UIKit;
-
+using HelpLightning.SDK.iOS;
 namespace SampleXamarin
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the
@@ -17,6 +17,12 @@ namespace SampleXamarin
         {
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
+            // Enable HLSDK Logging
+            Logging.Enable();
+            Logging.EnableOSLogger();
+            Logging.EnableTTYLogger();
+            Logging.SetLogLevel(Logging.LogLevel.Verbose);
+
             return true;
         }
 

@@ -35,7 +35,9 @@ namespace HelpLightning.SDK.Sample
 
         public async Task<string> AuthUser(string email)
         {
-            JObject json = await RequestJsonData("/auth?email=" + WebUtility.UrlEncode(email), "GET");
+            string escapedEmail = WebUtility.UrlEncode(email);
+            escapedEmail = escapedEmail.Replace("+", "%2B"); // escape '+', since WebUtility.UrlEncode doesn't escape it.
+            JObject json = await RequestJsonData("/auth?email=" + escapedEmail, "GET");
             return json["token"].ToString();
         }
 

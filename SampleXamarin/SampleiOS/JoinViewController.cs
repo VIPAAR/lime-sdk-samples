@@ -146,6 +146,12 @@ namespace HelpLightning.SDK.Sample.iOS
                     theme.SetImage(Theme.imageScreenCaptureButton1, UIImage.FromBundle("Lightning"));
                     theme.SetImage(Theme.imageScreenCaptureButton2, UIImage.FromBundle("Lightning"));
                     theme.SetImage(Theme.imageScreenCaptureButton3, UIImage.FromBundle("Lightning"));
+
+                    theme.SetImage(Theme.ImageTelestrationMenuArrowSelected, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.ImageTelestrationMenuPenSelected, UIImage.FromBundle("Lightning"));
+
+                    theme.SetImage(Theme.ImageCameraMenuLiveVideoOff, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.ImageCameraMenuLiveVideoOn, UIImage.FromBundle("Lightning"));
                     break;
                 default:
                     break;
