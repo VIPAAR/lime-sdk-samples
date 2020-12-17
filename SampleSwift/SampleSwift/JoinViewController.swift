@@ -108,12 +108,9 @@ class JoinViewController: UIViewController, HLClientDelegate {
                 theme?.setImage(kHLImageCameraMenuPhotoOff, image: UIImage(named: "Lightning"))
                 theme?.setImage(kHLImageCameraMenuFreezeOn, image: UIImage(named: "Lightning"))
                 theme?.setImage(kHLImageCameraMenuFreezeOff, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageCameraMenuCameraOff, image: UIImage(named: "Lightning"))
                 theme?.setImage(kHLImageCameraMenuSwitchCamera, image: UIImage(named: "Lightning"))
                 theme?.setImage(kHLImageCameraMenuFrontCameraOn, image: UIImage(named: "Lightning"))
                 theme?.setImage(kHLImageCameraMenuFrontCameraOff, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageCameraMenuBackCameraOn, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageCameraMenuBackCameraOff, image: UIImage(named: "Lightning"))
 
                 //mic
                 theme?.setImage(kHLImageMicOn, image: UIImage(named: "Lightning"))
