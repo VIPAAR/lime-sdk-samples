@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">Sample HL asia</string>
-    <string name="galdr_apikey">77ed5850e042cfab6a84b2f2d7541585</string>
-    <string name="galdr_host">http://192.168.2.110:8777</string>
-</resources>
