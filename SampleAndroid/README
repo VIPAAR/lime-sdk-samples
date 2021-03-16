@@ -1,0 +1,77 @@
+Help Lightning - Android
+
+== INTRODUCTION ==
+
+Help Lightning is an Android application developed by Vipaar for
+allowing people in remote applications to work on problems together in
+real time in a mixed reality environment.
+
+== BUILDING ==
+
+To build Help Lightning on the command line, use:
+
+(Development version)
+
+To compile:
+./gradlew assembleDevelopmentDebug
+
+To install on a device or emulator:
+./gradlew installDevelopmentDebug
+
+(Production version)
+
+To compile:
+./gradlew assembleProductionRelease
+
+To install on a device or emulator:
+./gradlew installProductionRelease
+
+
+You can also open this project directly in Android Studio and build
+that way.
+
+== Running Tests ==
+
+Several unit tests are included. To run the tests, use:
+
+./gradlew testRoboelectricDebug
+
+Then, in a webbrowser open:
+
+./app/build/reports/tests/roboelectricDebug/index.html
+
+It is possible to run the unit tests through Android Studio too, by
+selecting the Roboelectric build variant.
+
+== LICENSE ==
+
+Copyright (c) 2016 VIPAAR, LLC.
+
+libballyhoo was developed by VIPAAR, Inc:
+ * Marcus Dillavou <marcus.dillavou@helplightning.com>
+
+# Any commercial use of this software is subject to license
+# agreement. Disclosure of the information contained herein to any
+# third parties is prohibited without prior written consent. This
+# software is subject to US export control regulations.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+# FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+# AUTHORS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+== QUESTIONS ==
+
+If you have questions about this application, please contact:
+
+* Marcus Dillavou <marcus.dillavou@helplightning.com>

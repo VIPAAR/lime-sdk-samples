@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">HL Sample Dev</string>
+
+    <!--app link-->
+    <string name="APP_LINK_HOST" translatable="false">app-dev.helplightning.net</string>
+
+    <string name="galdr_apikey" translatable="false">77ed5850e042cfab6a84b2f2d7541585</string>
+    <string name="galdr_host" translatable="false">http://192.168.86.21:8777</string>
+</resources>

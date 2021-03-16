@@ -1,0 +1,31 @@
+# build application files
+*.apk
+
+# files for the dex vm
+*.dex
+
+# java class files
+*.class
+
+# generated files
+bin
+gen
+out
+build
+captures
+
+.gradle
+
+# project files
+*.iml
+.idea
+
+# local configuration file
+local.properties
+keystore.properties
+
+# Windows thumbnail db
+.DS_Store
+
+# Idean non-crucial projects files
+*.iws

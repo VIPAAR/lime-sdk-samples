@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name" translatable="false">Sample HL</string>
+
+    <string name="toastPermsGranted" translatable="false">Permissions granted</string>
+    <string name="toastPermsNotGranted" translatable="false">Required permissions not granted</string>
+    <string name="toastThanks" translatable="false">Thanks!</string>
+    <string name="permsExplanationAlertMessage" translatable="false">Sample HL requires the Camera and Microphone permissions to make video calling possible. Please allow these permissions to use the app</string>
+</resources>
