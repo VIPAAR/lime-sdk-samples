@@ -8,5 +8,6 @@ bin
 *.nupkg
 *.aar
 *.jar
+!SampleAndroid/gradle/wrapper/gradle-wrapper.jar
 *.xcuserdatad
 *.xcworkspace
