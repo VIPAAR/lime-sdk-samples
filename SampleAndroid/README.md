@@ -14,13 +14,13 @@ integration server. Please see the instructions in the
 
 In the gradle.properties, add in the following lines to the end:
 
-Replace the `192.168.1.55` with the IP address of the machine running
-the python server. Replace the `your-api-key` with an actual API Key
-generated from the Developer section on https://helplightning.net/
 ```
 GALDR_HOST=http://192.168.1.55:8777
 GALDR_API_KEY=your-api-key
 ```
+Replace the `192.168.1.55` with the IP address of the machine running
+the python server. Replace the `your-api-key` with an actual API Key
+generated from the Developer section on https://helplightning.net/
 
 # QUESTIONS
 
