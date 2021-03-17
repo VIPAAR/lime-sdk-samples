@@ -23,9 +23,9 @@ allprojects {
         maven {
             url "http://tokbox.bintray.com/maven"
         }
-        // for hlsdk in local repo
+
         maven {
-            url "$rootProject.buildDir/mvn-repo"
+            url "https://maven.helplightning.net"
         }
 
         google()
