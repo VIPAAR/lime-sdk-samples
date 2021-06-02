@@ -16,7 +16,7 @@ Make sure exports following environments before run the server:
 export HLSERVER_URL=https://api.helplightning.net/api
 export HLSERVER_ENTERPRISE_ID=0000
 export HLSERVER_API_KEY=1234
-export HLSERVER_PARTNER_KEY=apikey
+export HLSERVER_PARTNER_KEY=partnerkey
 ```
 `HLSERVER_URL` - Helplightning api server url  
 `HLSERVER_ENTERPRISE_ID` - Your enterprise id in helplightning  
