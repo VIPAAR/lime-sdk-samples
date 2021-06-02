@@ -24,7 +24,7 @@ export HLSERVER_PARTNER_KEY=apikey
 `HLSERVER_PARTNER_KEY` - Path to a partner key file(*.pem* formart)  
 
 ## Deploy
-You may need to installs follow python3 libs: `requests, json, jwt`.  
+You may need to installs follow python3 libs: `requests, json, pyjwt`.  
 
 Run:
 ```sh
