@@ -56,15 +56,16 @@ In the second browser, enter the `PIN` and click `Join Session`.
 
 You will now be in a Help Lightning video session.
 
-You will notice that there is no direct signalling (userA calls userB,
+You will notice that there is no direct signaling (userA calls userB,
 userB rings, userB accepts). It is possible to use Help Lightning's
-signalling, but it requires that you set up a server that accepts
-webhooks to receive the signalling events, and then push them down to
+signaling, but it requires that you set up a server that accepts
+web-hooks to receive the signaling events, and then push them down to
 your clients.
 
-This example uses "out of band signalling". In this case, our sample
+This example uses "out of band signaling". In this case, our sample
 server generated a 4-digit PIN code, and this was sent from one user
-to another, via SMS, email, calendar invite, verbally, etc.
+to another, via SMS, email, calendar invite, verbally, telepathically,
+etc.
 
 ## Integration Server
 
@@ -88,10 +89,10 @@ scope of this SDK.
 Here are the steps to show a Help Lightning call inside of your web
 application:
 
-1. Acquire a user token, sessionId, session token, and a session URL. (Please see
+* Acquire a user token, sessionId, session token, and a session URL. (Please see
    the hlserver example on how this is done)
-1. Create a `<div>` that Help Lightning can embed into.
-1. Include the following in your head sction:
+* Create a `<div>` that Help Lightning can embed into.
+* Include the following in your head section:
 ```javascript
     <!-- Load help lightning JS SDK -->
     <script src="https://helplightning.net/sdk/helplightning.min.js"></script>
@@ -99,18 +100,18 @@ application:
     <script src="https://helplightning.net/sdk/pdf_viewer/build/pdf.min.js"></script>
     <script src="https://helplightning.net/sdk/opencv/opencv.js" async></script>
 ```
-1. Create a new client from the factory:
+* Create a new client from the factory:
 ```javascript
 let callClient = HL.CallClientFactory.CallClient;
 ```
-1. Create a new call. You need to pass in the:
-  1. SessionId
-  1. session token
-  1. user token
-  1. Server URL
-  1. An optional API Key (or an emptry string)
-  1. A display name for the user
-  1. An optional URL to an avatar (or an empty string)
+* Create a new call. You need to pass in the:
+   1. SessionId
+   1. session token
+   1. user token
+   1. Server URL
+   1. An optional API Key (or an empty string)
+   1. A display name for the user
+   1. An optional URL to an avatar (or an empty string)
 ```javascript
         const call = new HL.Call(state.session.session_id,
                                  state.session.session_token,
@@ -118,7 +119,7 @@ let callClient = HL.CallClientFactory.CallClient;
                                  state.session.url,
                                  '', name, '');
 ```
-1. Define your callback delegates. These functions will be called
+* Define your callback delegates. These functions will be called
    based on events from Help Lightning. There are two events you can
    capture: 1) `onCallEnded` 2) `onScreenCaptureCreated`. Make sure
    you assign your delegate to the call client.
@@ -135,7 +136,7 @@ let callClient = HL.CallClientFactory.CallClient;
         };
         callClient.delegate = delegate;
 ```
-1. Start a call. This is an asynchronous method and will return the
+* Start a call. This is an asynchronous method and will return the
    `callId` as the parameter to the callback function. This `callId`
    can be used later to retrieve detailed stats, screen captures, or
    recordings from the Help Lightning RESTful API.
@@ -150,7 +151,7 @@ let callClient = HL.CallClientFactory.CallClient;
             }
         });
 ```
-1. If you need to stop the call from outside of Help Lightning, you
+* If you need to stop the call from outside of Help Lightning, you
    can use the `stopCurrentCall()` method on the callClient.
 ```javascript
 callClient.stopCurrentCall();
@@ -178,3 +179,18 @@ own authentication method between your web application and your
 server. Once authenticated, your backend will then map your internal
 authenticated user to a corresponding Help Lightning user, and act on
 their behalf, using the partner key.
+
+<!--  LocalWords:  SDK javascript Pre api backend README md python3
+ -->
+<!--  LocalWords:  http localStorage userA userB SMS 'In Call' JS src
+ -->
+<!--  LocalWords:  RESTful sessionId hlserver async callClient const
+ -->
+<!--  LocalWords:  SessionId HL '' onCallEnded onScreenCaptureCreated
+ -->
+<!--  LocalWords:  'onCallEnded' TODO callId hlDiv callID 'Call call'
+ -->
+<!--  LocalWords:  instanceof CallException 'Error 'Unknown error'
+ -->
+<!--  LocalWords:  stopCurrentCall
+ -->
