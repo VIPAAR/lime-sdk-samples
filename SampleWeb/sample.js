@@ -1,101 +1,189 @@
-const helplightningApiKey = 'xxx';
-const galdrUrl = 'http://xxx:xxx/';
-const user = {
-  email: 'xxx@xxx.xxx',
-  password: 'xxx'
-};
+// Location of the sample HLServer
+const HOST_URL = 'http://localhost:8777'
 
-const galdrWrapper = () => {
-  const url = galdrUrl;
-  const instance = axios.create({
-    baseURL: url,
-    timeout: 60000
-  })
-  return instance
+function refresh(state) {
+    console.log('refresh', state);
+    if (state.error) {
+        document.querySelector('#errorMsg').visible = true;
+    } else {
+        document.querySelector('#errorMsg').visible = false;
+    }
+
+    let login = document.querySelector('#login');
+    let authenticated = document.querySelector('#authenticated');
+    let incall = document.querySelector('#incall');
+
+    if (state.state == STATE_LOGIN) {
+        show(login);
+        hide(authenticated);
+        hide(incall);
+    } else if (state.state == STATE_AUTHENTICATED) {
+        hide(login);
+        show(authenticated);
+        hide(incall);
+    } else if (state.state == STATE_IN_CALL) {
+        hide(login);
+        hide(authenticated);
+
+        // update the pin code
+        let sessionPincode = document.querySelector('#session-pincode');
+        sessionPincode.innerHTML = state.session.pin;
+
+        // start the HL SDK
+        let hlDiv = document.querySelector('#hl-call');
+        state.callClient = HL.CallClientFactory.CallClient;
+
+        let name = randomName();
+        const call = new HL.Call(state.session.session_id,
+                                 state.session.session_token,
+                                 state.session.user_token,
+                                 state.session.url,
+                                 '', name, '');
+        // set up some delegates to handle messages
+        const delegate = {
+            onCallEnded: (reason) =>{
+                console.log('onCallEnded', reason);
+                // set the state back to authenticated
+                state.state = STATE_AUTHENTICATED;
+                state.session = null;
+                state.callClient = null;
+
+                refresh(state);
+            },
+            onScreenCaptureCreated: (image) => {
+                // TODO: prompt to save this somewhere?
+                // or ignore it, it'll be uploaded to the server
+                //  automatically
+            }
+        };
+
+        state.callClient.delegate = delegate;
+        state.callClient.startCall(call, hlDiv).then((callID) => {
+            console.log('Call started...', callID);
+        }).catch(err => {
+            if (err instanceof HL.CallException) {
+                console.error('Error creating Help Lightning call', err.message);
+            } else {
+                console.error('Unknown error', err);
+            }
+
+            resetState(state);
+            refresh(state);
+        });
+        
+        show(incall);
+    } else {
+        console.warn('Unknown state', state);
+        resetState(state);
+        refresh(state);
+    }
 }
-const galdrClient = galdrWrapper()
 
-const callClient = HL.CallClientFactory.CallClient;
-
-const hlcall = document.getElementById('hlcall');
-const callContactButton = document.getElementById('callContact');
-
-function init () {
-  hlcall.innerText = 'Init...';
-  
-  login(user);
-  callContactButton.value = 'Call Contact';
-  callContactButton.onclick = callContact;
+function show(div) {
+    div.style.display = 'block';
 }
 
-function login () {
-  galdrClient.get('auth', { params: {
-    email: user.email
-  }}).then(res => {
-    user.token = res.data.token;
-  }).catch(error => {
-    console.log(error);
-    alert('Login failed.');
-  });
+function hide(div) {
+    div.style.display = 'none';
 }
 
-function callContact () {
-  if (user.token) {
-    console.log('Call contact...');
-    const contactEmail = document.getElementById('contactEmail').value;
-    const contact = {
-      email: contactEmail
-    };
-    createSession(user.token, contact).then(session => {
-      const call = new HL.Call(session.session_id, session.session_token, user.token, session.ws_url, helplightningApiKey, 'Small Admin', '');
+function resetState(state) {
+    state.state = STATE_LOGIN;
+    state.error = null;
+    state.token = null;
+    state.session = null;
+    state.callClient = null;
+}
 
-      const delegate = {
-        onCallEnded: (reason) => {
-          hlcall.innerText = reason;
-          callContactButton.innerHTML = 'Call Contact';
-          callContactButton.onclick = callContact;
+function randomName() {
+    let n = Math.floor(Math.random() * 100000);
+    return `User_${n}`;
+}
+
+function onLogin(target, state) {
+    let email = document.querySelector('#username').value;
+    let params = new URLSearchParams({'email': email});
+    
+    return fetch(`${HOST_URL}/auth?${params.toString()}`)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Invalid email address');
+            }
+        })
+        .then(response => {
+            let newState = {
+                ...state,
+                state: STATE_AUTHENTICATED, // move to authenticated state
+                token: response.token
+            };
+            
+            return newState;
+        });
+}
+
+function createSession(target, state) {
+    let email = document.querySelector('#contact').value;
+
+    return fetch(`${HOST_URL}/session`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': state.token
         },
-        onScreenCaptureCreated: (image) => {
-          console.log('Screen captured.');
-          const photoUrl = `data:image/jpeg;base64,${btoa(image)}`;
-          const videoSrc = document.getElementById('screen_capture');
-          videoSrc.src = photoUrl;
-        }
-      };
-
-      callClient.delegate = delegate;
-      callClient.startCall(call).then(() => {
-        callContactButton.innerHTML = 'End Call';
-        callContactButton.onclick = endCall;
-      }).catch(error => {
-        if (error instanceof HL.CallException) {
-          console.log('HL error: ' + error.message);
+        body: JSON.stringify({'contact_email': email})
+    }).then(response => {
+        if (response.ok) {
+            return response.json()
         } else {
-          console.log('Unknown error.');
+            throw new Error('Unable to create session');
         }
-      });
+    }).then(response => {
+        let newState = {
+            ...state,
+            state: STATE_IN_CALL,
+            session: {
+                pin: response.sid,
+                session_id: response.session_id,
+                user_token: response.user_token,
+                session_token: response.session_token,
+                url: response.ws_url
+            }
+        };
+        
+        return newState;
     });
-  } else {
-    alert('Please login.');
-  }
 }
 
-function createSession (userToken, contact) {
-  return new Promise((resolve, reject) => {
-    galdrClient.post('session', { contact_email: contact.email }, { headers: {'Authorization': userToken} }).then(res => {
-      resolve(res.data);
-    }).catch(error => {
-      console.log(error);
-      reject(error);
+function joinSession(target, state) {
+    let pin = document.querySelector('#pincode').value;
+    let params = new URLSearchParams({'sid': pin});
+    
+    return fetch(`${HOST_URL}/session?${params.toString()}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': state.token
+        }
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Invalid PIN');
+        }
+    }).then(response => {
+        let newState = {
+            ...state,
+            state: STATE_IN_CALL,
+            session: {
+                pin: response.sid,
+                session_id: response.session_id,
+                user_token: response.user_token,
+                session_token: response.session_token,
+                url: response.ws_url
+            }
+        };
+        
+        return newState;
     });
-  });
 }
-
-function endCall () {
-  callClient.stopCurrentCall().then(() => {
-    callContactButton.innerHTML = 'Call Contact';
-    callContactButton.onclick = callContact;
-  });
-}
-
-init();
