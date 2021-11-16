@@ -19,17 +19,21 @@ allprojects {
         flatDir {
             dirs 'libs'
         }
-        mavenCentral()
-        maven {
-            url "http://tokbox.bintray.com/maven"
-        }
 
         maven {
             url "https://maven.helplightning.net"
         }
 
+        // for hlsdk in local repo
+        if (project.hasProperty('LOCAL_MAVEN_REPO')) {
+            maven {
+                url "$LOCAL_MAVEN_REPO"
+            }
+        }
+
         google()
         mavenCentral()
+        jcenter()
     }
 }
 
