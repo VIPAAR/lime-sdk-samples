@@ -58,7 +58,12 @@ function refresh(state) {
         };
 
         state.callClient.delegate = delegate;
-        state.callClient.startCall(call, hlDiv).then((callID) => {
+        // the third parameter is optional and can be left blank
+        //  in which case, it will default to the US data center.
+        // Current available data centers are:
+        //  - US
+        //  - EU
+        state.callClient.startCall(call, hlDiv, 'US').then((callID) => {
             console.log('Call started...', callID);
         }).catch(err => {
             if (err instanceof HL.CallException) {
