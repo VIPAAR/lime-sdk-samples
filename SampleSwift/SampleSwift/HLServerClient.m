@@ -32,7 +32,7 @@
 
 #import "HLServerClient.h"
 
-NSString* const kHLAPIKey = @"8d327cb3a60355178b0ea275995f5bdd";
+NSString* const kHLAPIKey = @"[YOUR_HL_API_KEY]";
 
 NSErrorDomain const kSampleErrorDomain = @"SampleObjC";
 NSString* const kHTTPMethodGet = @"GET";

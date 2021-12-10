@@ -77,7 +77,9 @@
                                   localUserAvatarUrl:self.userAvatar.text];
     
     [self.joinIndicator startAnimating];
-    FBLPromise* promise = [HLClient.sharedInstance startCall:call withPresentingViewController:self];
+    [HLClient.sharedInstance startCall:call withPresentingViewController:self];
+    //TODO kHLDataCenterID_EU1 kHLDataCenterID_US1
+    FBLPromise* promise = [HLClient.sharedInstance startCall:call withPresentingViewController:self dataCenter:kHLDataCenterID_US1];
     [promise then:^id(id value) {
         NSLog(@"The call has started");
         return value;
