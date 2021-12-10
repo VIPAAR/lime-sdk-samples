@@ -65,8 +65,8 @@ class ViewController: UIViewController, UITabBarDelegate, HLClientDelegate {
                                 localUserDisplayName: self.userName?.text,
                                 localUserAvatarUrl: self.userAvatar?.text) else { return; }
         self.joinIndicator.startAnimating()
-        
-        let promise = HLClientSwift.shared.startCall(call: call, viewController: self)
+        //TODO kHLDataCenterID_EU1 kHLDataCenterID_US1
+        let promise = HLClientSwift.shared.startCall(call: call, viewController: self, dataCenterId: kHLDataCenterID_EU1)
         promise.then { (bool) in
             NSLog("The call has started")
         }

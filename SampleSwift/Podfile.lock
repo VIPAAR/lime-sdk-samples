@@ -4,12 +4,12 @@ PODS:
   - CocoaLumberjack/Core (3.5.3)
   - CocoaZ (1.4.2)
   - FXKeychain (1.5.1)
-  - HLSDK (13.10.4):
+  - HLSDK (14.6.0):
     - CocoaLumberjack (= 3.5.3)
     - CocoaZ (= 1.4.2)
     - FXKeychain (= 1.5.1)
     - OpenCV2 (= 4.3.0)
-    - OpenTok (= 2.17.1)
+    - OpenTok (= 2.18.1)
     - PromisesObjC (= 1.2.8)
     - SDWebImage (= 3.7.1)
     - SVProgressHUD (= 2.2.2)
@@ -20,7 +20,7 @@ PODS:
     - vipaar-reachability (= 3.2.1)
     - vipaar-tinyspline (= 1.0.0)
   - OpenCV2 (4.3.0)
-  - OpenTok (2.17.1)
+  - OpenTok (2.18.1)
   - PromisesObjC (1.2.8)
   - PromisesSwift (1.2.8):
     - PromisesObjC (= 1.2.8)
@@ -37,7 +37,7 @@ PODS:
   - vipaar-tinyspline (1.0.0)
 
 DEPENDENCIES:
-  - HLSDK (from `https://github.com/VIPAAR/lime-ios-sdk.git`, tag `13.10.4`)
+  - HLSDK (from `https://github.com/VIPAAR/lime-ios-sdk.git`, tag `14.6.0`)
   - PromisesObjC (= 1.2.8)
   - PromisesSwift (= 1.2.8)
 
@@ -63,20 +63,20 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   HLSDK:
     :git: https://github.com/VIPAAR/lime-ios-sdk.git
-    :tag: 13.10.4
+    :tag: 14.6.0
 
 CHECKOUT OPTIONS:
   HLSDK:
     :git: https://github.com/VIPAAR/lime-ios-sdk.git
-    :tag: 13.10.4
+    :tag: 14.6.0
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
   CocoaZ: a296b1fbea2c648daf2ccabb5403ed354569e633
   FXKeychain: a6c2efc46ba7167163c45469a0554233e9e6569e
-  HLSDK: 82603fc0ba0abbd4d70d30de76f9e1679cc63f9c
+  HLSDK: c8b77d69222eed18d212d591102c88d6043c66f2
   OpenCV2: ffe82e5cb5d16dc3fc01a5f4127b9a5b3cfc7d1b
-  OpenTok: ca8dc629f930dc438a87147258c469a1944e2eef
+  OpenTok: 2a816f5d77fbf2e2ebb5aec841bd21fb7dc7737b
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   PromisesSwift: 37bad6f4daddb02f7c9c531efe91e8b21c13ee2f
   SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
@@ -88,6 +88,6 @@ SPEC CHECKSUMS:
   vipaar-reachability: 05dea9613e5126628ae69b1f1ed50866a2a9ecad
   vipaar-tinyspline: d8565207b0c1714bac044a488b4308ca690b52f9
 
-PODFILE CHECKSUM: 37b3b9f462a5585e34dbbb256188552e03b88669
+PODFILE CHECKSUM: 7f9141474c36042b631baeee769bff5aeb328373
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.11.0

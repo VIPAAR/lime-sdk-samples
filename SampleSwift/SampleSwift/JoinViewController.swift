@@ -10,7 +10,7 @@ import UIKit
 import HLSDK
 import HLSDKSwift
 
-let kDefaultUserName = "small_u13";
+let kDefaultUserName = "[YOUR_USER_NAME]";
 let kHLApiKey = "[YOUR_HL_API_KEY]";
 
 class JoinViewController: UIViewController, HLClientDelegate {
@@ -66,7 +66,8 @@ class JoinViewController: UIViewController, HLClientDelegate {
         //  Converted to Swift 5.1 by Swiftify v5.1.33915 - https://objectivec2swift.com/
         joinButton.isEnabled = false
         indicator.isHidden = false
-        HLClientSwift.shared.startCall(call: call, viewController: self).then({ value in
+        //TODO kHLDataCenterID_EU1 kHLDataCenterID_US1
+        HLClientSwift.shared.startCall(call: call, viewController: self dataCenterId: kHLDataCenterID_EU1).then({ value in
             print("The call has started")
         }).catch({ error in
             print("Cannot start the call:\(error)")
