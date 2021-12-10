@@ -67,7 +67,7 @@ class JoinViewController: UIViewController, HLClientDelegate {
         joinButton.isEnabled = false
         indicator.isHidden = false
         //TODO kHLDataCenterID_EU1 kHLDataCenterID_US1
-        HLClientSwift.shared.startCall(call: call, viewController: self dataCenterId: kHLDataCenterID_EU1).then({ value in
+        HLClientSwift.shared.startCall(call: call, viewController: self, dataCenterId: kHLDataCenterID_EU1).then({ value in
             print("The call has started")
         }).catch({ error in
             print("Cannot start the call:\(error)")
