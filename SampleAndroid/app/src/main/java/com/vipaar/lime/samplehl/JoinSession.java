@@ -12,6 +12,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.vipaar.lime.hlsdk.HLTheme;
+import com.vipaar.lime.hlsdk.misc.Environment;
 import com.vipaar.lime.hlsdk.client.HLCall;
 import com.vipaar.lime.hlsdk.client.HLClient;
 
@@ -50,6 +51,8 @@ public class JoinSession extends Fragment {
     private String mUserToken;
     private String mMode;
 
+    private final Environment.DataCenter dataCenter = Environment.DataCenter.US;
+    
     public JoinSession() {
         // Required empty public constructor
     }
@@ -111,7 +114,7 @@ public class JoinSession extends Fragment {
                                   sessionData = getSessionData(response);
                                   pinEditText.setText(response.getString("sid"));
 
-                                  HLClient.getInstance().startCall(sessionData, rootView.getContext(), SampleInCallService.class)
+                                  HLClient.getInstance().startCall(sessionData, rootView.getContext(), SampleInCallService.class, dataCenter)
                                     .then(result -> {
                                         rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
                                     }, err -> {
@@ -140,7 +143,7 @@ public class JoinSession extends Fragment {
                                   sessionData = getSessionData(response);
                                   rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.VISIBLE);
 
-                                  HLClient.getInstance().startCall(sessionData, rootView.getContext(), SampleInCallService.class)
+                                  HLClient.getInstance().startCall(sessionData, rootView.getContext(), SampleInCallService.class, dataCenter)
                                     .then(result -> {
                                         rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
                                     }, err -> {
@@ -163,7 +166,7 @@ public class JoinSession extends Fragment {
                     }
                 } else {
                     sessionData = renewSessionData(sessionData);
-                    HLClient.getInstance().startCall(sessionData, rootView.getContext(), SampleInCallService.class).then(result -> {
+                    HLClient.getInstance().startCall(sessionData, rootView.getContext(), SampleInCallService.class, dataCenter).then(result -> {
                         rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
                     }, err -> {
                         Toast.makeText(rootView.getContext(), ((Exception)err).getMessage(), Toast.LENGTH_SHORT).show();
@@ -265,13 +268,15 @@ public class JoinSession extends Fragment {
           .setImage(HLTheme.IMAGE_MODE_MENU_RECEIVER_ON, R.drawable.image_test)
           .setImage(HLTheme.IMAGE_TELESTRATION_CLEAR_ALL, R.drawable.image_test)
           .setImage(HLTheme.IMAGE_TELESTRATION_MENU_ARROW_OFF, R.drawable.hltheme_ic_telestration_arrow_off)
-          .setImage(HLTheme.IMAGE_TELESTRATION_MENU_ARROW_SELECTED, R.drawable.hltheme_ic_telestration_arrow_on)
           .setImage(HLTheme.IMAGE_TELESTRATION_MENU_ARROW_ON, R.drawable.hltheme_ic_telestration_arrow_blank)
+          .setImage(HLTheme.IMAGE_TELESTRATION_MENU_ARROW_SOLID, R.drawable.image_test)
+          .setImage(HLTheme.IMAGE_TELESTRATION_MENU_ARROW_BORDER, R.drawable.image_test)
           .setImage(HLTheme.IMAGE_TELESTRATION_MENU_COLOR_SELECTED, R.drawable.image_test)
           .setImage(HLTheme.IMAGE_TELESTRATION_MENU_COLOR_UNSELECTED, R.drawable.image_test)
           .setImage(HLTheme.IMAGE_TELESTRATION_MENU_PEN_OFF, R.drawable.image_test)
-          .setImage(HLTheme.IMAGE_TELESTRATION_MENU_PEN_SELECTED, R.drawable.image_test)
           .setImage(HLTheme.IMAGE_TELESTRATION_MENU_PEN_ON, R.drawable.ic_f2f_on)
+          .setImage(HLTheme.IMAGE_TELESTRATION_MENU_PEN_SOLID, R.drawable.ic_f2f_on)
+          .setImage(HLTheme.IMAGE_TELESTRATION_MENU_PEN_BORDER, R.drawable.ic_f2f_on)
           .setImage(HLTheme.IMAGE_TELESTRATION_UNDO, R.drawable.image_test)
           .setImage(HLTheme.IMAGE_END_CALL, R.drawable.image_test)
           .setImage(HLTheme.IMAGE_MAIN_MENU, R.drawable.image_test)
