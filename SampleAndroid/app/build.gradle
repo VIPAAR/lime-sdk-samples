@@ -7,6 +7,8 @@ if (!project.hasProperty('GALDR_HOST')) {
         GALDR_HOST = "http://192.168.1.32:8777"
     }
 }
+println("jedi")
+println(GALDR_HOST)
 if (!project.hasProperty('GALDR_API_KEY')) {
     ext {
         GALDR_API_KEY = "invalid_key"
