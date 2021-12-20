@@ -62,7 +62,7 @@ namespace HelpLightning.SDK.Sample.iOS
             joinButton.Enabled = false;
             indicator.Hidden = false;
 
-            Task<IDictionary<string, object>> task = CallClientFactory.Instance.CallClient.StartCall(call, this);
+            Task<IDictionary<string, object>> task = CallClientFactory.Instance.CallClient.StartCall(call, this, DataCenter.US1);
             task.ContinueWith(t =>
             {
                 DispatchQueue.MainQueue.DispatchAsync(() =>

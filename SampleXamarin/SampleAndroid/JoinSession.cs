@@ -103,7 +103,7 @@ namespace HelpLightning.SDK.Sample.Android
         private void JoinCall(Call call)
         {
             rootView.FindViewById(Resource.Id.progressBar_cyclic).Visibility = ViewStates.Visible;
-            Task<IDictionary<string, object>> task = CallClientFactory.Instance.CallClient.StartCall(call, rootView.Context);
+            Task<IDictionary<string, object>> task = CallClientFactory.Instance.CallClient.StartCall(call, rootView.Context, DataCenter.US1);
             task.ContinueWith(t => {
                 rootView.FindViewById(Resource.Id.progressBar_cyclic).Visibility = ViewStates.Invisible;
                 if (!t.IsFaulted)
