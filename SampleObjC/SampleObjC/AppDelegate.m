@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <HLSDKCommon/HLSDKCommon.h>
 #import <HLSDK/HLSDK.h>
 @interface AppDelegate ()
 

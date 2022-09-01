@@ -7,6 +7,7 @@
 //
 
 #import "SessionViewController.h"
+#import <HLSDKCommon/HLSDKCommon.h>
 #import <HLSDK/HLSDK.h>
 #import "FBLPromises.h"
 
