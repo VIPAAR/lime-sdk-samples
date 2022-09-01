@@ -8,8 +8,7 @@ source 'https://github.com/VIPAAR/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'SampleSwift' do
-  # pod 'HLSDKSwift', :path => $(HLSDK_SWIFT_DIR)
-  pod 'HLSDKSwift', :path => '/Users/hxie/Workspace/tmp/HLSDK'
+  pod 'HLSDKSwift', :path => $(HLSDK_SWIFT_DIR)
   # this line is important to make PromiseSwift work
   pod 'PromisesObjC', '2.0.0', :modular_headers => true
 
