@@ -4,7 +4,7 @@ PODS:
   - CocoaLumberjack/Core (3.7.4)
   - CocoaZ (1.4.2)
   - FXKeychain (1.5.1)
-  - HLSDK (15.0.1):
+  - HLSDK (15.0.2):
     - CocoaLumberjack (= 3.7.4)
     - CocoaZ (= 1.4.2)
     - FXKeychain (= 1.5.1)
@@ -57,7 +57,7 @@ PODS:
   - vipaar-tinyspline (1.0.0)
 
 DEPENDENCIES:
-  - HLSDK (from `/Users/hxie/Workspace/tmp/HLSDK`)
+  - HLSDK (= 15.0.2)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -74,6 +74,7 @@ SPEC REPOS:
     - tarkit
     - UIActivityIndicator-for-SDWebImage
   https://github.com/VIPAAR/Specs.git:
+    - HLSDK
     - vipaar-j2objc
     - vipaar-libyuv
     - vipaar-MessageKit
@@ -84,15 +85,11 @@ SPEC REPOS:
     - vipaar-swift-markdown
     - vipaar-tinyspline
 
-EXTERNAL SOURCES:
-  HLSDK:
-    :path: "/Users/hxie/Workspace/tmp/HLSDK"
-
 SPEC CHECKSUMS:
   CocoaLumberjack: 543c79c114dadc3b1aba95641d8738b06b05b646
   CocoaZ: a296b1fbea2c648daf2ccabb5403ed354569e633
   FXKeychain: a6c2efc46ba7167163c45469a0554233e9e6569e
-  HLSDK: 1d8dff73c84bdad57d911638a18d12ffdf3e044d
+  HLSDK: 4a0cecce5628bf2d3b261437aac08b69dbefc36a
   InputBarAccessoryView: 74d471ab1fa1736806be50328df79257e52865a9
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   OpenCV2: ffe82e5cb5d16dc3fc01a5f4127b9a5b3cfc7d1b
@@ -112,6 +109,6 @@ SPEC CHECKSUMS:
   vipaar-swift-markdown: 60e96575038619206069cafe150c51065477250f
   vipaar-tinyspline: d8565207b0c1714bac044a488b4308ca690b52f9
 
-PODFILE CHECKSUM: 4013f0480a2ec6086e58e44e2c87f16b5b0548c0
+PODFILE CHECKSUM: e808da8e23e41f0f32c78a60b66659eba6e66322
 
 COCOAPODS: 1.11.0
