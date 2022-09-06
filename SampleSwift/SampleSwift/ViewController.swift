@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HLSDKCommon
 import HLSDK
 import HLSDKSwift
 
