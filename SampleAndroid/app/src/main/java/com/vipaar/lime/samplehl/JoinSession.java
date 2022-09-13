@@ -33,13 +33,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import timber.log.Timber;
 
-public class JoinSession extends Fragment {
+public class JoinSession extends Fragment implements View.OnClickListener {
 
     View rootView;
     EditText editText;
-    Button joinButton;
+    Button joinAudioButton;
+    Button joinVideoButton;
     String sessionId;
     HLCall sessionData;
+    EditText pinEditText;
+    EditText contactEditText;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -88,8 +91,8 @@ public class JoinSession extends Fragment {
       Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_join_session, container, false);
-        EditText contactEditText = rootView.findViewById(R.id.contact_edit_text);
-        EditText pinEditText = rootView.findViewById(R.id.pin_edit_text);
+        contactEditText = rootView.findViewById(R.id.contact_edit_text);
+        pinEditText = rootView.findViewById(R.id.pin_edit_text);
 
         if (mMode.equals("contact")) {
             pinEditText.setEnabled(false);
@@ -98,86 +101,11 @@ public class JoinSession extends Fragment {
         }
         setTheme();
 
-        joinButton = rootView.findViewById(R.id.join_session);
-        joinButton.setOnClickListener(v -> {
-            try {
-                RequestQueue queue = Volley.newRequestQueue(requireContext());
-                if (sessionData == null) {
-                    if (mMode.equals("contact") && pinEditText.getText().toString().equals("")) {
-                        String url = BuildConfig.GALDR_HOST + "/session";
-                        JSONObject obj = new JSONObject();
-                        obj.put("contact_email", contactEditText.getText());
-                        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, obj,
-                          response -> {
-                              try {
-                                  sessionData = getSessionData(response);
-                                  pinEditText.setText(response.getString("sid"));
+        joinVideoButton = rootView.findViewById(R.id.join_video_session);
+        joinAudioButton = rootView.findViewById(R.id.join_audio_session);
+        joinVideoButton.setOnClickListener(this);
+        joinAudioButton.setOnClickListener(this);
 
-                                  HLClient.getInstance()
-                                    .startCall(sessionData, rootView.getContext(), SampleInCallService.class, dataCenter)
-                                    .then(result -> {
-                                        rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
-                                    }, err -> {
-                                        Toast.makeText(rootView.getContext(), ((Exception)err).getMessage(), Toast.LENGTH_SHORT)
-                                          .show();
-                                    });
-                              } catch (JSONException e) {
-                                  e.printStackTrace();
-                              }
-                          }, error -> Timber.e(error, "volley error")) {
-                            @Override
-                            public Map<String, String> getHeaders() throws AuthFailureError {
-                                Map<String, String> headers = new HashMap<>();
-                                headers.put("Authorization", mUserToken);
-                                headers.put("ContentType", "application/json; charset=utf-8");
-                                return headers;
-                            }
-                        };
-                        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-                        queue.add(jsonObjectRequest);
-                    } else {
-                        String url = BuildConfig.GALDR_HOST + "/session?sid=" + pinEditText.getText();
-                        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                          response -> {
-                              try {
-                                  sessionData = getSessionData(response);
-                                  rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.VISIBLE);
-
-                                  HLClient.getInstance()
-                                    .startCall(sessionData, rootView.getContext(), SampleInCallService.class, dataCenter)
-                                    .then(result -> {
-                                        rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
-                                    }, err -> {
-                                        Toast.makeText(rootView.getContext(), ((Exception)err).getMessage(), Toast.LENGTH_SHORT)
-                                          .show();
-                                    });
-                              } catch (JSONException e) {
-                                  e.printStackTrace();
-                              }
-                          }, error -> Timber.e(error, "volley error")) {
-                            @Override
-                            public Map<String, String> getHeaders() throws AuthFailureError {
-                                Map<String, String> headers = new HashMap<>();
-                                headers.put("Authorization", mUserToken);
-                                headers.put("ContentType", "application/json; charset=utf-8");
-                                return headers;
-                            }
-                        };
-                        queue.add(jsonObjectRequest);
-                    }
-                } else {
-                    sessionData = renewSessionData(sessionData);
-                    HLClient.getInstance().startCall(sessionData, rootView.getContext(), SampleInCallService.class, dataCenter)
-                      .then(result -> {
-                          rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
-                      }, err -> {
-                          Toast.makeText(rootView.getContext(), ((Exception)err).getMessage(), Toast.LENGTH_SHORT).show();
-                      });
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        });
         rootView.findViewById(R.id.leave_session).setOnClickListener(v -> {
             try {
                 rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
@@ -204,7 +132,7 @@ public class JoinSession extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private HLCall getSessionData(JSONObject json) throws JSONException {
+    private HLCall getSessionData(JSONObject json, boolean audioPlusModeEnabled) throws JSONException {
         Switch simpleSwitch = rootView.findViewById(R.id.cameraSwitch);
         Switch audioSwitch = rootView.findViewById(R.id.audioSwitch);
 
@@ -219,7 +147,8 @@ public class JoinSession extends Fragment {
           "Jason",
           "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg",
           simpleSwitch.isChecked(),
-          audioSwitch.isChecked());
+          audioSwitch.isChecked(),
+          audioPlusModeEnabled);
 
     }
 
@@ -243,7 +172,6 @@ public class JoinSession extends Fragment {
         HLTheme theme = new HLTheme()
           .setImage(HLTheme.IMAGE_CAMERA_MENU_BACK_CAMERA_OFF, R.drawable.ic_camera_back_off)
           .setImage(HLTheme.IMAGE_CAMERA_MENU_BACK_CAMERA_ON, R.drawable.ic_camera_back_on)
-          .setImage(HLTheme.IMAGE_CAMERA_MENU_CAMERA_OFF, R.drawable.ic_camera_back_off)
           .setImage(HLTheme.IMAGE_CAMERA_MENU_FREEZE_OFF, R.drawable.ic_freeze_off)
           .setImage(HLTheme.IMAGE_CAMERA_MENU_FREEZE_ON, R.drawable.ic_freeze_on)
           .setImage(HLTheme.IMAGE_CAMERA_MENU_FRONT_CAMERA_OFF, R.drawable.ic_camera_front_off)
@@ -287,8 +215,103 @@ public class JoinSession extends Fragment {
           .setImage(HLTheme.IMAGE_SCREEN_CAPTURE_PRESSED, R.drawable.ic_capture_pressed)
           .setImage(HLTheme.IMAGE_DEFAULT_PROFILE_ICON, R.drawable.ic_user_avatar)
           .setImage(HLTheme.IMAGE_DEBUG_STATS_OFF, R.drawable.ic_debug_stats_off)
+          .setImage(HLTheme.IMAGE_MESSAGE_CHAT, R.drawable.hltheme_ic_chat)
+          .setImage(HLTheme.IMAGE_MESSAGE_SEND_BUTTON, R.drawable.hltheme_ic_chat_send)
+          .setImage(HLTheme.IMAGE_MESSAGE_PAPERCLIP, R.drawable.hltheme_ic_chat_attachment)
+          .setImage(HLTheme.IMAGE_MESSAGE_PHOTO_FILM, R.drawable.hltheme_ic_add_photo)
+          .setImage(HLTheme.IMAGE_MESSAGE_FOLDER_OPEN, R.drawable.hltheme_ic_add_document)
+          .setImage(HLTheme.IMAGE_MESSAGE_CAMERA, R.drawable.hltheme_ic_take_picture)
+          .setImage(HLTheme.IMAGE_MESSAGE_GROUP, R.drawable.hltheme_ic_icon_group)
+          .setImage(HLTheme.IMAGE_MESSAGE_XMARK, R.drawable.hltheme_ic_x_mark)
+          .setImage(HLTheme.IMAGE_MESSAGE_FILE, R.drawable.hltheme_ic_file_solid)
+          .setImage(HLTheme.IMAGE_MESSAGE_VIDEO, R.drawable.hltheme_ic_videocam)
+          .setImage(HLTheme.IMAGE_MESSAGE_PDF, R.drawable.hltheme_ic_file_pdf_solid)
+          .setImage(HLTheme.IMAGE_CALL_QUALITY_HD, R.drawable.hltheme_ic_call_quality_hd)
+          .setImage(HLTheme.IMAGE_CALL_QUALITY_SD, R.drawable.hltheme_ic_call_quality_sd)
+          .setImage(HLTheme.IMAGE_CALL_QUALITY_AUDIO_PLUS, R.drawable.hltheme_ic_call_quality_audio_plus)
+          .setImage(HLTheme.IMAGE_CAMERA_DISABLED , R.drawable.hltheme_ic_camera_disabled)
           .setImage(HLTheme.IMAGE_DEBUG_STATS_ON, R.drawable.ic_debug_stats_on);
 
         HLClient.getInstance().setTheme(theme);
+    }
+
+    public void onClick(View v) {
+        try {
+            RequestQueue queue = Volley.newRequestQueue(requireContext());
+            if (sessionData == null) {
+                if (mMode.equals("contact") && pinEditText.getText().toString().equals("")) {
+                    String url = BuildConfig.GALDR_HOST + "/session";
+                    JSONObject obj = new JSONObject();
+                    obj.put("contact_email", contactEditText.getText());
+                    final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, obj,
+                      response -> {
+                          try {
+                              sessionData = getSessionData(response, v.getId() == R.id.join_audio_session);
+                              pinEditText.setText(response.getString("sid"));
+
+                              HLClient.getInstance()
+                                .startCall(sessionData, rootView.getContext(), SampleInCallService.class, dataCenter)
+                                .then(result -> {
+                                    rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
+                                }, err -> {
+                                    Toast.makeText(rootView.getContext(), ((Exception)err).getMessage(), Toast.LENGTH_SHORT)
+                                      .show();
+                                });
+                          } catch (JSONException e) {
+                              e.printStackTrace();
+                          }
+                      }, error -> Timber.e(error, "volley error")) {
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            Map<String, String> headers = new HashMap<>();
+                            headers.put("Authorization", mUserToken);
+                            headers.put("ContentType", "application/json; charset=utf-8");
+                            return headers;
+                        }
+                    };
+                    jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                    queue.add(jsonObjectRequest);
+                } else {
+                    String url = BuildConfig.GALDR_HOST  + "/session?sid=" + pinEditText.getText();
+                    final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                      response -> {
+                          try {
+                              sessionData = getSessionData(response, v.getId() == R.id.join_audio_session);
+                              rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.VISIBLE);
+
+                              HLClient.getInstance()
+                                .startCall(sessionData, rootView.getContext(), SampleInCallService.class, dataCenter)
+                                .then(result -> {
+                                    rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
+                                }, err -> {
+                                    Toast.makeText(rootView.getContext(), ((Exception)err).getMessage(), Toast.LENGTH_SHORT)
+                                      .show();
+                                });
+                          } catch (JSONException e) {
+                              e.printStackTrace();
+                          }
+                      }, error -> Timber.e(error, "volley error")) {
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            Map<String, String> headers = new HashMap<>();
+                            headers.put("Authorization", mUserToken);
+                            headers.put("ContentType", "application/json; charset=utf-8");
+                            return headers;
+                        }
+                    };
+                    queue.add(jsonObjectRequest);
+                }
+            } else {
+                sessionData = renewSessionData(sessionData);
+                HLClient.getInstance().startCall(sessionData, rootView.getContext(), SampleInCallService.class, dataCenter)
+                  .then(result -> {
+                      rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
+                  }, err -> {
+                      Toast.makeText(rootView.getContext(), ((Exception)err).getMessage(), Toast.LENGTH_SHORT).show();
+                  });
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

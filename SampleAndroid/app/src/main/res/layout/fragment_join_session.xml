@@ -55,13 +55,23 @@
 
 
     <Button
-        android:id="@+id/join_session"
+        android:id="@+id/join_video_session"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Start Call"
+        android:text="Start Video Call"
         app:layout_constraintTop_toBottomOf="@+id/audioSwitch"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/join_audio_session"
+        />
+    <Button
+        android:id="@+id/join_audio_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Start Audio Call"
+        app:layout_constraintTop_toBottomOf="@+id/audioSwitch"
+        app:layout_constraintLeft_toRightOf="@id/join_video_session"
         app:layout_constraintRight_toRightOf="parent"
         />
     <Button
@@ -70,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="Stop Call"
-        app:layout_constraintTop_toBottomOf="@+id/join_session"
+        app:layout_constraintTop_toBottomOf="@+id/join_audio_session"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         />
