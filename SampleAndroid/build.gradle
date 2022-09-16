@@ -20,6 +20,7 @@ allprojects {
             dirs 'libs'
         }
 
+        maven { url 'https://jitpack.io' }
         maven {
             url "https://maven.helplightning.net"
         }
