@@ -14,7 +14,7 @@ if (!project.hasProperty('GALDR_API_KEY')) {
 }
 
 android {
-    ndkVersion "22.0.7026061"
+    ndkVersion "24.0.8215888"
     compileSdkVersion project.TARGET_ANDROID_SDK_VERSION.toInteger()
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -50,19 +50,18 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.vipaar.lime:hlsdk-light:1.14.2"
+    implementation 'com.vipaar.lime:hlsdk-light:1.14.2'
 
     implementation 'com.jakewharton.timber:timber:4.7.1'
-    implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.exifinterface:exifinterface:1.3.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.exifinterface:exifinterface:1.3.3'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'
 
-    implementation "com.android.volley:volley:1.2.0"
+    implementation "com.android.volley:volley:1.2.1"
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation('androidx.test.ext:junit:1.1.2') {
+    androidTestImplementation('androidx.test.ext:junit:1.1.3') {
         exclude module: 'support-annotations'
     }
     implementation 'org.jdeferred.v2:jdeferred-android:2.0.0'
