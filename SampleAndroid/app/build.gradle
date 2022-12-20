@@ -14,7 +14,6 @@ if (!project.hasProperty('GALDR_API_KEY')) {
 }
 
 android {
-    ndkVersion "24.0.8215888"
     compileSdkVersion project.TARGET_ANDROID_SDK_VERSION.toInteger()
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -50,7 +49,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.vipaar.lime:hlsdk-light:1.14.2'
+    implementation 'com.vipaar.lime:hlsdk-light:1.16.2'
 
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'com.google.android.material:material:1.6.1'
