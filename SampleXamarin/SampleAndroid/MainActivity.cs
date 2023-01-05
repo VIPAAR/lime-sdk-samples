@@ -62,7 +62,25 @@ namespace HelpLightning.SDK.Sample.Android
                     .SetImage(HelpLightning.SDK.Theme.ImageMainMenu, Resource.Drawable.image_test)
                     .SetImage(HelpLightning.SDK.Theme.imageScreenCaptureButton1, Resource.Drawable.image_test)
                     .SetImage(HelpLightning.SDK.Theme.imageScreenCaptureButton2, Resource.Drawable.image_test2)
-                    .SetImage(HelpLightning.SDK.Theme.imageScreenCaptureButton3, Resource.Drawable.image_test3);
+                    .SetImage(HelpLightning.SDK.Theme.imageScreenCaptureButton3, Resource.Drawable.image_test3)
+                    // 15.2 icons
+                    .SetImage(HelpLightning.SDK.Theme.ImageMessageChatAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageMessageSendAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageMessagePaperClipAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageMessagePhotoFilmAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageMessageFolderOpenAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageMessageCameraAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageMessageGroupAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageMessageXmarkAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageMessageFileAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageMessageVideoAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageMessagePDFAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageCallQualityHDAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageCallQualitySDAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageCallQualityAudioPlusAndroid, Resource.Drawable.image_test)
+                    .SetImage(HelpLightning.SDK.Theme.ImageCameraDisabledAndroid, Resource.Drawable.image_test)
+            ;
+
 
             SupportFragmentManager
                 .BeginTransaction()

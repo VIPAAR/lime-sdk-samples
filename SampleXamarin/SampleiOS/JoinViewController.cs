@@ -152,6 +152,20 @@ namespace HelpLightning.SDK.Sample.iOS
 
                     theme.SetImage(Theme.ImageCameraMenuLiveVideoOff, UIImage.FromBundle("Lightning"));
                     theme.SetImage(Theme.ImageCameraMenuLiveVideoOn, UIImage.FromBundle("Lightning"));
+
+                    // Icons for 15.2
+                    theme.SetImage(Theme.ImageAudioPlusModeIOS, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.ImageCallQualityHDIOS, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.ImageCallQualitySDIOS, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.ImageCallQualityAudioPlusIOS, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.ImageCameraDisabledIOS, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.ImageChatGroupAvatarIOS, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.ImageChatMoreActionIOS, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.ImageChatSendIOS, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.ImageChatPlaceholderIOS, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.ImageChatMenuIOS, UIImage.FromBundle("Lightning"));
+                    theme.SetImage(Theme.ImageChatCameraIOS, UIImage.FromBundle("Lightning"));
+
                     break;
                 default:
                     break;
