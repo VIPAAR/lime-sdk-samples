@@ -59,7 +59,7 @@ class JoinViewController: UIViewController, HLClientDelegate {
         CallManager.sharedInstance().gssServerURL = gssServerURLTextField.text
         CallManager.sharedInstance().camOn = camOnSwitch.isOn;
         CallManager.sharedInstance().micOn = micOnSwitch.isOn;
-
+        
         CallManager.sharedInstance().gssServerURL = gssServerURLTextField.text
         guard let call = HLCall(sessionId: CallManager.sharedInstance().sessionID, sessionToken: CallManager.sharedInstance().sessionToken, userToken: CallManager.sharedInstance().userToken, gssUrl: CallManager.sharedInstance().gssServerURL, helplightningAPIKey: kHLApiKey, localUserDisplayName: CallManager.sharedInstance().userName, localUserAvatarUrl: CallManager.sharedInstance().userAvatar, autoEnableCamera: CallManager.sharedInstance().camOn, autoEnableMicrophone: CallManager.sharedInstance().micOn) else { return; }
         
@@ -76,68 +76,116 @@ class JoinViewController: UIViewController, HLClientDelegate {
             self.indicator.isHidden = true
             self.joinButton.isEnabled = true
         })
-
+                    
     }
     
     func _setupTheme () {
         let index = themColorPicker.selectedSegmentIndex
         var theme: HLTheme? = nil
         switch index {
-            case 1:
-                theme = HLTheme()
-                theme?.setColor(kHLMainColor, color: UIColor.darkGray)
-            case 2:
-                theme = HLTheme()
-                theme?.setColor(kHLMainColor, color: UIColor.orange)
-            case 3:
-                theme = HLTheme()
-                theme?.setColor(kHLMainColor, color: UIColor.purple)
-                //main menu
-                theme?.setImage(kHLImageMainMenuDocumentOff, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageMainMenuDocumentOn, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageMainMenuTorchOff, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageMainMenuTorchOn, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageMainMenu, image: UIImage(named: "Lightning"))
-
-                //mode
-                theme?.setImage(kHLImageModeMenuFaceToFaceOn, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageModeMenuFaceToFaceOff, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageModeMenuReceiverOn, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageModeMenuReceiverOff, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageModeMenuGiverOn, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageModeMenuGiverOff, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageCameraMenuPhotoOn, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageCameraMenuPhotoOff, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageCameraMenuFreezeOn, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageCameraMenuFreezeOff, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageCameraMenuSwitchCamera, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageCameraMenuFrontCameraOn, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageCameraMenuFrontCameraOff, image: UIImage(named: "Lightning"))
-
-                //mic
-                theme?.setImage(kHLImageMicOn, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageMicOff, image: UIImage(named: "Lightning"))
-
-                //telestration
-                theme?.setImage(kHLImageTelestrationMenuColorUnselected, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageTelestrationMenuColorSelected, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageTelestrationMenuArrowOn, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageTelestrationMenuArrowOff, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageTelestrationMenuPenOn, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageTelestrationMenuPenOff, image: UIImage(named: "Lightning"))
-
-                //clear
-                theme?.setImage(kHLImageTelestrationUndo, image: UIImage(named: "Lightning"))
-                theme?.setImage(kHLImageTelestrationClearAll, image: UIImage(named: "Lightning"))
-
-                //end call
-                theme?.setImage(kHLImageEndCall, image: UIImage(named: "Lightning"))
-            default:
-                break
+        case 1:
+            theme = HLTheme()
+            theme?.setColor(kHLMainColor, color: UIColor.darkGray)
+        case 2:
+            theme = HLTheme()
+            theme?.setColor(kHLMainColor, color: UIColor.orange)
+        case 3:
+            theme = HLTheme()
+            theme?.setColor(kHLMainColor, color: UIColor.purple)
+            //main menu
+            theme?.setImage(kHLImageMainMenuDocumentOff, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageMainMenuDocumentOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageMainMenuTorchOff, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageMainMenuTorchOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageMainMenu, image: UIImage(named: "Lightning"))
+            
+            //mode
+            theme?.setImage(kHLImageModeMenuFaceToFaceOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageModeMenuFaceToFaceOff, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageModeMenuReceiverOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageModeMenuReceiverOff, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageModeMenuGiverOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageModeMenuGiverOff, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageCameraMenuPhotoOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageCameraMenuPhotoOff, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageCameraMenuFreezeOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageCameraMenuFreezeOff, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageCameraMenuSwitchCamera, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageCameraMenuFrontCameraOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageCameraMenuFrontCameraOff, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageCameraMenuLiveVideoOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageCameraMenuLiveVideoOff, image: UIImage(named: "Lightning"))
+            
+            //mic
+            theme?.setImage(kHLImageMicOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageMicOff, image: UIImage(named: "Lightning"))
+            
+            //telestration
+            theme?.setImage(kHLImageTelestrationMenuColorUnselected, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenuColorSelected, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenuArrowOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenuArrowOff, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenuPenOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenuPenOff, image: UIImage(named: "Lightning"))
+            
+            theme?.setImage(kHLImageTelestrationMenuPushPinOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenuPushPinOff, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu3DArrowOff, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu3DArrowOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu3DPenOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu3DPenOff, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu3DPushPinOff, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu3DPushPinOn, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestration3DIndicator, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestration3DIconBorder, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu3DArrowOutline, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu3DArrowFilled, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu3DPenOutline, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu3DPenFilled, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu3DPinOutline, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu3DPinFilled, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu2DArrowOutline, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu2DArrowFilled, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu2DPenOutline, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu2DPenFilled, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu2DPinOutline, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationMenu2DPinFilled, image: UIImage(named: "Lightning"))
+            
+            //clear
+            theme?.setImage(kHLImageTelestrationUndo, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageTelestrationClearAll, image: UIImage(named: "Lightning"))
+            
+            //end call
+            theme?.setImage(kHLImageEndCall, image: UIImage(named: "Lightning"))
+            
+            //screen capture
+            theme?.setImage(kHLImageScreenCaptureUnpressed, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageScreenCaptureTransition, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageScreenCapturePressed, image: UIImage(named: "Lightning"))
+            
+            //default profile icon
+            theme?.setImage(kHLImageDefaultProfileIcon, image: UIImage(named: "Lightning"))
+            
+            //audio plus mode
+            theme?.setImage(kHLImageAudioPlusMode, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageCallQualityAudio, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageCallQualityHD, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageCallQualitySD, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageCameraDisabled, image: UIImage(named: "Lightning"))
+            
+            //chat
+            theme?.setImage(kHLImageChatMoreAction, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageChatSend, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageChatPlaceholder, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageChatMenu, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageChatAttachment, image: UIImage(named: "Lightning"))
+            theme?.setImage(kHLImageChatCamera, image: UIImage(named: "Lightning"))
+        default:
+            break
         }
         HLClientSwift.shared.setTheme(theme: theme);
     }
-
+    
     func call(_ call: HLCall!, didEndWithReason reason: String!) {
         NSLog("The call has ended: %@", call.sessionId)
     }
