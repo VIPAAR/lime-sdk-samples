@@ -4,7 +4,7 @@ PODS:
   - CocoaLumberjack/Core (3.7.4)
   - CocoaZ (1.4.2)
   - FXKeychain (1.5.1)
-  - HLSDKSwift (15.0.2):
+  - HLSDKSwift (15.2.3):
     - CocoaLumberjack (= 3.7.4)
     - CocoaZ (= 1.4.2)
     - FXKeychain (= 1.5.1)
@@ -19,7 +19,7 @@ PODS:
     - UIActivityIndicator-for-SDWebImage (= 1.2)
     - vipaar-j2objc (= 1.2)
     - vipaar-libyuv (= 1.0.3)
-    - vipaar-MessageKit (= 1.0.1)
+    - vipaar-MessageKit (= 1.0.3)
     - vipaar-reachability (= 3.2.1)
     - vipaar-swift-catomic (= 1.0.0)
     - vipaar-swift-cmark-gfm (= 1.0.0)
@@ -46,7 +46,7 @@ PODS:
     - SDWebImage (~> 3.7)
   - vipaar-j2objc (1.2)
   - vipaar-libyuv (1.0.3)
-  - vipaar-MessageKit (1.0.1):
+  - vipaar-MessageKit (1.0.3):
     - InputBarAccessoryView (~> 5.4.0)
   - vipaar-reachability (3.2.1)
   - vipaar-swift-catomic (1.0.0)
@@ -60,7 +60,7 @@ PODS:
   - vipaar-tinyspline (1.0.0)
 
 DEPENDENCIES:
-  - HLSDKSwift (= 15.0.2)
+  - HLSDKSwift (= 15.2.3)
   - PromisesObjC (= 2.0.0)
 
 SPEC REPOS:
@@ -94,7 +94,7 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 543c79c114dadc3b1aba95641d8738b06b05b646
   CocoaZ: a296b1fbea2c648daf2ccabb5403ed354569e633
   FXKeychain: a6c2efc46ba7167163c45469a0554233e9e6569e
-  HLSDKSwift: 54849b0fb068ec9cd9addfc5538ba90efe3fa00d
+  HLSDKSwift: 40907d2cefadb88064acc8be7bfe9ed665ec2d1d
   InputBarAccessoryView: 74d471ab1fa1736806be50328df79257e52865a9
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   OpenCV2: ffe82e5cb5d16dc3fc01a5f4127b9a5b3cfc7d1b
@@ -107,7 +107,7 @@ SPEC CHECKSUMS:
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
   vipaar-j2objc: 27d89ffc8688f81a6eb8459548f005470a68a5c6
   vipaar-libyuv: 981690f205ae3f28f6382db10a9dca64ba3d03a3
-  vipaar-MessageKit: 1d846eb93ab7cec5370ee142e23b5607336b625e
+  vipaar-MessageKit: 0f970f02280e21af6da1d109f6c194ef91277cd5
   vipaar-reachability: 05dea9613e5126628ae69b1f1ed50866a2a9ecad
   vipaar-swift-catomic: 9fa47daa992bc57a36b46c25f3342c93601d6c16
   vipaar-swift-cmark-gfm: 1f2850bf702c0edb98746d4791ded45acb1ef61d
@@ -115,6 +115,6 @@ SPEC CHECKSUMS:
   vipaar-swift-markdown: 60e96575038619206069cafe150c51065477250f
   vipaar-tinyspline: d8565207b0c1714bac044a488b4308ca690b52f9
 
-PODFILE CHECKSUM: de7b342a45e0a10e956a30189a3194f9765a3733
+PODFILE CHECKSUM: ddfdeeecff23ec9c53526079d60ce9a99a45761c
 
 COCOAPODS: 1.11.0

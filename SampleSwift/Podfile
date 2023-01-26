@@ -8,7 +8,7 @@ source 'https://github.com/VIPAAR/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'SampleSwift' do
-  pod 'HLSDKSwift', '15.0.2'
+  pod 'HLSDKSwift', '15.2.3'
 
   # this line is important to make PromiseSwift work
   pod 'PromisesObjC', '2.0.0', :modular_headers => true
