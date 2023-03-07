@@ -26,11 +26,10 @@ allprojects {
         }
 
         // for hlsdk in local repo
-        if (project.hasProperty('LOCAL_MAVEN_REPO')) {
-            maven {
-                url "$LOCAL_MAVEN_REPO"
-            }
+        maven {
+            url "$rootProject.buildDir/mvn-repo"
         }
+        mavenLocal()
 
         google()
         mavenCentral()
