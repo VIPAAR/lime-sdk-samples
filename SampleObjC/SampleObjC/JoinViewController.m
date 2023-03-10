@@ -9,11 +9,12 @@
 #import "HLServerClient.h"
 #import "CallManager.h"
 #import <HLSDKCommon/HLSDKCommon.h>
-#import <HLSDK/HLSDK.h>
+//#import <HLSDK/HLSDK.h>
+#import <HLSDK.h>
 
 //TODO
-NSString* const kDefaultUserName = @"[YOUR_USER_NAME]";
-NSString* const kHLApiKey = @"[YOUR_HL_API_KEY]";
+NSString* const kDefaultUserName = @"xiaowei.chang+1";
+NSString* const kHLApiKey = @"322f43a96e734c4c84283194c5ba8e7e";
 
 @interface JoinViewController () <HLClientDelegate>
 @property (nonatomic, retain) IBOutlet UITextField *gssServerURLTextField;
@@ -104,48 +105,24 @@ NSString* const kHLApiKey = @"[YOUR_HL_API_KEY]";
     HLTheme* theme = nil;
     switch (index) {
         case 1:
-            theme = [HLTheme new];
-            [theme setColor:kHLMainColor color:UIColor.darkGrayColor];
-            break;
         case 2:
-            theme = [HLTheme new];
-            [theme setColor:kHLMainColor color:UIColor.orangeColor];
-            break;
         case 3:
             theme = [HLTheme new];
-            [theme setColor:kHLMainColor color:UIColor.purpleColor];
             
-            //main menu
-            [theme setImage:kHLImageMainMenuDocumentOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageMainMenuDocumentOn image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageMainMenuTorchOff image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageMainMenuTorchOn image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageMainMenu image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageMainMenuInvite image:[UIImage imageNamed:@"Lightning"]];
 
-            //mode
-            [theme setImage:kHLImageModeMenuFaceToFaceOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageModeMenuFaceToFaceOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageModeMenuReceiverOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageModeMenuReceiverOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageModeMenuGiverOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageModeMenuGiverOff image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageCameraMenuPhotoOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuPhotoOff image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageCameraMenuFreezeOn image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageCameraMenuFreezeOff image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageCameraMenuSwitchCamera image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuFrontCameraOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuFrontCameraOff image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuLiveVideoOn image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageCameraMenuLiveVideoOff image:[UIImage imageNamed:@"Lightning"]];
 
             //mic
             [theme setImage:kHLImageMicOn image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageMicOff image:[UIImage imageNamed:@"Lightning"]];
 
-            //telestration
-            [theme setImage:kHLImageTelestrationMenuColorUnselected image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenuColorSelected image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageTelestrationMenuArrowOn image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageTelestrationMenuArrowOff image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageTelestrationMenuPenOn image:[UIImage imageNamed:@"Lightning"]];
@@ -161,18 +138,6 @@ NSString* const kHLApiKey = @"[YOUR_HL_API_KEY]";
             [theme setImage:kHLImageTelestrationMenu3DPushPinOn image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageTelestration3DIndicator image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageTelestration3DIconBorder image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenu3DArrowOutline image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenu3DArrowFilled image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenu3DPenOutline image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenu3DPenFilled image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenu3DPinOutline image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenu3DPinFilled image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenu2DArrowOutline image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenu2DArrowFilled image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenu2DPenOutline image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenu2DPenFilled image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenu2DPinOutline image:[UIImage imageNamed:@"Lightning"]];
-            [theme setImage:kHLImageTelestrationMenu2DPinFilled image:[UIImage imageNamed:@"Lightning"]];
 
             //clear
             [theme setImage:kHLImageTelestrationUndo image:[UIImage imageNamed:@"Lightning"]];
@@ -205,6 +170,37 @@ NSString* const kHLApiKey = @"[YOUR_HL_API_KEY]";
             [theme setImage:kHLImageChatAttachment image:[UIImage imageNamed:@"Lightning"]];
             [theme setImage:kHLImageChatCamera image:[UIImage imageNamed:@"Lightning"]];
             
+            
+            [theme setImage:kHLImageBannerRote image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageActionBarMergeNormal image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageActionBarMergeSelected image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageActionBarShareNormal image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageActionBarShareSelected image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLIconAnnotation3DColorBorderRed image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLIconAnnotation3DColorBorderYellow image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLIconAnnotation3DColorBorderGreen image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLIconAnnotation3DColorBorderBlue image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLIconAnnotationColorBorderRed image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLIconAnnotationColorBorderYellow image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLIconAnnotationColorBorderGreen image:[UIImage imageNamed:@"Lightning"]];
+            
+            [theme setImage:kHLIconAnnotationColorBorderBlue image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLIconAnnotationColorRed image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLIconAnnotationColorYellow image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLIconAnnotationColorGreen image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLIconAnnotationColorBlue image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageScreenCapture image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageEndCap image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageTick image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageCameraMenuCameraOn image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageCameraMenuCameraOff image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageShareMenuFile image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageShareMenuGallery image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageShareMyCamera image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageShareMenuTakePhoto image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageShareMenuVideo image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageShareMenuWhiteBoard image:[UIImage imageNamed:@"Lightning"]];
+            [theme setImage:kHLImageChevron image:[UIImage imageNamed:@"Lightning"]];
             break;
         default:
             break;
