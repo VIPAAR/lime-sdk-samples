@@ -187,11 +187,15 @@ NSString* const kHLApiKey = @"[YOUR_HL_API_KEY]";
     [theme setImage:kHLImageCameraMenuCameraOn image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageCameraMenuCameraOff image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageShareMenuFile image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageShareMenuFileSelected image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageShareMenuGallery image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageShareMenuGallerySelected image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageShareMyCamera image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageShareMenuTakePhoto image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageShareMenuTakePhotoSelected image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageShareMenuVideo image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageShareMenuWhiteBoard image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageShareMenuWhiteBoardSelected image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageChevron image:[UIImage imageNamed:@"Lightning"]];
     [HLClient.sharedInstance setTheme:theme];
 }

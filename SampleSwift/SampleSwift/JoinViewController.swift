@@ -155,11 +155,15 @@ class JoinViewController: UIViewController, HLClientDelegate {
         theme.setImage(kHLImageCameraMenuCameraOn, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageCameraMenuCameraOff, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageShareMenuFile, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageShareMenuFileSelected, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageShareMenuGallery, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageShareMenuGallerySelected, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageShareMyCamera, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageShareMenuTakePhoto, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageShareMenuTakePhotoSelected, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageShareMenuVideo, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageShareMenuWhiteBoard, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageShareMenuWhiteBoardSelected, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageChevron, image: UIImage(named: "Lightning"))
         
         HLClientSwift.shared.setTheme(theme: theme);
