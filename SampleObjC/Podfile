@@ -16,6 +16,24 @@ target 'SampleObjC' do
       target.build_configurations.each do |config|
         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
         config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+        
+        # Disable swift module interface verification due to a swift bug of Xcode 14.3
+        # https://vipaar.atlassian.net/browse/IOS-2992
+        # https://github.com/apple/swift/issues/64669
+        swift_flags = "-no-verify-emitted-module-interface"
+        # Load the existing xcconfig file
+        xcconfig_path = config.base_configuration_reference.real_path
+        xcconfig = File.read(xcconfig_path)
+
+        # Find and replace the OTHER_SWIFT_FLAGS line, or add it if it doesn't exist
+        if xcconfig.match(/^OTHER_SWIFT_FLAGS/)
+            xcconfig.gsub!(/^(OTHER_SWIFT_FLAGS\s*=.*)$/, '\1 ' + swift_flags)
+        else
+            xcconfig << "\nOTHER_SWIFT_FLAGS = $(inherited) #{swift_flags}"
+        end
+
+        # Write the updated xcconfig file
+        File.write(xcconfig_path, xcconfig)
       end
     end
   end
