@@ -28,4 +28,24 @@ public class SampleInCallService extends InCallService {
     public void onInviteThirdParticipant() {
         Timber.d("Sample onInviteThirdParticipant");
     }
+
+    @Override
+    public boolean isShareKnowledgeEnabled() {
+        return false;
+    }
+
+    @Override
+    public void onShareKnowledge() {
+
+    }
+
+    @Override
+    public boolean isShareQuickKnowledgeEnabled() {
+        return false;
+    }
+
+    @Override
+    public void onSelectKnowledgeQuickOverlay() {
+
+    }
 }

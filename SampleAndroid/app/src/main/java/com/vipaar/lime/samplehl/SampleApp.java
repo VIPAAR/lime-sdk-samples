@@ -2,6 +2,8 @@ package com.vipaar.lime.samplehl;
 
 import android.app.Application;
 
+import com.vipaar.lime.hlsdk.client.HLClient;
+
 import org.jetbrains.annotations.NotNull;
 
 import timber.log.Timber;
@@ -13,6 +15,7 @@ public class SampleApp extends Application {
         if (BuildConfig.DEBUG) {
             Timber.plant(new MyDebugTree());
         }
+        HLClient.getInstance().init(this);
     }
 
     private static class MyDebugTree extends Timber.DebugTree {
