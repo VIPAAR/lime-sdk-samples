@@ -8,6 +8,7 @@
 #import "JoinViewController.h"
 #import "HLServerClient.h"
 #import "CallManager.h"
+#import "DocumentManager.h"
 #import <HLSDKCommon/HLSDKCommon.h>
 #import <HLSDK/HLSDK.h>
 
@@ -15,6 +16,9 @@
 NSString* const kDefaultUserName = @"[YOUR_USER_NAME]";
 NSString* const kHLApiKey = @"[YOUR_HL_API_KEY]";
 
+NSErrorDomain const kErrorDomain = @"SampleErrorDomain";
+NSInteger const kErrorCodeBase = NSIntegerMin;
+NSInteger const kErrorCodeGeneric = kErrorCodeBase + 100;
 
 @interface JoinViewController () <HLClientDelegate>
 @property (nonatomic, retain) IBOutlet UITextField *gssServerURLTextField;
@@ -39,6 +43,7 @@ NSString* const kHLApiKey = @"[YOUR_HL_API_KEY]";
 
 @property (weak, nonatomic) IBOutlet UISwitch *micOnSwitch;
 
+@property (nonatomic) DocumentManager* sharedDocManager;
 @end
 
 @implementation JoinViewController
@@ -201,13 +206,79 @@ NSString* const kHLApiKey = @"[YOUR_HL_API_KEY]";
 }
 
 #pragma mark - HLClientDelegate
-- (void) call:(HLCall*)call didCaptureScreen:(UIImage *)image {
+- (void) hlCall:(HLCall*)call didCaptureScreen:(UIImage *)image {
     NSLog(@"Image Captured: %@", image);
     self.imagePreview.image = image;
 }
 
-- (void) call:(HLCall*)call didEndWithReason:(NSString *)reason {
+- (void) hlCall:(HLCall*)call didEndWithReason:(NSString *)reason {
     NSLog(@"Call Ended: %@", call.sessionId);
 }
 
+#pragma mark - Share Knowledge Plugin
+
+- (FBLPromise*) hlCallCanShareKnowledge:(id<HLGenericCall>)call {
+    return [FBLPromise resolvedWith:@(YES)];
+}
+
+- (FBLPromise*) hlCall:(id<HLGenericCall>)call needShareKnowledgeWithUserInfo:(NSDictionary<NSString*, id>*)userInfo {
+    return [self hlCall:call selectDocumentWithUserInfo:userInfo supportedType:[DocumentManager supportedShareKnowledgeTypes]];
+}
+
+#pragma mark - Knowledge Overlay Plugin
+- (FBLPromise*) hlCallSupportKnowledgeOverlay:(id<HLGenericCall>)call {
+    return [FBLPromise resolvedWith:@(YES)];
+}
+
+- (FBLPromise*) hlCall:(id<HLGenericCall>)call needKnowledgeOverlayWithUserInfo:(NSDictionary<NSString*, id>*)userInfo {
+    return [self hlCall:call selectDocumentWithUserInfo:userInfo supportedType:[DocumentManager supportedKnowledgeOverlayTypes]];
+}
+
+#pragma mark - Helper
+- (FBLPromise*) hlCall:(id<HLGenericCall>)call selectDocumentWithUserInfo:(NSDictionary<NSString*, id>*)userInfo supportedType:(NSArray<UTType*>*)supportedType {
+    if (!call) {
+        NSLog(@"No call");
+        return [FBLPromise resolvedWith:[self errorWithMessage:@"No call"]];
+    }
+    if (!userInfo) {
+        NSLog(@"No userInfo");
+        return [FBLPromise resolvedWith:[self errorWithMessage:@"No userInfo"]];
+    }
+    FBLPromise* promise = FBLPromise.pendingPromise;
+    UIViewController* presentingViewController = (UIViewController*)userInfo[kHLCallPluginPresentingViewController];
+    if (!userInfo) {
+        HLLogDebug(@"No presentingViewController");
+        return [FBLPromise resolvedWith:[self errorWithMessage:@"No presentingViewController"]];
+    }
+    
+    if (self.sharedDocManager) {
+        [self.sharedDocManager tearDown];
+        self.sharedDocManager = nil;
+    }
+    __weak typeof(self) weakSelf = self;
+    self.sharedDocManager = [[DocumentManager alloc] initWithViewController:presentingViewController];
+    [self.sharedDocManager selectDocumentWithType:supportedType readBlock:^(NSURL *docURL) {
+        NSLog(@"URL = %@", docURL);
+        NSDictionary* dic = @{kHLCallPluginURL:docURL};
+        [promise fulfill:dic];
+    } completionBlock:^(id result) {
+        JoinViewController* strongSelf = weakSelf;
+        [promise reject:[strongSelf errorWithMessage:@"Cancel"]];
+        if ([result isKindOfClass:NSError.class]) {
+            NSLog(@"%@", result);
+            if (strongSelf.sharedDocManager) {
+                [strongSelf.sharedDocManager tearDown];
+                strongSelf.sharedDocManager = nil;
+            }
+        } else {
+            NSLog(@"%@", result);
+        }
+    }];
+    return promise;
+}
+
+- (NSError*) errorWithMessage:(NSString*)message {
+    NSDictionary<NSErrorUserInfoKey, id>* userInfo = @{NSLocalizedDescriptionKey : message ? message : @""};
+    return [NSError errorWithDomain:kErrorDomain code:kErrorCodeGeneric userInfo:userInfo];
+}
 @end
