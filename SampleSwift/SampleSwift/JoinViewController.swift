@@ -10,6 +10,8 @@ import UIKit
 import HLSDKCommon
 import HLSDK
 import HLSDKSwift
+import FBLPromises
+import Promises
 
 let kDefaultUserName = "[YOUR_USER_NAME]";
 let kHLApiKey = "[YOUR_HL_API_KEY]";
@@ -26,6 +28,8 @@ class JoinViewController: UIViewController, HLClientDelegate {
     @IBOutlet private weak var imagePreview: UIImageView!
     @IBOutlet private weak var camOnSwitch: UISwitch!
     @IBOutlet private weak var micOnSwitch: UISwitch!
+    
+    var sharedDocManager:DocumentManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,6 +153,11 @@ class JoinViewController: UIViewController, HLClientDelegate {
         theme.setImage(kHLIconAnnotationColorYellow, image: UIImage(named: "Lightning"))
         theme.setImage(kHLIconAnnotationColorGreen, image: UIImage(named: "Lightning"))
         theme.setImage(kHLIconAnnotationColorBlue, image: UIImage(named: "Lightning"))
+        
+        theme.setImage(kHLIconAnnotationColorRedSelected, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLIconAnnotationColorYellowSelected, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLIconAnnotationColorGreenSelected, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLIconAnnotationColorBlueSelected, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageScreenCapture, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageEndCap, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageTick, image: UIImage(named: "Lightning"))
@@ -166,15 +175,73 @@ class JoinViewController: UIViewController, HLClientDelegate {
         theme.setImage(kHLImageShareMenuWhiteBoardSelected, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageChevron, image: UIImage(named: "Lightning"))
         
+        
+        //16.4
+        theme.setImage(kHLImageShareMenuKnowledge, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageShareMenuKnowledgeSelected, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageQuickKnowledge, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageQuickKnowledgeHighlight, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageQuickKnowledgeDelete, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageQuickKnowledgeResize, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageQuickKnowledgeSelection, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageQuickKnowledgeSelectionHighlight, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageTelestrationMenuPushPinNormal, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageTelestrationMenuCurveNormal, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageTelestrationMenuArrowNormal, image: UIImage(named: "Lightning"))
+        
         HLClientSwift.shared.setTheme(theme: theme);
     }
     
-    func call(_ call: HLCall!, didEndWithReason reason: String!) {
+    func hlCall(_ call: HLCall!, didEndWithReason reason: String!) {
         NSLog("The call has ended: %@", call.sessionId)
     }
     
-    func call(_ call: HLCall!, didCaptureScreen image: UIImage!) {
+    func hlCall(_ call: HLCall!, didCaptureScreen image: UIImage!) {
         NSLog("screen captured.")
         self.imagePreview.image = image
+    }
+    
+    internal func hlCallCanShareKnowledge(_ call: HLGenericCall!) -> FBLPromise<AnyObject>! {
+        let promise = Promise<AnyObject>.pending()
+        promise.fulfill(true as AnyObject)
+        return promise.asObjCPromise()
+    }
+    
+    internal func hlCall(_ call: HLGenericCall!, needShareKnowledgeWithUserInfo userInfo: [String : Any]! = [:]) -> FBLPromise<AnyObject>! {
+        return self.hlCall(call, userInfo, DocumentManager.supportedShareKnowledgeTypes())
+    }
+
+    internal func hlCallSupportKnowledgeOverlay(_ call: HLGenericCall!) -> FBLPromise<AnyObject>! {
+        let promise = Promise<AnyObject>.pending()
+        promise.fulfill(true as AnyObject)
+        return promise.asObjCPromise()
+    }
+        
+    internal func hlCall(_ call: HLGenericCall!, needKnowledgeOverlayWithUserInfo userInfo: [String : Any]! = [:]) -> FBLPromise<AnyObject>! {
+        return self.hlCall(call, userInfo, DocumentManager.supportedKnowledgeOverlayTypes())
+    }
+    
+    internal func hlCall(_ call: HLGenericCall!, _ userInfo: [String : Any]!, _ supportedType:[UTType]) -> FBLPromise<AnyObject>! {
+        
+        let promise = Promise<AnyObject>.pending()
+        let presentingViewController = userInfo[kHLCallPluginPresentingViewController] as! UIViewController
+        if let sharedDocManager = self.sharedDocManager {
+            sharedDocManager.tearDown()
+        }
+        self.sharedDocManager = DocumentManager.init(viewController: presentingViewController)
+        self.sharedDocManager?.selectDocument(withType: supportedType, read: { [weak self] url in
+            if let url = url {
+                let dic = [kHLCallPluginURL : url]
+                promise.fulfill(dic as AnyObject)
+            } else {
+                self?.sharedDocManager?.tearDown()
+            }
+        }, completionBlock: { [weak self] error in
+            if error is Error {
+                promise.reject((error as AnyObject) as! Error)
+                self?.sharedDocManager?.tearDown()
+            }
+        })
+        return promise.asObjCPromise();
     }
 }
