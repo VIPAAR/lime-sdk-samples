@@ -190,6 +190,22 @@ namespace HelpLightning.SDK.Sample.iOS
             theme.SetImage(Theme.ImageShareMenuTakePhotoSelected, UIImage.FromBundle("TestIcon"));
             theme.SetImage(Theme.ImageShareMenuWhiteBoardSelected, UIImage.FromBundle("TestIcon"));
 
+            theme.SetImage(Theme.ImageShareMenuKnowledgeIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuKnowledgeSelectedIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageQuickKnowledgeIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageQuickKnowledgeHighlightIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageQuickKnowledgeDeleteIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageQuickKnowledgeResizeIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageQuickKnowledgeSelectionIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageQuickKnowledgeSelectionHighlightIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationMenuPushPinNormalIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationMenuCurveNormalIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationMenuArrowNormalIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotationColorRedSelectedIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotationColorYellowSelectedIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotationColorGreenSelectedIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotationColorBlueSelectedIOS, UIImage.FromBundle("TestIcon"));
+
             CallClientFactory.Instance.CallClient.Theme = theme;
         }
 
