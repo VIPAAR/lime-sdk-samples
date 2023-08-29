@@ -186,6 +186,10 @@ NSInteger const kErrorCodeGeneric = kErrorCodeBase + 100;
     [theme setImage:kHLIconAnnotationColorYellow image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLIconAnnotationColorGreen image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLIconAnnotationColorBlue image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLIconAnnotationColorRedSelected image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLIconAnnotationColorYellowSelected image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLIconAnnotationColorGreenSelected image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLIconAnnotationColorBlueSelected image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageScreenCapture image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageEndCap image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageTick image:[UIImage imageNamed:@"Lightning"]];
@@ -202,6 +206,20 @@ NSInteger const kErrorCodeGeneric = kErrorCodeBase + 100;
     [theme setImage:kHLImageShareMenuWhiteBoard image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageShareMenuWhiteBoardSelected image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageChevron image:[UIImage imageNamed:@"Lightning"]];
+    //16.4
+    [theme setImage:kHLImageShareMenuKnowledge image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageShareMenuKnowledgeSelected image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageQuickKnowledge image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageQuickKnowledgeHighlight image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageQuickKnowledgeDelete image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageQuickKnowledgeResize image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageQuickKnowledgeSelection image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageQuickKnowledgeSelectionHighlight image:[UIImage imageNamed:@"Lightning"]];
+    
+    [theme setImage:kHLImageTelestrationMenuPushPinNormal image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageTelestrationMenuCurveNormal image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageTelestrationMenuArrowNormal image:[UIImage imageNamed:@"Lightning"]];
+    
     [HLClient.sharedInstance setTheme:theme];
 }
 
