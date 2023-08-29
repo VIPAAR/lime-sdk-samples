@@ -4,14 +4,15 @@ using UIKit;
 using System.Threading.Tasks;
 using CoreFoundation;
 using System.Collections.Generic;
-using HelpLightning.SDK.iOS.Binding;
+using Foundation;
+using UniformTypeIdentifiers;
 
 namespace HelpLightning.SDK.Sample.iOS
 {
     public partial class JoinViewController : UIViewController, ICallClientDelegate
     {
-        private static readonly string DefaultUserName = "small_u13";
-        private static readonly string HLApiKey = "[YOUR_HL_API_KEY]";
+        private static readonly string DefaultUserName = "Hale Xie";
+        private static readonly string HLApiKey = "6363f705f10dad494fcdded0a762da7b";
 
         public JoinViewController(IntPtr handle) : base(handle)
         {
@@ -201,6 +202,185 @@ namespace HelpLightning.SDK.Sample.iOS
         {
             Console.WriteLine("Screen Captured");
             imagePreview.Image = (UIImage)image;
+        }
+
+        private TaskCompletionSource<IDictionary<string, object>> SharingKnowledgePickingTaskCompletionSource;
+
+        public object IsSharingKnowledgeSupported(Call call)
+        {
+            return true;
+        }
+
+        public Task<IDictionary<string, object>> SelectSharedKnowledge(Call call, IDictionary<string, object> userInfo)
+        {
+            var contentTypes = new UTType[] {
+                UTTypes.Image,
+                UTTypes.Pdf
+            };
+            UIDocumentPickerViewController docPicker = new UIDocumentPickerViewController(contentTypes, true);
+            docPicker.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
+            docPicker.OverrideUserInterfaceStyle = UIUserInterfaceStyle.Dark;
+            docPicker.WasCancelled += DocPicker_WasCancelled;
+            docPicker.DidPickDocument += DocPicker_DidPickDocument;
+            docPicker.DidPickDocumentAtUrls += DocPicker_DidPickDocumentAtUrls;
+
+            var target = userInfo[CallClientDelegateConstants.TargetPresentViewControllerIOS];
+            UIViewController presenter;
+            if (target is UIViewController c)
+            {
+                presenter = c;
+            }
+            else
+            {
+                presenter = this.PresentedViewController;
+            }
+
+            presenter.PresentViewController(docPicker, true, null);
+
+            if (SharingKnowledgePickingTaskCompletionSource != null)
+            {
+                SharingKnowledgePickingTaskCompletionSource.TrySetCanceled();
+                SharingKnowledgePickingTaskCompletionSource = null;
+            }
+
+            SharingKnowledgePickingTaskCompletionSource = new TaskCompletionSource<IDictionary<string, object>>();
+            return SharingKnowledgePickingTaskCompletionSource.Task;
+        }
+
+        private void DocPicker_DidPickDocumentAtUrls(object sender, UIDocumentPickedAtUrlsEventArgs e)
+        {
+            if (e.Urls.Length == 0)
+            {
+                return;
+            }
+            var docUrl = e.Urls[0];
+            HandlePickedSharingKnowledge(sender, docUrl);
+        }
+
+        private void DocPicker_DidPickDocument(object sender, UIDocumentPickedEventArgs e)
+        {
+            HandlePickedSharingKnowledge(sender, e.Url);
+        }
+
+        private void HandlePickedSharingKnowledge(object sender, NSUrl docUrl)
+        {
+            var output = new Dictionary<string, object>();
+            if (docUrl != null)
+            {
+                var directory = NSFileManager.TemporaryDirectory;
+                string filePath = directory + "/" + docUrl.LastPathComponent;
+                var targetUrl = new NSUrl(filePath, false);
+                NSError error;
+                NSFileManager.DefaultManager.Remove(targetUrl, out _);
+                if (NSFileManager.DefaultManager.Copy(docUrl, targetUrl, out error))
+                {
+                    output[CallClientDelegateConstants.SharedURL] = targetUrl;
+                }
+                else
+                {
+                    Console.Error.WriteLine("Cannot copy the document: ${0}, ${1}", docUrl, error);
+                }
+            }
+            SharingKnowledgePickingTaskCompletionSource.TrySetResult(output);
+            if (sender is UIImagePickerController picker)
+            {
+                picker.DismissViewController(true, null);
+            }
+        }
+
+        private void DocPicker_WasCancelled(object sender, EventArgs e)
+        {
+            if (SharingKnowledgePickingTaskCompletionSource != null)
+            {
+                SharingKnowledgePickingTaskCompletionSource.TrySetResult(new Dictionary<string, object>());
+                SharingKnowledgePickingTaskCompletionSource = null;
+            }
+            if (sender is UIDocumentPickerViewController picker)
+            {
+                picker.DismissViewController(true, null);
+            }
+        }
+
+        public object IsQuickKnowledgeOverlaySupported(Call call)
+        {
+            return true;
+        }
+
+
+        //private KnowledgeOverlayPickerDelegateImpl KnowledgeOverlayPickerDelegate;
+        private TaskCompletionSource<IDictionary<string, object>> KnowledgeOverlayPickingTaskCompletionSource;
+
+        private void ImagePicker_Canceled(object sender, EventArgs e)
+        {
+            if (KnowledgeOverlayPickingTaskCompletionSource != null)
+            {
+                KnowledgeOverlayPickingTaskCompletionSource.TrySetResult(new Dictionary<string, object>());
+                KnowledgeOverlayPickingTaskCompletionSource = null;
+            }
+            if (sender is UIImagePickerController picker)
+            {
+                picker.DismissViewController(true, null);
+            }
+        }
+
+
+        private void ImagePicker_FinishedPickingImage(object sender, UIImagePickerImagePickedEventArgs e)
+        {
+            var userInfo = e.EditingInfo;
+            var imageUrl = userInfo[UIImagePickerController.ImageUrl] as NSUrl;
+            HandlePickedKnowledgeOverlay(sender, imageUrl);
+        }
+
+        private void ImagePicker_FinishedPickingMedia(object sender, UIImagePickerMediaPickedEventArgs e)
+        {
+            HandlePickedKnowledgeOverlay(sender, e.ImageUrl);
+        }
+
+        private void HandlePickedKnowledgeOverlay(object sender, NSUrl imageUrl)
+        {
+            var output = new Dictionary<string, object>();
+            if (imageUrl != null)
+            {
+                output[CallClientDelegateConstants.SharedURL] = imageUrl;
+            }
+            KnowledgeOverlayPickingTaskCompletionSource.TrySetResult(output);
+            if (sender is UIImagePickerController picker)
+            {
+                picker.DismissViewController(true, null);
+            }
+        }
+
+        public Task<IDictionary<string, object>> SelectQuickKnowledgeOverlay(Call call, IDictionary<string, object> userInfo)
+        {
+            var imagePicker = new UIImagePickerController();
+            imagePicker.SourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            imagePicker.AllowsEditing = false;
+            imagePicker.ModalPresentationStyle = UIModalPresentationStyle.FullScreen;
+            imagePicker.OverrideUserInterfaceStyle = UIUserInterfaceStyle.Dark;
+            imagePicker.Canceled += ImagePicker_Canceled;
+            imagePicker.FinishedPickingImage += ImagePicker_FinishedPickingImage;
+            imagePicker.FinishedPickingMedia += ImagePicker_FinishedPickingMedia;
+
+            var target = userInfo[CallClientDelegateConstants.TargetPresentViewControllerIOS];
+            UIViewController presenter = null;
+            if (target != null && target is UIViewController c) {
+                presenter = c;
+            }
+            else
+            {
+                presenter = this.PresentedViewController;
+            }
+
+            presenter.PresentViewController(imagePicker, true, null);
+
+            if (KnowledgeOverlayPickingTaskCompletionSource != null)
+            {
+                KnowledgeOverlayPickingTaskCompletionSource.TrySetCanceled();
+                KnowledgeOverlayPickingTaskCompletionSource = null;
+            }
+
+            KnowledgeOverlayPickingTaskCompletionSource = new TaskCompletionSource<IDictionary<string, object>>();
+            return KnowledgeOverlayPickingTaskCompletionSource.Task;
         }
     }
 }
