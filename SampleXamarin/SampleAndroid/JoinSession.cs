@@ -8,6 +8,8 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.Fragment.App;
 using Newtonsoft.Json.Linq;
+using Xamarin.Essentials;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace HelpLightning.SDK.Sample.Android
 {
@@ -176,6 +178,74 @@ namespace HelpLightning.SDK.Sample.Android
                 videoSwitch.Checked,
                 audioSwitch.Checked
             );
+        }
+
+        public object IsSharingKnowledgeSupported(Call call)
+        {
+            return true;
+        }
+
+        public async Task<IDictionary<string, object>> SelectSharedKnowledge(Call call, IDictionary<string, object> userInfo)
+        {
+            var customFileType = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+            {
+                { DevicePlatform.Android, new[] { "application/pdf", "image/jpeg", "image/png" } },
+            });
+            var options = new PickOptions
+            {
+                PickerTitle = "Please select a png/jpeg image or a PDF file",
+                FileTypes = customFileType,
+            };
+             var pickResult = await FilePicker.PickAsync(PickOptions.Default);
+            URLType itemType = URLType.Image;
+            Uri itemUri = null;
+            if (pickResult != null)
+            {
+                if (pickResult.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
+                    pickResult.FileName.EndsWith("jpeg", StringComparison.OrdinalIgnoreCase) ||
+                    pickResult.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
+                {
+                    itemType = URLType.Image;
+                }
+                else if (pickResult.FileName.EndsWith("pdf", StringComparison.OrdinalIgnoreCase))
+                {
+                    itemType = URLType.PDF;
+                }
+                itemUri = new Uri(new Uri("file://"), pickResult.FullPath);
+            }
+            var output = new Dictionary<string, object>();
+            if (itemUri != null)
+            {
+                output.Add(CallClientDelegateConstants.SharedURL, itemUri);
+                output.Add(CallClientDelegateConstants.SharedURLType, itemType);
+            }
+            return output;
+        }
+
+        public object IsQuickKnowledgeOverlaySupported(Call call)
+        {
+            return true;
+        }
+
+        public async Task<IDictionary<string, object>> SelectQuickKnowledgeOverlay(Call call, IDictionary<string, object> userInfo)
+        {
+            var customFileType = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+            {
+                { DevicePlatform.Android, new[] { "image/jpeg", "image/png" } },
+            });
+            var options = new PickOptions
+            {
+                PickerTitle = "Please select a png/jpeg image",
+                FileTypes = customFileType,
+            };
+            var pickResult = await FilePicker.PickAsync(options);
+            var itemUri = new Uri(new Uri("file://"), pickResult.FullPath);
+            var output = new Dictionary<string, object>();
+            if (itemUri != null)
+            {
+                output.Add(CallClientDelegateConstants.SharedURL, itemUri);
+            }
+            return output;
         }
     }
 }

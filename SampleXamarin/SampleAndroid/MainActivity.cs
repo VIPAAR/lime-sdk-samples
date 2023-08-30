@@ -6,10 +6,12 @@ using Android.Content.PM;
 using AndroidX.AppCompat.App;
 using AndroidX.Core.Content;
 using AndroidX.Core.App;
+using Android.Runtime;
 
 namespace HelpLightning.SDK.Sample.Android
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    //[Register("HelpLightning/SDK/Sample/Android/MainActivity", DoNotGenerateAcw = true)]
     public class MainActivity : AppCompatActivity
     {
         String[] mPerms = {
@@ -17,7 +19,8 @@ namespace HelpLightning.SDK.Sample.Android
                 Manifest.Permission.WriteExternalStorage,
                 Manifest.Permission.Camera,
                 Manifest.Permission.RecordAudio,
-                Manifest.Permission.Bluetooth
+                Manifest.Permission.Bluetooth,
+                Manifest.Permission.ReadExternalStorage,
             };
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -86,8 +89,14 @@ namespace HelpLightning.SDK.Sample.Android
                 .BeginTransaction()
                 .Replace(Resource.Id.fragment_container, new Authentication())
                 .Commit();
-
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             RequestPermissions();
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
         protected override void OnResume()
