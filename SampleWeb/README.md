@@ -98,7 +98,6 @@ application:
     <script src="https://helplightning.net/sdk/helplightning.min.js"></script>
     <script src="https://helplightning.net/sdk/opentok-enterprise/opentok.min.js"></script>
     <script src="https://helplightning.net/sdk/pdf_viewer/build/pdf.min.js"></script>
-    <script src="https://helplightning.net/sdk/opencv/opencv.js" async></script>
 ```
 * Create a new client from the factory:
 ```javascript
@@ -166,7 +165,6 @@ the URL:
     <script src="https://helplightning.net/sdk/4.34.3/helplightning.min.js"></script>
     <script src="https://helplightning.net/sdk/4.34.3/opentok-enterprise/opentok.min.js"></script>
     <script src="https://helplightning.net/sdk/4.34.3/pdf_viewer/build/pdf.min.js"></script>
-    <script src="https://helplightning.net/sdk/4.34.3/opencv/opencv.js" async></script>
 ```
 
 ## Warning about Authentication
