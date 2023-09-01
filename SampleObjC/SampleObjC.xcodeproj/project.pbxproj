@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8CF04A42A9C869700C9B004 /* DocumentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CF04A32A9C869700C9B004 /* DocumentManager.m */; };
 		C701672623D421D6000AFA38 /* Session.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C701672423D421D6000AFA38 /* Session.storyboard */; };
 		C701672F23D42230000AFA38 /* JoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C701672823D4222F000AFA38 /* JoinViewController.m */; };
 		C701673123D42230000AFA38 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C701672C23D42230000AFA38 /* AuthViewController.m */; };
@@ -22,9 +23,24 @@
 		E83D514DEAF1F20B7A79654D /* libPods-SampleObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D12616F3BF727AC58D24CF7 /* libPods-SampleObjC.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B8B7B23429C0386B00F7E8AF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2D12616F3BF727AC58D24CF7 /* libPods-SampleObjC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SampleObjC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69ABDF4C958BB974A216C64B /* Pods-SampleObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleObjC.release.xcconfig"; path = "Target Support Files/Pods-SampleObjC/Pods-SampleObjC.release.xcconfig"; sourceTree = "<group>"; };
+		B8CF04A22A9C869700C9B004 /* DocumentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentManager.h; sourceTree = "<group>"; };
+		B8CF04A32A9C869700C9B004 /* DocumentManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentManager.m; sourceTree = "<group>"; };
 		BF07B636BD9398F32FB308F7 /* Pods-SampleObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleObjC.debug.xcconfig"; path = "Target Support Files/Pods-SampleObjC/Pods-SampleObjC.debug.xcconfig"; sourceTree = "<group>"; };
 		C701672523D421D6000AFA38 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Session.storyboard; sourceTree = "<group>"; };
 		C701672723D4222F000AFA38 /* JoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinViewController.h; sourceTree = "<group>"; };
@@ -103,6 +119,8 @@
 				C7B67BA9237D06EB00B6314E /* LaunchScreen.storyboard */,
 				C7B67BAC237D06EB00B6314E /* Info.plist */,
 				C7B67BAD237D06EB00B6314E /* main.m */,
+				B8CF04A22A9C869700C9B004 /* DocumentManager.h */,
+				B8CF04A32A9C869700C9B004 /* DocumentManager.m */,
 			);
 			path = SampleObjC;
 			sourceTree = "<group>";
@@ -135,7 +153,8 @@
 				C7B67B97237D06EA00B6314E /* Sources */,
 				C7B67B98237D06EA00B6314E /* Frameworks */,
 				C7B67B99237D06EA00B6314E /* Resources */,
-				504B985CFDD110B6F61096CA /* [CP] Copy Pods Resources */,
+				B8B7B23429C0386B00F7E8AF /* Embed Frameworks */,
+				A0CEB616D2BFC8B1A633E009 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,21 +212,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		504B985CFDD110B6F61096CA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SampleObjC/Pods-SampleObjC-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8AFBB3164A114A5B132F0C9E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -230,6 +234,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A0CEB616D2BFC8B1A633E009 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SampleObjC/Pods-SampleObjC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -239,6 +258,7 @@
 			files = (
 				C7B67BA3237D06EA00B6314E /* SessionViewController.m in Sources */,
 				C7B67BAE237D06EB00B6314E /* main.m in Sources */,
+				B8CF04A42A9C869700C9B004 /* DocumentManager.m in Sources */,
 				C701673223D42230000AFA38 /* SetupViewController.m in Sources */,
 				C701672F23D42230000AFA38 /* JoinViewController.m in Sources */,
 				C701673123D42230000AFA38 /* AuthViewController.m in Sources */,
@@ -407,6 +427,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SampleObjC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,6 +458,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SampleObjC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
