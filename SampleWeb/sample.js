@@ -55,11 +55,13 @@ function refresh(state) {
                 // or ignore it, it'll be uploaded to the server
                 //  automatically
             },
+            // onSelectShareKnowledge is optional. If you don't implement it, the feature will be disabled.
             onSelectShareKnowledge: (fileTypes) => {
               // You can prompt to select a file or any other source of files matching the fileTypes.
               // Return a promise that resolves to a file object in shape of { type: 'IMAGE' or 'DOCUMENT', url: 'url_of_file' }
               return Promise.resolve({ type: 'IMAGE', url: 'p1.jpg' })
             },
+            // onSelectKnowledgeOverlay is optional. If you don't implement it, the feature will be disabled.
             onSelectKnowledgeOverlay: (fileTypes) => {
               // You can prompt to select a file or any other source of files matching the fileTypes.
               // Return a promise that resolves to a file object in shape of { type: 'IMAGE', url: 'url_of_file' }
