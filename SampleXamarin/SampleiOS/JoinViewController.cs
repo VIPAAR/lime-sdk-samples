@@ -4,6 +4,7 @@ using UIKit;
 using System.Threading.Tasks;
 using CoreFoundation;
 using System.Collections.Generic;
+using HelpLightning.SDK.iOS.Binding;
 
 namespace HelpLightning.SDK.Sample.iOS
 {
@@ -40,7 +41,7 @@ namespace HelpLightning.SDK.Sample.iOS
 
         partial void OnJoinCall(UIButton sender)
         {
-            SetupTheme();
+            //SetupTheme();
             CallManager.Instance.SessionID = sessionIDTextField.Text.Trim();
             CallManager.Instance.SessionToken = sessionTokenTextView.Text.Trim();
             CallManager.Instance.UserName = userNameTextField.Text.Trim();
@@ -89,87 +90,105 @@ namespace HelpLightning.SDK.Sample.iOS
 
         private void SetupTheme()
         {
-            var index = themColorPicker.SelectedSegment;
-            Theme theme = null;
-            switch (index)
-            {
-                case 1:
-                    theme = new Theme();
-                    theme.SetColor(Theme.ColorMain, UIColor.DarkGray);
-                    break;
+            var theme = new Theme();
+            theme.SetImage(Theme.ImageMainMenuTorchOff, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageMainMenuTorchOn, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageMainMenu, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageMainMenuInvite, UIImage.FromBundle("TestIcon"));
 
-                case 2:
-                    theme = new Theme();
-                    theme.SetColor(Theme.ColorMain, UIColor.Orange);
-                    break;
-                case 3:
-                    theme = new Theme();
-                    theme.SetColor(Theme.ColorMain, UIColor.Purple);
-                    theme.SetImage(Theme.ImageMainMenuDocumentOff, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageMainMenuDocumentOn, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageMainMenuTorchOff, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageMainMenuTorchOn, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageMainMenu, UIImage.FromBundle("Lightning"));
+            theme.SetImage(Theme.ImageCameraMenuPhotoOn, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageCameraMenuFreezeOn, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageCameraMenuFreezeOff, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageCameraMenuSwitchCamera, UIImage.FromBundle("TestIcon"));
 
-                    theme.SetImage(Theme.ImageModeMenuFaceToFaceOn, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageModeMenuFaceToFaceOff, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageModeMenuReceiverOn, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageModeMenuReceiverOff, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageModeMenuGiverOn, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageModeMenuGiverOff, UIImage.FromBundle("Lightning"));
+            //mic
+            theme.SetImage(Theme.ImageMicOn, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageMicOff, UIImage.FromBundle("TestIcon"));
 
-                    theme.SetImage(Theme.ImageCameraMenuPhotoOn, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCameraMenuPhotoOff, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCameraMenuFreezeOn, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCameraMenuFreezeOff, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCameraMenuCameraOff, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCameraMenuSwitchCamera, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCameraMenuFrontCameraOn, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCameraMenuFrontCameraOff, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCameraMenuBackCameraOn, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCameraMenuBackCameraOff, UIImage.FromBundle("Lightning"));
+            theme.SetImage(Theme.ImageTelestrationMenuArrowOn, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationMenuArrowOff, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationMenuPenOn, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationMenuPenOff, UIImage.FromBundle("TestIcon"));
 
-                    theme.SetImage(Theme.ImageMicOn, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageMicOff, UIImage.FromBundle("Lightning"));
+            theme.SetImage(Theme.ImageTelestrationMenu2DPushPinOn, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationMenu2DPushPinOff, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationMenu3DArrowOff, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationMenu3DArrowOn, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationMenu3DPenOn, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationMenu3DPenOff, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationMenu3DPushPinOff, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationMenu3DPushPinOn, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestration3DIndicator, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestration3DIconBorderIOS, UIImage.FromBundle("TestIcon"));
 
-                    theme.SetImage(Theme.ImageTelestrationMenuColorUnselected, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageTelestrationMenuColorSelected, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageTelestrationMenuArrowOn, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageTelestrationMenuArrowOff, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageTelestrationMenuPenOn, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageTelestrationMenuPenOff, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageTelestrationUndo, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageTelestrationClearAll, UIImage.FromBundle("Lightning"));
+            //clear
+            theme.SetImage(Theme.ImageTelestrationUndo, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTelestrationClearAll, UIImage.FromBundle("TestIcon"));
 
-                    theme.SetImage(Theme.ImageEndCall, UIImage.FromBundle("Lightning"));
+            //end call
+            theme.SetImage(Theme.ImageEndCall, UIImage.FromBundle("TestIcon"));
 
-                    theme.SetImage(Theme.imageScreenCaptureButton1, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.imageScreenCaptureButton2, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.imageScreenCaptureButton3, UIImage.FromBundle("Lightning"));
+            //screen capture
+            theme.SetImage(Theme.ImageScreenCaptureUnpressed, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageScreenCaptureTransition, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageScreenCapturePressed, UIImage.FromBundle("TestIcon"));
 
-                    theme.SetImage(Theme.ImageTelestrationMenuArrowSelected, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageTelestrationMenuPenSelected, UIImage.FromBundle("Lightning"));
+            //default profile icon
+            theme.SetImage(Theme.ImageDefaultProfileIcon, UIImage.FromBundle("TestIcon"));
 
-                    theme.SetImage(Theme.ImageCameraMenuLiveVideoOff, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCameraMenuLiveVideoOn, UIImage.FromBundle("Lightning"));
+            //audio plus mode
+            theme.SetImage(Theme.ImageAudioPlusModeIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageCallQualityAudioPlusIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageCallQualityHDIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageCallQualitySDIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageCameraDisabledIOS, UIImage.FromBundle("TestIcon"));
 
-                    // Icons for 15.2
-                    theme.SetImage(Theme.ImageAudioPlusModeIOS, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCallQualityHDIOS, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCallQualitySDIOS, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCallQualityAudioPlusIOS, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageCameraDisabledIOS, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageChatGroupAvatarIOS, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageChatMoreActionIOS, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageChatSendIOS, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageChatPlaceholderIOS, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageChatMenuIOS, UIImage.FromBundle("Lightning"));
-                    theme.SetImage(Theme.ImageChatCameraIOS, UIImage.FromBundle("Lightning"));
+            //chat
+            theme.SetImage(Theme.ImageChatGroupAvatarIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageChatMoreActionIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageChatSendIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageChatPlaceholderIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageChatMenuIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageChatAttachmentIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageChatCameraIOS, UIImage.FromBundle("TestIcon"));
 
-                    break;
-                default:
-                    break;
-            }
+
+            theme.SetImage(Theme.ImageBannerRote, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageActionBarMergeNormal, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageActionBarMergeSelected, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageActionBarShareNormal, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageActionBarShareSelected, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotation3DColorBorderRed, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotation3DColorBorderYellow, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotation3DColorBorderGreen, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotation3DColorBorderBlue, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotationColorBorderRed, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotationColorBorderYellow, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotationColorBorderGreen, UIImage.FromBundle("TestIcon"));
+
+            theme.SetImage(Theme.IconAnnotationColorBorderBlue, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotationColorRed, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotationColorYellow, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotationColorGreen, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.IconAnnotationColorBlue, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageScreenCapture, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageEndCap, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageTick, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageCameraMenuCameraOn, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageCameraMenuCameraOff, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuFile, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuGallery, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMyCamera, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuTakePhoto, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuVideo, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuWhiteBoard, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageChevron, UIImage.FromBundle("TestIcon"));
+
+            theme.SetImage(Theme.ImageShareMenuFileSelected, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuGallerySelected, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuTakePhotoSelected, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuWhiteBoardSelected, UIImage.FromBundle("TestIcon"));
+
             CallClientFactory.Instance.CallClient.Theme = theme;
         }
 
