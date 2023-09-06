@@ -118,6 +118,23 @@
         </center>
         <div id="hl-call" style="width: 100vw; height: calc(100vh - 50px);"></div>
       </div>
+
+      <div id="knowledgeOverlay" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Select Knowledge</p>
+            <button class="delete" aria-label="close" onclick="closeModal(document.querySelector('#knowledgeOverlay'))"></button>
+          </header>
+          <section class="modal-card-body">
+            <!-- Content ... -->
+          </section>
+          <footer class="modal-card-foot">
+            <button id="selectKnowledge" class="button is-success">Select Knowledge</button>
+            <button class="button" onclick="closeModal(document.querySelector('#knowledgeOverlay'))">Cancel</button>
+          </footer>
+        </div>
+      </div>
     </div>
   </body>
 </html>
