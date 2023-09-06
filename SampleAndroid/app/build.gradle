@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 // You can configure your environment variables in gradle.properties,
 // or you can set them by overriding the default values below.
@@ -59,6 +60,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'
 
     implementation "com.android.volley:volley:1.2.1"
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation('androidx.test.ext:junit:1.1.5') {
         exclude module: 'support-annotations'
