@@ -54,6 +54,18 @@ function refresh(state) {
                 // TODO: prompt to save this somewhere?
                 // or ignore it, it'll be uploaded to the server
                 //  automatically
+            },
+            // onSelectShareKnowledge is optional. If you don't implement it, the feature will be disabled.
+            onSelectShareKnowledge: (fileTypes) => {
+                // You can prompt to select a file or any other source of files matching the fileTypes.
+                // Return a promise that resolves to a file object in shape of { type: 'IMAGE' or 'DOCUMENT', url: 'url_of_file' }
+                return showKnowledge();
+            },
+            // onSelectKnowledgeOverlay is optional. If you don't implement it, the feature will be disabled.
+            onSelectKnowledgeOverlay: (fileTypes) => {
+                // You can prompt to select a file or any other source of files matching the fileTypes.
+                // Return a promise that resolves to a file object in shape of { type: 'IMAGE', url: 'url_of_file' }
+                return showKnowledge();
             }
         };
 
@@ -84,12 +96,79 @@ function refresh(state) {
     }
 }
 
+function showKnowledge() {
+    // Pretend we are fetching knowledge from
+    //  a Knowledge Management System somewhere.
+    //
+    // We need to return a Promise that resolves
+    //  with a `{type: 'IMAGE', url: 'https://..'}`
+    return fetch('knowledge/knowledge.json')
+        .then((res) => res.json())
+        .then((knowledge) => {
+            let k = document.querySelector('#knowledgeOverlay');
+            let body = k.querySelector('.modal-card-body');
+
+            // set the html
+            const elems = knowledge.items.map((i) => {
+                div = document.createElement('div');
+                lbl = document.createElement('label');
+                div.append(lbl);
+
+                // a radio button
+                inp = document.createElement('input');
+                inp.setAttribute('type', 'radio');
+                inp.setAttribute('name', 'knowledgeItem');
+                inp.setAttribute('value', i.image);
+                lbl.append(inp);
+
+                // the image
+                img = document.createElement('img');
+                img.setAttribute('src', i.thumbnail)
+                lbl.append(img);
+
+                return div;
+            });
+            body.replaceChildren(...elems);
+            
+
+            // get the select knowledge button
+            let ok_btn = k.querySelector('#selectKnowledge');
+
+            // return a promise
+            return new Promise((success, error) => {
+                // connect the callback of the ok_btn
+                ok_btn.addEventListener('click', () => {
+                    // get the selected item
+                    const selected_img = document.querySelector("input[type='radio'][name=knowledgeItem]:checked").value;
+
+                    // close the modal
+                    closeModal(k);
+
+                    // Call success on the promise with the URL
+                    // to the image to load
+                    success({type: 'IMAGE', url: selected_img});
+                }, {once: true}); // once will remove this event hanlder after being used
+
+                // now show the modal
+                openModal(k);
+            });
+        });
+}
+
 function show(div) {
     div.style.display = 'block';
 }
 
 function hide(div) {
     div.style.display = 'none';
+}
+
+function openModal($el) {
+    $el.classList.add('is-active');
+}
+
+function closeModal($el) {
+    $el.classList.remove('is-active');
 }
 
 function resetState(state) {

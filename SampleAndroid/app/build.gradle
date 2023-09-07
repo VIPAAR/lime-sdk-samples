@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 // You can configure your environment variables in gradle.properties,
 // or you can set them by overriding the default values below.
@@ -49,18 +50,19 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.vipaar.lime:hlsdk-light:1.16.2'
+    implementation 'com.vipaar.lime:hlsdk-light:2.0.1'
 
-    implementation 'com.jakewharton.timber:timber:4.7.1'
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation 'androidx.exifinterface:exifinterface:1.3.3'
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.exifinterface:exifinterface:1.3.6'
+    implementation 'androidx.recyclerview:recyclerview:1.3.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'
 
     implementation "com.android.volley:volley:1.2.1"
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation('androidx.test.ext:junit:1.1.3') {
+    androidTestImplementation('androidx.test.ext:junit:1.1.5') {
         exclude module: 'support-annotations'
     }
     implementation 'org.jdeferred.v2:jdeferred-android:2.0.0'

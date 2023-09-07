@@ -8,10 +8,9 @@
     
     <!-- Load help lightning JS SDK -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://helplightning.net/sdk/4.50.0/helplightning.min.js"></script>
-    <script src="https://helplightning.net/sdk/4.50.0/opentok-enterprise/opentok.min.js"></script>
-    <script src="https://helplightning.net/sdk/4.50.0/pdf_viewer/build/pdf.min.js"></script>
-    <script src="https://helplightning.net/sdk/4.50.0/opencv/opencv.js" async></script>
+    <script src="https://helplightning.net/sdk/5.4.1/helplightning.min.js"></script>
+    <script src="https://helplightning.net/sdk/5.4.1/opentok-enterprise/opentok.min.js"></script>
+    <script src="https://helplightning.net/sdk/5.4.1/pdf_viewer/build/pdf.min.js"></script>
 
     <script src="./sample.js"></script>
     <script>
@@ -118,6 +117,23 @@
           <div class="pincode">Session PIN: <span id="session-pincode"></span></div>
         </center>
         <div id="hl-call" style="width: 100vw; height: calc(100vh - 50px);"></div>
+      </div>
+
+      <div id="knowledgeOverlay" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Select Knowledge</p>
+            <button class="delete" aria-label="close" onclick="closeModal(document.querySelector('#knowledgeOverlay'))"></button>
+          </header>
+          <section class="modal-card-body">
+            <!-- Content ... -->
+          </section>
+          <footer class="modal-card-foot">
+            <button id="selectKnowledge" class="button is-success">Select Knowledge</button>
+            <button class="button" onclick="closeModal(document.querySelector('#knowledgeOverlay'))">Cancel</button>
+          </footer>
+        </div>
       </div>
     </div>
   </body>

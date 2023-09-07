@@ -1,0 +1,14 @@
+{
+    "items": [
+        {
+            "name": "DirecTV Remote",
+            "thumbnail": "/knowledge/remote1-thumb.png",
+            "image": "/knowledge/remote1.png"
+        },
+        {
+            "name": "VIZIO Remote",
+            "thumbnail": "/knowledge/remote2-thumb.png",
+            "image": "/knowledge/remote2.png"
+        }
+    ]   
+}
