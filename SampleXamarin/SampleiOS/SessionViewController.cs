@@ -128,5 +128,25 @@ namespace HelpLightning.SDK.Sample.iOS
         {
             throw new NotImplementedException();
         }
+
+        public object IsSharingKnowledgeSupported(Call call)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDictionary<string, object>> SelectSharedKnowledge(Call call, IDictionary<string, object> userInfo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object IsQuickKnowledgeOverlaySupported(Call call)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDictionary<string, object>> SelectQuickKnowledgeOverlay(Call call, IDictionary<string, object> userInfo)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
