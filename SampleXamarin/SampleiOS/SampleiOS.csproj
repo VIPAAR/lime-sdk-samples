@@ -153,7 +153,6 @@
     <ItemGroup>
         <None Include="Info.plist" />
         <None Include="Entitlements.plist" />
-        <None Include=".DS_Store" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Main.cs" />
@@ -183,7 +182,7 @@
         <Version>13.0.3</Version>
       </PackageReference>
       <PackageReference Include="HelpLightning.SDK">
-        <Version>16.3.23</Version>
+        <Version>16.4.1</Version>
       </PackageReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
