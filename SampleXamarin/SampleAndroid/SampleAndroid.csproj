@@ -146,7 +146,7 @@
       <Version>2.7.1</Version>
     </PackageReference>
     <PackageReference Include="HelpLightning.SDK">
-      <Version>16.3.23</Version>
+      <Version>16.4.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Essentials">
       <Version>1.8.0</Version>

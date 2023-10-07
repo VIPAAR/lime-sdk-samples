@@ -64,6 +64,7 @@
 		C7B67BA7237D06EB00B6314E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7B67BAC237D06EB00B6314E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7B67BAD237D06EB00B6314E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C7B839292ACE70C700EE400E /* SampleObjC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SampleObjC-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +122,7 @@
 				C7B67BAD237D06EB00B6314E /* main.m */,
 				B8CF04A22A9C869700C9B004 /* DocumentManager.h */,
 				B8CF04A32A9C869700C9B004 /* DocumentManager.m */,
+				C7B839292ACE70C700EE400E /* SampleObjC-Bridging-Header.h */,
 			);
 			path = SampleObjC;
 			sourceTree = "<group>";
@@ -155,6 +157,7 @@
 				C7B67B99237D06EA00B6314E /* Resources */,
 				B8B7B23429C0386B00F7E8AF /* Embed Frameworks */,
 				A0CEB616D2BFC8B1A633E009 /* [CP] Copy Pods Resources */,
+				8A4BB0B1E73BA1AD7F506FD0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -176,6 +179,7 @@
 				TargetAttributes = {
 					C7B67B9A237D06EA00B6314E = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1500;
 					};
 				};
 			};
@@ -212,6 +216,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8A4BB0B1E73BA1AD7F506FD0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SampleObjC/Pods-SampleObjC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8AFBB3164A114A5B132F0C9E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -418,6 +437,7 @@
 			baseConfigurationReference = BF07B636BD9398F32FB308F7 /* Pods-SampleObjC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = VGG743YS65;
@@ -440,6 +460,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleObjC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SampleObjC/SampleObjC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -449,6 +472,7 @@
 			baseConfigurationReference = 69ABDF4C958BB974A216C64B /* Pods-SampleObjC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = VGG743YS65;
@@ -471,6 +495,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleObjC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SampleObjC/SampleObjC-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
