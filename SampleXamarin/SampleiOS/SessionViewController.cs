@@ -17,7 +17,7 @@ namespace HelpLightning.SDK.Sample.iOS
         public override void ItemSelected(UITabBar tabbar, UITabBarItem item)
         {
             int index = System.Array.IndexOf(tabbar.Items, item);
-            if (index == 0)
+            if (index == 0) 
             {
                 this.viewController.SwitchToUser1();
             }
@@ -145,6 +145,11 @@ namespace HelpLightning.SDK.Sample.iOS
         }
 
         public Task<IDictionary<string, object>> SelectQuickKnowledgeOverlay(Call call, IDictionary<string, object> userInfo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDictionary<string, object> CallNeedScreenSharingInfo(Call call)
         {
             throw new NotImplementedException();
         }

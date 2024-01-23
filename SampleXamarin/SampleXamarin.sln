@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAndroid", "SampleAndr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleiOS", "SampleiOS\SampleiOS.csproj", "{9549F74A-B1E9-4E73-B052-054A637FBB03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BroadcastExtension", "BroadcastExtension\BroadcastExtension.csproj", "{6ADA36A8-C57D-42C5-9B0F-DA2669AF9F20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -29,6 +31,14 @@ Global
 		{9549F74A-B1E9-4E73-B052-054A637FBB03}.Debug|iPhone.Build.0 = Debug|iPhone
 		{9549F74A-B1E9-4E73-B052-054A637FBB03}.Release|iPhone.ActiveCfg = Release|iPhone
 		{9549F74A-B1E9-4E73-B052-054A637FBB03}.Release|iPhone.Build.0 = Release|iPhone
+		{6ADA36A8-C57D-42C5-9B0F-DA2669AF9F20}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{6ADA36A8-C57D-42C5-9B0F-DA2669AF9F20}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{6ADA36A8-C57D-42C5-9B0F-DA2669AF9F20}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{6ADA36A8-C57D-42C5-9B0F-DA2669AF9F20}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{6ADA36A8-C57D-42C5-9B0F-DA2669AF9F20}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{6ADA36A8-C57D-42C5-9B0F-DA2669AF9F20}.Debug|iPhone.Build.0 = Debug|iPhone
+		{6ADA36A8-C57D-42C5-9B0F-DA2669AF9F20}.Release|iPhone.ActiveCfg = Release|iPhone
+		{6ADA36A8-C57D-42C5-9B0F-DA2669AF9F20}.Release|iPhone.Build.0 = Release|iPhone
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		version = 0.9.6
