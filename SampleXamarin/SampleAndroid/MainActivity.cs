@@ -102,7 +102,7 @@ namespace HelpLightning.SDK.Sample.Android
         protected override void OnResume()
         {
             base.OnResume();
-            RequestPermissions();
+            //RequestPermissions();
         }
 
         protected void RequestPermissions()

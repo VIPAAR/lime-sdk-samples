@@ -206,6 +206,10 @@ namespace HelpLightning.SDK.Sample.iOS
             theme.SetImage(Theme.IconAnnotationColorGreenSelectedIOS, UIImage.FromBundle("TestIcon"));
             theme.SetImage(Theme.IconAnnotationColorBlueSelectedIOS, UIImage.FromBundle("TestIcon"));
 
+            theme.SetImage(Theme.ImageShareMenuFaceToFaceIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuFaceToFaceSelectedIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuScreenSharingIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuScreenSharingSelectedIOS, UIImage.FromBundle("TestIcon"));
             CallClientFactory.Instance.CallClient.Theme = theme;
         }
 
@@ -397,6 +401,15 @@ namespace HelpLightning.SDK.Sample.iOS
 
             KnowledgeOverlayPickingTaskCompletionSource = new TaskCompletionSource<IDictionary<string, object>>();
             return KnowledgeOverlayPickingTaskCompletionSource.Task;
+        }
+
+        public IDictionary<string, object> CallNeedScreenSharingInfo(Call call)
+        {
+            return new Dictionary<string, object>
+            {
+                { CallClientDelegateConstants.BroadcastExtensionAppGroupName, "group.com.helplightning.sdk.sample.xamarin.ios.BroadcastExtension" },
+                { CallClientDelegateConstants.BroadcastExtensionBundleId, "com.helplightning.sdk.sample.xamarin.ios.BroadcastExtension" },
+            };
         }
     }
 }
