@@ -109,7 +109,7 @@ public class JoinSession extends Fragment implements View.OnClickListener {
         rootView.findViewById(R.id.leave_session).setOnClickListener(v -> {
             try {
                 rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
-                HLClient.getInstance().stopCurrentCall();
+                HLClient.INSTANCE.stopCurrentCall();
             } catch (Exception e) {
                 Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
             }
@@ -232,7 +232,7 @@ public class JoinSession extends Fragment implements View.OnClickListener {
           .setImage(HLTheme.IMAGE_CAMERA_DISABLED , R.drawable.hltheme_ic_camera_disabled)
           .setImage(HLTheme.IMAGE_DEBUG_STATS_ON, R.drawable.ic_debug_stats_on);
 
-        HLClient.getInstance().setTheme(theme);
+        HLClient.INSTANCE.setTheme(theme);
     }
 
     public void onClick(View v) {
@@ -249,7 +249,7 @@ public class JoinSession extends Fragment implements View.OnClickListener {
                               sessionData = getSessionData(response, v.getId() == R.id.join_audio_session);
                               pinEditText.setText(response.getString("sid"));
 
-                              HLClient.getInstance()
+                              HLClient.INSTANCE
                                 .startCall(sessionData, rootView.getContext(), SampleInCallService.class, dataCenter)
                                 .then(result -> {
                                     rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
@@ -279,7 +279,7 @@ public class JoinSession extends Fragment implements View.OnClickListener {
                               sessionData = getSessionData(response, v.getId() == R.id.join_audio_session);
                               rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.VISIBLE);
 
-                              HLClient.getInstance()
+                              HLClient.INSTANCE
                                 .startCall(sessionData, rootView.getContext(), SampleInCallService.class, dataCenter)
                                 .then(result -> {
                                     rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
@@ -303,7 +303,7 @@ public class JoinSession extends Fragment implements View.OnClickListener {
                 }
             } else {
                 sessionData = renewSessionData(sessionData);
-                HLClient.getInstance().startCall(sessionData, rootView.getContext(), SampleInCallService.class, dataCenter)
+                HLClient.INSTANCE.startCall(sessionData, rootView.getContext(), SampleInCallService.class, dataCenter)
                   .then(result -> {
                       rootView.findViewById(R.id.progressBar_cyclic).setVisibility(View.INVISIBLE);
                   }, err -> {
