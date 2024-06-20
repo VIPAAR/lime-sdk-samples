@@ -5,22 +5,21 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import android.widget.Toast;
 
 import com.vipaar.lime.hlsdk.misc.PermissionsUtil;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_APP_SETTINGS = 1;
-    private boolean mActivityResultCalled = false;
-    private boolean mOnRequestPermissionsResultCalled = false;
 
     private static final int REQUEST_CODE_CAMERA_MICROPHONE = 1;
     private static final int REQUEST_CODE_CAMERA = 2;
@@ -30,26 +29,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (savedInstanceState == null) {
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            MainFragment fragment = new MainFragment();
+            ft.replace(R.id.fragment_container, fragment);
+            ft.commit();
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         requestPermissions();
-        if (!mActivityResultCalled && !mOnRequestPermissionsResultCalled) {
-            if (PermissionsUtil.checkCameraMicrophonePermissions(this)) {
-//                finish(false);
-            }
-        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_APP_SETTINGS) {
-            mActivityResultCalled = true;
             if (PermissionsUtil.checkCameraMicrophonePermissions(this)) {
                 // permission granted
-
                 Toast.makeText(this, R.string.toastPermsGranted, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, R.string.toastPermsNotGranted, Toast.LENGTH_SHORT).show();
@@ -61,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        mOnRequestPermissionsResultCalled = true;
         switch (requestCode) {
         case REQUEST_CODE_CAMERA_MICROPHONE:
             if (!PermissionsUtil.verifyPermissions(grantResults)) {
@@ -156,21 +153,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showRationaleAlertDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
         builder.setTitle(R.string.permsExplanationAlertTitle);
         builder.setCancelable(false);
         builder.setMessage(R.string.permsExplanationAlertMessage);
         builder.setPositiveButton(android.R.string.ok, (dialog, which) -> requestPermissions());
         builder.create().show();
-    }
-
-    private void finish(boolean fade) {
-        super.finish();
-        if (fade) {
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        } else {
-            overridePendingTransition(0, 0);
-        }
     }
 
     private void startSettingsActivity() {
@@ -184,13 +172,8 @@ public class MainActivity extends AppCompatActivity {
     public void joinCallClicked(String mode, String userToken) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        JoinSession fragment = new JoinSession();
-        Bundle args = new Bundle();
-        args.putString("user_token", userToken);
-        args.putString("mode", mode);
-        fragment.setArguments(args);
+        JoinSessionFragment fragment = JoinSessionFragment.newInstance(userToken, mode);
         ft.replace(R.id.fragment_container, fragment);
-        ft.addToBackStack(null);
         ft.commit();
     }
 }

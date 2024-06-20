@@ -31,9 +31,9 @@ class ImageSelectActivity : AppCompatActivity() {
     private fun processSelectedImageUri(localUri: Uri?, requestCode: Int) {
         localUri?.let {
             if (requestCode == MODE_QUICK_KNOWLEDGE) {
-                HLClient.getInstance().onKnowledgeSelected(it, KnowledgeType.IMAGE)
+                HLClient.onKnowledgeSelected(it, KnowledgeType.IMAGE)
             } else if (requestCode == MODE_QUICK_KNOWLEDGE_OVERLAY) {
-                HLClient.getInstance().onQuickKnowledgeOverlaySelected(it)
+                HLClient.onQuickKnowledgeOverlaySelected(it)
             }
         }
     }
