@@ -115,6 +115,6 @@ public class SampleInCallService extends InCallService {
     }
 
     public boolean isMinimizeCallEnabled() {
-        return false;
+        return true;
     }
 }
