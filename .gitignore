@@ -16,3 +16,5 @@ bin
 SampleWeb/sdk/
 
 *.pem
+
+hlserver/.env/
