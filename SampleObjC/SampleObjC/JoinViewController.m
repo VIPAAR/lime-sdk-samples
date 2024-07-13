@@ -11,7 +11,7 @@
 #import "DocumentManager.h"
 #import <HLSDKCommon/HLSDKCommon.h>
 #import <HLSDK/HLSDK.h>
-
+#import <HLSDKLogging/HLSDKLogging.h>
 //TODO
 NSString* const kDefaultUserName = @"[YOUR_USER_NAME]";
 NSString* const kHLApiKey = @"[YOUR_HL_API_KEY]";
@@ -69,7 +69,7 @@ NSInteger const kErrorCodeGeneric = kErrorCodeBase + 100;
 }
 
 - (IBAction)OnJoinCall:(UIButton *)sender {
-    [self _setupTheme];
+//    [self _setupTheme];
     
     CallManager.sharedInstance.sessionID = self.sessionIDTextField.text;
     CallManager.sharedInstance.sessionToken = self.sessionTokenTextView.text;
@@ -231,6 +231,13 @@ NSInteger const kErrorCodeGeneric = kErrorCodeBase + 100;
 
 - (void) hlCall:(HLCall*)call didEndWithReason:(NSString *)reason {
     NSLog(@"Call Ended: %@", call.sessionId);
+}
+
+- (NSDictionary*) hlCallNeedScreenSharingInfo:(id<HLGenericCall>)call {
+    return @{
+        kHLCallPluginScreenSharingAppGroupName: @"group.com.helplightning.sdk.SampleObjC.BroadcastExtension",
+        kHLCallPluginScreenSharingBroadcastExtensionBundleId:  @"com.helplightning.sdk.SampleObjC.BroadcastExtension"
+    };
 }
 
 #pragma mark - Share Knowledge Plugin
