@@ -153,7 +153,6 @@
     </ItemGroup>
     <ItemGroup>
         <InterfaceDefinition Include="LaunchScreen.storyboard" />
-        <InterfaceDefinition Include="Session.storyboard" />
         <InterfaceDefinition Include="Main.storyboard" />
     </ItemGroup>
     <ItemGroup>
@@ -164,10 +163,6 @@
         <Compile Include="Main.cs" />
         <Compile Include="AppDelegate.cs" />
         <Compile Include="SceneDelegate.cs" />
-        <Compile Include="SessionViewController.cs" />
-        <Compile Include="SessionViewController.designer.cs">
-            <DependentUpon>SessionViewController.cs</DependentUpon>
-        </Compile>
         <Compile Include="HLServerClient.cs" />
         <Compile Include="AuthViewController.cs" />
         <Compile Include="AuthViewController.designer.cs">
