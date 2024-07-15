@@ -8,7 +8,9 @@ PODS:
   - CocoaLumberjack/Core (3.7.4)
   - CocoaZ (1.4.2)
   - FXKeychain (1.5.1)
-  - HLSDK (16.4.2):
+  - HLSDK (17.0.2):
+    - HLSDK/Main (= 17.0.2)
+  - HLSDK/Main (17.0.2):
     - Alamofire (= 5.0.5)
     - AWSCore (= 2.23.5)
     - AWSS3 (= 2.23.5)
@@ -18,10 +20,11 @@ PODS:
     - JVFloatLabeledTextField (= 1.2.2)
     - Kingfisher (= 5.15.8)
     - KMPlaceholderTextView (= 1.4.0)
+    - MarqueeLabel (= 4.4.0)
     - OTXCFramework (= 2.25.2)
-    - Presentr (= 1.9)
     - PromisesObjC (= 2.0.0)
     - PromisesSwift (= 2.0.0)
+    - Realm (= 10.41.1)
     - SDWebImage (= 3.7.1)
     - SkeletonView (= 1.13.0)
     - SVProgressHUD (= 2.2.2)
@@ -35,6 +38,7 @@ PODS:
     - vipaar-j2objc (= 1.2)
     - vipaar-MessageKit (= 1.0.5)
     - vipaar-Parchment (= 1.7.1)
+    - vipaar-Presentr (= 1.9.1)
     - vipaar-reachability (= 3.2.1)
     - vipaar-SVGKit (= 3.1.0)
     - vipaar-swift-catomic (= 1.0.0)
@@ -42,6 +46,9 @@ PODS:
     - vipaar-swift-cmark-gfm-extensions (= 1.0.0)
     - vipaar-swift-markdown (= 1.0.0)
     - vipaar-tinyspline (= 1.0.0)
+    - ZIPFoundation (= 0.9.16)
+  - HLSDK/ScreenSharing (17.0.2):
+    - CocoaLumberjack (= 3.7.4)
   - InputBarAccessoryView (5.4.0):
     - InputBarAccessoryView/Core (= 5.4.0)
   - InputBarAccessoryView/Core (5.4.0)
@@ -50,11 +57,14 @@ PODS:
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
   - KMPlaceholderTextView (1.4.0)
+  - MarqueeLabel (4.4.0)
   - OTXCFramework (2.25.2)
-  - Presentr (1.9)
   - PromisesObjC (2.0.0)
   - PromisesSwift (2.0.0):
     - PromisesObjC (= 2.0.0)
+  - Realm (10.41.1):
+    - Realm/Headers (= 10.41.1)
+  - Realm/Headers (10.41.1)
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
@@ -72,6 +82,7 @@ PODS:
   - vipaar-MessageKit (1.0.5):
     - InputBarAccessoryView (~> 5.4.0)
   - vipaar-Parchment (1.7.1)
+  - vipaar-Presentr (1.9.1)
   - vipaar-reachability (3.2.1)
   - vipaar-SVGKit (3.1.0):
     - CocoaLumberjack (= 3.7.4)
@@ -84,9 +95,11 @@ PODS:
     - vipaar-swift-cmark-gfm (= 1.0.0)
     - vipaar-swift-cmark-gfm-extensions (= 1.0.0)
   - vipaar-tinyspline (1.0.0)
+  - ZIPFoundation (0.9.16)
 
 DEPENDENCIES:
-  - HLSDK (= 16.4.2)
+  - HLSDK (= 17.0.2)
+  - HLSDK/ScreenSharing (= 17.0.2)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -100,10 +113,11 @@ SPEC REPOS:
     - JVFloatLabeledTextField
     - Kingfisher
     - KMPlaceholderTextView
+    - MarqueeLabel
     - OTXCFramework
-    - Presentr
     - PromisesObjC
     - PromisesSwift
+    - Realm
     - SDWebImage
     - SkeletonView
     - SVProgressHUD
@@ -114,11 +128,13 @@ SPEC REPOS:
     - TwilioAccessManager
     - TwilioConversationsClient
     - UIActivityIndicator-for-SDWebImage
+    - ZIPFoundation
   https://github.com/VIPAAR/Specs.git:
     - HLSDK
     - vipaar-j2objc
     - vipaar-MessageKit
     - vipaar-Parchment
+    - vipaar-Presentr
     - vipaar-reachability
     - vipaar-SVGKit
     - vipaar-swift-catomic
@@ -134,15 +150,16 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 543c79c114dadc3b1aba95641d8738b06b05b646
   CocoaZ: a296b1fbea2c648daf2ccabb5403ed354569e633
   FXKeychain: a6c2efc46ba7167163c45469a0554233e9e6569e
-  HLSDK: 392b00403c8b1256b09245ad4740ab8619c29c2a
+  HLSDK: 69367b85e09ed81cd7b29ff45e43e605bb9c7324
   InputBarAccessoryView: 74d471ab1fa1736806be50328df79257e52865a9
   JVFloatLabeledTextField: df48598472ee015701d509f43e59492a0d4ca208
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
+  MarqueeLabel: d2388949ac58d587303178d56a792ba8a001b037
   OTXCFramework: c76b481efca1a3ce5f96c040400c465713f08586
-  Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   PromisesSwift: e0b2a6433469efb0b83a2b84c62a2abab8e5e5d4
+  Realm: 0cb0b0b24f9303543a1f0dc17de8dec2d5bbf3f0
   SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
   SkeletonView: 2b14cb767a7da384d17d5d7e1db0d55a6cf9566a
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
@@ -156,6 +173,7 @@ SPEC CHECKSUMS:
   vipaar-j2objc: 27d89ffc8688f81a6eb8459548f005470a68a5c6
   vipaar-MessageKit: 9c1b5de714c6fd92468c4a0ca88ab7861196d231
   vipaar-Parchment: ba44e2af93c7f483ca45276e1964ec4b03cdca29
+  vipaar-Presentr: bde9ba2a6a73cdb84d1e808ae1b9d7d8a08a420b
   vipaar-reachability: 05dea9613e5126628ae69b1f1ed50866a2a9ecad
   vipaar-SVGKit: 3d59103efb6b40843dc367ad3adb63563a624158
   vipaar-swift-catomic: 9fa47daa992bc57a36b46c25f3342c93601d6c16
@@ -163,7 +181,8 @@ SPEC CHECKSUMS:
   vipaar-swift-cmark-gfm-extensions: 240b37a8975c009209d0ce103d6ac6b543b05647
   vipaar-swift-markdown: 60e96575038619206069cafe150c51065477250f
   vipaar-tinyspline: d8565207b0c1714bac044a488b4308ca690b52f9
+  ZIPFoundation: d170fa8e270b2a32bef9dcdcabff5b8f1a5deced
 
-PODFILE CHECKSUM: 070502f769d81cce9500c82fa70b43685735166c
+PODFILE CHECKSUM: f951fd32d8bd343bc33b4576f79ba4fcdf6c2ed2
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.15.0
