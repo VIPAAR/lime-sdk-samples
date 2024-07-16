@@ -53,7 +53,8 @@
     <MtouchExtraArgs>-gcc_flags "-Xlinker -ld_classic"</MtouchExtraArgs>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <MtouchVerbosity></MtouchVerbosity>
-    <CodesignProvision>Automatic</CodesignProvision>
+    <CodesignProvision>iOS Team Provisioning Profile: com.helplightning.sdk.sample.xamarin.ios.BroadcastExtension</CodesignProvision>
+    <IpaIncludeArtwork></IpaIncludeArtwork>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
@@ -81,7 +82,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CreatePackage>false</CreatePackage>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>Apple Development: Hale Xie (QC28HNB79X)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
@@ -94,7 +95,7 @@
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <_BundlerDebug>false</_BundlerDebug>
     <MtouchVerbosity></MtouchVerbosity>
-    <CodesignProvision>Automatic</CodesignProvision>
+    <CodesignProvision>Xamarin iOS Sample Broadcast Extension Profile</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -102,7 +103,7 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="HLSDK.iOS.Binding.ScreenSharing">
-      <HintPath>..\packages\HelpLightning.SDK.iOS.Binding.ScreenSharing.16.8.0\lib\xamarinios10\HLSDK.iOS.Binding.ScreenSharing.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.iOS.Binding.ScreenSharing.16.9.6\lib\xamarinios10\HLSDK.iOS.Binding.ScreenSharing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -26,7 +26,7 @@
         <MtouchArch>x86_64</MtouchArch>
         <MtouchLink>SdkOnly</MtouchLink>
         <MtouchDebug>true</MtouchDebug>
-<CodesignKey>iPhone Developer</CodesignKey>
+<CodesignKey>Apple Development: Hale Xie (QC28HNB79X)</CodesignKey>
 <MtouchExtraArgs>-gcc_flags "-Xlinker -ld_classic" --gcc_flags -L/usr/lib/swift --gcc_flags -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator --gcc_flags "-Wl,-rpath -Wl,@executable_path/Frameworks"
 </MtouchExtraArgs>
 <CodesignProvision>iOS Team Provisioning Profile: com.helplightning.sdk.sample.xamarin.ios</CodesignProvision>
@@ -41,6 +41,8 @@
         <MtouchArch>x86_64</MtouchArch>
         <MtouchExtraArgs>-gcc_flags "-Xlinker -ld_classic" --gcc_flags -L/usr/lib/swift --gcc_flags -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator --gcc_flags "-Wl,-rpath -Wl,@executable_path/Frameworks"
 </MtouchExtraArgs>
+        <CodesignProvision>Automatic</CodesignProvision>
+        <CodesignKey>iPhone Developer</CodesignKey>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
         <DebugSymbols>true</DebugSymbols>
@@ -58,6 +60,17 @@
         <MtouchExtraArgs>-gcc_flags "-Xlinker -ld_classic" --gcc_flags -L/usr/lib/swift --gcc_flags -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos --gcc_flags "-Wl,-rpath -Wl,@executable_path/Frameworks"</MtouchExtraArgs>
         <LangVersion>Default</LangVersion>
         <CodesignProvision>Automatic</CodesignProvision>
+        <ExternalConsole>false</ExternalConsole>
+        <_BundlerDebug></_BundlerDebug>
+        <MtouchFastDev></MtouchFastDev>
+        <MtouchUseLlvm></MtouchUseLlvm>
+        <MtouchUseThumb></MtouchUseThumb>
+        <CrashReportingApiKey></CrashReportingApiKey>
+        <CodesignResourceRules></CodesignResourceRules>
+        <MtouchInterpreter></MtouchInterpreter>
+        <ProductDefinition></ProductDefinition>
+        <EnableCodeSigning></EnableCodeSigning>
+        <CrashReportingDelay>-1</CrashReportingDelay>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
         <DebugType>none</DebugType>
@@ -70,7 +83,7 @@
         <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
         <MtouchArch>ARM64</MtouchArch>
-        <CodesignKey>iPhone Developer</CodesignKey>
+        <CodesignKey>Apple Development: Hale Xie (QC28HNB79X)</CodesignKey>
         <MtouchLink>SdkOnly</MtouchLink>
         <MtouchExtraArgs>-gcc_flags "-Xlinker -ld_classic" --gcc_flags -L/usr/lib/swift --gcc_flags -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos --gcc_flags "-Wl,-rpath -Wl,@executable_path/Frameworks"</MtouchExtraArgs>
         <RunWithWarnings>true</RunWithWarnings>
@@ -79,6 +92,7 @@
         <CrashReportingDelay>-1</CrashReportingDelay>
         <OptimizePNGs></OptimizePNGs>
         <NoWarn></NoWarn>
+        <CodesignProvision>iOS Team Provisioning Profile: *</CodesignProvision>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="System" />
@@ -183,12 +197,13 @@
         <Version>13.0.3</Version>
       </PackageReference>
       <PackageReference Include="HelpLightning.SDK">
-        <Version>16.8.0</Version>
+        <Version>16.9.6</Version>
       </PackageReference>
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\BroadcastExtension\BroadcastExtension.csproj">
         <IsAppExtension>true</IsAppExtension>
+        <Project>{6ADA36A8-C57D-42C5-9B0F-DA2669AF9F20}</Project>
         <Name>BroadcastExtension</Name>
       </ProjectReference>
     </ItemGroup>

@@ -11,8 +11,8 @@ namespace HelpLightning.SDK.Sample.iOS
 {
     public partial class JoinViewController : UIViewController, ICallClientDelegate
     {
-        private static readonly string DefaultUserName = "your-user-name";
-        private static readonly string HLApiKey = "[INSERT API KEY]";
+        private static readonly string DefaultUserName = "Hale Xie";
+        private static readonly string HLApiKey = "6363f705f10dad494fcdded0a762da7b";
 
         public JoinViewController(IntPtr handle) : base(handle)
         {
@@ -427,9 +427,45 @@ namespace HelpLightning.SDK.Sample.iOS
             callInfo.TryGetValue(CallClientDelegateConstants.CallPluginCallContentView, out object view);
             if (view != null && view is UIView)
             {
-                var callView = (UIView)view;
-                callView.BackgroundColor = UIColor.Clear;
-                minimizedCallContainer.AddSubview(callView);
+                var minimizedCallView = (UIView)view;
+                minimizedCallView.BackgroundColor = UIColor.Clear;
+                minimizedCallContainer.AddSubview(minimizedCallView);
+
+                /**
+                 *         CGFloat w0 = CGRectGetWidth(minimizedCallView.frame);
+        CGFloat h0 = CGRectGetHeight(minimizedCallView.frame);
+        CGFloat w1 = CGRectGetWidth(self.minimizedCallContainer.frame);
+        CGFloat h1 = CGRectGetHeight(self.minimizedCallContainer.frame);
+        minimizedCallView.translatesAutoresizingMaskIntoConstraints = NO;
+        [minimizedCallView.centerXAnchor constraintEqualToAnchor:self.minimizedCallContainer.centerXAnchor].active = YES;
+        [minimizedCallView.centerYAnchor constraintEqualToAnchor:self.minimizedCallContainer.centerYAnchor].active = YES;;
+        if (w0 / h0 >= w1 /h1) {
+            [minimizedCallView.widthAnchor constraintEqualToAnchor:self.minimizedCallContainer.widthAnchor].active = YES;
+            [minimizedCallView.heightAnchor constraintEqualToAnchor:minimizedCallView.widthAnchor multiplier:(h0 / w0) constant:0].active = YES;
+        } else {
+            [minimizedCallView.heightAnchor constraintEqualToAnchor:self.minimizedCallContainer.heightAnchor].active = YES;
+            [minimizedCallView.widthAnchor constraintEqualToAnchor:minimizedCallView.heightAnchor multiplier:(w0 / h0) constant:0].active = YES;
+        }
+                 */
+
+                var w0 = minimizedCallView.Frame.Width;
+                var h0 = minimizedCallView.Frame.Height;
+                var w1 = minimizedCallContainer.Frame.Width;
+                var h1 = minimizedCallContainer.Frame.Height;
+                minimizedCallView.TranslatesAutoresizingMaskIntoConstraints = false;
+                minimizedCallView.CenterXAnchor.ConstraintEqualTo(minimizedCallContainer.CenterXAnchor).Active = true;
+                minimizedCallView.CenterYAnchor.ConstraintEqualTo(minimizedCallContainer.CenterYAnchor).Active = true;
+                if (w0 / h0 >= w1 / h1)
+                {
+                    minimizedCallView.WidthAnchor.ConstraintEqualTo(minimizedCallContainer.WidthAnchor).Active = true;
+                    minimizedCallView.HeightAnchor.ConstraintEqualTo(minimizedCallView.WidthAnchor, h0 / w0, 0).Active = true;
+                }
+                else
+                {
+                    minimizedCallView.HeightAnchor.ConstraintEqualTo(minimizedCallContainer.HeightAnchor).Active = true;
+                    minimizedCallView.WidthAnchor.ConstraintEqualTo(minimizedCallView.HeightAnchor, w0 / h0, 0).Active = true;
+                }
+
                 return Task.FromResult(true);
             }
             return Task.FromException<bool>(new InvalidOperationException());
