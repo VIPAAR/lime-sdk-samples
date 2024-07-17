@@ -11,7 +11,7 @@
 #import "DocumentManager.h"
 #import <HLSDKCommon/HLSDKCommon.h>
 #import <HLSDK/HLSDK.h>
-
+#import <HLSDKLogging/HLSDKLogging.h>
 //TODO
 NSString* const kDefaultUserName = @"[YOUR_USER_NAME]";
 NSString* const kHLApiKey = @"[YOUR_HL_API_KEY]";
@@ -43,6 +43,8 @@ NSInteger const kErrorCodeGeneric = kErrorCodeBase + 100;
 
 @property (weak, nonatomic) IBOutlet UISwitch *micOnSwitch;
 
+@property (weak, nonatomic) IBOutlet UIView *minimizedCallContainer;
+
 @property (nonatomic) DocumentManager* sharedDocManager;
 @end
 
@@ -69,7 +71,7 @@ NSInteger const kErrorCodeGeneric = kErrorCodeBase + 100;
 }
 
 - (IBAction)OnJoinCall:(UIButton *)sender {
-    [self _setupTheme];
+//    [self _setupTheme];
     
     CallManager.sharedInstance.sessionID = self.sessionIDTextField.text;
     CallManager.sharedInstance.sessionToken = self.sessionTokenTextView.text;
@@ -231,6 +233,16 @@ NSInteger const kErrorCodeGeneric = kErrorCodeBase + 100;
 
 - (void) hlCall:(HLCall*)call didEndWithReason:(NSString *)reason {
     NSLog(@"Call Ended: %@", call.sessionId);
+    [self.minimizedCallContainer.subviews enumerateObjectsUsingBlock:^(UIView* view, NSUInteger idx, BOOL* stop) {
+        [view removeFromSuperview];
+    }];
+}
+
+- (NSDictionary*) hlCallNeedScreenSharingInfo:(id<HLGenericCall>)call {
+    return @{
+        kHLCallPluginScreenSharingAppGroupName: @"group.com.helplightning.sdk.SampleObjC.BroadcastExtension",
+        kHLCallPluginScreenSharingBroadcastExtensionBundleId:  @"com.helplightning.sdk.SampleObjC.BroadcastExtension"
+    };
 }
 
 #pragma mark - Share Knowledge Plugin
@@ -250,6 +262,61 @@ NSInteger const kErrorCodeGeneric = kErrorCodeBase + 100;
 
 - (FBLPromise*) hlCall:(id<HLGenericCall>)call needKnowledgeOverlayWithUserInfo:(NSDictionary<NSString*, id>*)userInfo {
     return [self hlCall:call selectDocumentWithUserInfo:userInfo supportedType:[DocumentManager supportedKnowledgeOverlayTypes]];
+}
+
+#pragma mark - Call Minimization Plugin
+- (FBLPromise*) hlCall:(id<HLGenericCall>)call canMinimizeCallViewWithCallInfo:(NSDictionary<NSString*, id>*)callInfo {
+    NSLog(@"hlCall:canMinimizeCallViewWithCallInfo:%@", callInfo);
+    return [FBLPromise resolvedWith:@YES];
+}
+
+- (FBLPromise*) hlCall:(id<HLGenericCall>)call didMinimizeCallViewWithCallInfo:(NSDictionary<NSString*, id>*)callInfo {
+    NSLog(@"hlCall:didMinimizeCallViewWithCallInfo:%@", callInfo);
+    UIView* minimizedCallView = callInfo[kHLCallPluginCallContentView];
+    if (minimizedCallView) {
+        minimizedCallView.backgroundColor = UIColor.clearColor;
+        [self.minimizedCallContainer addSubview:minimizedCallView];
+        CGFloat w0 = CGRectGetWidth(minimizedCallView.frame);
+        CGFloat h0 = CGRectGetHeight(minimizedCallView.frame);
+        CGFloat w1 = CGRectGetWidth(self.minimizedCallContainer.frame);
+        CGFloat h1 = CGRectGetHeight(self.minimizedCallContainer.frame);
+        minimizedCallView.translatesAutoresizingMaskIntoConstraints = NO;
+        [minimizedCallView.centerXAnchor constraintEqualToAnchor:self.minimizedCallContainer.centerXAnchor].active = YES;
+        [minimizedCallView.centerYAnchor constraintEqualToAnchor:self.minimizedCallContainer.centerYAnchor].active = YES;;
+        if (w0 / h0 >= w1 /h1) {
+            [minimizedCallView.widthAnchor constraintEqualToAnchor:self.minimizedCallContainer.widthAnchor].active = YES;
+            [minimizedCallView.heightAnchor constraintEqualToAnchor:minimizedCallView.widthAnchor multiplier:(h0 / w0) constant:0].active = YES;
+        } else {
+            [minimizedCallView.heightAnchor constraintEqualToAnchor:self.minimizedCallContainer.heightAnchor].active = YES;
+            [minimizedCallView.widthAnchor constraintEqualToAnchor:minimizedCallView.heightAnchor multiplier:(w0 / h0) constant:0].active = YES;
+        }
+
+        return [FBLPromise resolvedWith:@YES];
+    } else {
+        return [FBLPromise resolvedWith:[HLError errorWithMessage:@"No minimized call view"]];
+    }
+}
+
+- (FBLPromise*) hlCall:(id<HLGenericCall>)call willRestoreCallViewWithCallInfo:(NSDictionary<NSString*, id>*)callInfo {
+    NSLog(@"hlCall:willRestoreCallViewWithCallInfo:%@", callInfo);
+    UIView* minimizedCallView = callInfo[kHLCallPluginCallContentView];
+    
+    if (minimizedCallView) {
+        [minimizedCallView removeFromSuperview];
+        return [FBLPromise resolvedWith:@YES];
+    } else {
+        return [FBLPromise resolvedWith:[HLError errorWithMessage:@"No minimized call view"]];
+    }
+}
+
+- (void) hlCall:(id<HLGenericCall>)call didRestoreCallViewWithCallInfo:(NSDictionary<NSString*, id>*)callInfo {
+    NSLog(@"hlCall:didRestoreCallViewWithCallInfo:%@", callInfo);
+}
+
+- (void) hlCall:(id<HLGenericCall>)call didCaptureImage:(NSData*)imageData mimeType:(NSString*)mimeType {
+    NSLog(@"hlCall:didCaptureImage:%@ mimeType:%@", imageData, mimeType);
+    UIImage* image = [UIImage imageWithData:imageData];
+    self.imagePreview.image = image;
 }
 
 #pragma mark - Helper
