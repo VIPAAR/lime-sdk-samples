@@ -8,35 +8,36 @@ import org.json.JSONObject;
 
 public class Utils {
 
-    public static HLCall getSessionData(JSONObject json, boolean autoEnableCamera, boolean autoEnableMic, boolean enableMiniview)
+    public static HLCall getSessionData(JSONObject json, boolean autoEnableCamera, boolean autoEnableMic, boolean startInMiniview)
       throws JSONException {
-        return new HLCall(
-          json.getString("session_id"),
-          json.getString("session_token"),
-          json.getString("user_token"),
-          json.getString("url"),
-          BuildConfig.GALDR_API_KEY,
-          "Jason",
-          "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg",
-          autoEnableCamera,
-          autoEnableMic,
-          false,
-          enableMiniview);
+        HLCall.Builder builder = new HLCall.Builder()
+                .sessionId(json.getString("session_id"))
+                .sessionToken(json.getString("session_token"))
+                .userToken(json.getString("user_token"))
+                .gssUrl(json.getString("url"))
+                .helplightningAPIKey(BuildConfig.GALDR_API_KEY)
+                .localUserDisplayName("Jason")
+                .localUserAvatarUrl("https://www.gravatar.com/avatar/?d=identicon")
+                .autoEnableCamera(autoEnableCamera)
+                .autoEnableMicrophone(autoEnableMic)
+                .startInMiniView(startInMiniview);
+        return builder.build();
     }
 
-    public static HLCall renewSessionData(HLCall call, boolean autoEnableCamera, boolean autoEnableMic, boolean enableMiniview) {
-        return new HLCall(
-          call.getSessionId(),
-          call.getSessionToken(),
-          call.getUserToken(),
-          call.getGssUrl(),
-          BuildConfig.GALDR_API_KEY,
-          "Jason",
-          "https://www.securenvoy.com/sites/default/files/legacy-uploads/2013/10/pizza_hut_logo.jpg",
-          autoEnableCamera,
-          autoEnableMic,
-          false,
-          enableMiniview);
+    public static HLCall renewSessionData(HLCall call, boolean autoEnableCamera, boolean autoEnableMic, boolean startInMiniview) {
+        HLCall.Builder builder = new HLCall.Builder()
+                .sessionId(call.getSessionId())
+                .sessionToken(call.getSessionToken())
+                .userToken(call.getUserToken())
+                .gssUrl(call.getGssUrl())
+                .helplightningAPIKey(BuildConfig.GALDR_API_KEY)
+                .localUserDisplayName("Jason")
+                .localUserAvatarUrl("https://www.gravatar.com/avatar/?d=identicon")
+                .autoEnableCamera(autoEnableCamera)
+                .autoEnableMicrophone(autoEnableMic)
+                .autoEnableAudioPlusMode(false)
+                .startInMiniView(startInMiniview);
+        return builder.build();
     }
 
     public static HLTheme createTheme() {
