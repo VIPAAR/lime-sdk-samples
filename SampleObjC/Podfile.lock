@@ -8,9 +8,9 @@ PODS:
   - CocoaLumberjack/Core (3.7.4)
   - CocoaZ (1.4.2)
   - FXKeychain (1.5.1)
-  - HLSDK (17.0.2):
-    - HLSDK/Main (= 17.0.2)
-  - HLSDK/Main (17.0.2):
+  - HLSDK (17.0.3):
+    - HLSDK/Main (= 17.0.3)
+  - HLSDK/Main (17.0.3):
     - Alamofire (= 5.0.5)
     - AWSCore (= 2.23.5)
     - AWSS3 (= 2.23.5)
@@ -47,7 +47,7 @@ PODS:
     - vipaar-swift-markdown (= 1.0.0)
     - vipaar-tinyspline (= 1.0.0)
     - ZIPFoundation (= 0.9.16)
-  - HLSDK/ScreenSharing (17.0.2):
+  - HLSDK/ScreenSharing (17.0.3):
     - CocoaLumberjack (= 3.7.4)
   - InputBarAccessoryView (5.4.0):
     - InputBarAccessoryView/Core (= 5.4.0)
@@ -98,8 +98,8 @@ PODS:
   - ZIPFoundation (0.9.16)
 
 DEPENDENCIES:
-  - HLSDK (= 17.0.2)
-  - HLSDK/ScreenSharing (= 17.0.2)
+  - HLSDK (= 17.0.3)
+  - HLSDK/ScreenSharing (= 17.0.3)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -150,7 +150,7 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 543c79c114dadc3b1aba95641d8738b06b05b646
   CocoaZ: a296b1fbea2c648daf2ccabb5403ed354569e633
   FXKeychain: a6c2efc46ba7167163c45469a0554233e9e6569e
-  HLSDK: 69367b85e09ed81cd7b29ff45e43e605bb9c7324
+  HLSDK: b65c76c8c6cc8fb0e101fb41495091f827c54050
   InputBarAccessoryView: 74d471ab1fa1736806be50328df79257e52865a9
   JVFloatLabeledTextField: df48598472ee015701d509f43e59492a0d4ca208
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
@@ -183,6 +183,6 @@ SPEC CHECKSUMS:
   vipaar-tinyspline: d8565207b0c1714bac044a488b4308ca690b52f9
   ZIPFoundation: d170fa8e270b2a32bef9dcdcabff5b8f1a5deced
 
-PODFILE CHECKSUM: f951fd32d8bd343bc33b4576f79ba4fcdf6c2ed2
+PODFILE CHECKSUM: 43fc093a06124fb1469efdf3b3f3de6df9ef99a8
 
 COCOAPODS: 1.15.0
