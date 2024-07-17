@@ -1,12 +1,16 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Threading.Tasks;
 using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
 using AndroidX.Fragment.App;
+using AndroidX.Lifecycle;
+using HelpLightning.SDK.Android.Binding;
+using HelpLightning.SDK.Android.Binding.Android.Util.Miniview;
 using Newtonsoft.Json.Linq;
 using Xamarin.Essentials;
 using static System.Net.Mime.MediaTypeNames;
@@ -23,6 +27,7 @@ namespace HelpLightning.SDK.Sample.Android
         string pin = "";
         Call currentCallData;
         View rootView;
+        OngoingCallMiniView ongoingCallMiniView;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -44,7 +49,9 @@ namespace HelpLightning.SDK.Sample.Android
             TextView pinCode = (TextView)rootView.FindViewById(Resource.Id.pin_code);
             TextView contact = (TextView)rootView.FindViewById(Resource.Id.contact_email);
             TextView pinCodeView = (TextView)rootView.FindViewById(Resource.Id.text_pin_code);
+            ongoingCallMiniView = (OngoingCallMiniView)rootView.FindViewById(Resource.Id.minimized_call_view);
 
+            contact.Text = "hale.xie+01@helplightning.com";
             if (mode.Equals("call_contact"))
             {
                 rootView.FindViewById<View>(Resource.Id.pin_layout).Visibility = ViewStates.Gone;
@@ -99,7 +106,63 @@ namespace HelpLightning.SDK.Sample.Android
             {
                 StopCall();
             };
+
+            //ongoingCallMiniView.setOngoingCallListener(new OngoingCallListener()
+            //{
+            //public void onMaximizeCall()
+            //{
+            //    HLClient.INSTANCE.returnToActiveCall();
+            //}
+
+            //public void onEndCall()
+            //{
+            //    HLClient.INSTANCE.endActiveCall(getActivity());
+            //}
+
+            ongoingCallMiniView.OngoingCallListener = new OngoingCallListener(this);
+
+            CallClientFactory.Instance.CallClient.GetMinimizedCall().Observe(ViewLifecycleOwner, new MiniCallViewObserver(this));
+
             return rootView;
+        }
+
+        private class OngoingCallListener : Java.Lang.Object, IOngoingCallListener
+        {
+            JoinSession self;
+            internal OngoingCallListener(JoinSession self)
+            {
+                this.self = self;
+            }
+            public void OnEndCall()
+            {
+                CallClientFactory.Instance.CallClient.EndActiveCall(self.Activity);
+            }
+
+            public void OnMaximizeCall()
+            {
+                CallClientFactory.Instance.CallClient.ReturnToActiveCall();
+            }
+        }
+
+        private class MiniCallViewObserver : Java.Lang.Object, IObserver
+        {
+            JoinSession self;
+            internal MiniCallViewObserver(JoinSession self)
+            {
+                this.self = self;
+            }
+
+            public void OnChanged(Java.Lang.Object value)
+            {
+                if (value != null && value is OngoingCallInfo callInfo)
+                {
+                    self.ongoingCallMiniView.SetCallInfo(callInfo.MiniView, callInfo.CallTitle);
+                }
+                else
+                {
+                    self.ongoingCallMiniView.SetCallInfo(null, null);
+                }
+            }
         }
 
         private void JoinCall(Call call)
@@ -247,5 +310,11 @@ namespace HelpLightning.SDK.Sample.Android
             }
             return output;
         }
+
+        public bool IsMinimizeCallEnabled(Call call)
+        {
+            return false;
+        }
+
     }
 }
