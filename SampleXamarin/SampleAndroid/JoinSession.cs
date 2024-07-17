@@ -51,7 +51,6 @@ namespace HelpLightning.SDK.Sample.Android
             TextView pinCodeView = (TextView)rootView.FindViewById(Resource.Id.text_pin_code);
             ongoingCallMiniView = (OngoingCallMiniView)rootView.FindViewById(Resource.Id.minimized_call_view);
 
-            contact.Text = "hale.xie+01@helplightning.com";
             if (mode.Equals("call_contact"))
             {
                 rootView.FindViewById<View>(Resource.Id.pin_layout).Visibility = ViewStates.Gone;
@@ -106,18 +105,6 @@ namespace HelpLightning.SDK.Sample.Android
             {
                 StopCall();
             };
-
-            //ongoingCallMiniView.setOngoingCallListener(new OngoingCallListener()
-            //{
-            //public void onMaximizeCall()
-            //{
-            //    HLClient.INSTANCE.returnToActiveCall();
-            //}
-
-            //public void onEndCall()
-            //{
-            //    HLClient.INSTANCE.endActiveCall(getActivity());
-            //}
 
             ongoingCallMiniView.OngoingCallListener = new OngoingCallListener(this);
 
@@ -200,6 +187,7 @@ namespace HelpLightning.SDK.Sample.Android
 
         public void OnCallEnded(Call call, string reason)
         {
+            ongoingCallMiniView.SetCallInfo(null, null);
             Console.WriteLine("The call ended: " + reason);
         }
 
@@ -313,7 +301,7 @@ namespace HelpLightning.SDK.Sample.Android
 
         public bool IsMinimizeCallEnabled(Call call)
         {
-            return false;
+            return true;
         }
 
     }
