@@ -28,6 +28,7 @@ public class SampleInCallService extends InCallService {
      */
     @Override
     public void onCallEnded(HLCall call, String reason) {
+        super.onCallEnded(call, reason);
         Timber.d("Sample onCallEnded");
     }
 
