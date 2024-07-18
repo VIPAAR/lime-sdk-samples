@@ -9,6 +9,7 @@
 import UIKit
 import HLSDKCommon
 import HLSDK
+import HLSDKLogging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -50,6 +50,15 @@ function refresh(state) {
 
                 refresh(state);
             },
+            onActiveSessionsChanged: (sessions) => {
+              console.log('Active sessions changed', sessions);
+            },
+            onWillJoinCall: (sessionId) => {
+              console.log('Will join call', sessionId);
+            },
+            setMinimizingView: (toggle) => {
+              console.log('Set minimizing view', toggle);
+            },
             onScreenCaptureCreated: (image) => {
                 // TODO: prompt to save this somewhere?
                 // or ignore it, it'll be uploaded to the server

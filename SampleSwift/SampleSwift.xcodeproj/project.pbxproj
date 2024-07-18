@@ -18,7 +18,7 @@
 		C7854DA223D70C3A002A673C /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7854D9D23D70C3A002A673C /* SetupViewController.m */; };
 		C7854DA423D71007002A673C /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7854DA323D71007002A673C /* JoinViewController.swift */; };
 		C7E904002382A2D400F2795C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7E903FE2382A2D400F2795C /* Main.storyboard */; };
-		C7E904142382A78700F2795C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E904122382A53E00F2795C /* ViewController.swift */; };
+		C7EC27B92C44B464004690E0 /* HLClientWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EC27B82C44B464004690E0 /* HLClientWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +46,7 @@
 		C7854D9D23D70C3A002A673C /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
 		C7854DA323D71007002A673C /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		C7E903FF2382A2D400F2795C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C7E904122382A53E00F2795C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C7EC27B82C44B464004690E0 /* HLClientWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLClientWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,13 +103,13 @@
 				C7854D9B23D70C3A002A673C /* SetupViewController.h */,
 				C7854D9D23D70C3A002A673C /* SetupViewController.m */,
 				C7854DA323D71007002A673C /* JoinViewController.swift */,
-				C7E904122382A53E00F2795C /* ViewController.swift */,
 				C77C0C4D2382895500D20259 /* AppDelegate.swift */,
 				C7E903FE2382A2D400F2795C /* Main.storyboard */,
 				C77C0C542382895600D20259 /* Assets.xcassets */,
 				C77C0C562382895600D20259 /* LaunchScreen.storyboard */,
 				C77C0C592382895600D20259 /* Info.plist */,
 				C7854D9323D70C39002A673C /* SampleSwift-Bridging-Header.h */,
+				C7EC27B82C44B464004690E0 /* HLClientWrapper.swift */,
 			);
 			path = SampleSwift;
 			sourceTree = "<group>";
@@ -256,9 +256,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7E904142382A78700F2795C /* ViewController.swift in Sources */,
 				C7854DA023D70C3A002A673C /* AuthViewController.m in Sources */,
 				C7854DA423D71007002A673C /* JoinViewController.swift in Sources */,
+				C7EC27B92C44B464004690E0 /* HLClientWrapper.swift in Sources */,
 				C7854DA223D70C3A002A673C /* SetupViewController.m in Sources */,
 				C7854D9F23D70C3A002A673C /* HLServerClient.m in Sources */,
 				C77C0C4E2382895500D20259 /* AppDelegate.swift in Sources */,

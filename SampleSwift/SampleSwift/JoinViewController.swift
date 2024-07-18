@@ -9,7 +9,6 @@
 import UIKit
 import HLSDKCommon
 import HLSDK
-import HLSDKSwift
 import FBLPromises
 import Promises
 
@@ -47,7 +46,7 @@ class JoinViewController: UIViewController, HLClientDelegate {
     }
     
     @IBAction func OnCancel(_ sender: Any) {
-        HLClientSwift.shared.stopCurrentCall().always {
+        HLClientWrapper.shared.stopCurrentCall().always {
             self.presentingViewController?.dismiss(animated: true, completion: nil);
         };
     }
@@ -71,7 +70,7 @@ class JoinViewController: UIViewController, HLClientDelegate {
         joinButton.isEnabled = false
         indicator.isHidden = false
         //TODO kHLDataCenterID_EU1 kHLDataCenterID_US1
-        HLClientSwift.shared.startCall(call: call, viewController: self, dataCenterId: kHLDataCenterID_US1).then({ value in
+        HLClientWrapper.shared.startCall(call: call, viewController: self, dataCenterId: kHLDataCenterID_US1).then({ value in
             print("The call has started")
         }).catch({ error in
             print("Cannot start the call:\(error)")
@@ -189,7 +188,7 @@ class JoinViewController: UIViewController, HLClientDelegate {
         theme.setImage(kHLImageTelestrationMenuCurveNormal, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageTelestrationMenuArrowNormal, image: UIImage(named: "Lightning"))
         
-        HLClientSwift.shared.setTheme(theme: theme);
+        HLClientWrapper.shared.setTheme(theme: theme);
     }
     
     func hlCall(_ call: HLCall!, didEndWithReason reason: String!) {

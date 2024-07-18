@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B8CF04A42A9C869700C9B004 /* DocumentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CF04A32A9C869700C9B004 /* DocumentManager.m */; };
-		C701672623D421D6000AFA38 /* Session.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C701672423D421D6000AFA38 /* Session.storyboard */; };
 		C701672F23D42230000AFA38 /* JoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C701672823D4222F000AFA38 /* JoinViewController.m */; };
 		C701673123D42230000AFA38 /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C701672C23D42230000AFA38 /* AuthViewController.m */; };
 		C701673223D42230000AFA38 /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C701672D23D42230000AFA38 /* SetupViewController.m */; };
@@ -18,7 +17,6 @@
 		C714B72B2B579300005651AB /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C714B72A2B579300005651AB /* SampleHandler.m */; };
 		C714B72F2B579300005651AB /* BroadcastExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C714B7252B579300005651AB /* BroadcastExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C7B67BA0237D06EA00B6314E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B67B9F237D06EA00B6314E /* AppDelegate.m */; };
-		C7B67BA3237D06EA00B6314E /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7B67BA2237D06EA00B6314E /* SessionViewController.m */; };
 		C7B67BA6237D06EA00B6314E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7B67BA4237D06EA00B6314E /* Main.storyboard */; };
 		C7B67BA8237D06EB00B6314E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7B67BA7237D06EB00B6314E /* Assets.xcassets */; };
 		C7B67BAB237D06EB00B6314E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7B67BA9237D06EB00B6314E /* LaunchScreen.storyboard */; };
@@ -69,7 +67,6 @@
 		B8CF04A22A9C869700C9B004 /* DocumentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentManager.h; sourceTree = "<group>"; };
 		B8CF04A32A9C869700C9B004 /* DocumentManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentManager.m; sourceTree = "<group>"; };
 		BF07B636BD9398F32FB308F7 /* Pods-SampleObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleObjC.debug.xcconfig"; path = "Target Support Files/Pods-SampleObjC/Pods-SampleObjC.debug.xcconfig"; sourceTree = "<group>"; };
-		C701672523D421D6000AFA38 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Session.storyboard; sourceTree = "<group>"; };
 		C701672723D4222F000AFA38 /* JoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinViewController.h; sourceTree = "<group>"; };
 		C701672823D4222F000AFA38 /* JoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinViewController.m; sourceTree = "<group>"; };
 		C701672923D4222F000AFA38 /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
@@ -93,8 +90,6 @@
 		C7B67B9B237D06EA00B6314E /* SampleObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7B67B9E237D06EA00B6314E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C7B67B9F237D06EA00B6314E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C7B67BA1237D06EA00B6314E /* SessionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
-		C7B67BA2237D06EA00B6314E /* SessionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
 		C7B67BA7237D06EB00B6314E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7B67BAC237D06EB00B6314E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7B67BAD237D06EB00B6314E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -168,11 +163,8 @@
 				C701672823D4222F000AFA38 /* JoinViewController.m */,
 				C701672B23D42230000AFA38 /* SetupViewController.h */,
 				C701672D23D42230000AFA38 /* SetupViewController.m */,
-				C701672423D421D6000AFA38 /* Session.storyboard */,
 				C7B67B9E237D06EA00B6314E /* AppDelegate.h */,
 				C7B67B9F237D06EA00B6314E /* AppDelegate.m */,
-				C7B67BA1237D06EA00B6314E /* SessionViewController.h */,
-				C7B67BA2237D06EA00B6314E /* SessionViewController.m */,
 				C7B67BA4237D06EA00B6314E /* Main.storyboard */,
 				C7B67BA7237D06EB00B6314E /* Assets.xcassets */,
 				C7B67BA9237D06EB00B6314E /* LaunchScreen.storyboard */,
@@ -217,7 +209,6 @@
 				C714B7212B579300005651AB /* Sources */,
 				C714B7222B579300005651AB /* Frameworks */,
 				C714B7232B579300005651AB /* Resources */,
-				9D22D8C94D150C4553CB7898 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -301,7 +292,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7B67BAB237D06EB00B6314E /* LaunchScreen.storyboard in Resources */,
-				C701672623D421D6000AFA38 /* Session.storyboard in Resources */,
 				C7B67BA8237D06EB00B6314E /* Assets.xcassets in Resources */,
 				C7B67BA6237D06EA00B6314E /* Main.storyboard in Resources */,
 			);
@@ -369,21 +359,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9D22D8C94D150C4553CB7898 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BroadcastExtension/Pods-BroadcastExtension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A0CEB616D2BFC8B1A633E009 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,7 +389,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7B67BA3237D06EA00B6314E /* SessionViewController.m in Sources */,
 				C7B67BAE237D06EB00B6314E /* main.m in Sources */,
 				B8CF04A42A9C869700C9B004 /* DocumentManager.m in Sources */,
 				C701673223D42230000AFA38 /* SetupViewController.m in Sources */,
@@ -437,14 +411,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C701672423D421D6000AFA38 /* Session.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C701672523D421D6000AFA38 /* en */,
-			);
-			name = Session.storyboard;
-			sourceTree = "<group>";
-		};
 		C7B67BA4237D06EA00B6314E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
