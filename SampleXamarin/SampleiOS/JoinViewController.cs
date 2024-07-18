@@ -71,7 +71,8 @@ namespace HelpLightning.SDK.Sample.iOS
                 {
                     if (!t.IsFaulted)
                     {
-                        Console.WriteLine("The call has started: " + t.Result[Call.HLCallInfoCallIDKey]);
+                        t.Result.TryGetValue(Call.HLCallInfoCallIDKey, out object value);
+                        Console.WriteLine("The call has started: " + value);
                     }
                     else
                     {
@@ -206,12 +207,20 @@ namespace HelpLightning.SDK.Sample.iOS
             theme.SetImage(Theme.IconAnnotationColorGreenSelectedIOS, UIImage.FromBundle("TestIcon"));
             theme.SetImage(Theme.IconAnnotationColorBlueSelectedIOS, UIImage.FromBundle("TestIcon"));
 
+            theme.SetImage(Theme.ImageShareMenuFaceToFaceIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuFaceToFaceSelectedIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuScreenSharingIOS, UIImage.FromBundle("TestIcon"));
+            theme.SetImage(Theme.ImageShareMenuScreenSharingSelectedIOS, UIImage.FromBundle("TestIcon"));
             CallClientFactory.Instance.CallClient.Theme = theme;
         }
 
         public void OnCallEnded(Call call, string reason)
         {
             Console.WriteLine("Call Ended");
+            foreach(var view in minimizedCallContainer.Subviews)
+            {
+                view.RemoveFromSuperview();
+            }
         }
 
         public void OnScreenCaptureCreated(Call call, object image)
@@ -397,6 +406,74 @@ namespace HelpLightning.SDK.Sample.iOS
 
             KnowledgeOverlayPickingTaskCompletionSource = new TaskCompletionSource<IDictionary<string, object>>();
             return KnowledgeOverlayPickingTaskCompletionSource.Task;
+        }
+
+        public IDictionary<string, object> CallNeedScreenSharingInfo(Call call)
+        {
+            return new Dictionary<string, object>
+            {
+                { CallClientDelegateConstants.BroadcastExtensionAppGroupName, "group.com.helplightning.sdk.sample.xamarin.ios.BroadcastExtension" },
+                { CallClientDelegateConstants.BroadcastExtensionBundleId, "com.helplightning.sdk.sample.xamarin.ios.BroadcastExtension" },
+            };
+        }
+
+        public Task<bool> CallCanMinimizeCallViewWithCallInfo(Call call, IDictionary<string, object> callInfo)
+        {
+            return Task.FromResult(true);
+        }
+
+        public Task<bool> CallDidMinimizeCallViewWithCallInfo(Call call, IDictionary<string, object> callInfo)
+        {
+            callInfo.TryGetValue(CallClientDelegateConstants.CallPluginCallContentView, out object view);
+            if (view != null && view is UIView)
+            {
+                var minimizedCallView = (UIView)view;
+                minimizedCallView.BackgroundColor = UIColor.Clear;
+                minimizedCallContainer.AddSubview(minimizedCallView);
+
+                var w0 = minimizedCallView.Frame.Width;
+                var h0 = minimizedCallView.Frame.Height;
+                var w1 = minimizedCallContainer.Frame.Width;
+                var h1 = minimizedCallContainer.Frame.Height;
+                minimizedCallView.TranslatesAutoresizingMaskIntoConstraints = false;
+                minimizedCallView.CenterXAnchor.ConstraintEqualTo(minimizedCallContainer.CenterXAnchor).Active = true;
+                minimizedCallView.CenterYAnchor.ConstraintEqualTo(minimizedCallContainer.CenterYAnchor).Active = true;
+                if (w0 / h0 >= w1 / h1)
+                {
+                    minimizedCallView.WidthAnchor.ConstraintEqualTo(minimizedCallContainer.WidthAnchor).Active = true;
+                    minimizedCallView.HeightAnchor.ConstraintEqualTo(minimizedCallView.WidthAnchor, h0 / w0, 0).Active = true;
+                }
+                else
+                {
+                    minimizedCallView.HeightAnchor.ConstraintEqualTo(minimizedCallContainer.HeightAnchor).Active = true;
+                    minimizedCallView.WidthAnchor.ConstraintEqualTo(minimizedCallView.HeightAnchor, w0 / h0, 0).Active = true;
+                }
+
+                return Task.FromResult(true);
+            }
+            return Task.FromException<bool>(new InvalidOperationException());
+        }
+
+        public Task<bool> CallWillRestoreCallViewWithCallInfo(Call call, IDictionary<string, object> callInfo)
+        {
+            callInfo.TryGetValue(CallClientDelegateConstants.CallPluginCallContentView, out object view);
+            if (view != null && view is UIView)
+            {
+                ((UIView)view).RemoveFromSuperview();
+                return Task.FromResult(true);
+            }
+            return Task.FromException<bool>(new InvalidOperationException());
+        }
+
+        public void CallDidRestoreCallViewWithCallInfo(Call call, IDictionary<string, object> callInfo)
+        {
+        
+        }
+
+        public void CallDidCaptureImage(Call call, byte[] imageData, string mimeType)
+        {
+            var image = UIImage.LoadFromData(NSData.FromArray(imageData));
+            imagePreview.Image = image;
         }
     }
 }
