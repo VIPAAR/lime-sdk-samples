@@ -103,7 +103,7 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="HLSDK.iOS.Binding.ScreenSharing">
-      <HintPath>..\packages\HelpLightning.SDK.iOS.Binding.ScreenSharing.16.9.6\lib\xamarinios10\HLSDK.iOS.Binding.ScreenSharing.dll</HintPath>
+      <HintPath>..\packages\HelpLightning.SDK.iOS.Binding.ScreenSharing.17.0.0\lib\xamarinios10\HLSDK.iOS.Binding.ScreenSharing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
