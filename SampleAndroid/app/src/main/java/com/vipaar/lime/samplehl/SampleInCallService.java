@@ -16,7 +16,7 @@ public class SampleInCallService extends InCallService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        HLClient.getInstance().setHLClientDelegate(this);
+        HLClient.INSTANCE.setHLClientDelegate(this);
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -28,6 +28,7 @@ public class SampleInCallService extends InCallService {
      */
     @Override
     public void onCallEnded(HLCall call, String reason) {
+        super.onCallEnded(call, reason);
         Timber.d("Sample onCallEnded");
     }
 
@@ -112,5 +113,9 @@ public class SampleInCallService extends InCallService {
         intent.putExtra("mode", ImageSelectActivity.MODE_QUICK_KNOWLEDGE_OVERLAY);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    public boolean isMinimizeCallEnabled() {
+        return true;
     }
 }

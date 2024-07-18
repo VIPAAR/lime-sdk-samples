@@ -15,7 +15,7 @@ public class SampleApp extends Application {
         if (BuildConfig.DEBUG) {
             Timber.plant(new MyDebugTree());
         }
-        HLClient.getInstance().init(this);
+        HLClient.INSTANCE.init(this);
     }
 
     private static class MyDebugTree extends Timber.DebugTree {
