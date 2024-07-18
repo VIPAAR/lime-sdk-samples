@@ -431,23 +431,6 @@ namespace HelpLightning.SDK.Sample.iOS
                 minimizedCallView.BackgroundColor = UIColor.Clear;
                 minimizedCallContainer.AddSubview(minimizedCallView);
 
-                /**
-                 *         CGFloat w0 = CGRectGetWidth(minimizedCallView.frame);
-        CGFloat h0 = CGRectGetHeight(minimizedCallView.frame);
-        CGFloat w1 = CGRectGetWidth(self.minimizedCallContainer.frame);
-        CGFloat h1 = CGRectGetHeight(self.minimizedCallContainer.frame);
-        minimizedCallView.translatesAutoresizingMaskIntoConstraints = NO;
-        [minimizedCallView.centerXAnchor constraintEqualToAnchor:self.minimizedCallContainer.centerXAnchor].active = YES;
-        [minimizedCallView.centerYAnchor constraintEqualToAnchor:self.minimizedCallContainer.centerYAnchor].active = YES;;
-        if (w0 / h0 >= w1 /h1) {
-            [minimizedCallView.widthAnchor constraintEqualToAnchor:self.minimizedCallContainer.widthAnchor].active = YES;
-            [minimizedCallView.heightAnchor constraintEqualToAnchor:minimizedCallView.widthAnchor multiplier:(h0 / w0) constant:0].active = YES;
-        } else {
-            [minimizedCallView.heightAnchor constraintEqualToAnchor:self.minimizedCallContainer.heightAnchor].active = YES;
-            [minimizedCallView.widthAnchor constraintEqualToAnchor:minimizedCallView.heightAnchor multiplier:(w0 / h0) constant:0].active = YES;
-        }
-                 */
-
                 var w0 = minimizedCallView.Frame.Width;
                 var h0 = minimizedCallView.Frame.Height;
                 var w1 = minimizedCallContainer.Frame.Width;
