@@ -116,7 +116,7 @@ SPEC REPOS:
     - tarkit
     - UIActivityIndicator-for-SDWebImage
     - ZIPFoundation
-  https://github.com/xiaoweiChang/Specs.git:
+  https://github.com/VIPAAR/Specs.git:
     - HLSDK
     - vipaar-j2objc
     - vipaar-MessageKit
@@ -137,7 +137,7 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 543c79c114dadc3b1aba95641d8738b06b05b646
   CocoaZ: a296b1fbea2c648daf2ccabb5403ed354569e633
   FXKeychain: a6c2efc46ba7167163c45469a0554233e9e6569e
-  HLSDK: 1d5a4d55467e3f7f7c7daf219f16d80ecadced00
+  HLSDK: 19341f98faf88623e063094d2b97c0c8d2d2e3fd
   InputBarAccessoryView: 74d471ab1fa1736806be50328df79257e52865a9
   JVFloatLabeledTextField: df48598472ee015701d509f43e59492a0d4ca208
   Kingfisher: f2af9028b16baf9dc6c07c570072bc41cbf009ef
@@ -167,6 +167,6 @@ SPEC CHECKSUMS:
   vipaar-tinyspline: d8565207b0c1714bac044a488b4308ca690b52f9
   ZIPFoundation: d170fa8e270b2a32bef9dcdcabff5b8f1a5deced
 
-PODFILE CHECKSUM: 34b53dc95ea6d98deaf568ed6e8521f011e6b5dc
+PODFILE CHECKSUM: 14cc03a9fa91ea12face472fa434820fa5e21b1a
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

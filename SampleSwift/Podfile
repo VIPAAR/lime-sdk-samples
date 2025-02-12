@@ -4,8 +4,7 @@ install! 'cocoapods', :disable_input_output_paths => true
 #inhibit_all_warnings!
 use_modular_headers!
 
-source 'https://github.com/xiaoweiChang/Specs.git'
-#source 'https://github.com/VIPAAR/Specs.git'
+source 'https://github.com/VIPAAR/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'SampleSwift' do
