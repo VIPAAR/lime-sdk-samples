@@ -8,9 +8,9 @@ PODS:
   - CocoaLumberjack/Core (3.7.4)
   - CocoaZ (1.4.2)
   - FXKeychain (1.5.1)
-  - HLSDK (17.0.3):
-    - HLSDK/Main (= 17.0.3)
-  - HLSDK/Main (17.0.3):
+  - HLSDK (17.6.1):
+    - HLSDK/Main (= 17.6.1)
+  - HLSDK/Main (17.6.1):
     - Alamofire (= 5.0.5)
     - AWSCore (= 2.23.5)
     - AWSS3 (= 2.23.5)
@@ -18,10 +18,9 @@ PODS:
     - CocoaZ (= 1.4.2)
     - FXKeychain (= 1.5.1)
     - JVFloatLabeledTextField (= 1.2.2)
-    - Kingfisher (= 5.15.8)
-    - KMPlaceholderTextView (= 1.4.0)
+    - Kingfisher (= 8.1.3)
     - MarqueeLabel (= 4.4.0)
-    - OTXCFramework (= 2.25.2)
+    - OTXCFramework (= 2.27.4)
     - PromisesObjC (= 2.0.0)
     - PromisesSwift (= 2.0.0)
     - Realm (= 10.41.1)
@@ -32,8 +31,6 @@ PODS:
     - SwiftQueue (= 6.0.0)
     - SwiftSignatureView (= 2.2.3)
     - tarkit (= 0.1.3)
-    - TwilioAccessManager (= 1.1.2)
-    - TwilioConversationsClient (= 2.0.3)
     - UIActivityIndicator-for-SDWebImage (= 1.2)
     - vipaar-j2objc (= 1.2)
     - vipaar-MessageKit (= 1.0.5)
@@ -51,12 +48,9 @@ PODS:
     - InputBarAccessoryView/Core (= 5.4.0)
   - InputBarAccessoryView/Core (5.4.0)
   - JVFloatLabeledTextField (1.2.2)
-  - Kingfisher (5.15.8):
-    - Kingfisher/Core (= 5.15.8)
-  - Kingfisher/Core (5.15.8)
-  - KMPlaceholderTextView (1.4.0)
+  - Kingfisher (8.1.3)
   - MarqueeLabel (4.4.0)
-  - OTXCFramework (2.25.2)
+  - OTXCFramework (2.27.4)
   - PromisesObjC (2.0.0)
   - PromisesSwift (2.0.0):
     - PromisesObjC (= 2.0.0)
@@ -72,8 +66,6 @@ PODS:
   - SwiftQueue (6.0.0)
   - SwiftSignatureView (2.2.3)
   - tarkit (0.1.3)
-  - TwilioAccessManager (1.1.2)
-  - TwilioConversationsClient (2.0.3)
   - UIActivityIndicator-for-SDWebImage (1.2):
     - SDWebImage (~> 3.7)
   - vipaar-j2objc (1.2)
@@ -96,7 +88,7 @@ PODS:
   - ZIPFoundation (0.9.16)
 
 DEPENDENCIES:
-  - HLSDK (= 17.0.3)
+  - HLSDK (= 17.6.1)
   - PromisesObjC (= 2.0.0)
 
 SPEC REPOS:
@@ -110,7 +102,6 @@ SPEC REPOS:
     - InputBarAccessoryView
     - JVFloatLabeledTextField
     - Kingfisher
-    - KMPlaceholderTextView
     - MarqueeLabel
     - OTXCFramework
     - PromisesObjC
@@ -123,11 +114,9 @@ SPEC REPOS:
     - SwiftQueue
     - SwiftSignatureView
     - tarkit
-    - TwilioAccessManager
-    - TwilioConversationsClient
     - UIActivityIndicator-for-SDWebImage
     - ZIPFoundation
-  https://github.com/VIPAAR/Specs.git:
+  https://github.com/xiaoweiChang/Specs.git:
     - HLSDK
     - vipaar-j2objc
     - vipaar-MessageKit
@@ -148,13 +137,12 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 543c79c114dadc3b1aba95641d8738b06b05b646
   CocoaZ: a296b1fbea2c648daf2ccabb5403ed354569e633
   FXKeychain: a6c2efc46ba7167163c45469a0554233e9e6569e
-  HLSDK: b65c76c8c6cc8fb0e101fb41495091f827c54050
+  HLSDK: 1d5a4d55467e3f7f7c7daf219f16d80ecadced00
   InputBarAccessoryView: 74d471ab1fa1736806be50328df79257e52865a9
   JVFloatLabeledTextField: df48598472ee015701d509f43e59492a0d4ca208
-  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
-  KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
+  Kingfisher: f2af9028b16baf9dc6c07c570072bc41cbf009ef
   MarqueeLabel: d2388949ac58d587303178d56a792ba8a001b037
-  OTXCFramework: c76b481efca1a3ce5f96c040400c465713f08586
+  OTXCFramework: 8d1dc4e150c6660cd85cdddd243eb87f1313b686
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   PromisesSwift: e0b2a6433469efb0b83a2b84c62a2abab8e5e5d4
   Realm: 0cb0b0b24f9303543a1f0dc17de8dec2d5bbf3f0
@@ -165,10 +153,8 @@ SPEC CHECKSUMS:
   SwiftQueue: ce8ff8194f3318bedea023b14277091e8a6887a3
   SwiftSignatureView: 5bbee04ed6c0a18aa578ad56d3d157cf9a042a4d
   tarkit: 5f924f8d5979fcbd14024f4b748c2cb4762f4c20
-  TwilioAccessManager: f3b0d9edd2eb5a044e50ff78057ab13611a0baa1
-  TwilioConversationsClient: b6c95184f7357f3bf45f21f174d35d58515b1799
   UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
-  vipaar-j2objc: 27d89ffc8688f81a6eb8459548f005470a68a5c6
+  vipaar-j2objc: 67e82f41fed43674e15820ced8213ebf3ad82517
   vipaar-MessageKit: 9c1b5de714c6fd92468c4a0ca88ab7861196d231
   vipaar-Parchment: ba44e2af93c7f483ca45276e1964ec4b03cdca29
   vipaar-Presentr: bde9ba2a6a73cdb84d1e808ae1b9d7d8a08a420b
@@ -181,6 +167,6 @@ SPEC CHECKSUMS:
   vipaar-tinyspline: d8565207b0c1714bac044a488b4308ca690b52f9
   ZIPFoundation: d170fa8e270b2a32bef9dcdcabff5b8f1a5deced
 
-PODFILE CHECKSUM: 01a30e33ff19c03801ff4109fad08e44095068c2
+PODFILE CHECKSUM: 34b53dc95ea6d98deaf568ed6e8521f011e6b5dc
 
-COCOAPODS: 1.15.0
+COCOAPODS: 1.15.2

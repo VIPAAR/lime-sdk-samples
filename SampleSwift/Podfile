@@ -4,11 +4,12 @@ install! 'cocoapods', :disable_input_output_paths => true
 #inhibit_all_warnings!
 use_modular_headers!
 
-source 'https://github.com/VIPAAR/Specs.git'
+source 'https://github.com/xiaoweiChang/Specs.git'
+#source 'https://github.com/VIPAAR/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'SampleSwift' do
-  pod 'HLSDK', '17.0.3'
+  pod 'HLSDK', '17.6.1'
 
   # this line is important to make PromiseSwift work
   pod 'PromisesObjC', '2.0.0', :modular_headers => true

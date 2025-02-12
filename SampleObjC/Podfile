@@ -8,8 +8,7 @@ source 'https://github.com/VIPAAR/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'SampleObjC' do
-                    
-  pod 'HLSDK', '17.0.3'
+  pod 'HLSDK', '17.6.1'
   #Override the deployment targets of all pods
   post_install do |installer|
     installer.pods_project.targets.each do |target|
@@ -40,5 +39,5 @@ target 'SampleObjC' do
 end
 
 target 'BroadcastExtension' do
-  pod 'HLSDK/ScreenSharing', '17.0.3'
+  pod 'HLSDK/ScreenSharing', '17.6.1'
 end

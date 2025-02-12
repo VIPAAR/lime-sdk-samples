@@ -222,6 +222,22 @@ NSInteger const kErrorCodeGeneric = kErrorCodeBase + 100;
     [theme setImage:kHLImageTelestrationMenuCurveNormal image:[UIImage imageNamed:@"Lightning"]];
     [theme setImage:kHLImageTelestrationMenuArrowNormal image:[UIImage imageNamed:@"Lightning"]];
     
+    [theme setImage:kHLImageShareMenuScreenSharing image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageShareMenuScreenSharingSelected image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageShareMenuFaceToFace image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageShareMenuFaceToFaceSelected image:[UIImage imageNamed:@"Lightning"]];
+    
+    [theme setImage:kHLImageMainMenuMinimizeCall image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageAIGuideOff image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageCaptionOff image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageCaptionOn image:[UIImage imageNamed:@"Lightning"]];
+    
+    [theme setImage:kHLImageZoomInNormal image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageZoomInSelected image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageZoomOutNormal image:[UIImage imageNamed:@"Lightning"]];
+    [theme setImage:kHLImageZoomOutSelected image:[UIImage imageNamed:@"Lightning"]];
+    
+    
     [HLClient.sharedInstance setTheme:theme];
 }
 
