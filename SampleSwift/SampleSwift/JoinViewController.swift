@@ -188,6 +188,18 @@ class JoinViewController: UIViewController, HLClientDelegate {
         theme.setImage(kHLImageTelestrationMenuCurveNormal, image: UIImage(named: "Lightning"))
         theme.setImage(kHLImageTelestrationMenuArrowNormal, image: UIImage(named: "Lightning"))
         
+        theme.setImage(kHLImageShareMenuScreenSharing, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageShareMenuScreenSharingSelected, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageShareMenuFaceToFace, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageShareMenuFaceToFaceSelected, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageMainMenuMinimizeCall, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageAIGuideOff, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageCaptionOff, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageCaptionOn, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageZoomInNormal, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageZoomInSelected, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageZoomOutNormal, image: UIImage(named: "Lightning"))
+        theme.setImage(kHLImageZoomOutSelected, image: UIImage(named: "Lightning"))
         HLClientWrapper.shared.setTheme(theme: theme);
     }
     

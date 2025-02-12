@@ -137,7 +137,6 @@
 				C77C0C472382895500D20259 /* Frameworks */,
 				C77C0C482382895500D20259 /* Resources */,
 				844AF3A33A66134CB6798BE5 /* [CP] Copy Pods Resources */,
-				E53702C0CAD9CBE55A0F3DAE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,21 +231,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SampleSwift/Pods-SampleSwift-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E53702C0CAD9CBE55A0F3DAE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SampleSwift/Pods-SampleSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
