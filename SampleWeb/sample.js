@@ -81,7 +81,7 @@ function refresh(state) {
             }
         };
 
-        state.callClient.delegate = delegate;
+        state.callClient.setDelegate(delegate);
         // the third parameter is optional and can be left blank
         //  in which case, it will default to the US data center.
         // Current available data centers are:

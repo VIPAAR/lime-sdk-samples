@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Help Lightning Call SDK</title>
-    
-    <!-- Load help lightning JS SDK -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://helplightning.net/sdk/5.22.1/helplightning.min.js"></script>
-    <script src="https://helplightning.net/sdk/5.22.1/opentok-enterprise/opentok.min.js"></script>
-    <script src="https://helplightning.net/sdk/5.22.1/pdf_viewer/build/pdf.min.js"></script>
+    <!-- Required dependencies -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://source.zoom.us/videosdk/zoom-video-2.3.12.min.js"></script>
 
-    <script src="./sample.js"></script>
+    <script src="./sdk/config.js"></script>
+    <script src="./sdk/helplightning.umd.js"></script>
+    <link rel="stylesheet" href="./sdk/helplightning-web.css">
+
     <script>
       const STATE_LOGIN = 0;
       const STATE_AUTHENTICATED = 1;
@@ -136,5 +137,6 @@
         </div>
       </div>
     </div>
+    <script src="./sample.js"></script>
   </body>
 </html>
