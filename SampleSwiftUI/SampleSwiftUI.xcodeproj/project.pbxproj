@@ -1,0 +1,688 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		76304E63C85F4EC49E127630 /* SampleSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A993C19B5A439A868B090B /* SampleSwiftUIApp.swift */; };
+		A7F1650D301A4B43AA56D727 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0231F32F2EB4E70923742B8 /* RootView.swift */; };
+		9561312627FA48429ECB267F /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D1B2BC0F81474FBAB5294C /* AuthView.swift */; };
+		8293E87C4FB64CE6A5523B7A /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E8DA891BFE4A228693E59C /* SetupView.swift */; };
+		911AA7EC2B1E463E979F2EAE /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518088B774F047D0987A465D /* JoinView.swift */; };
+		7669B6774AD8482E969BE97A /* DemoConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88882A139DF4194B1B7B80B /* DemoConfiguration.swift */; };
+		51863B92731143E5AC97F388 /* DemoSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BC859A84A8470FBB5C1E94 /* DemoSessionState.swift */; };
+		22F5ACFB81674A459AB8AD57 /* DemoFlowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F6EDC399254E3BA6FC5272 /* DemoFlowModel.swift */; };
+		0AD914A6CD0D4B6D83DBF283 /* DemoCallCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132CAC42191D4DCBACD3C586 /* DemoCallCoordinator.swift */; };
+		3CEEF63A3F844E89B685C092 /* HLServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E413EA26E2A44117BBF9A90B /* HLServerClient.swift */; };
+		4C8D01D79F924068BC1F5EAA /* FBLPromiseAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD1B6BD548C4616B10758A4 /* FBLPromiseAsync.swift */; };
+		43EB907845D34CE481CB599E /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C9A6C01E4C4CD2A9E7F469 /* SampleHandler.swift */; };
+		FF3F0BA671464AC28706FD43 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C9A6C01E4C4CD2A9E7F469 /* SampleHandler.swift */; };
+		D30109399812410AA54C469C /* ScreenSharingExtension-iOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 09B77A88C33D4F5990D16573 /* ScreenSharingExtension-iOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4DE230EB45A84CE59E0A6EDD /* ScreenSharingExtension-visionOS.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 808EE624D85F4E6EA4C10879 /* ScreenSharingExtension-visionOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		27ABAB2B5EA64B5F855352D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4DC119CE1DB4812A95D9063 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCFAA76DE59D42FDBB8EF6DB;
+			remoteInfo = "ScreenSharingExtension-iOS";
+		};
+		9DE77FCD88EC42A4AD0B6C60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4DC119CE1DB4812A95D9063 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 681120478BC94400A9A185BC;
+			remoteInfo = "ScreenSharingExtension-visionOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		43F2205D109A46CDA56F4D81 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D30109399812410AA54C469C /* ScreenSharingExtension-iOS.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0B1FCDEFC3FE41C6B201B2C3 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4DE230EB45A84CE59E0A6EDD /* ScreenSharingExtension-visionOS.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		65A993C19B5A439A868B090B /* SampleSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSwiftUIApp.swift; sourceTree = "<group>"; };
+		C0231F32F2EB4E70923742B8 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		54D1B2BC0F81474FBAB5294C /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		76E8DA891BFE4A228693E59C /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		518088B774F047D0987A465D /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
+		C88882A139DF4194B1B7B80B /* DemoConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoConfiguration.swift; sourceTree = "<group>"; };
+		E9BC859A84A8470FBB5C1E94 /* DemoSessionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSessionState.swift; sourceTree = "<group>"; };
+		25F6EDC399254E3BA6FC5272 /* DemoFlowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoFlowModel.swift; sourceTree = "<group>"; };
+		132CAC42191D4DCBACD3C586 /* DemoCallCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCallCoordinator.swift; sourceTree = "<group>"; };
+		E413EA26E2A44117BBF9A90B /* HLServerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLServerClient.swift; sourceTree = "<group>"; };
+		ADD1B6BD548C4616B10758A4 /* FBLPromiseAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLPromiseAsync.swift; sourceTree = "<group>"; };
+		24C9A6C01E4C4CD2A9E7F469 /* SampleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
+		34A9401018D4499BB6970E15 /* SampleSwiftUI-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SampleSwiftUI-iOS.entitlements"; sourceTree = "<group>"; };
+		6CA67E43BBE5411EB40BDFE8 /* SampleSwiftUI-visionOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SampleSwiftUI-visionOS.entitlements"; sourceTree = "<group>"; };
+		A65DCF4A9DF242299886F43C /* ScreenSharingExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenSharingExtension.entitlements; sourceTree = "<group>"; };
+		7EA19033BD07400799B5C2C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E586668620F40FF9DFB871E /* SampleSwiftUI-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SampleSwiftUI-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F56242783B3A4F3B8F00E761 /* SampleSwiftUI-visionOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SampleSwiftUI-visionOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		09B77A88C33D4F5990D16573 /* ScreenSharingExtension-iOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ScreenSharingExtension-iOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		808EE624D85F4E6EA4C10879 /* ScreenSharingExtension-visionOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ScreenSharingExtension-visionOS.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B2465358F83849FABFD4712E /* Frameworks */ = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		637A84A46DDA4840A6B76EAF /* Frameworks */ = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		07224A1D96BD416894AB15B7 /* Frameworks */ = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		148732F9E2724FFBA9A08678 /* Frameworks */ = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		082FC21142D040A3816E8712 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				65A993C19B5A439A868B090B /* SampleSwiftUIApp.swift */,
+				C0231F32F2EB4E70923742B8 /* RootView.swift */,
+				54D1B2BC0F81474FBAB5294C /* AuthView.swift */,
+				76E8DA891BFE4A228693E59C /* SetupView.swift */,
+				518088B774F047D0987A465D /* JoinView.swift */,
+				C88882A139DF4194B1B7B80B /* DemoConfiguration.swift */,
+				E9BC859A84A8470FBB5C1E94 /* DemoSessionState.swift */,
+				25F6EDC399254E3BA6FC5272 /* DemoFlowModel.swift */,
+				132CAC42191D4DCBACD3C586 /* DemoCallCoordinator.swift */,
+				E413EA26E2A44117BBF9A90B /* HLServerClient.swift */,
+				ADD1B6BD548C4616B10758A4 /* FBLPromiseAsync.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		7DA752BCEE6843F1B5F7FFEB /* ScreenSharingExtension */ = {
+			isa = PBXGroup;
+			children = (
+				24C9A6C01E4C4CD2A9E7F469 /* SampleHandler.swift */,
+				A65DCF4A9DF242299886F43C /* ScreenSharingExtension.entitlements */,
+				7EA19033BD07400799B5C2C6 /* Info.plist */,
+			);
+			path = Extensions/ScreenSharingExtension;
+			sourceTree = "<group>";
+		};
+		158DE7EF2764486C9D23D171 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				34A9401018D4499BB6970E15 /* SampleSwiftUI-iOS.entitlements */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		D32645645C7C4540A58C0F40 /* visionOS */ = {
+			isa = PBXGroup;
+			children = (
+				6CA67E43BBE5411EB40BDFE8 /* SampleSwiftUI-visionOS.entitlements */,
+			);
+			path = visionOS;
+			sourceTree = "<group>";
+		};
+		C82B92D50909455B8F3D650A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E586668620F40FF9DFB871E /* SampleSwiftUI-iOS.app */,
+				F56242783B3A4F3B8F00E761 /* SampleSwiftUI-visionOS.app */,
+				09B77A88C33D4F5990D16573 /* ScreenSharingExtension-iOS.appex */,
+				808EE624D85F4E6EA4C10879 /* ScreenSharingExtension-visionOS.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCB2CB8AC98C4F90A45B50A5 = {
+			isa = PBXGroup;
+			children = (
+				082FC21142D040A3816E8712 /* Shared */,
+				7DA752BCEE6843F1B5F7FFEB /* ScreenSharingExtension */,
+				158DE7EF2764486C9D23D171 /* iOS */,
+				D32645645C7C4540A58C0F40 /* visionOS */,
+				C82B92D50909455B8F3D650A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FC886AD4E16B497BAB909587 /* SampleSwiftUI-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E42A0C47D9144004B17F722F /* Build configuration list for PBXNativeTarget "SampleSwiftUI-iOS" */;
+			buildPhases = (
+				796357BB00AD4DA3BEA34B9B /* Sources */,
+				B2465358F83849FABFD4712E /* Frameworks */,
+				43F2205D109A46CDA56F4D81 /* Embed Foundation Extensions */,
+			);
+			buildRules = ();
+			dependencies = (
+				D3102E71F8274041B426AEE1 /* PBXTargetDependency */,
+			);
+			name = "SampleSwiftUI-iOS";
+			packageProductDependencies = (
+				1855DE071EE247A6964D6F41 /* HLSDK */,
+				DA708D58CF884F6EB6206AC6 /* HLSDKSwiftUI */,
+				339BF48A19DA456CB5E6FDB8 /* HLSDKScreenSharing */,
+			);
+			productName = "SampleSwiftUI-iOS";
+			productReference = 0E586668620F40FF9DFB871E /* SampleSwiftUI-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9C710F5EF94F4FCE9C7875E8 /* SampleSwiftUI-visionOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35FE54924D5344A68633EA52 /* Build configuration list for PBXNativeTarget "SampleSwiftUI-visionOS" */;
+			buildPhases = (
+				43219DBC241044AE947F4675 /* Sources */,
+				637A84A46DDA4840A6B76EAF /* Frameworks */,
+				0B1FCDEFC3FE41C6B201B2C3 /* Embed Foundation Extensions */,
+			);
+			buildRules = ();
+			dependencies = (
+				AB74F88D0469434A8E31CFF6 /* PBXTargetDependency */,
+			);
+			name = "SampleSwiftUI-visionOS";
+			packageProductDependencies = (
+				9BF889B7A72D447C92B31586 /* HLSDK */,
+				C9AC18A645294ED08714EFED /* HLSDKSwiftUI */,
+				F6700166E9624E93B69D9AA3 /* HLSDKScreenSharing */,
+			);
+			productName = "SampleSwiftUI-visionOS";
+			productReference = F56242783B3A4F3B8F00E761 /* SampleSwiftUI-visionOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BCFAA76DE59D42FDBB8EF6DB /* ScreenSharingExtension-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DB5D459B9864C1B9F10A01A /* Build configuration list for PBXNativeTarget "ScreenSharingExtension-iOS" */;
+			buildPhases = (
+				F0C6DACA68A945B381285D35 /* Sources */,
+				07224A1D96BD416894AB15B7 /* Frameworks */,
+			);
+			buildRules = ();
+			dependencies = ();
+			name = "ScreenSharingExtension-iOS";
+			packageProductDependencies = (
+				D90E3C2BA0244AE787DADFF5 /* HLSDKScreenSharing */,
+			);
+			productName = "ScreenSharingExtension-iOS";
+			productReference = 09B77A88C33D4F5990D16573 /* ScreenSharingExtension-iOS.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		681120478BC94400A9A185BC /* ScreenSharingExtension-visionOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FC5E40E3EF24E2F840F29ED /* Build configuration list for PBXNativeTarget "ScreenSharingExtension-visionOS" */;
+			buildPhases = (
+				899B09E86B2945FA950A26CE /* Sources */,
+				148732F9E2724FFBA9A08678 /* Frameworks */,
+			);
+			buildRules = ();
+			dependencies = ();
+			name = "ScreenSharingExtension-visionOS";
+			packageProductDependencies = (
+				8D2D8EBF203B49BCBD53514C /* HLSDKScreenSharing */,
+			);
+			productName = "ScreenSharingExtension-visionOS";
+			productReference = 808EE624D85F4E6EA4C10879 /* ScreenSharingExtension-visionOS.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4DC119CE1DB4812A95D9063 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+			};
+			buildConfigurationList = 898DEB61C8514EC5B70875B2 /* Build configuration list for PBXProject "SampleSwiftUI" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (en, Base);
+			mainGroup = BCB2CB8AC98C4F90A45B50A5;
+			packageReferences = (
+				1626E6DACF4F4BD79D648877 /* XCLocalSwiftPackageReference "HLSDK" */,
+			);
+			productRefGroup = C82B92D50909455B8F3D650A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FC886AD4E16B497BAB909587 /* SampleSwiftUI-iOS */,
+				9C710F5EF94F4FCE9C7875E8 /* SampleSwiftUI-visionOS */,
+				BCFAA76DE59D42FDBB8EF6DB /* ScreenSharingExtension-iOS */,
+				681120478BC94400A9A185BC /* ScreenSharingExtension-visionOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		796357BB00AD4DA3BEA34B9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76304E63C85F4EC49E127630 /* SampleSwiftUIApp.swift in Sources */,
+				A7F1650D301A4B43AA56D727 /* RootView.swift in Sources */,
+				9561312627FA48429ECB267F /* AuthView.swift in Sources */,
+				8293E87C4FB64CE6A5523B7A /* SetupView.swift in Sources */,
+				911AA7EC2B1E463E979F2EAE /* JoinView.swift in Sources */,
+				7669B6774AD8482E969BE97A /* DemoConfiguration.swift in Sources */,
+				51863B92731143E5AC97F388 /* DemoSessionState.swift in Sources */,
+				22F5ACFB81674A459AB8AD57 /* DemoFlowModel.swift in Sources */,
+				0AD914A6CD0D4B6D83DBF283 /* DemoCallCoordinator.swift in Sources */,
+				3CEEF63A3F844E89B685C092 /* HLServerClient.swift in Sources */,
+				4C8D01D79F924068BC1F5EAA /* FBLPromiseAsync.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43219DBC241044AE947F4675 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76304E63C85F4EC49E127630 /* SampleSwiftUIApp.swift in Sources */,
+				A7F1650D301A4B43AA56D727 /* RootView.swift in Sources */,
+				9561312627FA48429ECB267F /* AuthView.swift in Sources */,
+				8293E87C4FB64CE6A5523B7A /* SetupView.swift in Sources */,
+				911AA7EC2B1E463E979F2EAE /* JoinView.swift in Sources */,
+				7669B6774AD8482E969BE97A /* DemoConfiguration.swift in Sources */,
+				51863B92731143E5AC97F388 /* DemoSessionState.swift in Sources */,
+				22F5ACFB81674A459AB8AD57 /* DemoFlowModel.swift in Sources */,
+				0AD914A6CD0D4B6D83DBF283 /* DemoCallCoordinator.swift in Sources */,
+				3CEEF63A3F844E89B685C092 /* HLServerClient.swift in Sources */,
+				4C8D01D79F924068BC1F5EAA /* FBLPromiseAsync.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0C6DACA68A945B381285D35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43EB907845D34CE481CB599E /* SampleHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		899B09E86B2945FA950A26CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF3F0BA671464AC28706FD43 /* SampleHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D3102E71F8274041B426AEE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCFAA76DE59D42FDBB8EF6DB /* ScreenSharingExtension-iOS */;
+			targetProxy = 27ABAB2B5EA64B5F855352D0 /* PBXContainerItemProxy */;
+		};
+		AB74F88D0469434A8E31CFF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 681120478BC94400A9A185BC /* ScreenSharingExtension-visionOS */;
+			targetProxy = 9DE77FCD88EC42A4AD0B6C60 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		38B198E3D22C408689CC166A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4C0D6F747B8147808D1B9546 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		CA478BF09BB342DE96FC5E28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "iOS/SampleSwiftUI-iOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SampleSwiftUI;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is required for Help Lightning video calls.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone access is required for Help Lightning video calls.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EB9969539FB14519B200C555 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "iOS/SampleSwiftUI-iOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SampleSwiftUI;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is required for Help Lightning video calls.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone access is required for Help Lightning video calls.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5CC2CE3B11644D919F72E98C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "visionOS/SampleSwiftUI-visionOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SampleSwiftUI;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is required for Help Lightning video calls.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone access is required for Help Lightning video calls.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		589057268DC647CA92576D90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "visionOS/SampleSwiftUI-visionOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SampleSwiftUI;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera access is required for Help Lightning video calls.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Microphone access is required for Help Lightning video calls.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		18BD44F0ED984318B01947E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Extensions/ScreenSharingExtension/ScreenSharingExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Extensions/ScreenSharingExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI.ScreenSharingExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		61360AD1BA2D463BA9F6ED3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Extensions/ScreenSharingExtension/ScreenSharingExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Extensions/ScreenSharingExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI.ScreenSharingExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		C2F52D6872FB4FBBAD1151FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Extensions/ScreenSharingExtension/ScreenSharingExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Extensions/ScreenSharingExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI.ScreenSharingExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_VERSION = 6.0;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		58F23868575948698655404E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Extensions/ScreenSharingExtension/ScreenSharingExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Extensions/ScreenSharingExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI.ScreenSharingExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_VERSION = 6.0;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		898DEB61C8514EC5B70875B2 /* Build configuration list for PBXProject "SampleSwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38B198E3D22C408689CC166A /* Debug */,
+				4C0D6F747B8147808D1B9546 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E42A0C47D9144004B17F722F /* Build configuration list for PBXNativeTarget "SampleSwiftUI-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA478BF09BB342DE96FC5E28 /* Debug */,
+				EB9969539FB14519B200C555 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35FE54924D5344A68633EA52 /* Build configuration list for PBXNativeTarget "SampleSwiftUI-visionOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CC2CE3B11644D919F72E98C /* Debug */,
+				589057268DC647CA92576D90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DB5D459B9864C1B9F10A01A /* Build configuration list for PBXNativeTarget "ScreenSharingExtension-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18BD44F0ED984318B01947E3 /* Debug */,
+				61360AD1BA2D463BA9F6ED3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FC5E40E3EF24E2F840F29ED /* Build configuration list for PBXNativeTarget "ScreenSharingExtension-visionOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2F52D6872FB4FBBAD1151FE /* Debug */,
+				58F23868575948698655404E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		1626E6DACF4F4BD79D648877 /* XCLocalSwiftPackageReference "HLSDK" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../../VisionPro/vp_work/VisionProApp/HLSDK/Release/binary-spm/rendered-local/HLSDK";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1855DE071EE247A6964D6F41 /* HLSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1626E6DACF4F4BD79D648877 /* XCLocalSwiftPackageReference "HLSDK" */;
+			productName = HLSDK;
+		};
+		DA708D58CF884F6EB6206AC6 /* HLSDKSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1626E6DACF4F4BD79D648877 /* XCLocalSwiftPackageReference "HLSDK" */;
+			productName = HLSDKSwiftUI;
+		};
+		339BF48A19DA456CB5E6FDB8 /* HLSDKScreenSharing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1626E6DACF4F4BD79D648877 /* XCLocalSwiftPackageReference "HLSDK" */;
+			productName = HLSDKScreenSharing;
+		};
+		9BF889B7A72D447C92B31586 /* HLSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1626E6DACF4F4BD79D648877 /* XCLocalSwiftPackageReference "HLSDK" */;
+			productName = HLSDK;
+		};
+		C9AC18A645294ED08714EFED /* HLSDKSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1626E6DACF4F4BD79D648877 /* XCLocalSwiftPackageReference "HLSDK" */;
+			productName = HLSDKSwiftUI;
+		};
+		F6700166E9624E93B69D9AA3 /* HLSDKScreenSharing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1626E6DACF4F4BD79D648877 /* XCLocalSwiftPackageReference "HLSDK" */;
+			productName = HLSDKScreenSharing;
+		};
+		D90E3C2BA0244AE787DADFF5 /* HLSDKScreenSharing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1626E6DACF4F4BD79D648877 /* XCLocalSwiftPackageReference "HLSDK" */;
+			productName = HLSDKScreenSharing;
+		};
+		8D2D8EBF203B49BCBD53514C /* HLSDKScreenSharing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1626E6DACF4F4BD79D648877 /* XCLocalSwiftPackageReference "HLSDK" */;
+			productName = HLSDKScreenSharing;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F4DC119CE1DB4812A95D9063 /* Project object */;
+}

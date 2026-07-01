@@ -1,0 +1,6 @@
+.DS_Store
+build/
+DerivedData/
+*.xcuserdatad
+LocalPackages/
+*.xcframework.zip
