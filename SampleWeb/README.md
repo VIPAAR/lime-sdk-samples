@@ -30,6 +30,21 @@ python -m http.server
 This will run a simple server on port 8000, and you can connect to it
 by opening your web browser to http://localhost:8000
 
+This sample loads the SDK from a local `./sdk/` folder. Copy the packaged SDK
+distribution (the contents of `hlsdk/<version>/`) into `./sdk/` so it contains:
+
+```
+sdk/
+  helplightning.umd.js
+  style.css
+  pdf.worker.min.js
+  zoom/videosdk/<version>/lib/...
+```
+
+`sample.js` sets `callClient.assetBaseUrl` to `<origin>/sdk` so the Zoom `/lib`
+and PDF worker assets resolve against that folder. Alternatively, point the
+`<script>`/`<link>` tags and `assetBaseUrl` at the hosted CDN version instead.
+
 ## Running
 
 To run the demo, you will need two accounts that you can access in
@@ -92,12 +107,21 @@ application:
 * Acquire a user token, sessionId, session token, and a session URL. (Please see
    the hlserver example on how this is done)
 * Create a `<div>` that Help Lightning can embed into.
-* Include the following in your head section:
+* Include the following in your head section. The Zoom Video SDK is the only
+   external dependency (React is bundled into the Help Lightning SDK):
 ```javascript
+    <!-- Zoom Video SDK (external dependency) -->
+    <script src="https://source.zoom.us/videosdk/zoom-video-2.3.15.min.js"></script>
+
     <!-- Load help lightning JS SDK -->
-    <script src="https://helplightning.net/sdk/helplightning.min.js"></script>
-    <script src="https://helplightning.net/sdk/opentok-enterprise/opentok.min.js"></script>
-    <script src="https://helplightning.net/sdk/pdf_viewer/build/pdf.min.js"></script>
+    <script src="https://helplightning.net/hlsdk/<hl-version>/helplightning.umd.js"></script>
+    <link rel="stylesheet" href="https://helplightning.net/hlsdk/<hl-version>/style.css">
+```
+* Tell the SDK where to load its runtime assets (Zoom `/lib` WASM/workers and
+   the PDF worker) from. Set `assetBaseUrl` to the versioned SDK base, which the
+   SDK appends `/zoom/videosdk/<version>/lib` to:
+```javascript
+callClient.assetBaseUrl = 'https://helplightning.net/hlsdk/1.0.0';
 ```
 * Create a new client from the factory:
 ```javascript
@@ -111,30 +135,35 @@ let callClient = HL.CallClientFactory.CallClient;
    1. An optional API Key (or an empty string)
    1. A display name for the user
    1. An optional URL to an avatar (or an empty string)
+   1. An optional data center: `dev` | `eu1` | `produs` (default `produs`).
+      Legacy `US`/`EU` values are still accepted.
 ```javascript
         const call = new HL.Call(state.session.session_id,
                                  state.session.session_token,
                                  state.session.user_token,
                                  state.session.url,
-                                 '', name, '');
+                                 '', name, '', 'produs');
 ```
 * Define your callback delegates. These functions will be called
-   based on events from Help Lightning. There are two events you can
-   capture: 1) `onCallEnded` 2) `onScreenCaptureCreated`. Make sure
-   you assign your delegate to the call client.
+   based on events from Help Lightning. The two events you can capture are
+   1) `onCallEnded` and 2) `onScreenCaptureCreated`. Make sure you assign your
+   delegate to the call client (either `callClient.delegate = ...` or
+   `callClient.setDelegate(...)`).
 ```javascript
         const delegate = {
             onCallEnded: (reason) =>{
                 console.log('onCallEnded', reason);
             },
             onScreenCaptureCreated: (image) => {
-                // TODO: prompt to save this somewhere?
-                // or ignore it, it'll be uploaded to the server
-                //  automatically
+                // `image` is a complete data URL (e.g. "data:image/png;base64,...").
+                // The capture is also uploaded to the server automatically.
             }
         };
         callClient.delegate = delegate;
 ```
+   > Note: knowledge/content sharing is now handled by the SDK's built-in
+   > content library. The older `onSelectShareKnowledge` /
+   > `onSelectKnowledgeOverlay` delegate hooks are no longer used.
 * Start a call. This is an asynchronous method and will return the
    `callId` as the parameter to the callback function. This `callId`
    can be used later to retrieve detailed stats, screen captures, or
@@ -158,13 +187,12 @@ callClient.stopCurrentCall();
 
 ## Pinning SDK versions
 
-This example points to the latest version of the Help Lightning SDK
-and components. You can pin your version by specifying the version in
-the URL:
+The Help Lightning SDK is published under a versioned, immutable path. Pin your
+version by specifying it in the URL (and use the same version for
+`assetBaseUrl`):
 ```javascript
-    <script src="https://helplightning.net/sdk/4.34.3/helplightning.min.js"></script>
-    <script src="https://helplightning.net/sdk/4.34.3/opentok-enterprise/opentok.min.js"></script>
-    <script src="https://helplightning.net/sdk/4.34.3/pdf_viewer/build/pdf.min.js"></script>
+    <script src="https://helplightning.net/hlsdk/1.0.0/helplightning.umd.js"></script>
+    <link rel="stylesheet" href="https://helplightning.net/hlsdk/1.0.0/style.css">
 ```
 
 ## Warning about Authentication
