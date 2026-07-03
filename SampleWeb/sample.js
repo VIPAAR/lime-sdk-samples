@@ -1,6 +1,10 @@
 // Location of the sample HLServer
 const HOST_URL = 'http://localhost:8777'
 
+// Backend data center for the SDK: 'dev' | 'eu1' | 'produs' (default 'produs').
+// Legacy 'US'/'EU' values are still accepted.
+const DATA_CENTER = 'produs'
+
 function refresh(state) {
     console.log('refresh', state);
     if (state.error) {
@@ -33,15 +37,24 @@ function refresh(state) {
         let hlDiv = document.querySelector('#hl-call');
         state.callClient = HL.CallClientFactory.CallClient;
 
+        // Runtime assets (Zoom /lib WASM/workers and the PDF worker) load from
+        //  `${assetBaseUrl}/zoom/videosdk/<version>/lib`. Point this at wherever
+        //  the packaged SDK assets are hosted. Here they live in ./sdk alongside
+        //  the bundle, so the base is `<origin>/sdk`.
+        state.callClient.assetBaseUrl = `${window.location.origin}/sdk`;
+
         let name = randomName();
+        // The 8th argument selects the backend data center (see DATA_CENTER above).
         const call = new HL.Call(state.session.session_id,
                                  state.session.session_token,
                                  state.session.user_token,
                                  state.session.url,
-                                 '', name, '');
-        // set up some delegates to handle messages
+                                 '', name, '', DATA_CENTER);
+        // Delegates for call events. The SDK emits onCallEnded and
+        //  onScreenCaptureCreated. Knowledge sharing is now handled by the SDK's
+        //  built-in content library, so no knowledge delegate is required.
         const delegate = {
-            onCallEnded: (reason) =>{
+            onCallEnded: (reason) => {
                 console.log('onCallEnded', reason);
                 // set the state back to authenticated
                 state.state = STATE_AUTHENTICATED;
@@ -50,44 +63,15 @@ function refresh(state) {
 
                 refresh(state);
             },
-            onActiveSessionsChanged: (sessions) => {
-              console.log('Active sessions changed', sessions);
-            },
-            onWillJoinCall: (sessionId) => {
-              console.log('Will join call', sessionId);
-            },
-            setMinimizingView: (toggle) => {
-              console.log('Set minimizing view', toggle);
-            },
             onScreenCaptureCreated: (image) => {
-                // TODO: prompt to save this somewhere?
-                // or ignore it, it'll be uploaded to the server
-                //  automatically
-            },
-            onRecordingUpdated: (recordingEnabled) => {
-                console.log('HelpLightning recording status changed to:', recordingEnabled)
-            },
-            // onSelectShareKnowledge is optional. If you don't implement it, the feature will be disabled.
-            onSelectShareKnowledge: (fileTypes) => {
-                // You can prompt to select a file or any other source of files matching the fileTypes.
-                // Return a promise that resolves to a file object in shape of { type: 'IMAGE' or 'DOCUMENT', url: 'url_of_file' }
-                return showKnowledge();
-            },
-            // onSelectKnowledgeOverlay is optional. If you don't implement it, the feature will be disabled.
-            onSelectKnowledgeOverlay: (fileTypes) => {
-                // You can prompt to select a file or any other source of files matching the fileTypes.
-                // Return a promise that resolves to a file object in shape of { type: 'IMAGE', url: 'url_of_file' }
-                return showKnowledge();
+                // `image` is a complete data URL (e.g. "data:image/png;base64,...").
+                //  The capture is also uploaded to the Help Lightning server automatically.
+                console.log('onScreenCaptureCreated');
             }
         };
 
         state.callClient.setDelegate(delegate);
-        // the third parameter is optional and can be left blank
-        //  in which case, it will default to the US data center.
-        // Current available data centers are:
-        //  - US
-        //  - EU
-        state.callClient.startCall(call, hlDiv, 'US').then((callID) => {
+        state.callClient.startCall(call, hlDiv).then((callID) => {
             console.log('Call started...', callID);
         }).catch(err => {
             if (err instanceof HL.CallException) {
@@ -108,79 +92,12 @@ function refresh(state) {
     }
 }
 
-function showKnowledge() {
-    // Pretend we are fetching knowledge from
-    //  a Knowledge Management System somewhere.
-    //
-    // We need to return a Promise that resolves
-    //  with a `{type: 'IMAGE', url: 'https://..'}`
-    return fetch('knowledge/knowledge.json')
-        .then((res) => res.json())
-        .then((knowledge) => {
-            let k = document.querySelector('#knowledgeOverlay');
-            let body = k.querySelector('.modal-card-body');
-
-            // set the html
-            const elems = knowledge.items.map((i) => {
-                div = document.createElement('div');
-                lbl = document.createElement('label');
-                div.append(lbl);
-
-                // a radio button
-                inp = document.createElement('input');
-                inp.setAttribute('type', 'radio');
-                inp.setAttribute('name', 'knowledgeItem');
-                inp.setAttribute('value', i.image);
-                lbl.append(inp);
-
-                // the image
-                img = document.createElement('img');
-                img.setAttribute('src', i.thumbnail)
-                lbl.append(img);
-
-                return div;
-            });
-            body.replaceChildren(...elems);
-            
-
-            // get the select knowledge button
-            let ok_btn = k.querySelector('#selectKnowledge');
-
-            // return a promise
-            return new Promise((success, error) => {
-                // connect the callback of the ok_btn
-                ok_btn.addEventListener('click', () => {
-                    // get the selected item
-                    const selected_img = document.querySelector("input[type='radio'][name=knowledgeItem]:checked").value;
-
-                    // close the modal
-                    closeModal(k);
-
-                    // Call success on the promise with the URL
-                    // to the image to load
-                    success({type: 'IMAGE', url: selected_img});
-                }, {once: true}); // once will remove this event hanlder after being used
-
-                // now show the modal
-                openModal(k);
-            });
-        });
-}
-
 function show(div) {
     div.style.display = 'block';
 }
 
 function hide(div) {
     div.style.display = 'none';
-}
-
-function openModal($el) {
-    $el.classList.add('is-active');
-}
-
-function closeModal($el) {
-    $el.classList.remove('is-active');
 }
 
 function resetState(state) {
