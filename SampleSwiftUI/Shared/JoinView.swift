@@ -1,5 +1,5 @@
 import SwiftUI
-import HLSDKSwiftUI
+import HLSDK
 
 struct JoinView: View {
     @Bindable var model: DemoFlowModel
@@ -71,9 +71,13 @@ struct JoinView: View {
 
     private var activeCallView: some View {
         ZStack {
-            HLCallView()
+            // HLCallView() requires Strategy A single-module Swift merge (HLSDK.swiftmodule).
+            // Call UI is still presented via HLClient.start(withPresenting:) in DemoCallCoordinator.
+            Text("Call active")
+                .font(.title2)
                 .preferredColorScheme(.dark)
 #if os(iOS)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.black)
                 .ignoresSafeArea()
 #endif

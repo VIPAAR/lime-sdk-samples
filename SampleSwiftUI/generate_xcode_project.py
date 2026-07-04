@@ -46,8 +46,7 @@ def main() -> None:
         "project", "mainGroup", "productsGroup", "sharedGroup", "extensionGroup", "iosGroup", "visionGroup",
         "iosApp", "visionApp", "iosExt", "visionExt",
         "iosAppProduct", "visionAppProduct", "iosExtProduct", "visionExtProduct",
-        "packageRef", "iosPkgHLSDK", "iosPkgSwiftUI", "iosPkgScreenSharing",
-        "visionPkgHLSDK", "visionPkgSwiftUI", "visionPkgScreenSharing",
+        "packageRef", "iosPkgHLSDK", "visionPkgHLSDK",
         "iosExtPkgScreenSharing", "visionExtPkgScreenSharing",
         "iosSources", "visionSources", "iosExtSources", "visionExtSources",
         "iosFrameworks", "visionFrameworks", "iosExtFrameworks", "visionExtFrameworks",
@@ -255,8 +254,6 @@ def main() -> None:
 \t\t\tname = "SampleSwiftUI-iOS";
 \t\t\tpackageProductDependencies = (
 \t\t\t\t{ids['iosPkgHLSDK']} /* HLSDK */,
-\t\t\t\t{ids['iosPkgSwiftUI']} /* HLSDKSwiftUI */,
-\t\t\t\t{ids['iosPkgScreenSharing']} /* HLSDKScreenSharing */,
 \t\t\t);
 \t\t\tproductName = "SampleSwiftUI-iOS";
 \t\t\tproductReference = {ids['iosAppProduct']} /* SampleSwiftUI-iOS.app */;
@@ -277,8 +274,6 @@ def main() -> None:
 \t\t\tname = "SampleSwiftUI-visionOS";
 \t\t\tpackageProductDependencies = (
 \t\t\t\t{ids['visionPkgHLSDK']} /* HLSDK */,
-\t\t\t\t{ids['visionPkgSwiftUI']} /* HLSDKSwiftUI */,
-\t\t\t\t{ids['visionPkgScreenSharing']} /* HLSDKScreenSharing */,
 \t\t\t);
 \t\t\tproductName = "SampleSwiftUI-visionOS";
 \t\t\tproductReference = {ids['visionAppProduct']} /* SampleSwiftUI-visionOS.app */;
@@ -446,7 +441,7 @@ def main() -> None:
 \t\t\t\t\t"@executable_path/Frameworks",
 \t\t\t\t);
 \t\t\t\tMARKETING_VERSION = 1.0;
-\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI;
+\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.sample.PresenceSwiftUI;
 \t\t\t\tPRODUCT_NAME = "$(TARGET_NAME)";
 \t\t\t\tSDKROOT = iphoneos;
 \t\t\t\tSUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -474,7 +469,7 @@ def main() -> None:
 \t\t\t\t\t"@executable_path/Frameworks",
 \t\t\t\t);
 \t\t\t\tMARKETING_VERSION = 1.0;
-\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI;
+\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.sample.PresenceSwiftUI;
 \t\t\t\tPRODUCT_NAME = "$(TARGET_NAME)";
 \t\t\t\tSDKROOT = iphoneos;
 \t\t\t\tSUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -500,7 +495,7 @@ def main() -> None:
 \t\t\t\t\t"@executable_path/Frameworks",
 \t\t\t\t);
 \t\t\t\tMARKETING_VERSION = 1.0;
-\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI;
+\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.sample.PresenceSwiftUI;
 \t\t\t\tPRODUCT_NAME = "$(TARGET_NAME)";
 \t\t\t\tSDKROOT = xros;
 \t\t\t\tSUPPORTED_PLATFORMS = "xros xrsimulator";
@@ -527,7 +522,7 @@ def main() -> None:
 \t\t\t\t\t"@executable_path/Frameworks",
 \t\t\t\t);
 \t\t\t\tMARKETING_VERSION = 1.0;
-\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI;
+\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.sample.PresenceSwiftUI;
 \t\t\t\tPRODUCT_NAME = "$(TARGET_NAME)";
 \t\t\t\tSDKROOT = xros;
 \t\t\t\tSUPPORTED_PLATFORMS = "xros xrsimulator";
@@ -554,7 +549,7 @@ def main() -> None:
 \t\t\t\t\t"@executable_path/../../Frameworks",
 \t\t\t\t);
 \t\t\t\tMARKETING_VERSION = 1.0;
-\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI.ScreenSharingExtension;
+\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.sample.PresenceSwiftUI.ScreenSharingExtension;
 \t\t\t\tPRODUCT_NAME = "$(TARGET_NAME)";
 \t\t\t\tSDKROOT = iphoneos;
 \t\t\t\tSKIP_INSTALL = YES;
@@ -579,7 +574,7 @@ def main() -> None:
 \t\t\t\t\t"@executable_path/../../Frameworks",
 \t\t\t\t);
 \t\t\t\tMARKETING_VERSION = 1.0;
-\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI.ScreenSharingExtension;
+\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.sample.PresenceSwiftUI.ScreenSharingExtension;
 \t\t\t\tPRODUCT_NAME = "$(TARGET_NAME)";
 \t\t\t\tSDKROOT = iphoneos;
 \t\t\t\tSKIP_INSTALL = YES;
@@ -603,7 +598,7 @@ def main() -> None:
 \t\t\t\t\t"@executable_path/../../Frameworks",
 \t\t\t\t);
 \t\t\t\tMARKETING_VERSION = 1.0;
-\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI.ScreenSharingExtension;
+\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.sample.PresenceSwiftUI.ScreenSharingExtension;
 \t\t\t\tPRODUCT_NAME = "$(TARGET_NAME)";
 \t\t\t\tSDKROOT = xros;
 \t\t\t\tSKIP_INSTALL = YES;
@@ -628,7 +623,7 @@ def main() -> None:
 \t\t\t\t\t"@executable_path/../../Frameworks",
 \t\t\t\t);
 \t\t\t\tMARKETING_VERSION = 1.0;
-\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.SampleSwiftUI.ScreenSharingExtension;
+\t\t\t\tPRODUCT_BUNDLE_IDENTIFIER = com.helplightning.sdk.sample.PresenceSwiftUI.ScreenSharingExtension;
 \t\t\t\tPRODUCT_NAME = "$(TARGET_NAME)";
 \t\t\t\tSDKROOT = xros;
 \t\t\t\tSKIP_INSTALL = YES;
@@ -701,30 +696,10 @@ def main() -> None:
 \t\t\tpackage = {ids['packageRef']} /* XCLocalSwiftPackageReference "HLSDK" */;
 \t\t\tproductName = HLSDK;
 \t\t}};
-\t\t{ids['iosPkgSwiftUI']} /* HLSDKSwiftUI */ = {{
-\t\t\tisa = XCSwiftPackageProductDependency;
-\t\t\tpackage = {ids['packageRef']} /* XCLocalSwiftPackageReference "HLSDK" */;
-\t\t\tproductName = HLSDKSwiftUI;
-\t\t}};
-\t\t{ids['iosPkgScreenSharing']} /* HLSDKScreenSharing */ = {{
-\t\t\tisa = XCSwiftPackageProductDependency;
-\t\t\tpackage = {ids['packageRef']} /* XCLocalSwiftPackageReference "HLSDK" */;
-\t\t\tproductName = HLSDKScreenSharing;
-\t\t}};
 \t\t{ids['visionPkgHLSDK']} /* HLSDK */ = {{
 \t\t\tisa = XCSwiftPackageProductDependency;
 \t\t\tpackage = {ids['packageRef']} /* XCLocalSwiftPackageReference "HLSDK" */;
 \t\t\tproductName = HLSDK;
-\t\t}};
-\t\t{ids['visionPkgSwiftUI']} /* HLSDKSwiftUI */ = {{
-\t\t\tisa = XCSwiftPackageProductDependency;
-\t\t\tpackage = {ids['packageRef']} /* XCLocalSwiftPackageReference "HLSDK" */;
-\t\t\tproductName = HLSDKSwiftUI;
-\t\t}};
-\t\t{ids['visionPkgScreenSharing']} /* HLSDKScreenSharing */ = {{
-\t\t\tisa = XCSwiftPackageProductDependency;
-\t\t\tpackage = {ids['packageRef']} /* XCLocalSwiftPackageReference "HLSDK" */;
-\t\t\tproductName = HLSDKScreenSharing;
 \t\t}};
 \t\t{ids['iosExtPkgScreenSharing']} /* HLSDKScreenSharing */ = {{
 \t\t\tisa = XCSwiftPackageProductDependency;

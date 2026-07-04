@@ -8,7 +8,7 @@ enum DemoFlowRoute: Hashable {
 @Observable
 @MainActor
 final class DemoFlowModel {
-    let session = DemoSessionState()
+    var session = DemoSessionState()
     let callCoordinator = DemoCallCoordinator()
     private var serverClient: HLServerClient {
         HLServerClient(apiKey: session.apiKey)

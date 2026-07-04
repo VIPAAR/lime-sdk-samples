@@ -1,6 +1,6 @@
 # SampleSwiftUI
 
-SwiftUI demo app for validating Help Lightning binary Swift Package Manager consumption on iOS and visionOS. The app mirrors the legacy `SampleObjC` demo-server session flow and renders `HLCallView` from `HLSDKSwiftUI` when a call is active.
+SwiftUI demo app for validating Help Lightning binary Swift Package Manager consumption on iOS and visionOS. The app mirrors the legacy `SampleObjC` demo-server session flow and renders `HLCallView` from `import HLSDK` when a call is active.
 
 ## Prerequisites
 
@@ -22,9 +22,9 @@ Before running the sample, replace the placeholder defaults in `Shared/DemoConfi
 
 Also replace the placeholder bundle identifiers and app group if your signing setup requires different values:
 
-- App bundle id: `com.helplightning.sdk.SampleSwiftUI`
-- Screen-sharing extension bundle id: `com.helplightning.sdk.SampleSwiftUI.ScreenSharingExtension`
-- App group: `group.com.helplightning.sdk.SampleSwiftUI.ScreenSharingExtension`
+- App bundle id: `com.helplightning.sdk.sample.PresenceSwiftUI`
+- Screen-sharing extension bundle id: `com.helplightning.sdk.sample.PresenceSwiftUI.ScreenSharingExtension`
+- App group: `group.com.helplightning.sdk.sample.PresenceSwiftUI.ScreenSharingExtension`
 
 Set your Apple development team in the Xcode project before running on device.
 
@@ -44,9 +44,12 @@ Configure the sample app server URL field to your running demo server, for examp
 
 The sample depends on these products from the rendered HLSDK binary package:
 
-- `HLSDK`
-- `HLSDKSwiftUI`
-- `HLSDKScreenSharing` (app and screen-sharing extension targets)
+| Target | SPM product | Swift import |
+|--------|-------------|--------------|
+| Main app (iOS / visionOS) | `HLSDK` | `import HLSDK` |
+| Screen-sharing extension | `HLSDKScreenSharing` | `import HLSDKScreenSharing` |
+
+Main app targets must **not** link `HLSDKScreenSharing`; the extension blob is for ReplayKit only.
 
 ### Render local binary artifacts for development
 
@@ -54,15 +57,28 @@ From your HLSDK repository checkout:
 
 ```bash
 cd <HLSDK repo>
-./Scripts/build-binary-spm-artifacts.sh   # if artifacts are not already present
+./Scripts/build-binary-hlsdk-xcframeworks.sh   # if artifacts are not already present
 python3 ./Scripts/render-binary-spm-template.py \
   --template-dir ./Release/binary-spm/templates/HLSDK \
   --output-dir ./Release/binary-spm/rendered-local/HLSDK \
   --checksums-json ./Release/binary-spm/output/checksums.json \
-  --base-url "file://<absolute path to HLSDK repo>/Release/binary-spm/output/dist"
+  --xcframeworks-dir ./Release/binary-spm/output/xcframeworks \
+  --package-url-scheme ssh
 ```
 
-The generated package at `Release/binary-spm/rendered-local/HLSDK` and zip artifacts under `Release/binary-spm/output/dist` are development-only outputs. Do not commit them.
+Xcode binary targets only accept `https://` artifact URLs. For local Xcode development, render with `--xcframeworks-dir` so binary targets reference local `.xcframework` folders by path instead of `file://` zip URLs.
+
+Use `--package-url-scheme ssh` for local testing so SwiftPM can reuse your existing `git@github.com` package cache (for example from VisionProApp). Hosted/release renders must keep the default `https` URLs.
+
+If you must resolve an HTTPS-rendered package locally, you can seed HTTPS mirrors from existing SSH cache entries in the HLSDK repo:
+
+```bash
+cd <HLSDK repo>
+python3 ./Scripts/sync-spm-ssh-cache-to-https.py \
+  --package-swift ./Release/binary-spm/templates/HLSDK/Package.swift.template
+```
+
+The generated package at `Release/binary-spm/rendered-local/HLSDK` and build artifacts under `Release/binary-spm/output/` are development-only outputs. Do not commit them.
 
 ### Point the sample project at the rendered package
 

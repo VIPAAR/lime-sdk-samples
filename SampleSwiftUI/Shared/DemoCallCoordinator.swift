@@ -1,5 +1,6 @@
 import Foundation
-import HLSDK
+import UIKit
+@preconcurrency import HLSDK
 
 enum DemoCallPhase: Equatable {
     case idle
@@ -14,7 +15,7 @@ final class DemoCallCoordinator: NSObject {
 
     override init() {
         super.init()
-        HLClient.sharedInstance().delegate = self
+        HLClient.sharedInstance.delegate = self
     }
 
     func joinCall(using session: DemoSessionState) async {
@@ -40,11 +41,18 @@ final class DemoCallCoordinator: NSObject {
             return
         }
 
-        call.dataCenterID = kHLDataCenterID_US1
+        guard let presenter = Self.presentingViewController() else {
+            notifyPhase(.ended(message: "Could not find a presenting view controller for the call UI."))
+            return
+        }
 
         do {
-            let promise = HLFullClient.sharedInstance().startCall(call)
-            _ = try await promise.asyncValue()
+            let promise = HLClient.sharedInstance.start(
+                call,
+                withPresenting: presenter,
+                dataCenter: kHLDataCenterID_US1
+            )
+            _ = try await asyncValue(from: promise)
             notifyPhase(.active, message: "Call active")
         } catch {
             notifyPhase(.ended(message: error.localizedDescription))
@@ -53,8 +61,8 @@ final class DemoCallCoordinator: NSObject {
 
     func stopCall() async {
         do {
-            let promise = HLFullClient.sharedInstance().stopCurrentCall()
-            _ = try await promise.asyncValue()
+            let promise = HLClient.sharedInstance.stopCurrentCall()
+            _ = try await asyncValue(from: promise)
             notifyPhase(.idle, message: "Call ended")
         } catch {
             notifyPhase(.ended(message: error.localizedDescription))
@@ -77,14 +85,26 @@ final class DemoCallCoordinator: NSObject {
     private func notifyPhase(_ phase: DemoCallPhase, message: String = "") {
         onPhaseChanged?(phase, message)
     }
+
+    private static func presentingViewController() -> UIViewController? {
+        let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+        let window = scenes.flatMap(\.windows).first { $0.isKeyWindow }
+        var controller = window?.rootViewController
+        while let presented = controller?.presentedViewController {
+            controller = presented
+        }
+        return controller
+    }
 }
 
-extension DemoCallCoordinator: HLClientDelegate {
-    func hlCall(_ call: HLCall, didEndWithReason reason: String) {
-        notifyPhase(.ended(message: reason), message: reason)
+extension DemoCallCoordinator: @preconcurrency HLClientDelegate {
+    nonisolated func hlCall(_ call: HLCall, didEndWithReason reason: String) {
+        Task { @MainActor in
+            notifyPhase(.ended(message: reason), message: reason)
+        }
     }
 
-    func hlCallNeedScreenSharingInfo(_ call: any HLGenericCall) -> [String: Any] {
+    nonisolated func hlCallNeedScreenSharingInfo(_ call: any HLGenericCall) -> [String: Any] {
         [
             kHLCallPluginScreenSharingAppGroupName: DemoConfiguration.screenSharingAppGroup,
             kHLCallPluginScreenSharingBroadcastExtensionBundleId: DemoConfiguration.screenSharingExtensionBundleIdentifier

@@ -8,7 +8,7 @@ enum DemoConfiguration {
     static let displayName = "[YOUR_DISPLAY_NAME]"
     static let avatarURL = ""
 
-    static let appBundleIdentifier = "com.helplightning.sdk.SampleSwiftUI"
-    static let screenSharingExtensionBundleIdentifier = "com.helplightning.sdk.SampleSwiftUI.ScreenSharingExtension"
-    static let screenSharingAppGroup = "group.com.helplightning.sdk.SampleSwiftUI.ScreenSharingExtension"
+    static let appBundleIdentifier = "com.helplightning.sdk.sample.PresenceSwiftUI"
+    static let screenSharingExtensionBundleIdentifier = "com.helplightning.sdk.sample.PresenceSwiftUI.ScreenSharingExtension"
+    static let screenSharingAppGroup = "group.com.helplightning.sdk.sample.PresenceSwiftUI.ScreenSharingExtension"
 }
