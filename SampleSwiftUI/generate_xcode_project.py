@@ -47,7 +47,7 @@ def main() -> None:
         "project", "mainGroup", "productsGroup", "sharedGroup", "extensionGroup", "iosGroup", "visionGroup",
         "iosApp", "visionApp", "iosExt", "visionExt",
         "iosAppProduct", "visionAppProduct", "iosExtProduct", "visionExtProduct",
-        "packageRef", "cocoaPackageRef", "iosPkgHLSDK", "visionPkgHLSDK",
+        "packageRef", "cocoaPackageRef", "iosPkgHLSDKSwift", "visionPkgHLSDKSwift",
         "iosPkgCocoaLumberjack", "visionPkgCocoaLumberjack",
         "iosExtPkgScreenSharing", "visionExtPkgScreenSharing",
         "iosSources", "visionSources", "iosExtSources", "visionExtSources",
@@ -255,7 +255,7 @@ def main() -> None:
 \t\t\t);
 \t\t\tname = "SampleSwiftUI-iOS";
 \t\t\tpackageProductDependencies = (
-\t\t\t\t{ids['iosPkgHLSDK']} /* HLSDK */,
+\t\t\t\t{ids['iosPkgHLSDKSwift']} /* HLSDKSwift */,
 \t\t\t\t{ids['iosPkgCocoaLumberjack']} /* CocoaLumberjackSwift */,
 \t\t\t);
 \t\t\tproductName = "SampleSwiftUI-iOS";
@@ -276,7 +276,7 @@ def main() -> None:
 \t\t\t);
 \t\t\tname = "SampleSwiftUI-visionOS";
 \t\t\tpackageProductDependencies = (
-\t\t\t\t{ids['visionPkgHLSDK']} /* HLSDK */,
+\t\t\t\t{ids['visionPkgHLSDKSwift']} /* HLSDKSwift */,
 \t\t\t\t{ids['visionPkgCocoaLumberjack']} /* CocoaLumberjackSwift */,
 \t\t\t);
 \t\t\tproductName = "SampleSwiftUI-visionOS";
@@ -711,15 +711,15 @@ def main() -> None:
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-\t\t{ids['iosPkgHLSDK']} /* HLSDK */ = {{
+\t\t{ids['iosPkgHLSDKSwift']} /* HLSDKSwift */ = {{
 \t\t\tisa = XCSwiftPackageProductDependency;
 \t\t\tpackage = {ids['packageRef']} /* XCLocalSwiftPackageReference "HLSDK" */;
-\t\t\tproductName = HLSDK;
+\t\t\tproductName = HLSDKSwift;
 \t\t}};
-\t\t{ids['visionPkgHLSDK']} /* HLSDK */ = {{
+\t\t{ids['visionPkgHLSDKSwift']} /* HLSDKSwift */ = {{
 \t\t\tisa = XCSwiftPackageProductDependency;
 \t\t\tpackage = {ids['packageRef']} /* XCLocalSwiftPackageReference "HLSDK" */;
-\t\t\tproductName = HLSDK;
+\t\t\tproductName = HLSDKSwift;
 \t\t}};
 \t\t{ids['iosPkgCocoaLumberjack']} /* CocoaLumberjackSwift */ = {{
 \t\t\tisa = XCSwiftPackageProductDependency;

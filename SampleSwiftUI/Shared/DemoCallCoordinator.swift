@@ -42,7 +42,7 @@ final class DemoCallCoordinator: NSObject {
         }
 
         do {
-            let promise = HLClient.sharedInstance.startCall(
+            let promise = HLClient.sharedInstance.start(
                 call,
                 dataCenter: kHLDataCenterID_US1
             )

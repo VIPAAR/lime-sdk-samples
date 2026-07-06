@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E4DA264D1EC4F04A73B1876"
+               BlueprintIdentifier = "7C140DB222404A1EBAA016EC"
                BuildableName = "SampleSwiftUI-iOS.app"
                BlueprintName = "SampleSwiftUI-iOS"
                ReferencedContainer = "container:SampleSwiftUI.xcodeproj">
@@ -43,7 +43,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E4DA264D1EC4F04A73B1876"
+            BlueprintIdentifier = "7C140DB222404A1EBAA016EC"
             BuildableName = "SampleSwiftUI-iOS.app"
             BlueprintName = "SampleSwiftUI-iOS"
             ReferencedContainer = "container:SampleSwiftUI.xcodeproj">

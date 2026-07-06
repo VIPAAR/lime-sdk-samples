@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DBBCF2D573614F5695FA5C3E"
+               BlueprintIdentifier = "11510E52A2A9459A826FC2EE"
                BuildableName = "SampleSwiftUI-visionOS.app"
                BlueprintName = "SampleSwiftUI-visionOS"
                ReferencedContainer = "container:SampleSwiftUI.xcodeproj">
@@ -43,7 +43,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DBBCF2D573614F5695FA5C3E"
+            BlueprintIdentifier = "11510E52A2A9459A826FC2EE"
             BuildableName = "SampleSwiftUI-visionOS.app"
             BlueprintName = "SampleSwiftUI-visionOS"
             ReferencedContainer = "container:SampleSwiftUI.xcodeproj">

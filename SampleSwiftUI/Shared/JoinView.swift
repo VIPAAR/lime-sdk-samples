@@ -1,5 +1,5 @@
 import SwiftUI
-import HLSDK
+import HLSDKSwift
 
 struct JoinView: View {
     @Bindable var model: DemoFlowModel
