@@ -94,18 +94,27 @@ actor HLServerClient {
         guard var components = URLComponents(string: serverURL) else {
             throw DemoServerError.invalidServerURL
         }
-        if components.path.isEmpty {
-            components.path = path
-        } else {
-            components.path = path
-        }
+        components.path = path
         if !queryItems.isEmpty {
-            components.queryItems = queryItems
+            // URLQueryItem encoding leaves '+' unescaped, but form-style query parsers
+            // treat '+' as space. Encode '+' as %2B for values such as plus-address emails.
+            components.percentEncodedQueryItems = queryItems.map { item in
+                URLQueryItem(
+                    name: percentEncodedQueryComponent(item.name),
+                    value: item.value.map(percentEncodedQueryComponent)
+                )
+            }
         }
         guard let url = components.url else {
             throw DemoServerError.invalidServerURL
         }
         return url
+    }
+
+    private func percentEncodedQueryComponent(_ value: String) -> String {
+        var allowed = CharacterSet.urlQueryAllowed
+        allowed.remove(charactersIn: "+")
+        return value.addingPercentEncoding(withAllowedCharacters: allowed) ?? value
     }
 
     private func send(request: URLRequest) async throws -> Data {

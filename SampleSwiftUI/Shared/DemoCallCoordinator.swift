@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 @preconcurrency import HLSDK
 
 enum DemoCallPhase: Equatable {
@@ -16,6 +15,7 @@ final class DemoCallCoordinator: NSObject {
     override init() {
         super.init()
         HLClient.sharedInstance.delegate = self
+        demoLogTidyAfterSDKInit()
     }
 
     func joinCall(using session: DemoSessionState) async {
@@ -41,15 +41,9 @@ final class DemoCallCoordinator: NSObject {
             return
         }
 
-        guard let presenter = Self.presentingViewController() else {
-            notifyPhase(.ended(message: "Could not find a presenting view controller for the call UI."))
-            return
-        }
-
         do {
-            let promise = HLClient.sharedInstance.start(
+            let promise = HLClient.sharedInstance.startCall(
                 call,
-                withPresenting: presenter,
                 dataCenter: kHLDataCenterID_US1
             )
             _ = try await asyncValue(from: promise)
@@ -84,16 +78,6 @@ final class DemoCallCoordinator: NSObject {
 
     private func notifyPhase(_ phase: DemoCallPhase, message: String = "") {
         onPhaseChanged?(phase, message)
-    }
-
-    private static func presentingViewController() -> UIViewController? {
-        let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
-        let window = scenes.flatMap(\.windows).first { $0.isKeyWindow }
-        var controller = window?.rootViewController
-        while let presented = controller?.presentedViewController {
-            controller = presented
-        }
-        return controller
     }
 }
 

@@ -36,8 +36,8 @@ struct JoinView: View {
                 Toggle("Microphone On", isOn: $model.session.microphoneEnabled)
             }
 
-            Section("SDK") {
-                SecureField("Help Lightning API Key", text: $model.session.apiKey)
+            Section("API Key") {
+                TextField("Help Lightning API Key", text: $model.session.apiKey)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
             }
@@ -70,27 +70,22 @@ struct JoinView: View {
     }
 
     private var activeCallView: some View {
-        ZStack {
-            // HLCallView() requires Strategy A single-module Swift merge (HLSDK.swiftmodule).
-            // Call UI is still presented via HLClient.start(withPresenting:) in DemoCallCoordinator.
-            Text("Call active")
-                .font(.title2)
-                .preferredColorScheme(.dark)
+        HLCallView()
+            .preferredColorScheme(.dark)
 #if os(iOS)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.black)
-                .ignoresSafeArea()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.black)
+            .ignoresSafeArea()
 #endif
 #if os(visionOS)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
 #endif
-        }
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("End Call") {
-                    Task { await model.stopCall() }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("End Call") {
+                        Task { await model.stopCall() }
+                    }
                 }
             }
-        }
     }
 }

@@ -11,6 +11,7 @@ PROJECT_NAME = "SampleSwiftUI"
 PACKAGE_RELATIVE_PATH = "../../../VisionPro/vp_work/VisionProApp/HLSDK/Release/binary-spm/rendered-local/HLSDK"
 
 SHARED_SOURCES = [
+    "Shared/DemoLogging.swift",
     "Shared/SampleSwiftUIApp.swift",
     "Shared/RootView.swift",
     "Shared/AuthView.swift",
@@ -46,7 +47,8 @@ def main() -> None:
         "project", "mainGroup", "productsGroup", "sharedGroup", "extensionGroup", "iosGroup", "visionGroup",
         "iosApp", "visionApp", "iosExt", "visionExt",
         "iosAppProduct", "visionAppProduct", "iosExtProduct", "visionExtProduct",
-        "packageRef", "iosPkgHLSDK", "visionPkgHLSDK",
+        "packageRef", "cocoaPackageRef", "iosPkgHLSDK", "visionPkgHLSDK",
+        "iosPkgCocoaLumberjack", "visionPkgCocoaLumberjack",
         "iosExtPkgScreenSharing", "visionExtPkgScreenSharing",
         "iosSources", "visionSources", "iosExtSources", "visionExtSources",
         "iosFrameworks", "visionFrameworks", "iosExtFrameworks", "visionExtFrameworks",
@@ -254,6 +256,7 @@ def main() -> None:
 \t\t\tname = "SampleSwiftUI-iOS";
 \t\t\tpackageProductDependencies = (
 \t\t\t\t{ids['iosPkgHLSDK']} /* HLSDK */,
+\t\t\t\t{ids['iosPkgCocoaLumberjack']} /* CocoaLumberjackSwift */,
 \t\t\t);
 \t\t\tproductName = "SampleSwiftUI-iOS";
 \t\t\tproductReference = {ids['iosAppProduct']} /* SampleSwiftUI-iOS.app */;
@@ -274,6 +277,7 @@ def main() -> None:
 \t\t\tname = "SampleSwiftUI-visionOS";
 \t\t\tpackageProductDependencies = (
 \t\t\t\t{ids['visionPkgHLSDK']} /* HLSDK */,
+\t\t\t\t{ids['visionPkgCocoaLumberjack']} /* CocoaLumberjackSwift */,
 \t\t\t);
 \t\t\tproductName = "SampleSwiftUI-visionOS";
 \t\t\tproductReference = {ids['visionAppProduct']} /* SampleSwiftUI-visionOS.app */;
@@ -331,6 +335,7 @@ def main() -> None:
 \t\t\tmainGroup = {ids['mainGroup']};
 \t\t\tpackageReferences = (
 \t\t\t\t{ids['packageRef']} /* XCLocalSwiftPackageReference "HLSDK" */,
+\t\t\t\t{ids['cocoaPackageRef']} /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
 \t\t\t);
 \t\t\tproductRefGroup = {ids['productsGroup']} /* Products */;
 \t\t\tprojectDirPath = "";
@@ -446,6 +451,7 @@ def main() -> None:
 \t\t\t\tSDKROOT = iphoneos;
 \t\t\t\tSUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 \t\t\t\tSWIFT_EMIT_LOC_STRINGS = YES;
+\t\t\t\tSWIFT_OBJC_BRIDGING_HEADER = "Shared/SampleSwiftUI-Bridging-Header.h";
 \t\t\t\tSWIFT_VERSION = 6.0;
 \t\t\t\tTARGETED_DEVICE_FAMILY = "1,2";
 \t\t\t}};
@@ -474,6 +480,7 @@ def main() -> None:
 \t\t\t\tSDKROOT = iphoneos;
 \t\t\t\tSUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 \t\t\t\tSWIFT_EMIT_LOC_STRINGS = YES;
+\t\t\t\tSWIFT_OBJC_BRIDGING_HEADER = "Shared/SampleSwiftUI-Bridging-Header.h";
 \t\t\t\tSWIFT_VERSION = 6.0;
 \t\t\t\tTARGETED_DEVICE_FAMILY = "1,2";
 \t\t\t}};
@@ -500,6 +507,7 @@ def main() -> None:
 \t\t\t\tSDKROOT = xros;
 \t\t\t\tSUPPORTED_PLATFORMS = "xros xrsimulator";
 \t\t\t\tSWIFT_EMIT_LOC_STRINGS = YES;
+\t\t\t\tSWIFT_OBJC_BRIDGING_HEADER = "Shared/SampleSwiftUI-Bridging-Header.h";
 \t\t\t\tSWIFT_VERSION = 6.0;
 \t\t\t\tTARGETED_DEVICE_FAMILY = 7;
 \t\t\t\tXROS_DEPLOYMENT_TARGET = 2.0;
@@ -527,6 +535,7 @@ def main() -> None:
 \t\t\t\tSDKROOT = xros;
 \t\t\t\tSUPPORTED_PLATFORMS = "xros xrsimulator";
 \t\t\t\tSWIFT_EMIT_LOC_STRINGS = YES;
+\t\t\t\tSWIFT_OBJC_BRIDGING_HEADER = "Shared/SampleSwiftUI-Bridging-Header.h";
 \t\t\t\tSWIFT_VERSION = 6.0;
 \t\t\t\tTARGETED_DEVICE_FAMILY = 7;
 \t\t\t\tXROS_DEPLOYMENT_TARGET = 2.0;
@@ -690,6 +699,17 @@ def main() -> None:
 \t\t}};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+\t\t{ids['cocoaPackageRef']} /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {{
+\t\t\tisa = XCRemoteSwiftPackageReference;
+\t\t\trepositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack.git";
+\t\t\trequirement = {{
+\t\t\t\tkind = upToNextMajorVersion;
+\t\t\t\tminimumVersion = 3.9.0;
+\t\t\t}};
+\t\t}};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 \t\t{ids['iosPkgHLSDK']} /* HLSDK */ = {{
 \t\t\tisa = XCSwiftPackageProductDependency;
@@ -700,6 +720,16 @@ def main() -> None:
 \t\t\tisa = XCSwiftPackageProductDependency;
 \t\t\tpackage = {ids['packageRef']} /* XCLocalSwiftPackageReference "HLSDK" */;
 \t\t\tproductName = HLSDK;
+\t\t}};
+\t\t{ids['iosPkgCocoaLumberjack']} /* CocoaLumberjackSwift */ = {{
+\t\t\tisa = XCSwiftPackageProductDependency;
+\t\t\tpackage = {ids['cocoaPackageRef']} /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+\t\t\tproductName = CocoaLumberjackSwift;
+\t\t}};
+\t\t{ids['visionPkgCocoaLumberjack']} /* CocoaLumberjackSwift */ = {{
+\t\t\tisa = XCSwiftPackageProductDependency;
+\t\t\tpackage = {ids['cocoaPackageRef']} /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+\t\t\tproductName = CocoaLumberjackSwift;
 \t\t}};
 \t\t{ids['iosExtPkgScreenSharing']} /* HLSDKScreenSharing */ = {{
 \t\t\tisa = XCSwiftPackageProductDependency;
