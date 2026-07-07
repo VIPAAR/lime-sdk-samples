@@ -6,13 +6,17 @@ struct AuthView: View {
     var body: some View {
         Form {
             Section("Demo Server") {
-                TextField("Server URL", text: $model.session.serverURL)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled()
-                TextField("User Email", text: $model.session.userEmail)
-                    .textInputAutocapitalization(.never)
-                    .keyboardType(.emailAddress)
-                    .autocorrectionDisabled()
+                LabeledContent("Server URL: ") {
+                    TextField("", text: $model.session.serverURL, prompt: Text("http://127.0.0.1:8777"))
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                }
+                LabeledContent("User Email: ") {
+                    TextField("", text: $model.session.userEmail, prompt: Text("user@example.com"))
+                        .textInputAutocapitalization(.never)
+                        .keyboardType(.emailAddress)
+                        .autocorrectionDisabled()
+                }
             }
 
             if let errorMessage = model.errorMessage {

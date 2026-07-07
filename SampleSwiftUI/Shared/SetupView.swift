@@ -7,16 +7,23 @@ struct SetupView: View {
     var body: some View {
         Form {
             Section("Auth Token") {
-                Text(model.session.authToken)
-                    .font(.footnote)
-                    .textSelection(.enabled)
+                LabeledContent {
+                    Text(model.session.authToken)
+                        .font(.footnote)
+                        .textSelection(.enabled)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                } label: {
+                    Text("Auth Token: ")
+                }
             }
 
             Section("Create Session") {
-                TextField("Contact Email", text: $model.session.contactEmail)
-                    .textInputAutocapitalization(.never)
-                    .keyboardType(.emailAddress)
-                    .autocorrectionDisabled()
+                LabeledContent("Contact Email: ") {
+                    TextField("", text: $model.session.contactEmail, prompt: Text("contact@example.com"))
+                        .textInputAutocapitalization(.never)
+                        .keyboardType(.emailAddress)
+                        .autocorrectionDisabled()
+                }
                 Button(model.isBusy ? "Creating…" : "Create Session") {
                     Task { await model.createSession() }
                 }
@@ -24,9 +31,11 @@ struct SetupView: View {
             }
 
             Section("Retrieve Session") {
-                TextField("PIN", text: $pin)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled()
+                LabeledContent("PIN: ") {
+                    TextField("", text: $pin, prompt: Text("Required"))
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                }
                 Button(model.isBusy ? "Retrieving…" : "Retrieve Session") {
                     Task { await model.retrieveSession(pin: pin) }
                 }

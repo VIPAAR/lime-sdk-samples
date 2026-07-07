@@ -1,6 +1,6 @@
 # SampleSwiftUI
 
-SwiftUI demo app for validating Help Lightning binary Swift Package Manager consumption on iOS and visionOS. The app mirrors the legacy `SampleObjC` demo-server session flow and renders `HLCallView` from `import HLSDK` when a call is active.
+SwiftUI demo app for validating Help Lightning binary Swift Package Manager consumption on iOS and visionOS. The app mirrors the legacy `SampleObjC` demo-server session flow and renders `HLCallView` from `import HLSDKSwift` when a call is active.
 
 ## Prerequisites
 
@@ -46,7 +46,7 @@ The sample depends on these products from the rendered HLSDK binary package:
 
 | Target | SPM product | Swift import |
 |--------|-------------|--------------|
-| Main app (iOS / visionOS) | `HLSDK` | `import HLSDK` |
+| Main app (iOS / visionOS) | `HLSDKSwift` | `import HLSDKSwift` |
 | Screen-sharing extension | `HLSDKScreenSharing` | `import HLSDKScreenSharing` |
 
 Main app targets must **not** link `HLSDKScreenSharing`; the extension blob is for ReplayKit only.
@@ -87,12 +87,6 @@ The generated package at `Release/binary-spm/rendered-local/HLSDK` and build art
 `../../../VisionPro/vp_work/VisionProApp/HLSDK/Release/binary-spm/rendered-local/HLSDK`
 
 Adjust this path in Xcode if your HLSDK checkout location differs, or create a symlink at that relative location.
-
-Regenerate the project file after editing `generate_xcode_project.py`:
-
-```bash
-python3 generate_xcode_project.py
-```
 
 ### Switch to hosted binary package URLs
 

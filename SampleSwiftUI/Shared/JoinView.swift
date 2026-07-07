@@ -5,41 +5,95 @@ struct JoinView: View {
     @Bindable var model: DemoFlowModel
 
     var body: some View {
+        joinForm
+            .navigationTitle("Join Call")
+            .fullScreenCover(isPresented: callPresentationBinding) {
+                callPresentation
+            }
+    }
+
+    private var callPresentationBinding: Binding<Bool> {
+        Binding(
+            get: {
+                switch model.callPhase {
+                case .starting, .active:
+                    return true
+                default:
+                    return false
+                }
+            },
+            set: { isPresented in
+                guard !isPresented else { return }
+                switch model.callPhase {
+                case .starting, .active:
+                    Task { await model.stopCall() }
+                default:
+                    break
+                }
+            }
+        )
+    }
+
+    private var callPresentation: some View {
         Group {
             if model.callPhase == .active {
                 activeCallView
             } else {
-                joinForm
+                ZStack {
+                    Color.black.ignoresSafeArea()
+                    ProgressView("Joining…")
+                        .tint(.white)
+                }
             }
         }
-        .navigationTitle("Join Call")
+        .preferredColorScheme(.dark)
     }
 
     private var joinForm: some View {
         Form {
             Section("Session") {
-                TextField("Session ID", text: $model.session.sessionID)
-                TextField("PIN", text: $model.session.sessionPIN)
-                TextField("GSS URL", text: $model.session.gssServerURL)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled()
-                TextEditor(text: $model.session.sessionToken)
-                    .frame(minHeight: 80)
+                LabeledContent("Session ID: ") {
+                    TextField("", text: $model.session.sessionID, prompt: Text("Required"))
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                }
+                LabeledContent("PIN: ") {
+                    TextField("", text: $model.session.sessionPIN, prompt: Text("Required"))
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                }
+                LabeledContent("GSS URL: ") {
+                    TextField("", text: $model.session.gssServerURL, prompt: Text("gss+ssl://…"))
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                }
+                LabeledContent {
+                    TextEditor(text: $model.session.sessionToken)
+                        .frame(minHeight: 80)
+                } label: {
+                    Text("Session Token: ")
+                }
             }
 
             Section("Local User") {
-                TextField("Display Name", text: $model.session.displayName)
-                TextField("Avatar URL", text: $model.session.avatarURL)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled()
+                LabeledContent("Display Name: ") {
+                    TextField("", text: $model.session.displayName, prompt: Text("Required"))
+                }
+                LabeledContent("Avatar URL: ") {
+                    TextField("", text: $model.session.avatarURL, prompt: Text("https://…"))
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                }
                 Toggle("Camera On", isOn: $model.session.cameraEnabled)
                 Toggle("Microphone On", isOn: $model.session.microphoneEnabled)
             }
 
             Section("API Key") {
-                TextField("Help Lightning API Key", text: $model.session.apiKey)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled()
+                LabeledContent("Help Lightning API Key: ") {
+                    TextField("", text: $model.session.apiKey, prompt: Text("Required"))
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                }
             }
 
             if case .ended(let message) = model.callPhase {
@@ -71,7 +125,6 @@ struct JoinView: View {
 
     private var activeCallView: some View {
         HLCallView()
-            .preferredColorScheme(.dark)
 #if os(iOS)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.black)
@@ -80,12 +133,5 @@ struct JoinView: View {
 #if os(visionOS)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
 #endif
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("End Call") {
-                        Task { await model.stopCall() }
-                    }
-                }
-            }
     }
 }

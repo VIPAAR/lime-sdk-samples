@@ -15,5 +15,6 @@ struct RootView: View {
                     }
                 }
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
