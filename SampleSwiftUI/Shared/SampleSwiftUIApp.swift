@@ -1,4 +1,5 @@
 import SwiftUI
+import HLSDKSwift
 
 @main
 struct SampleSwiftUIApp: App {
@@ -10,5 +11,9 @@ struct SampleSwiftUIApp: App {
         WindowGroup {
             RootView()
         }
+        
+#if os(visionOS)
+        HLCallImmersiveSpace()
+#endif
     }
 }

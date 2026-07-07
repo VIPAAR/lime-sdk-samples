@@ -1,11 +1,17 @@
 import Foundation
 @preconcurrency import HLSDK
+import Promises
 
 enum DemoCallPhase: Equatable {
     case idle
     case starting
     case active
     case ended(message: String)
+}
+
+enum DemoCallNotification {
+    static let pipChanged = Notification.Name("DemoCallNotification.PiPChanged")
+    static let pipEnabledKey = "pipEnabled"
 }
 
 @MainActor
@@ -46,7 +52,7 @@ final class DemoCallCoordinator: NSObject {
                 call,
                 dataCenter: kHLDataCenterID_US1
             )
-            _ = try await asyncValue(from: promise)
+            _ = try await asyncValue(from: Promise(promise))
             notifyPhase(.active, message: "Call active")
         } catch {
             notifyPhase(.ended(message: error.localizedDescription))
@@ -56,7 +62,7 @@ final class DemoCallCoordinator: NSObject {
     func stopCall() async {
         do {
             let promise = HLClient.sharedInstance.stopCurrentCall()
-            _ = try await asyncValue(from: promise)
+            _ = try await asyncValue(from: Promise(promise))
             notifyPhase(.idle, message: "Call ended")
         } catch {
             notifyPhase(.ended(message: error.localizedDescription))
@@ -77,11 +83,32 @@ final class DemoCallCoordinator: NSObject {
     }
 
     private func notifyPhase(_ phase: DemoCallPhase, message: String = "") {
+        switch phase {
+        case .idle, .ended:
+            postPiPChanged(false)
+        case .starting, .active:
+            break
+        }
         onPhaseChanged?(phase, message)
+    }
+
+    private nonisolated func postPiPChanged(_ enabled: Bool) {
+        let post = {
+            NotificationCenter.default.post(
+                name: DemoCallNotification.pipChanged,
+                object: nil,
+                userInfo: [DemoCallNotification.pipEnabledKey: enabled]
+            )
+        }
+        if Thread.isMainThread {
+            post()
+        } else {
+            DispatchQueue.main.sync(execute: post)
+        }
     }
 }
 
-extension DemoCallCoordinator: @preconcurrency HLClientDelegate {
+extension DemoCallCoordinator: HLClientDelegate {
     nonisolated func hlCall(_ call: HLCall, didEndWithReason reason: String) {
         Task { @MainActor in
             notifyPhase(.ended(message: reason), message: reason)
@@ -93,5 +120,26 @@ extension DemoCallCoordinator: @preconcurrency HLClientDelegate {
             kHLCallPluginScreenSharingAppGroupName: DemoConfiguration.screenSharingAppGroup,
             kHLCallPluginScreenSharingBroadcastExtensionBundleId: DemoConfiguration.screenSharingExtensionBundleIdentifier
         ]
+    }
+
+    nonisolated func hlCallCanSupportVisionOSMainCamera(_ call: any HLGenericCall) -> Bool {
+        true
+    }
+
+    nonisolated func hlCall(_ call: any HLGenericCall, canMinimizeCallViewWithCallInfo callInfo: [String: Any]?) -> FBLPromise<AnyObject>? {
+#if os(iOS)
+        resolvedPromise(true).asObjCPromise()
+#else
+        resolvedPromise(false).asObjCPromise()
+#endif
+    }
+
+    nonisolated func hlCall(_ call: any HLGenericCall, didMinimizeCallViewWithCallInfo callInfo: [String: Any]?) -> FBLPromise<AnyObject>? {
+        postPiPChanged(true)
+        return resolvedPromise(true).asObjCPromise()
+    }
+
+    nonisolated func hlCall(_ call: any HLGenericCall, didRestoreCallViewWithCallInfo callInfo: [String: Any]?) {
+        postPiPChanged(false)
     }
 }

@@ -17,13 +17,37 @@ final class DemoFlowModel {
     var path: [DemoFlowRoute] = []
     var callPhase: DemoCallPhase = .idle
     var callStatusMessage = ""
+    var pipEnabled = false
     var isBusy = false
     var errorMessage: String?
+
+    var showsFullCallPresentation: Bool {
+        switch callPhase {
+        case .starting, .active:
+            return !pipEnabled
+        case .idle, .ended:
+            return false
+        }
+    }
 
     init() {
         callCoordinator.onPhaseChanged = { [weak self] phase, message in
             self?.callPhase = phase
             self?.callStatusMessage = message
+        }
+
+        NotificationCenter.default.addObserver(
+            forName: DemoCallNotification.pipChanged,
+            object: nil,
+            queue: .main
+        ) { [weak self] notification in
+            guard let self,
+                  let enabled = notification.userInfo?[DemoCallNotification.pipEnabledKey] as? Bool else {
+                return
+            }
+            MainActor.assumeIsolated {
+                self.pipEnabled = enabled
+            }
         }
     }
 

@@ -14,21 +14,19 @@ struct JoinView: View {
 
     private var callPresentationBinding: Binding<Bool> {
         Binding(
-            get: {
-                switch model.callPhase {
-                case .starting, .active:
-                    return true
-                default:
-                    return false
-                }
-            },
+            get: { model.showsFullCallPresentation },
             set: { isPresented in
                 guard !isPresented else { return }
-                switch model.callPhase {
-                case .starting, .active:
-                    Task { await model.stopCall() }
-                default:
-                    break
+                if model.pipEnabled { return }
+                Task { @MainActor in
+                    await Task.yield()
+                    guard !model.pipEnabled else { return }
+                    switch model.callPhase {
+                    case .starting, .active:
+                        await model.stopCall()
+                    default:
+                        break
+                    }
                 }
             }
         )
