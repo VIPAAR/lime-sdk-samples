@@ -4,10 +4,10 @@ import Observation
 @Observable
 @MainActor
 final class DemoSessionState {
-    var serverURL: String = DemoConfiguration.serverURL
-    var userEmail: String = DemoConfiguration.userEmail
-    var contactEmail: String = DemoConfiguration.contactEmail
-    var apiKey: String = DemoConfiguration.apiKey
+    var serverURL: String = ""
+    var userEmail: String = ""
+    var contactEmail: String = ""
+    var apiKey: String = ""
 
     var authToken: String = ""
     var sessionID: String = ""
@@ -16,10 +16,24 @@ final class DemoSessionState {
     var gssServerURL: String = ""
     var sessionPIN: String = ""
 
-    var displayName: String = DemoConfiguration.displayName
-    var avatarURL: String = DemoConfiguration.avatarURL
+    var displayName: String = ""
+    var avatarURL: String = ""
     var cameraEnabled = true
     var microphoneEnabled = true
+
+    init() {
+        applyDemoConfigurationDefaults()
+    }
+
+    /// Copies `DemoConfiguration` defaults into this session (Swift UIKit / SwiftUI targets).
+    func applyDemoConfigurationDefaults() {
+        serverURL = DemoConfiguration.serverURL
+        userEmail = DemoConfiguration.userEmail
+        contactEmail = DemoConfiguration.contactEmail
+        apiKey = DemoConfiguration.apiKey
+        displayName = DemoConfiguration.displayName
+        avatarURL = DemoConfiguration.avatarURL
+    }
 
     func applyCreateSessionResponse(_ response: DemoServerSessionResponse) {
         sessionID = response.sessionID

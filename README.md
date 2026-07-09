@@ -4,7 +4,7 @@ The sample app for Objective-C.
 
 ## SamplePresence
 The unified sample app for Help Lightning SDK integrations on iOS and visionOS.
-It includes three runnable targets: iOS SwiftUI, iOS UIKit, and visionOS SwiftUI.
+It includes four runnable targets: iOS SwiftUI, iOS UIKit (Swift), iOS UIKit (ObjC), and visionOS SwiftUI.
 See `SamplePresence/README.md`.
 
 ## SampleUIKit (deprecated)

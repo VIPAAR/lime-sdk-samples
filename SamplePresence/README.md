@@ -1,19 +1,21 @@
 # SamplePresence
 
-Unified Help Lightning SDK sample project with three runnable app targets that mirror the legacy `SampleObjC` demo-server session flow.
+Unified Help Lightning SDK sample project with four runnable app targets that mirror the legacy `SampleObjC` demo-server session flow.
 
 | Xcode scheme | Platform | UI stack | Call integration |
 |--------------|----------|----------|------------------|
 | `SamplePresence-iOS-SwiftUI` | iOS 17+ | SwiftUI | `HLCallConfiguration.swiftUIConfiguration` + embedded `HLCallView` |
-| `SamplePresence-iOS-UIKit` | iOS 17+ | UIKit | `HLCallConfiguration.uikitConfiguration(presenting:)` + SDK `HLCallHostingController` |
+| `SamplePresence-iOS-UIKit` | iOS 17+ | UIKit (Swift) | `HLCallConfiguration.uikitConfiguration(presenting:)` via `HLClientSwift` |
+| `SamplePresence-iOS-UIKit-ObjC` | iOS 17+ | UIKit (ObjC) | `[HLCallConfiguration uikitConfigurationWithCall:presentingViewController:]` via `HLClient` |
 | `SamplePresence-visionOS-SwiftUI` | visionOS 2+ | SwiftUI | Same as iOS SwiftUI + `HLCallImmersiveSpace()` |
 
-Each app target embeds its own ReplayKit screen-sharing extension.
+Each app target embeds its own ReplayKit screen-sharing extension. The Swift and ObjC UIKit targets **share the same bundle identifier** and embed the same `ScreenSharingExtension-iOS-UIKit` target — only one UIKit flavor can be installed at a time.
 
 ## Which Target Should I Run?
 
 - **SwiftUI on iPhone or iPad** → `SamplePresence-iOS-SwiftUI`
-- **UIKit on iPhone or iPad** → `SamplePresence-iOS-UIKit`
+- **UIKit (Swift) on iPhone or iPad** → `SamplePresence-iOS-UIKit`
+- **UIKit (Objective-C) on iPhone or iPad** → `SamplePresence-iOS-UIKit-ObjC`
 - **visionOS** → `SamplePresence-visionOS-SwiftUI`
 
 ### UIKit is iOS only (no visionOS)
@@ -31,21 +33,68 @@ For visionOS, use **`SamplePresence-visionOS-SwiftUI`** instead.
 
 ## Replace Placeholder Values
 
-Before running the sample, replace the placeholder defaults in `Shared/DemoConfiguration.swift` and/or the in-app forms:
+Edit `Shared/DemoConfiguration.swift` with your demo-server and API credentials. Every app target reads those defaults into its session model on launch.
 
-| Placeholder | Purpose |
-|-------------|---------|
-| `[YOUR_SERVER_URL]` | Demo server base URL (for example `http://127.0.0.1:8777`) |
-| `[YOUR_USER_EMAIL]` | Email passed to `GET /auth?email=` |
-| `[YOUR_CONTACT_EMAIL]` | Contact email for `POST /session` |
-| `[YOUR_HL_API_KEY]` | Help Lightning API key used by the SDK call object and demo-server requests |
+```swift
+enum DemoConfiguration {
+    static let serverURL = "http://192.168.1.40:8777"
+    static let userEmail = "hale.xie+02@helplightning.com"
+    static let contactEmail = "hale.xie+01@helplightning.com"
+    static let apiKey = "zw9rak9tc3fgegppdwq3ywc5wk9ndz09"
+    static let displayName = "hale.xie+02"
+    static let avatarURL = ""
+}
+```
+
+**Swift targets** (`DemoSessionState`) — defaults are applied in `init()`:
+
+```swift
+var session = DemoSessionState() // copies DemoConfiguration on init
+
+// Re-apply after editing DemoConfiguration, or to reset form fields:
+session.applyDemoConfigurationDefaults()
+
+// Or set fields directly:
+session.serverURL = "http://192.168.1.40:8777"
+session.userEmail = "hale.xie+02@helplightning.com"
+session.contactEmail = "hale.xie+01@helplightning.com"
+session.apiKey = "zw9rak9tc3fgegppdwq3ywc5wk9ndz09"
+session.displayName = "hale.xie+02"
+```
+
+**ObjC UIKit target** (`DemoSession`) — defaults are applied in `-init`:
+
+```objc
+DemoSession *session = [[DemoSession alloc] init]; // copies DemoConfiguration on init
+
+// Re-apply after editing DemoConfiguration.swift:
+[session applyDemoConfigurationDefaults];
+
+// Or set fields directly:
+session.serverURL = @"http://192.168.1.40:8777";
+session.userEmail = @"hale.xie+02@helplightning.com";
+session.contactEmail = @"hale.xie+01@helplightning.com";
+session.apiKey = @"zw9rak9tc3fgegppdwq3ywc5wk9ndz09";
+session.displayName = @"hale.xie+02";
+```
+
+You can also change values in the in-app auth/setup/join forms; those update the same session object.
+
+| Field | Purpose |
+|-------|---------|
+| `serverURL` | Demo server base URL (for example `http://127.0.0.1:8777`) |
+| `userEmail` | Email passed to `GET /auth?email=` |
+| `contactEmail` | Contact email for `POST /session` |
+| `apiKey` | Help Lightning API key used by the SDK call object and demo-server requests |
+| `displayName` | Local display name shown on the join screen |
 
 Bundle identifiers and app groups are derived at runtime from each target's signing identity (see `DemoConfiguration`). Default bundle IDs:
 
 | Target | App bundle id |
 |--------|---------------|
 | iOS SwiftUI | `com.helplightning.sdk.sample.PresenceSwiftUI` |
-| iOS UIKit | `com.helplightning.sdk.sample.PresenceUIKit` |
+| iOS UIKit (Swift) | `com.helplightning.sdk.sample.PresenceUIKit` |
+| iOS UIKit (ObjC) | `com.helplightning.sdk.sample.PresenceUIKit` *(same as Swift UIKit)* |
 | visionOS SwiftUI | `com.helplightning.sdk.sample.PresenceSwiftUI` |
 
 Extension bundle id: `<app-bundle-id>.ScreenSharingExtension`  
@@ -67,10 +116,11 @@ Configure the sample app server URL field to your running demo server, for examp
 
 ## Binary SPM Dependencies
 
-| Target | SPM products | Swift import |
-|--------|--------------|--------------|
+| Target | SPM products | Import |
+|--------|--------------|--------|
 | iOS / visionOS SwiftUI apps | `HLSDKSwift` | `import HLSDKSwift` |
-| iOS UIKit app | `HLSDK`, `HLSDKSwift` | `import HLSDK`, `import HLSDKSwift` |
+| iOS UIKit (Swift) app | `HLSDK`, `HLSDKSwift` | `import HLSDK`, `import HLSDKSwift` |
+| iOS UIKit (ObjC) app | `HLSDK` only | `#import <HLSDK/HLSDK.h>` |
 | Screen-sharing extensions | `HLSDKScreenSharing` | `import HLSDKScreenSharing` |
 
 Main app targets must **not** link `HLSDKScreenSharing`; that product is for ReplayKit extension targets only.
@@ -82,8 +132,8 @@ In Xcode, add the HLSDK package dependency using the URL and version supplied by
 1. Authenticate against the demo server
 2. Create or retrieve a session
 3. Review/edit session fields on the join screen
-4. Start the SDK call with `HLClientSwift.shared.startCallAsync(configuration:)`
-5. SwiftUI targets render `HLCallView()` while active; the UIKit target lets the SDK present `HLCallHostingController`
+4. Start the SDK call (SwiftUI/Swift UIKit use `HLClientSwift`; ObjC UIKit uses `HLClient`)
+5. SwiftUI targets render `HLCallView()` while active; UIKit targets let the SDK present `HLCallHostingController`
 
 ### Primary API (SwiftUI-owned call UI)
 
@@ -99,7 +149,7 @@ guard let configuration = HLCallConfiguration.swiftUIConfiguration(with: call) e
 try await HLClientSwift.shared.startCallAsync(configuration: configuration)
 ```
 
-### Primary API (SDK-managed UIKit)
+### Primary API (SDK-managed UIKit — Swift)
 
 ```swift
 import HLSDK
@@ -117,7 +167,43 @@ guard let configuration = HLCallConfiguration.uikitConfiguration(
 try await HLClientSwift.shared.startCallAsync(configuration: configuration)
 ```
 
-Do **not** import `HLSDKSwiftUI` or embed `HLCallView` in the UIKit sample. Use `HLCallHostingController` from `import HLSDK`.
+### Primary API (SDK-managed UIKit — Objective-C)
+
+```objc
+#import <HLSDK/HLSDK.h>
+
+call.dataCenterID = kHLDataCenterID_US1;
+
+HLCallConfiguration *configuration =
+    [HLCallConfiguration uikitConfigurationWithCall:call
+                         presentingViewController:joinViewController];
+[[HLClient sharedInstance] startCallWithConfiguration:configuration];
+```
+
+Implement `HLClientDelegate` (including `hlCallNeedScreenSharingInfo:`) on your call coordinator. The ObjC target links **`HLSDK` only** — no `HLSDKSwift` product.
+
+Do **not** import `HLSDKSwiftUI` or embed `HLCallView` in the UIKit samples. Use SDK-managed UIKit integration; the SDK presents `HLCallHostingController` automatically.
+
+#### ObjC-only: test legacy `startCall:withPresentingViewController:`
+
+The Swift UIKit target always uses `HLCallConfiguration`. The ObjC target defaults to the same configuration API, but you can switch to the legacy ObjC facade to verify backward compatibility.
+
+In `UIKit-ObjC/DemoCallOptions.h`, set:
+
+```objc
+#define SAMPLE_PRESENCE_USE_LEGACY_UIKIT_START_CALL 1
+```
+
+Or add to the **`SamplePresence-iOS-UIKit-ObjC`** target build setting `GCC_PREPROCESSOR_DEFINITIONS`:
+
+```
+SAMPLE_PRESENCE_USE_LEGACY_UIKIT_START_CALL=1
+```
+
+| Macro value | API used |
+|-------------|----------|
+| `0` (default) | `-[HLCallConfiguration uikitConfigurationWithCall:presentingViewController:]` + `-[HLClient startCallWithConfiguration:]` |
+| `1` | `-[HLClient startCall:withPresentingViewController:]` |
 
 ---
 
@@ -177,7 +263,7 @@ Screen sharing requires:
 | Platform / flavor | Main app entitlements | Extension entitlements |
 |-------------------|----------------------|------------------------|
 | iOS SwiftUI | `iOS/SwiftUI/SamplePresence-iOS-SwiftUI.entitlements` | `Extensions/ScreenSharingExtension/ScreenSharingExtension-iOS-SwiftUI.entitlements` |
-| iOS UIKit | `iOS/UIKit/SamplePresence-iOS-UIKit.entitlements` | `Extensions/ScreenSharingExtension/ScreenSharingExtension-iOS-UIKit.entitlements` |
+| iOS UIKit (Swift or ObjC) | `iOS/UIKit/SamplePresence-iOS-UIKit.entitlements` | `Extensions/ScreenSharingExtension/ScreenSharingExtension-iOS-UIKit.entitlements` |
 | visionOS SwiftUI | `visionOS/SwiftUI/SamplePresence-visionOS-SwiftUI.entitlements` | `Extensions/ScreenSharingExtension/ScreenSharingExtension-visionOS.entitlements` |
 
 On visionOS, passthrough screen sharing additionally requires the enterprise setup described above.
