@@ -2,7 +2,7 @@ import SwiftUI
 import HLSDKSwift
 
 @main
-struct SampleSwiftUIApp: App {
+struct SamplePresenceApp: App {
     init() {
         demoLogSetup()
     }

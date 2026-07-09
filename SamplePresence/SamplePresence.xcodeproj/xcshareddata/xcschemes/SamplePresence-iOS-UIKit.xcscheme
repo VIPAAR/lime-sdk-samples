@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7C140DB222404A1EBAA016EC"
-               BuildableName = "SampleSwiftUI-iOS.app"
-               BlueprintName = "SampleSwiftUI-iOS"
-               ReferencedContainer = "container:SampleSwiftUI.xcodeproj">
+               BlueprintIdentifier = "SP000A12"
+               BuildableName = "SamplePresence-iOS-UIKit.app"
+               BlueprintName = "SamplePresence-iOS-UIKit"
+               ReferencedContainer = "container:SamplePresence.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -43,10 +43,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7C140DB222404A1EBAA016EC"
-            BuildableName = "SampleSwiftUI-iOS.app"
-            BlueprintName = "SampleSwiftUI-iOS"
-            ReferencedContainer = "container:SampleSwiftUI.xcodeproj">
+            BlueprintIdentifier = "SP000A12"
+            BuildableName = "SamplePresence-iOS-UIKit.app"
+            BlueprintName = "SamplePresence-iOS-UIKit"
+            ReferencedContainer = "container:SamplePresence.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>

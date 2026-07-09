@@ -1,6 +1,6 @@
 import Foundation
 @preconcurrency import HLSDK
-import Promises
+import HLSDKSwift
 
 enum DemoCallPhase: Equatable {
     case idle
@@ -9,22 +9,17 @@ enum DemoCallPhase: Equatable {
     case ended(message: String)
 }
 
-enum DemoCallNotification {
-    static let pipChanged = Notification.Name("DemoCallNotification.PiPChanged")
-    static let pipEnabledKey = "pipEnabled"
-}
-
 @MainActor
 final class DemoCallCoordinator: NSObject {
     var onPhaseChanged: ((DemoCallPhase, String) -> Void)?
 
     override init() {
         super.init()
-        HLClient.sharedInstance.delegate = self
+        HLClientSwift.shared.delegate = self
         demoLogTidyAfterSDKInit()
     }
 
-    func joinCall(using session: DemoSessionState) async {
+    func joinCall(using session: DemoSessionState, presentingViewController: UIViewController) async {
         guard canStartCall(with: session) else {
             notifyPhase(.ended(message: "Replace placeholder session values and API key before joining a call."))
             return
@@ -47,12 +42,18 @@ final class DemoCallCoordinator: NSObject {
             return
         }
 
+        call.dataCenterID = kHLDataCenterID_US1
+
+        guard let configuration = HLCallConfiguration.uikitConfiguration(
+            with: call,
+            presenting: presentingViewController
+        ) else {
+            notifyPhase(.ended(message: "Could not create a UIKit call configuration."))
+            return
+        }
+
         do {
-            let promise = HLClient.sharedInstance.start(
-                call,
-                dataCenter: kHLDataCenterID_US1
-            )
-            _ = try await asyncValue(from: Promise(promise))
+            try await HLClientSwift.shared.startCallAsync(configuration: configuration)
             notifyPhase(.active, message: "Call active")
         } catch {
             notifyPhase(.ended(message: error.localizedDescription))
@@ -61,16 +62,11 @@ final class DemoCallCoordinator: NSObject {
 
     func stopCall() async {
         do {
-            let promise = HLClient.sharedInstance.stopCurrentCall()
-            _ = try await asyncValue(from: Promise(promise))
+            try await HLClientSwift.shared.stopCurrentCallAsync()
             notifyPhase(.idle, message: "Call ended")
         } catch {
             notifyPhase(.ended(message: error.localizedDescription))
         }
-    }
-
-    func resetToIdle() {
-        notifyPhase(.idle, message: "")
     }
 
     private func canStartCall(with session: DemoSessionState) -> Bool {
@@ -83,28 +79,7 @@ final class DemoCallCoordinator: NSObject {
     }
 
     private func notifyPhase(_ phase: DemoCallPhase, message: String = "") {
-        switch phase {
-        case .idle, .ended:
-            postPiPChanged(false)
-        case .starting, .active:
-            break
-        }
         onPhaseChanged?(phase, message)
-    }
-
-    private nonisolated func postPiPChanged(_ enabled: Bool) {
-        let post = {
-            NotificationCenter.default.post(
-                name: DemoCallNotification.pipChanged,
-                object: nil,
-                userInfo: [DemoCallNotification.pipEnabledKey: enabled]
-            )
-        }
-        if Thread.isMainThread {
-            post()
-        } else {
-            DispatchQueue.main.sync(execute: post)
-        }
     }
 }
 
@@ -120,26 +95,5 @@ extension DemoCallCoordinator: HLClientDelegate {
             kHLCallPluginScreenSharingAppGroupName: DemoConfiguration.screenSharingAppGroup,
             kHLCallPluginScreenSharingBroadcastExtensionBundleId: DemoConfiguration.screenSharingExtensionBundleIdentifier
         ]
-    }
-
-    nonisolated func hlCallCanSupportVisionOSMainCamera(_ call: any HLGenericCall) -> Bool {
-        true
-    }
-
-    nonisolated func hlCall(_ call: any HLGenericCall, canMinimizeCallViewWithCallInfo callInfo: [String: Any]?) -> FBLPromise<AnyObject>? {
-#if os(iOS)
-        resolvedPromise(true).asObjCPromise()
-#else
-        resolvedPromise(false).asObjCPromise()
-#endif
-    }
-
-    nonisolated func hlCall(_ call: any HLGenericCall, didMinimizeCallViewWithCallInfo callInfo: [String: Any]?) -> FBLPromise<AnyObject>? {
-        postPiPChanged(true)
-        return resolvedPromise(true).asObjCPromise()
-    }
-
-    nonisolated func hlCall(_ call: any HLGenericCall, didRestoreCallViewWithCallInfo callInfo: [String: Any]?) {
-        postPiPChanged(false)
     }
 }
