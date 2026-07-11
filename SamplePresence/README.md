@@ -7,9 +7,9 @@ Unified Help Lightning SDK sample project with four runnable app targets that mi
 | `SamplePresence-iOS-SwiftUI` | iOS 17+ | SwiftUI | `HLCallConfiguration.swiftUIConfiguration` + embedded `HLCallView` |
 | `SamplePresence-iOS-UIKit` | iOS 17+ | UIKit (Swift) | `HLCallConfiguration.uikitConfiguration(presenting:)` via `HLClientSwift` |
 | `SamplePresence-iOS-UIKit-ObjC` | iOS 17+ | UIKit (ObjC) | `[HLCallConfiguration uikitConfigurationWithCall:presentingViewController:]` via `HLClient` |
-| `SamplePresence-visionOS-SwiftUI` | visionOS 2+ | SwiftUI | Same as iOS SwiftUI + `HLCallImmersiveSpace()` |
+| `SamplePresence-visionOS-SwiftUI` | visionOS 2.1+ | SwiftUI | Same as iOS SwiftUI + `HLCallImmersiveSpace()` |
 
-Each app target embeds its own ReplayKit screen-sharing extension. The Swift and ObjC UIKit targets **share the same bundle identifier** and embed the same `ScreenSharingExtension-iOS-UIKit` target — only one UIKit flavor can be installed at a time.
+Each app target embeds its own ReplayKit screen-sharing extension with a distinct app bundle identifier, extension bundle identifier, and app group. All four sample apps can be installed side by side on the same device or simulator.
 
 ## Which Target Should I Run?
 
@@ -27,7 +27,7 @@ For visionOS, use **`SamplePresence-visionOS-SwiftUI`** instead.
 ## Prerequisites
 
 - Xcode 16 or later
-- iOS 17+ / visionOS 2+ simulators or devices
+- iOS 17+ / visionOS 2.1+ simulators or devices
 - Access to the Help Lightning HLSDK binary Swift package (URL and version provided by Help Lightning)
 - Optional: the `hlserver` demo server from the `lime-sdk-samples` repository
 
@@ -37,11 +37,11 @@ Edit `Shared/DemoConfiguration.swift` with your demo-server and API credentials.
 
 ```swift
 enum DemoConfiguration {
-    static let serverURL = "http://192.168.1.40:8777"
-    static let userEmail = "hale.xie+02@helplightning.com"
-    static let contactEmail = "hale.xie+01@helplightning.com"
-    static let apiKey = "zw9rak9tc3fgegppdwq3ywc5wk9ndz09"
-    static let displayName = "hale.xie+02"
+    static let serverURL = "http://127.0.0.1:8777"
+    static let userEmail = "user@example.com"
+    static let contactEmail = "contact@example.com"
+    static let apiKey = "your-api-key"
+    static let displayName = "Demo User"
     static let avatarURL = ""
 }
 ```
@@ -55,11 +55,11 @@ var session = DemoSessionState() // copies DemoConfiguration on init
 session.applyDemoConfigurationDefaults()
 
 // Or set fields directly:
-session.serverURL = "http://192.168.1.40:8777"
-session.userEmail = "hale.xie+02@helplightning.com"
-session.contactEmail = "hale.xie+01@helplightning.com"
-session.apiKey = "zw9rak9tc3fgegppdwq3ywc5wk9ndz09"
-session.displayName = "hale.xie+02"
+session.serverURL = "http://127.0.0.1:8777"
+session.userEmail = "user@example.com"
+session.contactEmail = "contact@example.com"
+session.apiKey = "your-api-key"
+session.displayName = "Demo User"
 ```
 
 **ObjC UIKit target** (`DemoSession`) — defaults are applied in `-init`:
@@ -71,11 +71,11 @@ DemoSession *session = [[DemoSession alloc] init]; // copies DemoConfiguration o
 [session applyDemoConfigurationDefaults];
 
 // Or set fields directly:
-session.serverURL = @"http://192.168.1.40:8777";
-session.userEmail = @"hale.xie+02@helplightning.com";
-session.contactEmail = @"hale.xie+01@helplightning.com";
-session.apiKey = @"zw9rak9tc3fgegppdwq3ywc5wk9ndz09";
-session.displayName = @"hale.xie+02";
+session.serverURL = @"http://127.0.0.1:8777";
+session.userEmail = @"user@example.com";
+session.contactEmail = @"contact@example.com";
+session.apiKey = @"your-api-key";
+session.displayName = @"Demo User";
 ```
 
 You can also change values in the in-app auth/setup/join forms; those update the same session object.
@@ -90,14 +90,13 @@ You can also change values in the in-app auth/setup/join forms; those update the
 
 Bundle identifiers and app groups are derived at runtime from each target's signing identity (see `DemoConfiguration`). Default bundle IDs:
 
-| Target | App bundle id |
-|--------|---------------|
-| iOS SwiftUI | `com.helplightning.sdk.sample.PresenceSwiftUI` |
-| iOS UIKit (Swift) | `com.helplightning.sdk.sample.PresenceUIKit` |
-| iOS UIKit (ObjC) | `com.helplightning.sdk.sample.PresenceUIKit` *(same as Swift UIKit)* |
-| visionOS SwiftUI | `com.helplightning.sdk.sample.PresenceSwiftUI` |
+| Target | App bundle id | Extension bundle id |
+|--------|---------------|---------------------|
+| iOS SwiftUI | `com.helplightning.sdk.sample.PresenceSwiftUI` | `com.helplightning.sdk.sample.PresenceSwiftUI.ScreenSharingExtension` |
+| iOS UIKit (Swift) | `com.helplightning.sdk.sample.PresenceUIKit` | `com.helplightning.sdk.sample.PresenceUIKit.ScreenSharingExtension` |
+| iOS UIKit (ObjC) | `com.helplightning.sdk.sample.PresenceUIKitObjC` | `com.helplightning.sdk.sample.PresenceUIKitObjC.ScreenSharingExtension` |
+| visionOS SwiftUI | `com.helplightning.sdk.sample.PresenceVisionOS` | `com.helplightning.sdk.sample.PresenceVisionOS.ScreenSharingExtension` |
 
-Extension bundle id: `<app-bundle-id>.ScreenSharingExtension`  
 App group: `group.<extension-bundle-id>`
 
 Set your Apple development team in the Xcode project before running on device.
@@ -116,6 +115,18 @@ Configure the sample app server URL field to your running demo server, for examp
 
 ## Binary SPM Dependencies
 
+Add the Help Lightning binary package in Xcode (**File → Add Package Dependencies…**):
+
+```
+https://github.com/HaleXie/HLSDK-SPM.git
+```
+
+Pin an **exact version** supplied by Help Lightning.
+
+See the package [`README.md`](https://github.com/HaleXie/HLSDK-SPM/blob/main/README.md) for full integration notes.
+
+### Products by target
+
 | Target | SPM products | Import |
 |--------|--------------|--------|
 | iOS / visionOS SwiftUI apps | `HLSDKSwift` | `import HLSDKSwift` |
@@ -125,7 +136,44 @@ Configure the sample app server URL field to your running demo server, for examp
 
 Main app targets must **not** link `HLSDKScreenSharing`; that product is for ReplayKit extension targets only.
 
-In Xcode, add the HLSDK package dependency using the URL and version supplied by Help Lightning, then link the products above to the matching targets.
+### Add `-ObjC` to Other Linker Flags
+
+Every target that links `HLSDK`, `HLSDKSwift`, or `HLSDKScreenSharing` needs `-ObjC` in **Other Linker Flags**.
+
+#### In Xcode
+
+1. Open `SamplePresence.xcodeproj`.
+2. Select the **Project** navigator → **SamplePresence** project.
+3. Under **TARGETS**, select an app or screen-sharing extension target.
+4. Open the **Build Settings** tab.
+5. Set the filter to **All** and search for `Other Linker Flags`.
+6. Double-click **Other Linker Flags** (Debug and Release).
+7. Click **+** and add:
+   ```
+   -ObjC
+   ```
+8. Repeat for each target that links an HLSDK product:
+
+| Target | Add `-ObjC` |
+|--------|-------------|
+| `SamplePresence-iOS-SwiftUI` | Yes |
+| `SamplePresence-iOS-UIKit` | Yes |
+| `SamplePresence-iOS-UIKit-ObjC` | Already configured |
+| `SamplePresence-visionOS-SwiftUI` | Yes |
+| `ScreenSharingExtension-iOS-SwiftUI` | Yes |
+| `ScreenSharingExtension-iOS-UIKit` | Yes |
+| `ScreenSharingExtension-iOS-UIKit-ObjC` | Yes |
+| `ScreenSharingExtension-visionOS` | Yes |
+
+#### Verify
+
+After editing, each listed target should show in Build Settings:
+
+```
+OTHER_LDFLAGS = -ObjC
+```
+
+Rebuild and run on simulator or device.
 
 ## Flow Overview
 
@@ -260,11 +308,12 @@ Screen sharing requires:
 3. A valid extension bundle identifier returned from `hlCallNeedScreenSharingInfo(_:)`
 4. Code signing with a team that supports app groups
 
-| Platform / flavor | Main app entitlements | Extension entitlements |
-|-------------------|----------------------|------------------------|
-| iOS SwiftUI | `iOS/SwiftUI/SamplePresence-iOS-SwiftUI.entitlements` | `Extensions/ScreenSharingExtension/ScreenSharingExtension-iOS-SwiftUI.entitlements` |
-| iOS UIKit (Swift or ObjC) | `iOS/UIKit/SamplePresence-iOS-UIKit.entitlements` | `Extensions/ScreenSharingExtension/ScreenSharingExtension-iOS-UIKit.entitlements` |
-| visionOS SwiftUI | `visionOS/SwiftUI/SamplePresence-visionOS-SwiftUI.entitlements` | `Extensions/ScreenSharingExtension/ScreenSharingExtension-visionOS.entitlements` |
+| Platform / flavor | Main app entitlements | Extension entitlements | Extension display name |
+|-------------------|----------------------|------------------------|------------------------|
+| iOS SwiftUI | `iOS/SwiftUI/SamplePresence-iOS-SwiftUI.entitlements` | `Extensions/ScreenSharingExtension/ScreenSharingExtension-iOS-SwiftUI.entitlements` | Screen Sharing (SwiftUI) |
+| iOS UIKit (Swift) | `iOS/UIKit/SamplePresence-iOS-UIKit.entitlements` | `Extensions/ScreenSharingExtension/ScreenSharingExtension-iOS-UIKit.entitlements` | Screen Sharing (UIKit) |
+| iOS UIKit (ObjC) | `iOS/UIKit/SamplePresence-iOS-UIKit-ObjC.entitlements` | `Extensions/ScreenSharingExtension/ScreenSharingExtension-iOS-UIKit-ObjC.entitlements` | Screen Sharing (UIKit ObjC) |
+| visionOS SwiftUI | `visionOS/SwiftUI/SamplePresence-visionOS-SwiftUI.entitlements` | `Extensions/ScreenSharingExtension/ScreenSharingExtension-visionOS.entitlements` | Screen Sharing (visionOS) |
 
 On visionOS, passthrough screen sharing additionally requires the enterprise setup described above.
 
