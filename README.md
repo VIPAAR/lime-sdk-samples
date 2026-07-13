@@ -2,24 +2,17 @@
 ## SampleObjC
 The sample app for Objective-C.
 
-We need to add the following sources for Cocoapods
-```
-source 'https://github.com/VIPAAR/Specs.git'
-source 'https://github.com/CocoaPods/Specs.git'
-```
+## SamplePresence
+The unified sample app for Help Lightning SDK integrations on iOS and visionOS.
+It includes four runnable targets: iOS SwiftUI, iOS UIKit (Swift), iOS UIKit (ObjC), and visionOS SwiftUI.
+See `SamplePresence/README.md`.
 
-## SampleSwift
-The sample app for Swift. Swift version should be 5.0+
+## SampleUIKit (deprecated)
+Superseded by `SamplePresence` (`SamplePresence-iOS-UIKit` scheme).
 
-We need to add the following sources and pods for Cocoapods
-```
-source 'https://github.com/VIPAAR/Specs.git'
-source 'https://github.com/CocoaPods/Specs.git'
-
-pod 'PromisesObjC', '1.2.8', :modular_headers => true
-pod 'PromisesSwift', '1.2.8'
-
-```
+## SampleSwiftUI (deprecated)
+Superseded by `SamplePresence` (`SamplePresence-iOS-SwiftUI` and
+`SamplePresence-visionOS-SwiftUI` schemes).
 
 ## SampleXamarin
 The samples for Xamarin Android and Xamarin iOS

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GCSupportedGameControllers</key>
+	<array>
+		<dict>
+			<key>ProfileName</key>
+			<string>SpatialGamepad</string>
+		</dict>
+	</array>
+	<key>NSEnterpriseMCAMUsageDescription</key>
+	<string>Enable main camera access to capture video for your calls.</string>
+	<key>NSMainCameraUsageDescription</key>
+	<string>Enable main camera access to capture video for your calls.</string>
+	<key>NSHandsTrackingUsageDescription</key>
+	<string>Enable hand tracking to enhance your experience in immersive environments on Vision Pro.</string>
+	<key>NSWorldSensingUsageDescription</key>
+	<string>Enable world sensing to enhance your calls with 3D annotations.</string>
+	<key>NSAccessoryTrackingUsageDescription</key>
+	<string>Tracking accessory movements for precise annotation during video calls.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location access may be used to enhance collaboration features during sessions. Specifically, we may tag photos or screenshots with location data, or we may use location data when certain features are enabled such as Smart Tags.</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationPreferredDefaultSceneSessionRole</key>
+		<string>UIWindowSceneSessionRoleApplication</string>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<true/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UISceneSessionRoleImmersiveSpaceApplication</key>
+			<array>
+				<dict>
+					<key>UISceneInitialImmersionStyle</key>
+					<string>UIImmersionStyleMixed</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>voip</string>
+	</array>
+</dict>
+</plist>
