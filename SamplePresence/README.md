@@ -118,12 +118,12 @@ Configure the sample app server URL field to your running demo server, for examp
 Add the Help Lightning binary package in Xcode (**File → Add Package Dependencies…**):
 
 ```
-https://github.com/HaleXie/HLSDK-SPM.git
+https://github.com/VIPAAR/hlsdk-ios-spm.git
 ```
 
-Pin an **exact version** supplied by Help Lightning.
+Pin the package to exact version **26.5.2**.
 
-See the package [`README.md`](https://github.com/HaleXie/HLSDK-SPM/blob/main/README.md) for full integration notes.
+See the package [`README.md`](https://github.com/VIPAAR/hlsdk-ios-spm/blob/master/README.md) for full integration notes.
 
 ### Products by target
 
@@ -230,7 +230,7 @@ HLCallConfiguration *configuration =
 
 Implement `HLClientDelegate` (including `hlCallNeedScreenSharingInfo:`) on your call coordinator. The ObjC target links **`HLSDK` only** — no `HLSDKSwift` product.
 
-Do **not** import `HLSDKSwiftUI` or embed `HLCallView` in the UIKit samples. Use SDK-managed UIKit integration; the SDK presents `HLCallHostingController` automatically.
+Do **not** embed `HLCallView` in the UIKit samples. Use SDK-managed UIKit integration; the SDK presents `HLCallHostingController` automatically.
 
 #### ObjC-only: test legacy `startCall:withPresentingViewController:`
 
