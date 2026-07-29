@@ -121,7 +121,7 @@ Add the Help Lightning binary package in Xcode (**File → Add Package Dependenc
 https://github.com/VIPAAR/hlsdk-ios-spm.git
 ```
 
-Pin the package to exact version **26.5.2**.
+Pin the package to exact version **26.5.3**.
 
 See the package [`README.md`](https://github.com/VIPAAR/hlsdk-ios-spm/blob/master/README.md) for full integration notes.
 
