@@ -111,7 +111,7 @@ application:
    external dependency (React is bundled into the Help Lightning SDK):
 ```javascript
     <!-- Zoom Video SDK (external dependency) -->
-    <script src="https://source.zoom.us/videosdk/zoom-video-2.3.15.min.js"></script>
+    <script src="https://source.zoom.us/videosdk/zoom-video-2.4.5.min.js"></script>
 
     <!-- Load help lightning JS SDK -->
     <script src="https://helplightning.net/hlsdk/<hl-version>/helplightning.umd.js"></script>
@@ -121,7 +121,7 @@ application:
    the PDF worker) from. Set `assetBaseUrl` to the versioned SDK base, which the
    SDK appends `/zoom/videosdk/<version>/lib` to:
 ```javascript
-callClient.assetBaseUrl = 'https://helplightning.net/hlsdk/1.0.0';
+callClient.assetBaseUrl = 'https://helplightning.net/hlsdk/1.8.0';
 ```
 * Create a new client from the factory:
 ```javascript
@@ -191,8 +191,8 @@ The Help Lightning SDK is published under a versioned, immutable path. Pin your
 version by specifying it in the URL (and use the same version for
 `assetBaseUrl`):
 ```javascript
-    <script src="https://helplightning.net/hlsdk/1.0.0/helplightning.umd.js"></script>
-    <link rel="stylesheet" href="https://helplightning.net/hlsdk/1.0.0/style.css">
+    <script src="https://helplightning.net/hlsdk/1.8.0/helplightning.umd.js"></script>
+    <link rel="stylesheet" href="https://helplightning.net/hlsdk/1.8.0/style.css">
 ```
 
 ## Warning about Authentication
