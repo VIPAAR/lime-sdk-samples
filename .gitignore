@@ -9,8 +9,6 @@ bin
 *.aar
 *.jar
 !SampleAndroid/gradle/wrapper/gradle-wrapper.jar
-*.xcuserdatad
-*.xcworkspace
 
 .envrc
 SampleWeb/sdk/

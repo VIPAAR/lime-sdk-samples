@@ -1491,7 +1491,7 @@
 			repositoryURL = "https://github.com/VIPAAR/hlsdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = 26.5.2;
+				version = 26.5.3;
 			};
 		};
 		SP000F02 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
