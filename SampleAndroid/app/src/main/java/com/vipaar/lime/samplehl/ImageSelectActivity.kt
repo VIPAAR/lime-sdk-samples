@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.vipaar.lime.hlsdk.client.HLClient
 import com.vipaar.lime.hlsdk.events.KnowledgeType
 
@@ -13,6 +14,8 @@ class ImageSelectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photo_select)
+        WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars =
+            true
         findViewById<Button>(R.id.select_image_button).setOnClickListener {
             val i = Intent(Intent.ACTION_GET_CONTENT)
             i.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")

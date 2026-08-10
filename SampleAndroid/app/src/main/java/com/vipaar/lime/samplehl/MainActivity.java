@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         // edge-to-edge window handling.
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(R.layout.activity_main);
+        WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
+                        .setAppearanceLightStatusBars(true);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.fragment_container), (view, windowInsets) -> {
             Insets insets = windowInsets.getInsets(
               WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout()
