@@ -1,0 +1,32 @@
+[versions]
+appcompat = "1.7.1"
+constraintlayout = "2.2.2"
+exifinterface = "1.4.2"
+gradle = "9.3.1"
+hlsdkLight = "4.0.1"
+jdeferredAndroid = "2.0.0"
+junit = "1.3.0"
+junitVersion = "4.13.2"
+kotlinGradlePlugin = "2.4.10"
+legacySupportCoreUtils = "1.0.0"
+material = "1.14.0"
+recyclerview = "1.4.0"
+timber = "5.0.1"
+volley = "1.2.1"
+compileSdk = "37"
+
+[libraries]
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-exifinterface = { group = "androidx.exifinterface", name = "exifinterface", version.ref = "exifinterface" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
+androidx-legacy-support-core-utils = { group = "androidx.legacy", name = "legacy-support-core-utils", version.ref = "legacySupportCoreUtils" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
+hlsdk-light = { group = "com.vipaar.lime", name = "hlsdk-light", version.ref = "hlsdkLight" }
+jdeferred-android = { group = "org.jdeferred.v2", name = "jdeferred-android", version.ref = "jdeferredAndroid" }
+junit = { group = "junit", name = "junit", version.ref = "junitVersion" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
