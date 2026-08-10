@@ -118,4 +118,9 @@ public class SampleInCallService extends InCallService {
     public boolean isMinimizeCallEnabled() {
         return true;
     }
+
+    @Override
+    public boolean isEmbeddedChatEnabled() {
+        return false;
+    }
 }

@@ -70,10 +70,7 @@ public class Utils {
           .setImage(HLTheme.IMAGE_MESSAGE_XMARK, R.drawable.hltheme_ic_x_mark)
           .setImage(HLTheme.IMAGE_MESSAGE_FILE, R.drawable.hltheme_ic_file_solid)
           .setImage(HLTheme.IMAGE_MESSAGE_VIDEO, R.drawable.hltheme_ic_videocam)
-          .setImage(HLTheme.IMAGE_MESSAGE_PDF, R.drawable.hltheme_ic_file_pdf_solid)
-          .setImage(HLTheme.IMAGE_CALL_QUALITY_HD, R.drawable.hltheme_ic_call_quality_hd)
-          .setImage(HLTheme.IMAGE_CALL_QUALITY_SD, R.drawable.hltheme_ic_call_quality_sd)
-          .setImage(HLTheme.IMAGE_CALL_QUALITY_AUDIO_PLUS, R.drawable.hltheme_ic_call_quality_audio_plus);
+          .setImage(HLTheme.IMAGE_MESSAGE_PDF, R.drawable.hltheme_ic_file_pdf_solid);
 
         return theme;
     }
